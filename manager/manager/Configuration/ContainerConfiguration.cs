@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using Autofac;
+using Autofac.Builder;
+using DataAccess;
+using DomainModel;
+using manager.Components.ModelBinding;
+using System.Linq;
+using System.Web.Mvc;
+using Autofac;
+using Autofac.Builder;
+using Autofac.Integration.Mvc;
+using System.Reflection;
+using System;
+using System.Collections.Generic;
+
+namespace manager.Configuration
+{
+    public static class ContainerConfiguration
+    {
+        public static void Configure()
+        {
+            var builder = new ContainerBuilder();
+
+            var applicationAssembly = typeof(MvcApplication).Assembly;
+            builder.RegisterControllers(applicationAssembly);
+
+            builder.RegisterFilterProvider();
+
+            builder.RegisterGeneric(typeof(EntityModelBinder<>)).As(typeof(IEntityModelBinder<>));
+            builder.RegisterGeneric(typeof(EntityCollectionModelBinder<>)).As(typeof(IEntityCollectionModelBinder<>));
+
+            builder.RegisterModule(new DataAccessModule());
+
+            builder.RegisterType<EntityFactory>().As<IEntityFactory>();
+
+            //builder.RegisterType<AuthenticationProvider>().As<IAuthenticationProvider>();
+
+            var container = builder.Build();
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        private static bool IsAssignableToGenericType(Type givenType, Type genericType)
+        {
+            var interfaceTypes = givenType.GetInterfaces();
+
+            if (interfaceTypes.Where(it => it.IsGenericType).Any(it => it.GetGenericTypeDefinition() == genericType))
+                return true;
+
+            var baseType = givenType.BaseType;
+            if (baseType == null) return false;
+
+            return baseType.IsGenericType &&
+                   baseType.GetGenericTypeDefinition() == genericType ||
+                   IsAssignableToGenericType(baseType, genericType);
+        }
+
+        private static List<IRegistrationBuilder<object, object, object>> RegisterGenericTypes(ContainerBuilder builder, Assembly assembly, Type genericRepositoryType)
+        {
+            var builders = new List<IRegistrationBuilder<object, object, object>>();
+
+            var types = assembly.GetExportedTypes().Where(t => !t.IsInterface && !t.IsAbstract && IsAssignableToGenericType(t, genericRepositoryType)).ToArray();
+
+            foreach (var type in types)
+            {
+                if (type.IsGenericType)
+                    builders.Add(builder.RegisterGeneric(type).AsImplementedInterfaces().InstancePerHttpRequest());
+                else
+                    builders.Add(builder.RegisterType(type).AsImplementedInterfaces().InstancePerHttpRequest());
+            }
+
+            return builders;
+        }
+    }
+}
