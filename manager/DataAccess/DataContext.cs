@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess.Migrations;
 using DataAccess.Migrations.easygenerator.DataAccess.Migrations;
 using DomainModel.Entities;
 
@@ -18,6 +19,7 @@ namespace DataAccess
         {
             try
             {
+                var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
                 Database.SetInitializer<DataContext>(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
             }
             catch (Exception)

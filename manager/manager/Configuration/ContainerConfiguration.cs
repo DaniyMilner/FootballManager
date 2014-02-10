@@ -2,21 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Builder;
 using DataAccess;
 using DomainModel;
 using manager.Components.ModelBinding;
-using System.Linq;
-using System.Web.Mvc;
-using Autofac;
-using Autofac.Builder;
 using Autofac.Integration.Mvc;
-using System.Reflection;
-using System;
-using System.Collections.Generic;
 
 namespace manager.Configuration
 {
