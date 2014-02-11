@@ -1,0 +1,13 @@
+/*Library styles*/
+@import url("css/lib/bootstrap.css");
+
+/*General styles*/
+@import url("css/general/font.css");
+@import url("css/general/general.css");
+@import url("css/general/screen_640.css");
+@import url("css/general/screen_800.css");
+@import url("css/general/screen_1024.css");
+@import url("css/general/screen_1280.css");
+@import url("css/moz-fix/general_mozilla.css");
+
+/*Custom styles*/

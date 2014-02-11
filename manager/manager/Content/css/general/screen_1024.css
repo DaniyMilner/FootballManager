@@ -1,0 +1,38 @@
+@media all and (min-width: 1001px) and (max-width: 1250px ) {
+	.manager-wrapper {
+		width: 960px;
+	}
+
+	.scoreboard {
+		margin: 0 177px 0 165px;
+	}
+
+	.scoreboard ul {
+		padding: 0 35px 3px;
+		font-size: 24px;
+	}
+
+	.field {
+		height: 153px;
+		margin-top: -5px;
+	}
+
+	.left-content {
+		width: 258px;
+		margin-right: 10px;
+		display: block;
+	}
+
+	.main-content {
+		width: 690px;
+	}
+
+	.user-wrapper {
+		width: 90px;
+	}
+
+	.user-wrapper .user-icon {
+		height: 40px;
+		width: 40px;
+	}
+}
