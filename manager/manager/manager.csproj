@@ -194,9 +194,28 @@
     <Compile Include="Configuration\RouteConfig.cs" />
     <Compile Include="Configuration\WebApiConfig.cs" />
     <Content Include="App\main.js" />
-    <Content Include="Content\durandal.css" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\css\lib\bootstrap.css" />
+    <Content Include="Content\css\durandal.css" />
+    <Content Include="Content\css\general\font.css" />
+    <Content Include="Content\fonts\dited-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\general\general.css" />
+    <Content Include="Content\img\general\binding.png" />
+    <Content Include="Content\img\general\field.png" />
+    <Content Include="Content\img\general\left-part-scoreboard.png" />
+    <Content Include="Content\img\general\main-bg.jpg" />
+    <Content Include="Content\img\general\right-part-scoreboard.png" />
+    <Content Include="Content\img\general\scoreboard.png" />
+    <Content Include="Content\img\general\user-icon-48x48.png" />
+    <Content Include="Content\css\moz-fix\general_mozilla.css" />
+    <Content Include="Content\css\general\screen_1024.css" />
+    <Content Include="Content\css\general\screen_1280.css" />
+    <Content Include="Content\css\general\screen_640.css" />
+    <Content Include="Content\css\general\screen_800.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\almond-custom.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\durandal\activator.js" />
     <Content Include="Scripts\durandal\app.js" />
     <Content Include="Scripts\durandal\binder.js" />
@@ -212,14 +231,21 @@
     <Content Include="Scripts\durandal\system.js" />
     <Content Include="Scripts\durandal\viewEngine.js" />
     <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="Content\fonts\dited-webfont.eot" />
+    <Content Include="Content\fonts\dited-webfont.ttf" />
+    <Content Include="Content\fonts\dited-webfont.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\lib\bootstrap.css.map" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="weyland-config.js" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\text.js" />
@@ -232,8 +258,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\viewmodels\" />
