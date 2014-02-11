@@ -1,0 +1,54 @@
+@-moz-document url-prefix() {
+	@media all and (max-width: 780px) {
+		.scoreboard ul {
+			padding: 0 10px 3px;
+		}
+
+		.scoreboard ul li {
+			margin-right: 5px;
+		}
+
+		.user-menu > ul li {
+			margin-right: 4px;
+		}
+
+		.user-wrapper {
+			padding: 15px 20px;
+		}
+	}
+	@media all and (min-width: 780px) and (max-width: 1000px ) {
+		.scoreboard ul li {
+			margin-right: 10px;
+		}
+
+		.user-menu > ul li {
+			margin-right: 27px;
+		}
+
+		.user-wrapper {
+			padding: 15px 25px;
+		}
+	}
+	@media all and (min-width: 1001px) and (max-width: 1250px ) {
+		.scoreboard ul li {
+			margin-right: 14px;
+		}
+
+		.left-content .title-block, .user-menu > ul {
+			padding: 0 20px;
+		}
+
+		.user-wrapper {
+			padding: 15px 25px;
+		}
+	}
+	@media all and (min-width: 1251px) {
+		.scoreboard ul li {
+			margin-right: 25px;
+		}
+
+		.user-wrapper {
+			padding: 15px 35px;
+		}
+	}
+}

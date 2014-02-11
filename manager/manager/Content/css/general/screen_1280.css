@@ -1,0 +1,51 @@
+@media all and (min-width: 1251px){
+	.manager-wrapper {
+		width: 1200px;
+	}
+
+	.scoreboard {
+		margin: 0 216px 0 205px;
+	}
+
+	.scoreboard ul {
+		padding: 0 66px 2px;
+		font-size: 25px;
+	}
+
+	.field {
+		height: 195px;
+		margin-top: -5px;
+	}
+
+	.left-content {
+		width: 310px;
+		margin-right: 20px;
+		display: block;
+	}
+
+	.main-content {
+		width: 870px;
+	}
+	.left-content .title-block, .user-menu > ul{
+		padding: 0 20px;
+		font-size: 16px;
+	}
+	.user-menu > ul li a{
+		font-size: 16px;
+	}
+	.user-menu > ul li ul li{
+		height: 40px;
+	}
+	.user-menu > ul li ul li a{
+		padding-bottom: 0;
+	}
+
+	.user-wrapper {
+		width: 110px;
+	}
+
+	.user-wrapper .user-icon {
+		width: 45px;
+		height: 45px;
+	}
+}
