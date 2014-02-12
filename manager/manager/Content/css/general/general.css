@@ -1,5 +1,5 @@
 body {
-	background: url("../img/general/main-bg.jpg") repeat;
+	background: url("../../img/general/main-bg.jpg") repeat;
 	color:#f6f6f6;
 }
 .manager-wrapper{
@@ -7,17 +7,17 @@ body {
 	position: relative;
 }
 .scoreboard {
-	background: url("../img/general/left-part-scoreboard.png") no-repeat left top, url("../img/general/right-part-scoreboard.png") no-repeat right top, url("../img/general/scoreboard.png") repeat-x;
+	background: url("../../img/general/left-part-scoreboard.png") no-repeat left top, url("../../img/general/right-part-scoreboard.png") no-repeat right top, url("../../img/general/scoreboard.png") repeat-x;
 	height: 74px;
 	position: relative;
 }
 
 .scoreboard:before, .scoreboard:after {
-	content: '';
+    content: '';
 	position: absolute;
 	display: block;
-	background: url("../img/general/binding.png") no-repeat;
-	background-size: 8px 33px;
+	background: url("../../img/general/binding.png") no-repeat;
+    background-size: 8px 33px;
 	width: 8px;
 	height: 32px;
 	bottom: 100%;
@@ -158,13 +158,13 @@ body {
 	border-radius: 0 0 5px 5px;
 }
 .field{
-	background: url("../img/general/field.png") no-repeat;
+	background: url("../../img/general/field.png") no-repeat;
 	background-size: contain;
 	margin-top: 0;
 }
 
 .user-wrapper {
-	background: url("../img/general/left-part-scoreboard.png") no-repeat left top, url("../img/general/right-part-scoreboard.png") no-repeat right top, url("../img/general/scoreboard.png") repeat-x;
+	background: url("../../img/general/left-part-scoreboard.png") no-repeat left top, url("../../img/general/right-part-scoreboard.png") no-repeat right top, url("../../img/general/scoreboard.png") repeat-x;
 	height: 74px;
 	position: absolute;
 	width: 110px;
@@ -183,7 +183,7 @@ body {
 	content: '';
 	position: absolute;
 	display: block;
-	background: url("../img/general/binding.png") no-repeat;
+	background: url("../../img/general/binding.png") no-repeat;
 	background-size: 8px 33px;
 	width: 8px;
 	height: 32px;
@@ -191,7 +191,7 @@ body {
 	left: 50%;
 }
 .user-wrapper .user-icon{
-	background: url("../img/general/user-icon-48x48.png") no-repeat;
+	background: url("../../img/general/user-icon-48x48.png") no-repeat;
 	background-size: contain;
 	width: 45px;
 	height: 45px;

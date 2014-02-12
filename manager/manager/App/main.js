@@ -15,19 +15,20 @@ define('knockout', function () {
     return ko;
 });
 
-define(['durandal/system', 'durandal/app'],
-    function (system, app) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],
+    function (system, app, viewLocator) {
         system.debug(true);
 
-        app.title = "easygenerator";
-
+        app.title = "footballmanager";
+        
         app.configurePlugins({
             router: true,
             dialog: true,
-            http: true,
-            widget: true
+            http: true
         });
-
+        
+        viewLocator.useConvention();
+        
         app.start().then(function () {
             app.setRoot('viewmodels/shell');
         });

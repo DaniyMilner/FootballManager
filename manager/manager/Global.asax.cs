@@ -21,11 +21,11 @@ namespace manager
 
             AreaRegistration.RegisterAllAreas();
 
+            BundleConfiguration.Configure();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-
             ContainerConfiguration.Configure();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }
