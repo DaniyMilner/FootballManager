@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Infrastructure;
 
 namespace DomainModel.Entities
@@ -11,21 +7,22 @@ namespace DomainModel.Entities
     {
         protected internal User() { }
 
-        protected internal User(string userName, string password, string email, string parrentId, string skype)
+        protected internal User(string userName, string password, string email, string parrentId, string skype,
+            DateTime birthday, string city, string aboutMySelf, bool sex)
         {
             Email = email;
             UserName = userName;
             PasswordHash = Cryptography.GetHash(password);
             Skype = skype;
             ParentId = parrentId;
+            Birthday = birthday;
+            City = city;
+            AboutMySelf = aboutMySelf;
+            Sex = sex;
+            Language = "ru";
         }
 
         public string Email { get; private set; }
-
-        public void UpdateEmail(string email)
-        {
-            Email = email;
-        }
 
         public string PasswordHash { get; private set; }
 
@@ -50,6 +47,41 @@ namespace DomainModel.Entities
         public void UpdateSkype(string skype)
         {
             Skype = skype;
+        }
+
+        public DateTime Birthday { get; private set; }
+
+        public void UpdateBirthday(DateTime birthday)
+        {
+            Birthday = birthday;
+        }
+
+        public string City { get; private set; }
+
+        public void UpdateCity(string city)
+        {
+            City = city;
+        }
+
+        public string AboutMySelf { get; private set; }
+
+        public void UpdateAboutMySelf(string aboutMySelf)
+        {
+            AboutMySelf = aboutMySelf;
+        }
+
+        public bool Sex { get; private set; }
+
+        public void UpdateSex(bool sex)
+        {
+            Sex = sex;
+        }
+
+        public string Language { get; private set; }
+
+        public void UpdateLanguage(string language)
+        {
+            Language = language;
         }
 
     }

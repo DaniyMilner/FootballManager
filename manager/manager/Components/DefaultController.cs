@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataAccess;
+using manager.Components.ActionResults;
 
 namespace manager.Components
 {
@@ -12,6 +13,36 @@ namespace manager.Components
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
         {
             DependencyResolver.Current.GetService<IUnitOfWork>().Save();
+        }
+
+        protected ActionResult JsonSuccess()
+        {
+            return new JsonSuccessResult();
+        }
+
+        protected ActionResult JsonSuccess(object data)
+        {
+            return new JsonSuccessResult(data);
+        }
+
+        protected ActionResult JsonSuccess(object data, string contentType)
+        {
+            return new JsonSuccessResult(data, contentType);
+        }
+
+        protected ActionResult JsonError(string message)
+        {
+            return new JsonErrorResult(message);
+        }
+
+        protected ActionResult JsonLocalizableError(string message, string resourceKey)
+        {
+            return new JsonErrorResult(message, resourceKey);
+        }
+
+        protected ActionResult BadRequest()
+        {
+            return new BadRequestResult();
         }
 
         protected string GetCurrentUsername()

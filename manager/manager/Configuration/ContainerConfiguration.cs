@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Builder;
 using DataAccess;
 using DomainModel;
+using manager.Components;
 using manager.Components.ModelBinding;
 using Autofac.Integration.Mvc;
 
@@ -30,7 +31,7 @@ namespace manager.Configuration
 
             builder.RegisterType<EntityFactory>().As<IEntityFactory>();
 
-            //builder.RegisterType<AuthenticationProvider>().As<IAuthenticationProvider>();
+            builder.RegisterType<AuthenticationProvider>().As<IAuthenticationProvider>();
 
             var container = builder.Build();
 

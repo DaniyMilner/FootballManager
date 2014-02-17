@@ -55,6 +55,11 @@ namespace DataAccess
             modelBuilder.Entity<User>().Property(e => e.UserName).IsRequired();
             modelBuilder.Entity<User>().Property(e => e.ParentId).IsOptional();
             modelBuilder.Entity<User>().Property(e => e.Skype).IsOptional();
+            modelBuilder.Entity<User>().Property(e => e.Sex).IsOptional();
+            modelBuilder.Entity<User>().Property(e => e.City).IsOptional();
+            modelBuilder.Entity<User>().Property(e => e.Birthday).IsOptional();
+            modelBuilder.Entity<User>().Property(e => e.AboutMySelf).IsOptional();
+            modelBuilder.Entity<User>().Property(e => e.Language).IsRequired().HasMaxLength(10);
 
             base.OnModelCreating(modelBuilder);
         }

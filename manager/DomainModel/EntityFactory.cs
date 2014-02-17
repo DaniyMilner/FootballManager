@@ -9,14 +9,16 @@ namespace DomainModel
 {
     public interface IEntityFactory
     {
-        User User(string userName, string password, string email, string parrentId, string skype);
+        User User(string userName, string password, string email, string parrentId, string skype,
+            DateTime birthday, string city, string aboutMySelf, bool sex);
     }
 
     public class EntityFactory : IEntityFactory
     {
-        public User User(string userName, string password, string email, string parrentId, string skype)
+        public User User(string userName, string password, string email, string parrentId, string skype,
+            DateTime birthday, string city, string aboutMySelf, bool sex)
         {
-            return new User(userName, password, email, parrentId, skype);
+            return new User(userName, password, email, parrentId, skype, birthday, city, aboutMySelf, sex);
         }
     }
 }

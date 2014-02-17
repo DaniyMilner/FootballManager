@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Infrastructure;
 using manager.Components.ModelBinding;
 using manager.Configuration;
 
@@ -22,10 +25,14 @@ namespace manager
             AreaRegistration.RegisterAllAreas();
 
             BundleConfiguration.Configure();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             ContainerConfiguration.Configure();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            
         }
     }
 }
