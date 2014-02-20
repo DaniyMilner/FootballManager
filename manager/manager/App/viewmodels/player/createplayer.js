@@ -5,17 +5,20 @@
         activate: activate,
         name: ko.observable(''),
         surname: ko.observable(''),
-        growth: ko.observable(''),
-        weight: ko.observable(''),
-        position: ko.observable(''),
         nationality: ko.observable(''),
         create: function () {
-            httpWrapper.post('/createplayersubmit', this).then(function (response) {
-                if (response.success) {
-                    console.log(response.message);
-                }
+            var data = {
+                name: this.name(),
+                surname: this.surname(),
+                countryId: this.selectedCountry().Id,
+                positionId: this.selectedPosition().Id,
+                weight: this.selectedWeight(),
+                growth: this.selectedGrowth()
+            };
+            httpWrapper.post('api/player/createplayer', data).then(function (response) {
+                console.log(response);
             }).fail(function (response) {
-                console.log(response.message);
+                console.log(response);
             });
         },
         isActiveButton: ko.observable(false),
@@ -60,6 +63,9 @@
     });
     viewModel.isEmptyName = ko.computed(function() {
         return !viewModel.name();
+    });
+    viewModel.isEmptySurname = ko.computed(function() {
+        return !viewModel.surname();
     });
     
     return viewModel;

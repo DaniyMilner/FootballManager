@@ -1,4 +1,4 @@
-﻿define({    
+﻿define({
     example: {
         en: '',
         ru: '',
@@ -131,7 +131,23 @@
         en: 'Invalid Name',
         ru: 'Некорректное имя',
         uk: "Некоректне ім'я"
-    }
+    },
+    no_correct_surname: {
+        en: 'Invalid Surname',
+        ru: 'Некорректная фалимия',
+        uk: 'Некоректне прізвище'
+    },
+    name: {
+        en: 'Name',
+        ru: 'Имя',
+        uk: "Ім'я"
+    },
+    surname: {
+        en: 'Surname',
+        ru: 'Фамилия',
+        uk: 'Прізвище'
+    },
+    
 
 
     /* Resource section for model SignUp */

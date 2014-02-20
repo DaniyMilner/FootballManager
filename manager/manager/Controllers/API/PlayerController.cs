@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DomainModel;
+using DomainModel.Entities;
 using DomainModel.Repositories;
 using manager.Components;
+using manager.Models;
 
 namespace manager.Controllers.API
 {
@@ -37,6 +39,14 @@ namespace manager.Controllers.API
         public ActionResult GetAllCountries()
         {
             return JsonSuccess(_countryRepository.GetCollection());
+        }
+
+        [HttpPost]
+        [Route("api/player/createplayer")]
+        public ActionResult CreatePlayer(PlayerCreateModel model)
+        {
+            //доделать когда будет регистрация
+            return JsonSuccess();
         }
     }
 }
