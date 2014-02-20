@@ -188,6 +188,7 @@
     <Compile Include="Components\ModelBinding\EntityModelBinderProvider.cs" />
     <Compile Include="Configuration\BundleConfiguration.cs" />
     <Compile Include="Configuration\ContainerConfiguration.cs" />
+    <Compile Include="Controllers\API\PlayerController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,14 +211,17 @@
     <Content Include="App\viewmodels\home\home.js" />
     <Content Include="App\viewmodels\menu\main.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
+    <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\user\signup.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\home\home.html" />
     <Content Include="App\views\menu\main.html" />
     <Content Include="App\views\menu\usermenu.html" />
+    <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\user\signup.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="Content\all.css" />
+    <Content Include="Content\css\createPlayer.css" />
     <Content Include="Content\css\durandal.css" />
     <Content Include="Content\css\general\font.css" />
     <Content Include="Content\css\general\general.css" />

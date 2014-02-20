@@ -39,10 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Illness.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="EntityFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICountryRepository.cs" />
+    <Compile Include="Repositories\IPlayerRepository.cs" />
+    <Compile Include="Repositories\IPositionRepository.cs" />
     <Compile Include="Repositories\IQuerableRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />

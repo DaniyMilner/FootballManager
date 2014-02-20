@@ -14,7 +14,7 @@
         },
         
         goToForum = function() {
-            
+            router.navigate('createplayer');
         },
 
         goToSignUp = function() {
