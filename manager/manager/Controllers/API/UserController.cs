@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DomainModel;
 using DomainModel.Repositories;
 using Infrastructure;
 using manager.Components;
@@ -15,17 +16,29 @@ namespace manager.Controllers.API
     {
         private readonly IUserRepository _userRepository;
         private readonly IAuthenticationProvider _authenticationProvider;
+        private readonly IEntityFactory _entityFactory;
 
-        public UserController(IUserRepository userRepository, IAuthenticationProvider authenticationProvider)
+        public UserController(IUserRepository userRepository, IAuthenticationProvider authenticationProvider,
+            IEntityFactory entityFactory)
         {
             _userRepository = userRepository;
             _authenticationProvider = authenticationProvider;
+            _entityFactory = entityFactory;
         }
 
         [HttpPost]
         [Route("api/user/signup")]
         public ActionResult SignUp(UserSignUpModel userSignUpModel)
         {
+            if (userSignUpModel == null)
+            {
+                return JsonError("User can't be null");
+            }
+
+            _entityFactory.User(userSignUpModel.Username, userSignUpModel.Password, userSignUpModel.Email,
+                userSignUpModel.ParentId, userSignUpModel.Skype, userSignUpModel.Birthday, userSignUpModel.City,
+                userSignUpModel.AboutMySelf, userSignUpModel.Sex);
+
             return JsonSuccess();
         }
 

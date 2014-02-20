@@ -208,12 +208,12 @@
     <Content Include="App\models\user.js" />
     <Content Include="App\routing\routes.js" />
     <Content Include="App\viewmodels\home\home.js" />
-    <Content Include="App\viewmodels\menu\main.js" />
+    <Content Include="App\viewmodels\menu\mainmenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\user\signup.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\home\home.html" />
-    <Content Include="App\views\menu\main.html" />
+    <Content Include="App\views\menu\mainmenu.html" />
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\user\signup.html" />
     <Content Include="App\views\shell.html" />

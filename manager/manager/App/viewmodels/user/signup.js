@@ -1,5 +1,5 @@
-﻿define(['plugins/router'],
-    function (router) {
+﻿define(['plugins/router', 'httpWrapper'],
+    function (router, httpWrapper) {
 
         var
             username = ko.observable(''),
@@ -11,7 +11,7 @@
             aboutmyself = ko.observable(''),
             parentid = '',
             activate = function () {
-
+                
             };
 
         return {

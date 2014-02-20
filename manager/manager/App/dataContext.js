@@ -17,7 +17,7 @@
                     dataType: 'json'
                 }).then(function (response) {
                     if (_.isNull(response.data)) {
-                        isAuthenticated = false;
+                        that.isAuthenticated = false;
                     } else if (!_.isNull(response.data)) {
                         
                     }

@@ -5,7 +5,9 @@
     };
 
     function activate() {
-        
+        return Q.fcall(function() {
+
+        });
     }
 
     return viewModel;
