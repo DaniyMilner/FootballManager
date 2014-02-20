@@ -10,9 +10,9 @@
             moduleId: 'viewmodels/user/signup',
             title: 'Signup'
         }, {
-            route: '1',
-            moduleId: 'viewmodels/1/1',
-            title: '1'
+            route: 'createplayer',
+            moduleId: 'viewmodels/player/createplayer',
+            title: 'Create player'
         }];
 
     });

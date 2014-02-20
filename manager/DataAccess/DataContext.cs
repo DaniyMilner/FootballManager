@@ -40,6 +40,10 @@ namespace DataAccess
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Illness> Illnesses { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -60,6 +64,32 @@ namespace DataAccess
             modelBuilder.Entity<User>().Property(e => e.Birthday).IsOptional();
             modelBuilder.Entity<User>().Property(e => e.AboutMySelf).IsOptional();
             modelBuilder.Entity<User>().Property(e => e.Language).IsRequired().HasMaxLength(10);
+
+            modelBuilder.Entity<Country>().Property(e => e.Name).IsRequired().HasMaxLength(254);
+            modelBuilder.Entity<Country>().Property(e => e.PublicId).IsRequired().HasMaxLength(254);
+
+            modelBuilder.Entity<Illness>().Property(e => e.IllnessName).IsRequired().HasMaxLength(254);
+            modelBuilder.Entity<Illness>().Property(e => e.TimeForRecovery).IsRequired();
+
+            modelBuilder.Entity<Position>().Property(e => e.Name).IsRequired().HasMaxLength(254);
+            modelBuilder.Entity<Position>().Property(e => e.PublicId).IsRequired().HasMaxLength(254);
+
+            modelBuilder.Entity<Player>().Property(e => e.Name).IsRequired().HasMaxLength(30);
+            modelBuilder.Entity<Player>().Property(e => e.Surname).IsRequired().HasMaxLength(30);
+            modelBuilder.Entity<Player>().Property(e => e.Age).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Weight).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Growth).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Number).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Salary).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Money).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Humor).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.Condition).IsRequired();
+            modelBuilder.Entity<Player>().HasRequired(e => e.User);
+            modelBuilder.Entity<Player>().HasRequired(e => e.Position);
+            modelBuilder.Entity<Player>().HasRequired(e => e.Illness);
+            modelBuilder.Entity<Player>().HasRequired(e => e.Country);
+            modelBuilder.Entity<Player>().Property(e => e.PublicId).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.CreateDate).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

@@ -94,8 +94,15 @@
     <Compile Include="Migrations\201402172007262_AddLanguageFieldToUser.Designer.cs">
       <DependentUpon>201402172007262_AddLanguageFieldToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402191826343_AddPlayer.cs" />
+    <Compile Include="Migrations\201402191826343_AddPlayer.Designer.cs">
+      <DependentUpon>201402191826343_AddPlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\PlayerRepository.cs" />
+    <Compile Include="Repositories\PositionRepository.cs" />
     <Compile Include="Repositories\QuerableRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -113,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201402172007262_AddLanguageFieldToUser.resx">
       <DependentUpon>201402172007262_AddLanguageFieldToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402191826343_AddPlayer.resx">
+      <DependentUpon>201402191826343_AddPlayer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,53 @@
+﻿<section class="register-player-wrapper">
+    <h3 data-bind="localize: { text: 'create_player' }"></h3>
+    <div class="register_player_block">
+        <div class="form-horizontal">
+            <div class="form-group" data-bind="css: { 'has-feedback': !isEmptyName(), 'has-success': !isEmptyName() && isValidName(), 'has-error': !isEmptyName() && !isValidName() }">
+                <label for="inputPlayerName" class="col-sm-5 control-label">Имя</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="inputPlayerName" data-bind="value: name, valueUpdate: 'afterkeydown'">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: !isEmptyName() && isValidName()"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !isEmptyName() && !isValidName()"></span>
+                </div>
+                <div class="col-sm-3 danger-message">
+                    <!--ko ifnot: isValidName() -->
+                    <p class="text-danger" data-bind="visible: isStartName, localize: { text: 'no_correct_name' }"></p>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="form-group has-error has-feedback">
+                <label for="inputSurname" class="col-sm-5 control-label">Фамилия</label>   
+                <div class="col-sm-3">
+                    <input type="email" class="form-control" id="inputSurname" data-bind="value: surname, valueUpdate: 'afterkeydown'">
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Рост</label>
+                <div class="col-sm-3">
+                    <select class="form-control" data-bind="options: availableGrowth, optionsText: function (item) { return item; }, value: selectedGrowth"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Вес</label>
+                <div class="col-sm-3">
+                    <select class="form-control" data-bind="options: availableWeight, optionsText: function (item) { return item; }, value: selectedWeight"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Позиция</label>
+                <div class="col-sm-3">
+                    <select class="form-control" data-bind="options: availablePosition, optionsText: function (item) { return item.Name; }, value: selectedPosition"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Национальность</label>
+                <div class="col-sm-3">
+                    <select class="form-control" data-bind="options: availableCountry, optionsText: function (item) { return item.Name; }, value: selectedCountry"></select>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" disabled="disabled">Создать</button>
+        </div>
+
+    </div>
+</section>

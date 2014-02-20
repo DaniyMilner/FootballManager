@@ -18,6 +18,18 @@ namespace DataAccess
                 .As<IUserRepository>()
                 .As<IQuerableRepository<User>>();
 
+            builder.RegisterType<PlayerRepository>()
+                .As<IPlayerRepository>()
+                .As<IQuerableRepository<Player>>();
+
+            builder.RegisterType<PositionRepository>()
+                .As<IPositionRepository>()
+                .As<IQuerableRepository<Position>>();
+
+            builder.RegisterType<CountryRepository>()
+               .As<ICountryRepository>()
+               .As<IQuerableRepository<Country>>();
+
             base.Load(builder);
         }
     }

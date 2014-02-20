@@ -1,0 +1,64 @@
+.register-player-wrapper h3{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.register-player-wrapper .register_player_block label {
+	font-size: 15px;
+}
+.register-player-wrapper .btn.btn-success {
+	margin-left: 66%;
+}
+.register-player-wrapper .register_player_block{
+	width: 240px;
+	margin: 0 auto;
+}
+.register-player-wrapper .text-danger {
+    margin: 0;
+}
+.register-player-wrapper .danger-message {
+    position: absolute;
+}
+@media all and (min-width: 768px) and (max-width: 1000px ) {
+	.register-player-wrapper .register_player_block{
+		width: 100%;
+	}
+	.register-player-wrapper .btn.btn-success {
+		margin-left: 54%;
+	}
+    .register-player-wrapper .text-danger {
+    line-height: 2.5;
+}
+    .register-player-wrapper .danger-message {
+        position: relative;
+    }
+}
+
+@media all and (min-width: 1001px) and (max-width: 1250px ) {
+	.register-player-wrapper .register_player_block{
+		width: 100%;
+	}
+	.register-player-wrapper .btn.btn-success {
+		margin-left: 53%;
+	}
+    .register-player-wrapper .danger-message {
+        position: relative;
+    }
+    .register-player-wrapper .text-danger {
+        line-height: 2.5;
+    }
+}
+
+@media all and (min-width: 1251px) {
+	.register-player-wrapper .register_player_block{
+		width: 100%;
+	}
+	.register-player-wrapper .btn.btn-success {
+		margin-left: 56%;
+	}
+    .register-player-wrapper .danger-message {
+        position: relative;
+    }
+    .register-player-wrapper .text-danger {
+        line-height: 2.5;
+    }
+}
