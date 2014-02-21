@@ -1,6 +1,6 @@
 ﻿<section class="register-player-wrapper">
-    <h3 data-bind="localize: { text: 'create_player' }"></h3>
-    <div class="register_player_block">
+    <h3 data-bind="localize: { text: 'create_player' }, visible: !registerSuccess()"></h3>
+    <div class="register_player_block" data-bind="visible: !registerSuccess()">
         <div class="form-horizontal">
             <div class="form-group" data-bind="css: { 'has-feedback': !isEmptyName(), 'has-success': !isEmptyName() && isValidName(), 'has-error': !isEmptyName() && !isValidName() }">
                 <label for="inputPlayerName" class="col-sm-5 control-label" data-bind="localize: { text: 'name' }"></label>
@@ -15,8 +15,8 @@
                     <!-- /ko -->
                 </div>
             </div>
-            <div class="form-group"  data-bind="css: { 'has-feedback': !isEmptySurname(), 'has-success': !isEmptySurname() && isValidSurname(), 'has-error': !isEmptySurname() && !isValidSurname() }">
-                <label for="inputSurname" class="col-sm-5 control-label" data-bind="localize: { text: 'surname' }"></label>   
+            <div class="form-group" data-bind="css: { 'has-feedback': !isEmptySurname(), 'has-success': !isEmptySurname() && isValidSurname(), 'has-error': !isEmptySurname() && !isValidSurname() }">
+                <label for="inputSurname" class="col-sm-5 control-label" data-bind="localize: { text: 'surname' }"></label>
                 <div class="col-sm-3">
                     <input type="email" class="form-control" id="inputSurname" data-bind="value: surname, valueUpdate: 'afterkeydown'">
                     <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: !isEmptySurname() && isValidSurname()"></span>
@@ -53,7 +53,12 @@
                 </div>
             </div>
             <button type="button" class="btn btn-success" data-bind="attr: { 'disabled': !isValidName() || !isValidSurname() }, click: create">Создать</button>
+            <p class="text-danger text-center" data-bind="localize: { text: 'error' }, visible: registerError()"></p>
         </div>
 
+    </div>
+    <div class="success-wrapper" data-bind="visible: registerSuccess()">
+        <p>Вы успешно зарегистрировали игрока <span data-bind="text: name"></span> <span data-bind="text: surname"></span></p>
+        <p>Для того чтобы подать заявку на вступление в клуб перейдите по <span data-bind="click: goToChooseClub" class="btn-link">ссылке</span></p>
     </div>
 </section>

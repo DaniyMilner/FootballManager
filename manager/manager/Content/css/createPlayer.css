@@ -18,6 +18,10 @@
 .register-player-wrapper .danger-message {
     position: absolute;
 }
+.register-player-wrapper .success-wrapper {
+    padding: 10px;
+    font-size: 16px;
+}
 @media all and (min-width: 768px) and (max-width: 1000px ) {
 	.register-player-wrapper .register_player_block{
 		width: 100%;
@@ -30,6 +34,9 @@
     }
     .register-player-wrapper .danger-message {
         position: relative;
+    }
+    .register-player-wrapper .success-wrapper {
+        font-size: 15px;
     }
 }
 
@@ -46,6 +53,10 @@
     .register-player-wrapper .text-danger {
         line-height: 2.4;
     }
+    .register-player-wrapper .success-wrapper {
+        font-size: 15px;
+        padding-left: 15px;
+    }
 }
 
 @media all and (min-width: 1251px) {
@@ -60,5 +71,9 @@
     }
     .register-player-wrapper .text-danger {
         line-height: 2.4;
+    }
+    .register-player-wrapper .success-wrapper {
+        padding-left: 20px;
+        font-size: 15px;
     }
 }
