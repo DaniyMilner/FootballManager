@@ -4,12 +4,12 @@
 		<div class="form-group has-success has-feedback">
 			<label for="inputLogin" class="col-sm-5 control-label" data-bind="localize: {text: 'login'}">Логин</label>
 			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputLogin" >
+				<input type="text" class="form-control" id="inputLogin" data-bind="value: username, valueUpdate: 'afterkeydown', event: { blur: isUserNameExist }">
 				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 			</div>
-			<div class="col-sm-1 ball moving">
-				<div class="area"></div>
-			</div>
+		    <div class="col-sm-1 ball moving" data-bind="visible: loaderForUserName">
+		        <div class="area"></div>
+		    </div>
 		</div>
 		<div class="form-group has-warning has-feedback">
 			<label for="inputEmail" class="col-sm-5 control-label" data-bind="localize: {text: 'email'}">Электронная почта</label>
@@ -59,8 +59,8 @@
 			<label class="col-sm-5 control-label" data-bind="localize: {text: 'sex'}">Пол</label>
 			<div class="col-sm-3">
 				<select class="form-control">
-					<option data-bind="localize: {text: 'man'}">Мужской</option>
-					<option data-bind="localize: {text: 'woman'}">Женский</option>
+					<option data-bind="localize: {text: 'male'}">Мужской</option>
+					<option data-bind="localize: {text: 'female'}">Женский</option>
 				</select>
 			</div>
 		</div>

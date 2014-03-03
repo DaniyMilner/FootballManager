@@ -200,5 +200,10 @@ body {
 	width: 45px;
 	height: 45px;
 }
-
+.text-danger {
+    margin: 0;
+}
+.danger-message {
+    position: absolute;
+}
 

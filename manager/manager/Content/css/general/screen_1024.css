@@ -35,4 +35,10 @@
 		height: 40px;
 		width: 40px;
 	}
+    .danger-message {
+        position: relative;
+    }
+    .text-danger {
+        line-height: 2.5;
+    }
 }

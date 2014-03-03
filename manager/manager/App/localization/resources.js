@@ -131,7 +131,7 @@
         en: 'Invalid Name',
         ru: 'Некорректное имя',
         uk: "Некоректне ім'я"
-    }
+    },
 
 
     /* Resource section for model SignUp */
@@ -176,12 +176,12 @@
         ru: 'Город',
         uk: 'Місто'
     },
-    man: {
+    male: {
         en: 'Male',
         ru: 'Мужской',
         uk: 'Чоловічий'
     },
-    woman: {
+    female: {
         en: 'Female',
         ru: 'Женский',
         uk: 'Жіночий'
@@ -200,7 +200,7 @@
         en: 'Sign up',
         ru: 'Зарегистрироваться',
         uk: 'Зареєструвався'
-    }
+    },
 
     /* Resource section for model SignUp */
 

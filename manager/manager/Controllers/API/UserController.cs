@@ -53,6 +53,7 @@ namespace manager.Controllers.API
         [Route("api/user/signout")]
         public ActionResult SignOut()
         {
+            _authenticationProvider.SignOut();
             return JsonSuccess();
         }
 
@@ -62,6 +63,22 @@ namespace manager.Controllers.API
         {
             if (!_authenticationProvider.IsUserAuthenticated()) return JsonSuccess();
             return  JsonSuccess(_userRepository.GetUserByUserName(GetCurrentUsername()));
+        }
+
+        [HttpPost]
+        [Route("api/user/usernameexists")]
+        public ActionResult UserNameExist(string username)
+        {
+            if (_userRepository.GetUserByUserName(username) == null) return JsonSuccess(true);
+            return JsonError("This login allready exists");
+        }
+
+        [HttpPost]
+        [Route("api/user/emailexists")]
+        public ActionResult EmailExists(string email)
+        {
+            if (_userRepository.GetUserByEmail(email) == null) return JsonSuccess(true);
+            return JsonError("This email allready exists");
         }
 
         [HttpPost]
