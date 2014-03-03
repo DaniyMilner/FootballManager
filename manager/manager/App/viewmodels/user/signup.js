@@ -36,7 +36,9 @@
         function isUserNameExist() {
             viewmodel.loaderForUserName(true);
             httpWrapper.post('api/user/usernameexists', { username: viewmodel.username() }).then(function (response) {
-                viewmodel.loaderForUserName(false);
+                if (response) {
+                    viewmodel.loaderForUserName(false);
+                }
             });
         }
 

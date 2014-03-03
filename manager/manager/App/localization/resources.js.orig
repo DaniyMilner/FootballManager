@@ -131,7 +131,6 @@
         en: 'Invalid Name',
         ru: 'Некорректное имя',
         uk: "Некоректне ім'я"
-    
     },
     no_correct_surname: {
         en: 'Invalid Surname',
@@ -153,8 +152,6 @@
         ru: 'Извините, произошла ошибка, повторите попытку минутой позже',
         uk: 'Вибачте, сталася помилка, повторіть спробу хвилиною пізніше'
     },
-    
-
 
     /* Resource section for model SignUp */
     
@@ -198,13 +195,11 @@
         ru: 'Город',
         uk: 'Місто'
     },
-    
     male: {
         en: 'Male',
         ru: 'Мужской',
         uk: 'Чоловічий'
     },
-    
     female: {
         en: 'Female',
         ru: 'Женский',
@@ -224,7 +219,6 @@
         en: 'Sign up',
         ru: 'Зарегистрироваться',
         uk: 'Зареєструвався'
-    
     },
 
     /* Resource section for model SignUp */
