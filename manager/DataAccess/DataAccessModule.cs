@@ -30,6 +30,10 @@ namespace DataAccess
                .As<ICountryRepository>()
                .As<IQuerableRepository<Country>>();
 
+            builder.RegisterType<TeamRepository>()
+                .As<ITeamRepository>()
+                .As<IQuerableRepository<Team>>();
+
             base.Load(builder);
         }
     }
