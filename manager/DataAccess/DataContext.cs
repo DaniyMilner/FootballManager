@@ -44,6 +44,9 @@ namespace DataAccess
         public DbSet<Illness> Illnesses { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Skill> Skill { get; set; }
+        public DbSet<SkillsPlayer> SkillsPlayer { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -90,6 +93,22 @@ namespace DataAccess
             modelBuilder.Entity<Player>().HasRequired(e => e.Country);
             modelBuilder.Entity<Player>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Player>().Property(e => e.CreateDate).IsRequired();
+
+            modelBuilder.Entity<Team>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Team>().Property(e => e.ShortName).IsRequired().HasMaxLength(20);
+            modelBuilder.Entity<Team>().Property(e => e.Logo).IsRequired();
+            modelBuilder.Entity<Team>().Property(e => e.CoachId);
+            modelBuilder.Entity<Team>().Property(e => e.AssistantId);
+            modelBuilder.Entity<Team>().HasRequired(e => e.Country);
+            modelBuilder.Entity<Team>().Property(e => e.Stadium).IsRequired();
+            modelBuilder.Entity<Team>().Property(e => e.Year).IsRequired();
+
+            modelBuilder.Entity<Skill>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Skill>().Property(e => e.Ordering).IsRequired();
+
+            modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Skill);
+            modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Player);
+            modelBuilder.Entity<SkillsPlayer>().Property(e => e.Value).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }
