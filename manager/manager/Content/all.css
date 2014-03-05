@@ -1,5 +1,6 @@
 /*Library styles*/
 @import url("css/lib/bootstrap.css");
+@import url("css/lib/jquery-ui-1.10.4.custom.css");
 
 /*General styles*/
 @import url("css/general/font.css");
@@ -11,4 +12,6 @@
 @import url("css/moz-fix/general_mozilla.css");
 @import url("css/userRegistration.css");
 @import url("css/createPlayer.css");
+
 /*Custom styles*/
+@import url("css/custom-jquery.css");

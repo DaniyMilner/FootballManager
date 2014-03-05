@@ -223,6 +223,7 @@
     <Content Include="App\views\shell.html" />
     <Content Include="Content\all.css" />
     <Content Include="Content\css\createPlayer.css" />
+    <Content Include="Content\css\custom-jquery.css" />
     <Content Include="Content\css\durandal.css" />
     <Content Include="Content\css\general\font.css" />
     <Content Include="Content\css\general\general.css" />
@@ -231,6 +232,23 @@
     <Content Include="Content\css\general\screen_640.css" />
     <Content Include="Content\css\general\screen_800.css" />
     <Content Include="Content\css\lib\bootstrap.css" />
+    <Content Include="Content\css\lib\images\animated-overlay.gif" />
+    <Content Include="Content\css\lib\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\css\lib\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\css\lib\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\css\lib\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\css\lib\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\css\lib\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\css\lib\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\css\lib\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\css\lib\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\css\lib\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\css\lib\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\css\lib\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\css\lib\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\css\lib\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
@@ -265,8 +283,11 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
+    <Content Include="Scripts\knockoutBindings\datepickerBinding.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\underscore.js" />
@@ -293,9 +314,7 @@
     </Content>
     <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\knockoutBindings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -1,81 +1,103 @@
 ﻿<section class="registrtion-view">
-	<h3 class="title" data-bind="localize: {text: 'registration'}">Регистрация</h3>
-	<div class="form-horizontal">
-		<div class="form-group has-success has-feedback">
-			<label for="inputLogin" class="col-sm-5 control-label" data-bind="localize: {text: 'login'}">Логин</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputLogin" data-bind="value: username, valueUpdate: 'afterkeydown', event: { blur: isUserNameExist }">
-				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-			</div>
-		    <div class="col-sm-1 ball moving" data-bind="visible: loaderForUserName">
-		        <div class="area"></div>
-		    </div>
-		</div>
-		<div class="form-group has-warning has-feedback">
-			<label for="inputEmail" class="col-sm-5 control-label" data-bind="localize: {text: 'email'}">Электронная почта</label>
-			<div class="col-sm-3">
-				<input type="email" class="form-control" id="inputEmail" >
-				<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-			</div>
-			<div class="col-sm-1 ball moving">
-				<div class="area"></div>
-			</div>
-		</div>
-		<div class="form-group has-error has-feedback">
-			<label for="inputPassword" class="col-sm-5 control-label" data-bind="localize: {text: 'password'}">Пароль</label>
-			<div class="col-sm-3">
-				<input type="password" class="form-control" id="inputPassword">
-				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			</div>
-			<div class="col-sm-1 ball moving">
-				<div class="area"></div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputPassword2" class="col-sm-5 control-label" data-bind="localize: {text: 'repeatpassword'}">Подтвердите пароль</label>
-			<div class="col-sm-3">
-				<input type="password" class="form-control" id="inputPassword2">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputSkype" class="col-sm-5 control-label" data-bind="localize: {text: 'skype'}">Skype</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputSkype">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputBirth" class="col-sm-5 control-label" data-bind="localize: {text: 'birthday'}">День рождения</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputBirth">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputCity" class="col-sm-5 control-label" data-bind="localize: {text: 'city'}">Город</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputCity">
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-5 control-label" data-bind="localize: {text: 'sex'}">Пол</label>
-			<div class="col-sm-3">
-				<select class="form-control">
-					<option data-bind="localize: {text: 'male'}">Мужской</option>
-					<option data-bind="localize: {text: 'female'}">Женский</option>
-				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputAbout" class="col-sm-5 control-label" data-bind="localize: {text: 'aboutmyself'}">О себе</label>
-			<div class="col-sm-3">
-				<textarea class="form-control" rows="3" id="inputAbout"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputRef" class="col-sm-5 control-label" data-bind="localize: {text: 'referrer'}">Реферер</label>
-			<div class="col-sm-3">
-				<input type="text" class="form-control" id="inputRef" disabled>
-			</div>
-		</div>
-		<button type="button" class="btn btn-primary" data-bind="localize: {text: 'signup'}">Зарегистрироваться</button>
-	</div>
+    <h3 class="title" data-bind="localize: {text: 'registration'}">Регистрация</h3>
+    <div class="form-horizontal">
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': username.isValid() && username().length != 0, 'has-error': !username.isValid() }">
+            <label for="inputLogin" class="col-sm-5 control-label" data-bind="localize: {text: 'login'}">Логин</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputLogin" data-bind="value: username, valueUpdate: 'afterkeydown', event: { blur: isUserNameExist }">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: username.isValid() && username().length != 0"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !username.isValid() && username().length != 0"></span>
+            </div>
+            <!--ko ifnot: username.isValid() -->
+            <div class="col-sm-3 danger-message">
+                <p class="text-danger" data-bind="localize: { text: username.hasError() ? 'userNameExist' : 'incorrectUserName' }"></p>
+            </div>
+            <!-- /ko -->
+            <div class="col-sm-1 ball moving" data-bind="visible: loaderForUserName">
+                <div class="area"></div>
+            </div>
+        </div>
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': email.isValid() && email().length != 0, 'has-error': !email.isValid() }">
+            <label for="inputEmail" class="col-sm-5 control-label" data-bind="localize: {text: 'email'}">Электронная почта</label>
+            <div class="col-sm-3">
+                <input type="email" class="form-control" id="inputEmail"  data-bind="value: email, valueUpdate: 'afterkeydown', event: { blur: isEmailExist }">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: email.isValid() && email().length != 0"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !email.isValid() && email().length != 0"></span>
+            </div>
+            <!--ko ifnot: email.isValid() -->
+            <div class="col-sm-3 danger-message">
+                <p class="text-danger" data-bind="localize: { text: email.hasError() ? 'emailExist' : 'incorrectEmail' }"></p>
+            </div>
+            <!-- /ko -->
+            <div class="col-sm-1 ball moving" data-bind="visible: loaderForEmail">
+                <div class="area"></div>
+            </div>
+        </div>
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': password.isValid() && password().length != 0, 'has-error': !password.isValid() }">
+            <label for="inputPassword" class="col-sm-5 control-label" data-bind="localize: {text: 'password'}">Пароль</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="inputPassword" data-bind="value: password, valueUpdate: 'afterkeydown'">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: password.isValid() && password().length != 0"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !password.isValid() && password().length != 0"></span>
+            </div>
+            <!--ko ifnot: password.isValid() -->
+            <div class="col-sm-3 danger-message">
+                <p class="text-danger" data-bind="localize: { text: 'incorrectPassword' }"></p>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': confirmPassword.isValid() && confirmPassword().length != 0, 'has-error': !confirmPassword.isValid() }">
+            <label for="inputPassword2" class="col-sm-5 control-label" data-bind="localize: {text: 'repeatpassword'}">Подтвердите пароль</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="inputPassword2" data-bind="value: confirmPassword, valueUpdate: 'afterkeydown'">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: confirmPassword.isValid() && confirmPassword().length != 0"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !confirmPassword.isValid() && confirmPassword().length != 0"></span>
+            </div>
+            <!--ko ifnot: confirmPassword.isValid() -->
+            <div class="col-sm-3 danger-message">
+                <p class="text-danger" data-bind="localize: { text: 'incorrectPassword' }"></p>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="form-group">
+            <label for="inputSkype" class="col-sm-5 control-label" data-bind="localize: {text: 'skype'}">Skype</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputSkype" data-bind="value: skype, valueUpdate: 'afterkeydown'">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputBirth" class="col-sm-5 control-label" data-bind="localize: {text: 'birthday'}">День рождения</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputBirth" data-bind="datepicker: birthday, datepickerOptions: { changeMonth: true, changeYear: true, yearRange: '1950:2013' }">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCity" class="col-sm-5 control-label" data-bind="localize: {text: 'city'}">Город</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputCity" data-bind="value: city, valueUpdate: 'afterkeydown'">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-5 control-label" data-bind="localize: {text: 'sex'}">Пол</label>
+            <div class="col-sm-3">
+                <select class="form-control">
+                    <option data-bind="localize: {text: 'male'}">Мужской</option>
+                    <option data-bind="localize: {text: 'female'}">Женский</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAbout" class="col-sm-5 control-label" data-bind="localize: {text: 'aboutmyself'}">О себе</label>
+            <div class="col-sm-3">
+                <textarea class="form-control" rows="3" id="inputAbout" data-bind="value: aboutmyself, valueUpdate: 'afterkeydown'"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputRef" class="col-sm-5 control-label" data-bind="localize: {text: 'referrer'}">Реферер</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputRef" disabled data-bind="value: parentid">
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" data-bind="localize: {text: 'signup'}">Зарегистрироваться</button>
+    </div>
 </section>

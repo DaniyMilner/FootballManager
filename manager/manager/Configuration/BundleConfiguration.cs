@@ -14,6 +14,8 @@ namespace manager.Configuration
                     .Include("~/Scripts/bootstrap.js")
                     .Include("~/Scripts/q.js")
                     .Include("~/Scripts/underscore.js")
+                    .Include("~/Scripts/jquery-ui-{version}.custom.js")
+                    .IncludeDirectory("~/Scripts/knockoutBindings", "*Binding.js")
                 );
 
             bundles.Add(new StyleBundle("~/Content/css")

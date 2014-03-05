@@ -131,7 +131,6 @@
         en: 'Invalid Name',
         ru: 'Некорректное имя',
         uk: "Некоректне ім'я"
-    
     },
     no_correct_surname: {
         en: 'Invalid Surname',
@@ -153,8 +152,6 @@
         ru: 'Извините, произошла ошибка, повторите попытку минутой позже',
         uk: 'Вибачте, сталася помилка, повторіть спробу хвилиною пізніше'
     },
-    
-
 
     /* Resource section for model SignUp */
     
@@ -225,6 +222,31 @@
         ru: 'Зарегистрироваться',
         uk: 'Зареєструвався'
     
+    },
+    userNameExist: {
+        en: 'This username already exists',
+        ru: 'Такое имя пользователя уже существует',
+        uk: 'Таке ім\'я користувача вже існує'
+    },
+    incorrectUserName: {
+        en: 'Invalid login',
+        ru: 'Некорректный логин',
+        uk: "Некоректний логін"
+    },
+    incorrectEmail: {
+        en: 'Incorrect email',
+        ru: 'Некорректний email',
+        uk: "Некоректний email"
+    },
+    emailExist: {
+        en: 'This email already exists',
+        ru: 'Такой email пользователя уже существует',
+        uk: 'Такий email користувача вже існує'
+    },
+    incorrectPassword: {
+        en: 'Incorrect password',
+        ru: 'Некорректний пароль',
+        uk: "Некоректний пароль"
     },
 
     /* Resource section for model SignUp */
