@@ -45,6 +45,8 @@ namespace DataAccess
         public DbSet<Position> Positions { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Skill> Skill { get; set; }
+        public DbSet<SkillsPlayer> SkillsPlayer { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -100,6 +102,13 @@ namespace DataAccess
             modelBuilder.Entity<Team>().HasRequired(e => e.Country);
             modelBuilder.Entity<Team>().Property(e => e.Stadium).IsRequired();
             modelBuilder.Entity<Team>().Property(e => e.Year).IsRequired();
+
+            modelBuilder.Entity<Skill>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Skill>().Property(e => e.Ordering).IsRequired();
+
+            modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Skill);
+            modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Player);
+            modelBuilder.Entity<SkillsPlayer>().Property(e => e.Value).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

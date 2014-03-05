@@ -16,6 +16,10 @@ namespace DomainModel
             int money, int humor, int condition, User user, Position position, Illness illness, Country country,
             string publicId,
             DateTime createDate);
+
+        Skill Skill(string name, int ordering);
+
+        SkillsPlayer SkillsPlayer(Skill skill, Player player);
     }
 
     public class EntityFactory : IEntityFactory
@@ -31,6 +35,16 @@ namespace DomainModel
             string publicId, DateTime createDate)
         {
             return new Player(name, surname, age, weight, growth, number, salary, money, humor, condition, user, position, illness, country, publicId, createDate);
+        }
+
+        public Skill Skill(string name, int ordering)
+        {
+            return new Skill(name, ordering);
+        }
+
+        public SkillsPlayer SkillsPlayer(Skill skill, Player player)
+        {
+            return new SkillsPlayer(skill, player);
         }
     }
 }

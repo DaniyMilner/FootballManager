@@ -8,13 +8,10 @@ using DomainModel.Repositories;
 
 namespace DataAccess.Repositories
 {
-    public class TeamRepository : Repository<Team>, ITeamRepository
+    public class SkillRepository : Repository<Skill>, ISkillRepository
     {
-        public TeamRepository(IDataContext dataContext)
-            : base(dataContext)
+        public SkillRepository(IDataContext dataContext) : base(dataContext)
         {
         }
-
-
     }
 }

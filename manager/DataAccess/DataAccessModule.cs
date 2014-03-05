@@ -34,6 +34,14 @@ namespace DataAccess
                 .As<ITeamRepository>()
                 .As<IQuerableRepository<Team>>();
 
+            builder.RegisterType<SkillRepository>()
+                .As<ISkillRepository>()
+                .As<IQuerableRepository<Skill>>();
+
+            builder.RegisterType<SkillsPlayerRepository>()
+                .As<ISkillsPlayerRepository>()
+                .As<IQuerableRepository<SkillsPlayer>>();
+
             base.Load(builder);
         }
     }

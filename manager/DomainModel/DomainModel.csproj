@@ -44,6 +44,8 @@
     <Compile Include="Entities\Illness.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Position.cs" />
+    <Compile Include="Entities\Skill.cs" />
+    <Compile Include="Entities\SkillsPlayer.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="EntityFactory.cs" />
@@ -53,6 +55,8 @@
     <Compile Include="Repositories\IPositionRepository.cs" />
     <Compile Include="Repositories\IQuerableRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ISkillRepository.cs" />
+    <Compile Include="Repositories\ISkillsPlayerRepository.cs" />
     <Compile Include="Repositories\ITeamRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
   </ItemGroup>
