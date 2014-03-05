@@ -35,9 +35,10 @@ namespace manager.Controllers.API
                 return JsonError("User can't be null");
             }
 
-            _entityFactory.User(userSignUpModel.Username, userSignUpModel.Password, userSignUpModel.Email,
+            var user = _entityFactory.User(userSignUpModel.Username, userSignUpModel.Password, userSignUpModel.Email,
                 userSignUpModel.ParentId, userSignUpModel.Skype, userSignUpModel.Birthday, userSignUpModel.City,
                 userSignUpModel.AboutMySelf, userSignUpModel.Sex);
+            _userRepository.Add(user);
 
             return JsonSuccess();
         }
