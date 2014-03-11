@@ -80,9 +80,7 @@
         <div class="form-group">
             <label class="col-sm-5 control-label" data-bind="localize: {text: 'sex'}">Пол</label>
             <div class="col-sm-3">
-                <select class="form-control">
-                    <option data-bind="localize: {text: 'male'}">Мужской</option>
-                    <option data-bind="localize: {text: 'female'}">Женский</option>
+                <select class="form-control" data-bind="options: sexs, optionsText:'text', value: sex">
                 </select>
             </div>
         </div>
@@ -98,6 +96,6 @@
                 <input type="text" class="form-control" id="inputRef" disabled data-bind="value: parentid">
             </div>
         </div>
-        <button type="button" class="btn btn-primary" data-bind="localize: {text: 'signup'}">Зарегистрироваться</button>
+        <button type="button" class="btn btn-primary" data-bind="localize: {text: 'signup'}, attr: { 'disabled': !isValidForm() }, click: submit">Зарегистрироваться</button>
     </div>
 </section>

@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'httpWrapper', 'constants'],
-    function (router, httpWrapper, constants) {
+﻿define(['plugins/router', 'httpWrapper', 'constants', 'localization/localizationManager'],
+    function (router, httpWrapper, constants, localizationManager) {
 
         var viewmodel =  {
             username: ko.observable(''),
@@ -9,13 +9,22 @@
             skype: ko.observable(''),
             birthday: ko.observable(''),
             city: ko.observable(''),
-            sex: ko.observable(''),
+            sex: ko.observable(true),
+            sexs: [{
+                value: true,
+                text: localizationManager.localize('male')
+            },{
+                value: false,
+                text: localizationManager.localize('female')
+            }],
             aboutmyself: ko.observable(''),
             parentid: ko.observable(''),
             isUserNameExist: isUserNameExist,
             isEmailExist: isEmailExist, 
             loaderForUserName: ko.observable(false),
             loaderForEmail: ko.observable(false),
+            isValidForm: isValidForm,
+            submit: submit,
             activate: activate
         };
 
@@ -54,7 +63,7 @@
         return viewmodel;
 
         function isUserNameExist() {
-            if (!viewmodel.username.isValid()) {
+            if (!viewmodel.username.isValid() || viewmodel.email().length == 0) {
                 return;
             }
             viewmodel.loaderForUserName(true);
@@ -68,7 +77,7 @@
         }
 
         function isEmailExist() {
-            if (viewmodel.email().length == 0) {
+            if (!viewmodel.email.isValid() || viewmodel.email().length == 0) {
                 return;
             }
             viewmodel.loaderForEmail(true);
@@ -81,7 +90,37 @@
             });
         }
 
+        function isValidForm() {
+            return viewmodel.username.isValid() && viewmodel.username().length != 0
+                    && viewmodel.email.isValid() && viewmodel.email().length != 0
+                    && viewmodel.password.isValid() && viewmodel.password().length != 0
+                    && viewmodel.confirmPassword.isValid();
+        }
+
+        function submit() {
+            if (!viewmodel.isValidForm()) {
+                return;
+            }
+            var data = {
+                username: viewmodel.username(),
+                email: viewmodel.email(),
+                password: viewmodel.password(),
+                skype: viewmodel.skype(),
+                birthday: viewmodel.birthday(),
+                city: viewmodel.city(),
+                sex: viewmodel.sex() ? viewmodel.sex() : viewmodel.sex().value,
+                aboutmyself: viewmodel.aboutmyself(),
+                parentId: viewmodel.parentid()
+            };
+            debugger;
+            httpWrapper.post('api/user/signup', data).then(function (response) {
+                debugger;
+            });
+        }
+
         function activate() {
-            
+            return Q.fcall(function () {
+
+            });
         }
     });
