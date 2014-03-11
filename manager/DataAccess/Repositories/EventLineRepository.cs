@@ -8,9 +8,9 @@ using DomainModel.Repositories;
 
 namespace DataAccess.Repositories
 {
-    public class TeamRepository : Repository<Team>, ITeamRepository
+    public class EventLineRepository : Repository<EventLine>, IEventLineRepository
     {
-        public TeamRepository(IDataContext dataContext)
+        public EventLineRepository(IDataContext dataContext)
             : base(dataContext)
         {
         }

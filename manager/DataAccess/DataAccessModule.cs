@@ -42,6 +42,30 @@ namespace DataAccess
                 .As<ISkillsPlayerRepository>()
                 .As<IQuerableRepository<SkillsPlayer>>();
 
+            builder.RegisterType<EventLineRepository>()
+                .As<IEventLineRepository>()
+                .As<IQuerableRepository<EventLine>>();
+
+            builder.RegisterType<ArrangementRepository>()
+               .As<IArrangementRepository>()
+               .As<IQuerableRepository<Arrangement>>();
+
+            builder.RegisterType<WeatherRepository>()
+               .As<IWeatherRepository>()
+               .As<IQuerableRepository<Weather>>();
+
+            builder.RegisterType<MatchRepository>()
+              .As<IMatchRepository>()
+              .As<IQuerableRepository<Match>>();
+
+            builder.RegisterType<PlayerSettingsRepository>()
+              .As<IPlayerSettingsRepository>()
+              .As<IQuerableRepository<PlayerSettings>>();
+
+            builder.RegisterType<TeamSettingsRepository>()
+              .As<ITeamSettingsRepository>()
+              .As<IQuerableRepository<TeamSettings>>();
+
             base.Load(builder);
         }
     }
