@@ -40,7 +40,7 @@ namespace manager.Controllers.API
                 userSignUpModel.AboutMySelf, userSignUpModel.Sex);
             _userRepository.Add(user);
 
-            return JsonSuccess();
+            return JsonSuccess(true);
         }
 
         [HttpPost]
@@ -62,8 +62,18 @@ namespace manager.Controllers.API
         [Route("api/user/getuserinfo")]
         public ActionResult GetUserInfo()
         {
-            if (!_authenticationProvider.IsUserAuthenticated()) return JsonSuccess();
-            return  JsonSuccess(_userRepository.GetUserByUserName(GetCurrentUsername()));
+            if (_authenticationProvider.IsUserAuthenticated())
+            {
+                return JsonSuccess(new
+                {
+                    User = _userRepository.GetUserByUserName(GetCurrentUsername()),
+                    Language = _userRepository.GetUserByUserName(GetCurrentUsername()).Language
+                });
+            }
+            return JsonSuccess(new
+            {
+                Language = Constants.DefaultLanguage
+            });
         }
 
         [HttpPost]

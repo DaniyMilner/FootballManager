@@ -18,8 +18,8 @@
                 }).then(function (response) {
                     if (_.isNull(response.data)) {
                         that.isAuthenticated = false;
-                    } else if (!_.isNull(response.data)) {
-                        
+                    } else {
+                        that.isAuthenticated = true;
                     }
                 });
             };

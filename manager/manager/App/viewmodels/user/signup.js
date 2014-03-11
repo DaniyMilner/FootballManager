@@ -112,9 +112,10 @@
                 aboutmyself: viewmodel.aboutmyself(),
                 parentId: viewmodel.parentid()
             };
-            debugger;
             httpWrapper.post('api/user/signup', data).then(function (response) {
-                debugger;
+                if (response) {
+                    router.reloadLocation();
+                }
             });
         }
 
