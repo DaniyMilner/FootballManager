@@ -47,6 +47,12 @@ namespace DataAccess
         public DbSet<Team> Teams { get; set; }
         public DbSet<Skill> Skill { get; set; }
         public DbSet<SkillsPlayer> SkillsPlayer { get; set; }
+        public DbSet<EventLine> EventLines { get; set; }
+        public DbSet<Arrangement> Arrangements { get; set; }
+        public DbSet<Weather> Weather { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<PlayerSettings> PlayerSettings { get; set; }
+        public DbSet<TeamSettings> TeamSettings { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -109,6 +115,39 @@ namespace DataAccess
             modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Skill);
             modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Player);
             modelBuilder.Entity<SkillsPlayer>().Property(e => e.Value).IsRequired();
+
+            modelBuilder.Entity<EventLine>().Property(e => e.LineId).IsRequired();
+            modelBuilder.Entity<EventLine>().HasRequired(e => e.Player);
+            modelBuilder.Entity<EventLine>().Property(e => e.Minute).IsRequired();
+            modelBuilder.Entity<EventLine>().Property(e => e.Type).IsRequired();
+
+            modelBuilder.Entity<Arrangement>().Property(e => e.Scheme).IsRequired();
+            modelBuilder.Entity<Arrangement>().Property(e => e.Type).IsRequired();
+
+            modelBuilder.Entity<Weather>().Property(e => e.Name).IsRequired().HasMaxLength(20);
+            modelBuilder.Entity<Weather>().Property(e => e.Type).IsRequired();
+
+            modelBuilder.Entity<Match>().Property(e => e.HomeTeamId).IsRequired();
+            modelBuilder.Entity<Match>().Property(e => e.GuestTeamId).IsRequired();
+            modelBuilder.Entity<Match>().Property(e => e.EventLineId).IsRequired();
+            modelBuilder.Entity<Match>().HasRequired(e => e.Weather);
+            modelBuilder.Entity<Match>().Property(e => e.FansCount).IsOptional();
+            modelBuilder.Entity<Match>().Property(e => e.TicketPrice).IsOptional();
+            modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
+            modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
+
+            modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Player);
+            modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Match);
+            modelBuilder.Entity<PlayerSettings>().Property(e => e.Index).IsOptional();
+            modelBuilder.Entity<PlayerSettings>().Property(e => e.Settings).IsOptional();
+            modelBuilder.Entity<PlayerSettings>().Property(e => e.isCaptain).IsRequired();
+            modelBuilder.Entity<PlayerSettings>().Property(e => e.isWritable).IsRequired();
+
+            modelBuilder.Entity<TeamSettings>().HasRequired(e => e.Match);
+            modelBuilder.Entity<TeamSettings>().HasRequired(e => e.Arrangement);
+            modelBuilder.Entity<TeamSettings>().Property(e => e.Settings).IsOptional();
+            modelBuilder.Entity<TeamSettings>().Property(e => e.LineUp).IsOptional();
+            modelBuilder.Entity<TeamSettings>().HasRequired(e => e.PlayerSend);
 
             base.OnModelCreating(modelBuilder);
         }

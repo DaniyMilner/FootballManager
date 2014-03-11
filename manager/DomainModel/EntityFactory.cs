@@ -20,6 +20,19 @@ namespace DomainModel
         Skill Skill(string name, int ordering);
 
         SkillsPlayer SkillsPlayer(Skill skill, Player player);
+
+        EventLine EventLine(Guid lineId, Player player, int minute, EventLineType type);
+
+        Arrangement Arrangement(string scheme, ArrangementType type);
+
+        Weather Weather(string name, WeatherType type);
+
+        Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
+            int ticketPrice, DateTime dateStart);
+
+        PlayerSettings PlayerSettings(Player player, Match match, int index);
+
+        TeamSettings TeamSettings(Match match, Arrangement arrangement);
     }
 
     public class EntityFactory : IEntityFactory
@@ -45,6 +58,37 @@ namespace DomainModel
         public SkillsPlayer SkillsPlayer(Skill skill, Player player)
         {
             return new SkillsPlayer(skill, player);
+        }
+
+        public EventLine EventLine(Guid lineId, Player player, int minute, EventLineType type)
+        {
+            return new EventLine(lineId, player, minute, type);
+        }
+
+        public Arrangement Arrangement(string scheme, ArrangementType type)
+        {
+            return new Arrangement(scheme, type);
+        }
+
+        public Weather Weather(string name, WeatherType type)
+        {
+            return new Weather(name, type);
+        }
+
+        public Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
+            int ticketPrice, DateTime dateStart)
+        {
+            return new Match(homeTeamId, guestTeamId, eventLineId, weather, fansCount, ticketPrice, dateStart);
+        }
+
+        public PlayerSettings PlayerSettings(Player player, Match match, int index)
+        {
+            return new PlayerSettings(player, match, index);
+        }
+
+        public TeamSettings TeamSettings(Match match, Arrangement arrangement)
+        {
+            return new TeamSettings(match, arrangement);
         }
     }
 }

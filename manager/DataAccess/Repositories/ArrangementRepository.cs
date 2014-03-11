@@ -8,9 +8,9 @@ using DomainModel.Repositories;
 
 namespace DataAccess.Repositories
 {
-    public class TeamRepository : Repository<Team>, ITeamRepository
+    public class ArrangementRepository : Repository<Arrangement>, IArrangementRepository
     {
-        public TeamRepository(IDataContext dataContext)
+        public ArrangementRepository(IDataContext dataContext)
             : base(dataContext)
         {
         }

@@ -8,9 +8,9 @@ using DomainModel.Repositories;
 
 namespace DataAccess.Repositories
 {
-    public class TeamRepository : Repository<Team>, ITeamRepository
+    public class PlayerSettingsRepository : Repository<PlayerSettings>, IPlayerSettingsRepository
     {
-        public TeamRepository(IDataContext dataContext)
+        public PlayerSettingsRepository(IDataContext dataContext)
             : base(dataContext)
         {
         }
