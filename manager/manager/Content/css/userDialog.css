@@ -1,0 +1,155 @@
+.dialog-wrapper{
+	position: absolute;
+	top: 84px;
+	right: 0;
+	width: 416px;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 10;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 5px 20px;
+}
+
+.dialog-wrapper .fields-wrapper {
+	display: -webkit-box;
+	-webkit-box-pack: justify;
+	display: -moz-box;
+	-moz-box-pack: justify;
+	margin-bottom: 10px;
+}
+
+.dialog-wrapper .email-wrapper,
+.dialog-wrapper .password-wrapper {
+	width: 45%;
+}
+
+.dialog-wrapper .buttons-wrapper {
+	display: -webkit-box;
+	-webkit-box-pack: justify;
+	display: -moz-box;
+	-moz-box-pack: justify;
+	margin-bottom: 5px;
+}
+
+.dialog-wrapper .checkbox {
+	margin: 0;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	display: -moz-box;
+	-moz-box-align: center;
+}
+
+.dialog-wrapper:before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 10px solid rgba(0, 0, 0, 0.7);
+	top: -10px;
+	right: 50px;
+}
+@-moz-document !url-prefix(){
+	@media all and (max-width: 768px) {
+		.dialog-wrapper {
+			width: 590px;
+			display: -webkit-box;
+		}
+
+		.dialog-wrapper .fields-wrapper {
+			width: 320px;
+			margin-right: 20px;
+		}
+
+		.dialog-wrapper .email-wrapper,
+		.dialog-wrapper .password-wrapper {
+			width: 150px;
+		}
+
+		.dialog-wrapper .buttons-wrapper {
+			margin-top: 25px;
+			width: 210px;
+		}
+
+		.dialog-wrapper .checkbox {
+			height: 30px;
+		}
+
+		.dialog-wrapper:before {
+			right: 35px;
+		}
+	}
+
+	@media all and (min-width: 768px) and (max-width: 1000px ) {
+		.dialog-wrapper:before {
+			right: 40px;
+		}
+	}
+
+	@media all and (min-width: 1001px) and (max-width: 1250px ) {
+		.dialog-wrapper:before {
+			right: 40px;
+		}
+	}
+}
+/*---------------Mozilla-----------------*/
+@-moz-document url-prefix() {
+	@media all and (max-width: 768px) {
+		.dialog-wrapper .email-wrapper{
+			margin-right: 30px;
+		}
+		.dialog-wrapper .buttons-wrapper .checkbox{
+			display: block;
+			margin-right: 200px;
+			padding-top: 5px;
+		}
+		.dialog-wrapper .email-wrapper,
+		.dialog-wrapper .password-wrapper {
+			width: 170px;
+		}
+	}
+	@media all and (min-width: 768px) and (max-width: 1000px ) {
+		.dialog-wrapper .email-wrapper{
+			margin-right: 30px;
+		}
+		.dialog-wrapper .buttons-wrapper .checkbox{
+			display: block;
+			margin-right: 200px;
+			padding-top: 5px;
+		}
+		.dialog-wrapper .email-wrapper,
+		.dialog-wrapper .password-wrapper {
+			width: 170px;
+		}
+	}
+	@media all and (min-width: 1001px) and (max-width: 1250px ) {
+		.dialog-wrapper .email-wrapper{
+			margin-right: 30px;
+		}
+		.dialog-wrapper .buttons-wrapper .checkbox{
+			display: block;
+			margin-right: 200px;
+			padding-top: 5px;
+		}
+		.dialog-wrapper .email-wrapper,
+		.dialog-wrapper .password-wrapper {
+			width: 170px;
+		}
+	}
+	@media all and (min-width: 1251px) {
+		.dialog-wrapper .email-wrapper{
+			margin-right: 30px;
+		}
+		.dialog-wrapper .buttons-wrapper .checkbox{
+			display: block;
+			margin-right: 200px;
+			padding-top: 5px;
+		}
+		.dialog-wrapper .email-wrapper,
+		.dialog-wrapper .password-wrapper {
+			width: 170px;
+		}
+	}
+}

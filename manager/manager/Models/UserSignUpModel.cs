@@ -8,7 +8,7 @@ namespace manager.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Skype { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string City { get; set; }
         public bool Sex { get; set; }
         public string AboutMySelf { get; set; }

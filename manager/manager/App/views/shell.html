@@ -1,5 +1,19 @@
 ﻿<header>
     <!-- ko compose: 'viewmodels/menu/mainmenu' --><!-- /ko -->
+    <div class="user-wrapper" data-bind="showHideElement: { value: isShowSignInForm }">
+        <div class="user-icon"></div>
+    </div>
+    <!-- ko ifnot: isAuthenticated -->
+        <!-- ko if: isShowSignInForm -->
+            <!-- ko compose: 'viewmodels/user/signin' --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: isAuthenticated -->
+        <!-- ko if: isShowSignInForm -->
+            <!-- ko compose: 'viewmodels/menu/profilemenu' --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+    <div class="field"></div>
 </header>
 <section class="content-wrapper">
     <article class="left-content">

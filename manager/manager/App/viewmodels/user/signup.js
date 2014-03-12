@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'httpWrapper', 'constants', 'localization/localizationManager'],
-    function (router, httpWrapper, constants, localizationManager) {
+﻿define(['plugins/router', 'httpWrapper', 'constants', 'localization/localizationManager', 'userContext'],
+    function (router, httpWrapper, constants, localizationManager, userContext) {
 
         var viewmodel =  {
             username: ko.observable(''),
@@ -63,12 +63,12 @@
         return viewmodel;
 
         function isUserNameExist() {
-            if (!viewmodel.username.isValid() || viewmodel.email().length == 0) {
+            if (!viewmodel.username.isValid() || viewmodel.username().length == 0) {
                 return;
             }
             viewmodel.loaderForUserName(true);
             httpWrapper.post('api/user/usernameexists', { username: viewmodel.username() }).then(function (response) {
-                if (!response) {
+                if (!response.success) {
                     viewmodel.username.hasError(true);
                 }
             }).fin(function () {
@@ -81,8 +81,8 @@
                 return;
             }
             viewmodel.loaderForEmail(true);
-            httpWrapper.post('api/user/emailexists', { email: viewmodel.email() }).then(function() {
-                if (!response) {
+            httpWrapper.post('api/user/emailexists', { email: viewmodel.email() }).then(function (response) {
+                if (!response.success) {
                     viewmodel.email.hasError(true);
                 }
             }).fin(function () {
@@ -120,6 +120,9 @@
         }
 
         function activate() {
+            if (userContext.isAuthenticated) {
+                router.navigate('createplayer');
+            }
             return Q.fcall(function () {
 
             });

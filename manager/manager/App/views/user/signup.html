@@ -1,12 +1,12 @@
 ﻿<section class="registrtion-view">
     <h3 class="title" data-bind="localize: {text: 'registration'}">Регистрация</h3>
     <div class="form-horizontal">
-        <div class="form-group has-feedback" data-bind="css: { 'has-success': username.isValid() && username().length != 0, 'has-error': !username.isValid() }">
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': username.isValid() && username().length != 0 && !username.hasError(), 'has-error': !username.isValid()|| username.hasError() }">
             <label for="inputLogin" class="col-sm-5 control-label" data-bind="localize: {text: 'login'}">Логин</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="inputLogin" data-bind="value: username, valueUpdate: 'afterkeydown', event: { blur: isUserNameExist }">
-                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: username.isValid() && username().length != 0"></span>
-                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !username.isValid() && username().length != 0"></span>
+                <input type="text" class="form-control" id="inputLogin" data-bind="value: username, valueUpdate: 'afterkeydown', event: { blur: isUserNameExist, focus: function() { username.hasError(false) } }">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: username.isValid() && username().length != 0 && !username.hasError()"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: (!username.isValid() && username().length != 0) || username.hasError()"></span>
             </div>
             <!--ko ifnot: username.isValid() -->
             <div class="col-sm-3 danger-message">
@@ -17,16 +17,16 @@
                 <div class="area"></div>
             </div>
         </div>
-        <div class="form-group has-feedback" data-bind="css: { 'has-success': email.isValid() && email().length != 0, 'has-error': !email.isValid() }">
+        <div class="form-group has-feedback" data-bind="css: { 'has-success': email.isValid() && email().length != 0 && !email.hasError(), 'has-error': !email.isValid() || email.hasError() }">
             <label for="inputEmail" class="col-sm-5 control-label" data-bind="localize: {text: 'email'}">Электронная почта</label>
             <div class="col-sm-3">
-                <input type="email" class="form-control" id="inputEmail"  data-bind="value: email, valueUpdate: 'afterkeydown', event: { blur: isEmailExist }">
-                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: email.isValid() && email().length != 0"></span>
-                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: !email.isValid() && email().length != 0"></span>
+                <input type="email" class="form-control" id="inputEmail"  data-bind="value: email, valueUpdate: 'afterkeydown', event: { blur: isEmailExist, focus: function() { email.hasError(false) } }">
+                <span class="glyphicon glyphicon-ok form-control-feedback" data-bind="visible: email.isValid() && email().length != 0 && !email.hasError()"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: (!email.isValid() && email().length != 0) || email.hasError()"></span>
             </div>
             <!--ko ifnot: email.isValid() -->
             <div class="col-sm-3 danger-message">
-                <p class="text-danger" data-bind="localize: { text: email.hasError() ? 'emailExist' : 'incorrectEmail' }"></p>
+                <p class="text-danger" data-bind="localize: { text: 'incorrectEmail' }"></p>
             </div>
             <!-- /ko -->
             <div class="col-sm-1 ball moving" data-bind="visible: loaderForEmail">

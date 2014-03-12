@@ -8,10 +8,11 @@
         <li>:</li>
         <li data-bind="click: goToForum, localize: {text: 'forum' }"></li>
         <li>:</li>
+        <!-- ko ifnot: isAuthenticated -->
         <li data-bind="click: goToSignUp, localize: {text: 'registration' }"></li>
+        <!-- /ko -->
+        <!-- ko if: isAuthenticated -->
+        <li data-bind="click: goToSignUp">Поддержка</li>
+        <!-- /ko -->
     </ul>
 </nav>
-<div class="user-wrapper">
-    <div class="user-icon"></div>
-</div>
-<div class="field"></div>

@@ -8,7 +8,7 @@ namespace DomainModel.Entities
         protected internal User() { }
 
         protected internal User(string userName, string password, string email, string parrentId, string skype,
-            DateTime birthday, string city, string aboutMySelf, bool sex)
+            DateTime? birthday, string city, string aboutMySelf, bool sex)
         {
             Email = email;
             UserName = userName;
@@ -49,7 +49,7 @@ namespace DomainModel.Entities
             Skype = skype;
         }
 
-        public DateTime Birthday { get; private set; }
+        public DateTime? Birthday { get; private set; }
 
         public void UpdateBirthday(DateTime birthday)
         {

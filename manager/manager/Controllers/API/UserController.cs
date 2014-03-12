@@ -32,7 +32,7 @@ namespace manager.Controllers.API
         {
             if (userSignUpModel == null)
             {
-                return JsonError("User can't be null");
+                return JsonError("Model can't be null");
             }
 
             var user = _entityFactory.User(userSignUpModel.Username, userSignUpModel.Password, userSignUpModel.Email,
@@ -40,14 +40,33 @@ namespace manager.Controllers.API
                 userSignUpModel.AboutMySelf, userSignUpModel.Sex);
             _userRepository.Add(user);
 
+            _authenticationProvider.SignIn(user.UserName, false);
             return JsonSuccess(true);
         }
 
         [HttpPost]
         [Route("api/user/signin")]
-        public ActionResult SignIn()
+        public ActionResult SignIn(UserSignInModel userSignInModel)
         {
-            return JsonSuccess();
+            if (userSignInModel == null)
+            {
+                return JsonError("Model can not be null");
+            }
+
+            var user = _userRepository.GetUserByUserName(userSignInModel.Username);
+            if (user == null)
+            {
+                return JsonError("User does not exists");
+            }
+
+            if (!user.VerifyPassword(userSignInModel.Password))
+            {
+                return JsonError("User password not correct");
+            }
+
+            _authenticationProvider.SignIn(user.UserName, userSignInModel.RememberMe);
+
+            return JsonSuccess(true);
         }
 
         [HttpPost]

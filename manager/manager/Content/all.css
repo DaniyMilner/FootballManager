@@ -12,6 +12,7 @@
 @import url("css/moz-fix/general_mozilla.css");
 @import url("css/userRegistration.css");
 @import url("css/createPlayer.css");
+@import url("css/userDialog.css");
 
 /*Custom styles*/
 @import url("css/custom-jquery.css");

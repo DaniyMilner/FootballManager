@@ -1,4 +1,4 @@
-﻿define(['plugins/router'], function(router) {
+﻿define(['plugins/router', 'userContext'], function (router, userContext) {
 
     var
         goToHome = function() {
@@ -26,6 +26,7 @@
         };
 
     return {
+        isAuthenticated: userContext.isAuthenticated,
         goToHome: goToHome,
         goToNews: goToNews,
         goToRules: goToRules,

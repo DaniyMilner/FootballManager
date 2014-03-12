@@ -1,0 +1,23 @@
+﻿<div class="dialog-wrapper">
+    <div class="fields-wrapper">
+        <div class="email-wrapper has-feedback" data-bind="css: {' has-error':isErrorSignIn}">
+            <label for="inputEmail" class="control-label" data-bind="localize: {text: 'login'}">Username</label>
+            <input type="text" class="form-control input-sm" id="inputEmail" placeholder="Username" data-bind="placeholder: {text: 'login'}, value: username, valueUpdate: 'afterkeydown', event: { focus: onFocus }">
+            <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: isErrorSignIn" ></span>
+        </div>
+        <div class="password-wrapper has-feedback" data-bind="css: {' has-error':isErrorSignIn}">
+            <label for="inputPassword" class="control-label" data-bind="localize: {text: 'password'}">Password</label>
+            <input type="password" class="form-control input-sm" id="inputPassword" placeholder="Password" data-bind="localize: {placeholder: 'password'},value: password, valueUpdate: 'afterkeydown', event: { focus: onFocus }">
+            <span class="glyphicon glyphicon-remove form-control-feedback" data-bind="visible: isErrorSignIn"></span>
+        </div>
+    </div>
+    <div class="buttons-wrapper">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-bind="checked: remeberMe">
+                <span data-bind="localize: { text: 'rememberMe' }">Remember me</span>
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" data-bind="click: submit">Sign in</button>
+    </div>
+</div>
