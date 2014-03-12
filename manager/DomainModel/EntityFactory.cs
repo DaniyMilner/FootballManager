@@ -32,7 +32,7 @@ namespace DomainModel
 
         PlayerSettings PlayerSettings(Player player, Match match, int index);
 
-        TeamSettings TeamSettings(Match match, Arrangement arrangement);
+        TeamSettings TeamSettings(Match match, Arrangement arrangement, Team team);
     }
 
     public class EntityFactory : IEntityFactory
@@ -86,9 +86,9 @@ namespace DomainModel
             return new PlayerSettings(player, match, index);
         }
 
-        public TeamSettings TeamSettings(Match match, Arrangement arrangement)
+        public TeamSettings TeamSettings(Match match, Arrangement arrangement, Team team) 
         {
-            return new TeamSettings(match, arrangement);
+            return new TeamSettings(match, arrangement, team);
         }
     }
 }
