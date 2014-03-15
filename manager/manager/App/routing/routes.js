@@ -13,6 +13,10 @@
             route: 'createplayer',
             moduleId: 'viewmodels/player/createplayer',
             title: 'Create player'
+        }, {
+            route: 'generator',
+            moduleId: 'viewmodels/generator/generator',
+            title: 'Generator'
         }];
 
     });

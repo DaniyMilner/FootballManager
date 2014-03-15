@@ -10,7 +10,7 @@
         },
 
         goToRules = function() {
-            
+            router.navigate('generator');
         },
         
         goToForum = function() {

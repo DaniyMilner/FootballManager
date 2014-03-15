@@ -80,6 +80,7 @@
     <Compile Include="DataAccessModule.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DateTimeObjectMaterializer.cs" />
+    <Compile Include="Generator\Generator.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201402102002023_InitialCreate.cs" />
