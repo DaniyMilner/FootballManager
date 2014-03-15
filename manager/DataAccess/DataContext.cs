@@ -99,6 +99,7 @@ namespace DataAccess
             modelBuilder.Entity<Player>().HasRequired(e => e.Country);
             modelBuilder.Entity<Player>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Player>().Property(e => e.CreateDate).IsRequired();
+            modelBuilder.Entity<Player>().Property(e => e.TeamId).IsOptional();
 
             modelBuilder.Entity<Team>().Property(e => e.Name).IsRequired();
             modelBuilder.Entity<Team>().Property(e => e.ShortName).IsRequired().HasMaxLength(20);
@@ -138,7 +139,7 @@ namespace DataAccess
 
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Player);
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Match);
-            modelBuilder.Entity<PlayerSettings>().Property(e => e.Index).IsRequired();
+            modelBuilder.Entity<PlayerSettings>().Property(e => e.IndexField).IsRequired();
             modelBuilder.Entity<PlayerSettings>().Property(e => e.Settings).IsOptional();
             modelBuilder.Entity<PlayerSettings>().Property(e => e.isCaptain).IsRequired();
             modelBuilder.Entity<PlayerSettings>().Property(e => e.isWritable).IsRequired();

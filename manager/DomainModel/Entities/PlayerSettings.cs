@@ -13,7 +13,7 @@ namespace DomainModel.Entities
         {
             Player = player;
             Match = match;
-            Index = index;
+            IndexField = index;
             Settings = String.Empty;
             isCaptain = false;
             isWritable = false;
@@ -21,7 +21,7 @@ namespace DomainModel.Entities
 
         public Player Player { get; private set; }
         public Match Match { get; private set; }
-        public int Index { get; private set; }
+        public int IndexField { get; private set; }
         public string Settings { get; private set; }
         public bool isCaptain { get; private set; }
         public bool isWritable { get; private set; }

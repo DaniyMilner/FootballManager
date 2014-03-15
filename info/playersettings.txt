@@ -1,0 +1,78 @@
+{
+	"orient":"balance",
+	"pas":"balance",
+	"strike":"balance",
+	"oneone":"hit",
+	"canopy":"balance",
+	"selection":"middle",
+	"dedication":"balance",
+	"penalty":"balance"
+}
+/---------------------------------------------------------------
+orient://ориентир на
+		attack//атаку
+		balance//баланс
+		defend//защиту
+
+pas://предпочитаемые пасы
+		near//ближние
+		balance//баланс
+		long//дальние
+
+strike://удары
+		near//ближние
+		balance//баланс
+		long//дальние
+
+oneone://выход 1 на 1
+		hit//бить сразу
+		beat//обыграть
+		pas//отдать пас
+
+canopy://при навесе
+		hit//бить сразу
+		pas//отдать пас
+		balance//баланс
+
+selection://отбор
+		low//слабый
+		middle//средний
+		high//жесткий
+
+dedication://самоотдача
+		low//слабый
+		middle//средний
+		high//высокая
+
+penalty://при пенальти
+		left//пригать влево
+		right//пригать вправо
+		balance//баланс
+
+/---------------------------------------------------------------
+{
+	"oneone":"balance",
+	"penalty":"balance",
+	"dedication":"balance",
+	"canopy":"balance"
+}
+oneone://выход 1 на 1
+		stay//остаться в воротах
+		goto//выйти на мяч
+		balance//баланс
+
+penalty://при пенальти
+		left//пригать влево
+		right//пригать вправо
+		balance//баланс
+
+dedication://самоотдача
+		low//слабый
+		middle//средний
+		high//высокая
+
+canopy://при навесе
+		stay//остаться в воротах
+		goto//выйти на мяч
+		balance//баланс
+
