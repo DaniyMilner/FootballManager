@@ -248,6 +248,11 @@
         ru: 'Некорректний пароль',
         uk: "Некоректний пароль"
     },
+    rememberMe: {
+        en: 'Remember me',
+        ru: 'Запомнить меня',
+        uk: "Запам'ятати мене"
+    },
 
     /* Resource section for model SignUp */
 

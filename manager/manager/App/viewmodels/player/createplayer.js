@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'httpWrapper', 'localization/localizationManager', 'constants'],
-    function (router, httpWrapper, localizationManager, constants) {
+﻿define(['plugins/router', 'httpWrapper', 'localization/localizationManager', 'constants', 'userContext'],
+    function (router, httpWrapper, localizationManager, constants, userContext) {
 
         var viewModel = {
             activate: activate,
@@ -80,16 +80,16 @@
 
         function activate() {
             return httpWrapper.post('api/player/getallpositions').then(function (response) {
-                response.forEach(function (item) {
+                response.data.forEach(function (item) {
                     item.Name = localizationManager.localize('position_' + item.PublicId.toLowerCase());
                 });
-                viewModel.availablePosition(response);
+                viewModel.availablePosition(response.data);
 
                 return httpWrapper.post('api/player/getallcountries').then(function (resp) {
-                    resp.forEach(function (item) {
+                    resp.data.forEach(function (item) {
                         item.Name = localizationManager.localize('country_' + item.PublicId.toLowerCase());
                     });
-                    viewModel.availableCountry(resp);
+                    viewModel.availableCountry(resp.data);
 
                     var tempArray = _.range(150, 205, 5);
                     tempArray.forEach(function (item) {

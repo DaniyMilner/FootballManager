@@ -16,10 +16,10 @@
                     contentType: 'application/json',
                     dataType: 'json'
                 }).then(function (response) {
-                    if (_.isNull(response.data)) {
+                    if (_.isNull(response.data.User) || _.isUndefined(response.data.User)) {
                         that.isAuthenticated = false;
-                    } else if (!_.isNull(response.data)) {
-                        
+                    } else {
+                        that.isAuthenticated = true;
                     }
                 });
             };

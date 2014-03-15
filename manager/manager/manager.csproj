@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PlayerCreateModel.cs" />
+    <Compile Include="Models\UserSignInModel.cs" />
     <Compile Include="Models\UserSignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,7 +203,7 @@
     <Compile Include="Configuration\FilterConfig.cs" />
     <Compile Include="Configuration\RouteConfig.cs" />
     <Content Include="App\constants.js" />
-    <Content Include="App\dataContext.js" />
+    <Content Include="App\userContext.js" />
     <Content Include="App\httpWrapper.js" />
     <Content Include="App\localization\localizationManager.js" />
     <Content Include="App\localization\resources.js" />
@@ -211,14 +212,18 @@
     <Content Include="App\routing\routes.js" />
     <Content Include="App\viewmodels\home\home.js" />
     <Content Include="App\viewmodels\menu\mainmenu.js" />
+    <Content Include="App\viewmodels\menu\profilemenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\player\createplayer.js" />
+    <Content Include="App\viewmodels\user\signin.js" />
     <Content Include="App\viewmodels\user\signup.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\home\home.html" />
     <Content Include="App\views\menu\mainmenu.html" />
+    <Content Include="App\views\menu\profilemenu.html" />
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\player\createplayer.html" />
+    <Content Include="App\views\user\signin.html" />
     <Content Include="App\views\user\signup.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="Content\all.css" />
@@ -250,6 +255,7 @@
     <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.css" />
     <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
+    <Content Include="Content\css\userDialog.css" />
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -288,6 +294,7 @@
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\knockoutBindings\datepickerBinding.js" />
+    <Content Include="Scripts\knockoutBindings\showHideBinding.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\underscore.js" />
