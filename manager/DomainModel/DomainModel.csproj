@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Entities\Arrangement.cs" />
     <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\CustomLineUp.cs" />
+    <Compile Include="Entities\CustomTeamSettings.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EventLine.cs" />
     <Compile Include="Entities\Illness.cs" />

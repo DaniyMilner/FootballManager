@@ -9,6 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface IPlayerRepository : IRepository<Player>
     {
-        
+        List<Player> GetAllPlayersByTeamId(Guid id);
     }
 }
