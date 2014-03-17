@@ -82,6 +82,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="DateTimeObjectMaterializer.cs" />
     <Compile Include="Generator\Generator.cs" />
+    <Compile Include="Generator\PlayerInformation.cs" />
     <Compile Include="Generator\TeamInformation.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IUnitOfWork.cs" />

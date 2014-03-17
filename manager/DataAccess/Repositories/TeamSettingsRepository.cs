@@ -14,10 +14,5 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
-
-        public TeamSettings GetSettingsForCurrentMatchAndTeam(Team team, Match match)
-        {
-            return _dataContext.GetSet<TeamSettings>().Where(z => z.Team.Id == team.Id).FirstOrDefault();
-        }
     }
 }
