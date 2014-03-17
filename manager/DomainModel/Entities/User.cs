@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Infrastructure;
 
 namespace DomainModel.Entities
@@ -20,6 +22,7 @@ namespace DomainModel.Entities
             AboutMySelf = aboutMySelf;
             Sex = sex;
             Language = "ru";
+            PlayerCollection = new Collection<Player>();
         }
 
         public string Email { get; private set; }
@@ -83,6 +86,7 @@ namespace DomainModel.Entities
         {
             Language = language;
         }
-
+        public virtual ICollection<Player> PlayerCollection { get; set; }
+        
     }
 }

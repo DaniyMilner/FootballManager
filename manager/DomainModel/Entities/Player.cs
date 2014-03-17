@@ -38,11 +38,12 @@ namespace DomainModel.Entities
         public int Money { get; private set; }
         public int Humor { get; private set; }
         public int Condition { get; private set; }
-        public User User { get; private set; }
+        public virtual User User { get; private set; }
         public Position Position { get; private set; }
         public Illness Illness { get; private set; }
         public Country Country { get; private set; }
         public string PublicId { get; private set; }
         public DateTime CreateDate { get; private set; }
+        public Guid? TeamId { get; private set; }
     }
 }

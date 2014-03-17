@@ -188,6 +188,7 @@
     <Compile Include="Components\ModelBinding\EntityModelBinderProvider.cs" />
     <Compile Include="Configuration\BundleConfiguration.cs" />
     <Compile Include="Configuration\ContainerConfiguration.cs" />
+    <Compile Include="Controllers\API\GeneratorController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,6 +211,7 @@
     <Content Include="App\main.js" />
     <Content Include="App\models\user.js" />
     <Content Include="App\routing\routes.js" />
+    <Content Include="App\viewmodels\generator\generator.js" />
     <Content Include="App\viewmodels\home\home.js" />
     <Content Include="App\viewmodels\menu\mainmenu.js" />
     <Content Include="App\viewmodels\menu\profilemenu.js" />
@@ -218,6 +220,7 @@
     <Content Include="App\viewmodels\user\signin.js" />
     <Content Include="App\viewmodels\user\signup.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\views\generator\generator.html" />
     <Content Include="App\views\home\home.html" />
     <Content Include="App\views\menu\mainmenu.html" />
     <Content Include="App\views\menu\profilemenu.html" />
@@ -236,6 +239,7 @@
     <Content Include="Content\css\general\screen_1280.css" />
     <Content Include="Content\css\general\screen_640.css" />
     <Content Include="Content\css\general\screen_800.css" />
+    <Content Include="Content\css\generator.css" />
     <Content Include="Content\css\lib\bootstrap.css" />
     <Content Include="Content\css\lib\images\animated-overlay.gif" />
     <Content Include="Content\css\lib\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />

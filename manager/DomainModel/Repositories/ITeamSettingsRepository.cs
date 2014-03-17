@@ -9,5 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface ITeamSettingsRepository : IRepository<TeamSettings>
     {
+        TeamSettings GetSettingsForCurrentMatchAndTeam(Team team, Match match);
     }
 }
