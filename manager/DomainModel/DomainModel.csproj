@@ -59,6 +59,7 @@
     <Compile Include="Repositories\IArrangementRepository.cs" />
     <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\IEventLineRepository.cs" />
+    <Compile Include="Repositories\IIllnessRepository.cs" />
     <Compile Include="Repositories\IMatchRepository.cs" />
     <Compile Include="Repositories\IPlayerRepository.cs" />
     <Compile Include="Repositories\IPlayerSettingsRepository.cs" />

@@ -119,6 +119,7 @@
     <Compile Include="Repositories\ArrangementRepository.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\EventLineRepository.cs" />
+    <Compile Include="Repositories\IllnessRepository.cs" />
     <Compile Include="Repositories\MatchRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\PlayerSettingsRepository.cs" />

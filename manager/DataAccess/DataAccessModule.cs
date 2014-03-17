@@ -66,6 +66,10 @@ namespace DataAccess
               .As<ITeamSettingsRepository>()
               .As<IQuerableRepository<TeamSettings>>();
 
+            builder.RegisterType<IllnessRepository>()
+              .As<IIllnessRepository>()
+              .As<IQuerableRepository<Illness>>();
+
             base.Load(builder);
         }
     }

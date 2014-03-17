@@ -19,10 +19,11 @@ namespace manager.Controllers.API
         private readonly ICountryRepository _countryRepository;
         private readonly IUserRepository _userRepository;
         private readonly IAuthenticationProvider _authenticationProvider;
+        private readonly IIllnessRepository _illnessRepository;
 
         public PlayerController(IPlayerRepository playerRepository, IPositionRepository positionRepository,
             IEntityFactory entityFactory,ICountryRepository countryRepository, IUserRepository userRepository,
-            IAuthenticationProvider authenticationProvider)
+            IAuthenticationProvider authenticationProvider, IIllnessRepository illnessRepository)
         {
             _playerRepository = playerRepository;
             _positionRepository = positionRepository;
@@ -30,6 +31,7 @@ namespace manager.Controllers.API
             _countryRepository = countryRepository;
             _userRepository = userRepository;
             _authenticationProvider = authenticationProvider;
+            _illnessRepository = illnessRepository;
         }
 
         [HttpPost]
@@ -61,14 +63,15 @@ namespace manager.Controllers.API
                 return JsonError("User can not be null");
             }
 
-            //var player = _entityFactory.Player(model.Name, model.Surname, 18, model.Weight,model.Growth,0,0,100000,5,100,)
+            var temposition = _positionRepository.Get(model.PositionId);
+            var tempCountry = _countryRepository.Get(model.CountryId);
 
-                /*string name, string surname, int age, int weight, int growth, int number, int salary,
-            int money, int humor, int condition, User user, Position position, Illness illness, Country country,
-            string publicId,
-            DateTime createDate*/
 
-            //доделать когда будет регистрация
+            var player = _entityFactory.Player(model.Name, model.Surname, 18, model.Weight, model.Growth, 0, 0, 100000, 5, 100, user,
+                _positionRepository.Get(model.PositionId), _illnessRepository.GetIllnessByName("healthy"), _countryRepository.Get(model.CountryId), "public ID",
+                DateTime.Now);
+
+            _playerRepository.Add(player);
             return JsonSuccess();
         }
     }

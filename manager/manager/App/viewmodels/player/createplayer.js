@@ -12,8 +12,8 @@
                     surname: this.surname(),
                     countryId: this.selectedCountry().Id,
                     positionId: this.selectedPosition().Id,
-                    weight: this.selectedWeight(),
-                    growth: this.selectedGrowth()
+                    weight: this.selectedWeight().substring(0,2),
+                    growth: this.selectedGrowth().substring(0, 3),
                 };
                 var that = this;
                 httpWrapper.post('api/player/createplayer', data).then(function (response) {
