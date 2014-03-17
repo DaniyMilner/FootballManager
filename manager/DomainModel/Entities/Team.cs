@@ -25,7 +25,7 @@ namespace DomainModel.Entities
         public string Logo { get; private set; }
         public Guid? CoachId { get; private set; }
         public Guid? AssistantId { get; private set; }
-        public Country Country { get; private set; }
+        public virtual Country Country { get; private set; }
         public string Stadium { get; private set; }
         public int Year { get; private set; }
     }

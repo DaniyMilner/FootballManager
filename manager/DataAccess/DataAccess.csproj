@@ -85,41 +85,9 @@
     <Compile Include="Generator\TeamInformation.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201402102002023_InitialCreate.cs" />
-    <Compile Include="Migrations\201402102002023_InitialCreate.Designer.cs">
-      <DependentUpon>201402102002023_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402171707416_AddOptionalFieldsToUser.cs" />
-    <Compile Include="Migrations\201402171707416_AddOptionalFieldsToUser.Designer.cs">
-      <DependentUpon>201402171707416_AddOptionalFieldsToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402172007262_AddLanguageFieldToUser.cs" />
-    <Compile Include="Migrations\201402172007262_AddLanguageFieldToUser.Designer.cs">
-      <DependentUpon>201402172007262_AddLanguageFieldToUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402191826343_AddPlayer.cs" />
-    <Compile Include="Migrations\201402191826343_AddPlayer.Designer.cs">
-      <DependentUpon>201402191826343_AddPlayer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201403051821077_addTeams.cs" />
-    <Compile Include="Migrations\201403051821077_addTeams.Designer.cs">
-      <DependentUpon>201403051821077_addTeams.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201403051945357_AddSkills.cs" />
-    <Compile Include="Migrations\201403051945357_AddSkills.Designer.cs">
-      <DependentUpon>201403051945357_AddSkills.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201403111912322_AddFiveTablesAndMatch.cs" />
-    <Compile Include="Migrations\201403111912322_AddFiveTablesAndMatch.Designer.cs">
-      <DependentUpon>201403111912322_AddFiveTablesAndMatch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201403121846439_UpdateTablesAndInsertValues.cs" />
-    <Compile Include="Migrations\201403121846439_UpdateTablesAndInsertValues.Designer.cs">
-      <DependentUpon>201403121846439_UpdateTablesAndInsertValues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201403151816306_AddColumnTeamToPlayer.cs" />
-    <Compile Include="Migrations\201403151816306_AddColumnTeamToPlayer.Designer.cs">
-      <DependentUpon>201403151816306_AddColumnTeamToPlayer.cs</DependentUpon>
+    <Compile Include="Migrations\201403171840027_Initial.cs" />
+    <Compile Include="Migrations\201403171840027_Initial.Designer.cs">
+      <DependentUpon>201403171840027_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,39 +112,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201402102002023_InitialCreate.resx">
-      <DependentUpon>201402102002023_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402171707416_AddOptionalFieldsToUser.resx">
-      <DependentUpon>201402171707416_AddOptionalFieldsToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402172007262_AddLanguageFieldToUser.resx">
-      <DependentUpon>201402172007262_AddLanguageFieldToUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402191826343_AddPlayer.resx">
-      <DependentUpon>201402191826343_AddPlayer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201403051821077_addTeams.resx">
-      <DependentUpon>201403051821077_addTeams.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201403051945357_AddSkills.resx">
-      <DependentUpon>201403051945357_AddSkills.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201403111912322_AddFiveTablesAndMatch.resx">
-      <DependentUpon>201403111912322_AddFiveTablesAndMatch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201403121846439_UpdateTablesAndInsertValues.resx">
-      <DependentUpon>201403121846439_UpdateTablesAndInsertValues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201403151816306_AddColumnTeamToPlayer.resx">
-      <DependentUpon>201403151816306_AddColumnTeamToPlayer.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{52fe892e-c828-4da1-8acb-fe4bc71aecc1}</Project>
       <Name>DomainModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201403171840027_Initial.resx">
+      <DependentUpon>201403171840027_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
