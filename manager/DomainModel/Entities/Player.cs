@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DomainModel.Entities
 {
@@ -27,6 +29,9 @@ namespace DomainModel.Entities
             PublicId = publicId;
             CreateDate = createDate;
             TeamId = null;
+            SkillPlayerCollection = new Collection<SkillsPlayer>();
+            EventLineCollection = new Collection<EventLine>();
+            PlayerSettingsCollection = new Collection<PlayerSettings>();
         }
 
         public string Name { get; private set; }
@@ -40,11 +45,14 @@ namespace DomainModel.Entities
         public int Humor { get; private set; }
         public int Condition { get; private set; }
         public virtual User User { get; private set; }
-        public Position Position { get; private set; }
-        public Illness Illness { get; private set; }
-        public Country Country { get; private set; }
+        public virtual Position Position { get; private set; }
+        public virtual Illness Illness { get; private set; }
+        public virtual Country Country { get; private set; }
         public string PublicId { get; private set; }
         public DateTime CreateDate { get; private set; }
         public Guid? TeamId { get;  set; }
+        public virtual ICollection<SkillsPlayer> SkillPlayerCollection { get; private set; }
+        public virtual ICollection<EventLine> EventLineCollection { get; private set; }
+        public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
     }
 }

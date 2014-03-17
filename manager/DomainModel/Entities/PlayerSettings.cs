@@ -19,8 +19,8 @@ namespace DomainModel.Entities
             isWritable = false;
         }
 
-        public Player Player { get; private set; }
-        public Match Match { get; private set; }
+        public virtual Player Player { get; private set; }
+        public virtual Match Match { get; private set; }
         public int IndexField { get; private set; }
         public string Settings { get; private set; }
         public bool isCaptain { get; private set; }

@@ -17,8 +17,8 @@ namespace DomainModel.Entities
             Value = 1;
         }
 
-        public Skill Skill { get; private set; }
-        public Player Player { get; private set; }
+        public virtual Skill Skill { get; private set; }
+        public virtual Player Player { get; private set; }
         public double Value { get; private set; }
     }
 }

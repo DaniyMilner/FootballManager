@@ -18,7 +18,7 @@ namespace DomainModel.Entities
         }
 
         public Guid LineId { get; private set; }
-        public Player Player { get; private set; }
+        public virtual Player Player { get; private set; }
         public int Minute { get; private set; }
         public EventLineType Type { get; private set; }
     }

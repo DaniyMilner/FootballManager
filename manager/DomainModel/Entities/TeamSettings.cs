@@ -18,9 +18,9 @@ namespace DomainModel.Entities
             LineUp = String.Empty;
         }
 
-        public Team Team { get; private set; }
-        public Match Match { get; private set; }
-        public Arrangement Arrangement { get; private set; }
+        public virtual Team Team { get; private set; }
+        public virtual Match Match { get; private set; }
+        public virtual Arrangement Arrangement { get; private set; }
         public string Settings { get; private set; }
         public string LineUp { get; private set; }
         public Guid? PlayerSend { get; private set; }

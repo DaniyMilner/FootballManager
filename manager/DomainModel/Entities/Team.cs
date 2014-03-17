@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace DomainModel.Entities
             Country = country;
             Stadium = stadium;
             Year = year;
+            TeamSettingsCollection = new Collection<TeamSettings>();
         }
 
         public string Name { get; private set; }
@@ -28,5 +30,6 @@ namespace DomainModel.Entities
         public virtual Country Country { get; private set; }
         public string Stadium { get; private set; }
         public int Year { get; private set; }
+        public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
     }
 }

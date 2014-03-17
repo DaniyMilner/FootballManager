@@ -82,6 +82,7 @@ namespace DataAccess
 
             modelBuilder.Entity<Illness>().Property(e => e.IllnessName).IsRequired().HasMaxLength(254);
             modelBuilder.Entity<Illness>().Property(e => e.TimeForRecovery).IsRequired();
+            modelBuilder.Entity<Illness>().HasMany(e => e.PlayerCollection).WithRequired(e => e.Illness);
 
             modelBuilder.Entity<Position>().Property(e => e.Name).IsRequired().HasMaxLength(254);
             modelBuilder.Entity<Position>().Property(e => e.PublicId).IsRequired().HasMaxLength(254);
@@ -104,6 +105,9 @@ namespace DataAccess
             modelBuilder.Entity<Player>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Player>().Property(e => e.CreateDate).IsRequired();
             modelBuilder.Entity<Player>().Property(e => e.TeamId).IsOptional();
+            modelBuilder.Entity<Player>().HasMany(e => e.SkillPlayerCollection).WithRequired(e => e.Player);
+            modelBuilder.Entity<Player>().HasMany(e => e.EventLineCollection).WithRequired(e => e.Player);
+            modelBuilder.Entity<Player>().HasMany(e => e.PlayerSettingsCollection).WithRequired(e => e.Player);
 
             modelBuilder.Entity<Team>().Property(e => e.Name).IsRequired();
             modelBuilder.Entity<Team>().Property(e => e.ShortName).IsRequired().HasMaxLength(20);
@@ -113,9 +117,11 @@ namespace DataAccess
             modelBuilder.Entity<Team>().HasRequired(e => e.Country);
             modelBuilder.Entity<Team>().Property(e => e.Stadium).IsRequired();
             modelBuilder.Entity<Team>().Property(e => e.Year).IsRequired();
+            modelBuilder.Entity<Team>().HasMany(e => e.TeamSettingsCollection).WithRequired(e => e.Team);
 
             modelBuilder.Entity<Skill>().Property(e => e.Name).IsRequired();
             modelBuilder.Entity<Skill>().Property(e => e.Ordering).IsRequired();
+            modelBuilder.Entity<Skill>().HasMany(e => e.SkillPlayerCollection).WithRequired(e => e.Skill);
 
             modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Skill);
             modelBuilder.Entity<SkillsPlayer>().HasRequired(e => e.Player);
@@ -128,6 +134,7 @@ namespace DataAccess
 
             modelBuilder.Entity<Arrangement>().Property(e => e.Scheme).IsRequired();
             modelBuilder.Entity<Arrangement>().Property(e => e.Type).IsRequired();
+            modelBuilder.Entity<Arrangement>().HasMany(e => e.TeamSettingsCollection).WithRequired(e => e.Arrangement);
 
             modelBuilder.Entity<Weather>().Property(e => e.Name).IsRequired().HasMaxLength(20);
             modelBuilder.Entity<Weather>().Property(e => e.Type).IsRequired();
@@ -141,6 +148,7 @@ namespace DataAccess
             modelBuilder.Entity<Match>().Property(e => e.TicketPrice).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
+            modelBuilder.Entity<Match>().HasMany(e => e.PlayerSettingsCollection).WithRequired(e => e.Match);
 
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Player);
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Match);
