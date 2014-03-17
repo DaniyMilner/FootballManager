@@ -26,6 +26,7 @@ namespace DomainModel.Entities
             Country = country;
             PublicId = publicId;
             CreateDate = createDate;
+            TeamId = null;
         }
 
         public string Name { get; private set; }
@@ -44,6 +45,6 @@ namespace DomainModel.Entities
         public Country Country { get; private set; }
         public string PublicId { get; private set; }
         public DateTime CreateDate { get; private set; }
-        public Guid? TeamId { get; private set; }
+        public Guid? TeamId { get;  set; }
     }
 }

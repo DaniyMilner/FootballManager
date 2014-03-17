@@ -23,7 +23,8 @@ namespace DataAccess
                 .ForEach(delegate(PropertyInfo info)
                 {
                     var datetime = (DateTime)info.GetValue(entity, null);
-                    info.SetValue(entity, SpecifyUtcKind(datetime), null);
+                    if (info.CanWrite)
+                        info.SetValue(entity, SpecifyUtcKind(datetime), null);
                 });
 
             properties.Where(property => property.PropertyType == typeof(DateTime?))
