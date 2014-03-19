@@ -17,5 +17,6 @@ namespace DomainModel.Entities
         public string Dedication { get; set; }
         public string Penalty { get; set; }
         public bool IsCaptain { get; set; }
+        public Guid? TeamId { get; set; }
     }
 }
