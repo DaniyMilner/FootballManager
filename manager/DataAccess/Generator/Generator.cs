@@ -16,7 +16,7 @@ namespace DataAccess.Generator
             IPlayerRepository playerRepository, IArrangementRepository arrangementRepository,
             IPlayerSettingsRepository playerSettingsRepository)
         {
-            JavaScriptSerializer json = new JavaScriptSerializer();
+            var json = new JavaScriptSerializer();
             var teamInfo = new TeamInformation();
             var playerInfo = new PlayerInformation();
             //1. выбор матчей для генерации и генерация в цикле
@@ -42,7 +42,7 @@ namespace DataAccess.Generator
 
             //состав команды
             List<Player>[,] homeLineUp = teamInfo.GetTeamLineUp(homeSettings, homeSettings.Arrangement, homePlayers);
-            List<Player>[,] guestLineUp = teamInfo.ConvertToGuestLineUp(teamInfo.GetTeamLineUp(guestSettings, guestSettings.Arrangement, guestPlayers));
+            List<Player>[,] guestLineUp = teamInfo.GetTeamLineUp(guestSettings, guestSettings.Arrangement, guestPlayers);
 
             //установки всех игроков
             List<CustomPlayerSettings> playersSettings = playerInfo.GetPlayersSettingsByMatchId(playerSettingsRepository, match.Id);
@@ -77,18 +77,20 @@ namespace DataAccess.Generator
             var game = new GameManager();
             int currentMinute = 0;
             bool secondHalf = false;
-            resultList.Add(manager.StartEvent());
+            resultList.Add(manager.StartMatchEvent());
 
             do
             {
                 currentMinute += game.GetMinute();
                 if (game.TeamWithBall(homeChance, guestChance))
                 {
-                    resultList.Add("Home");
+                    manager.MatchEvent(homeLineUp, guestLineUp);
+                    resultList.Add("Home -> " + manager.Result);
                 }
                 else
                 {
-                    resultList.Add("Guest");
+                    manager.MatchEvent(guestLineUp, homeLineUp);
+                    resultList.Add("Guest - > " + manager.Result);
                 }
                 if (!secondHalf && currentMinute > 45)
                 {
@@ -99,7 +101,7 @@ namespace DataAccess.Generator
                 }
             } while (currentMinute < 90);
 
-            resultList.Add(manager.FinishEvent());
+            resultList.Add(manager.FinishMatchEvent());
             //6. из списка событий генерировать json и записать в базу
             int a = 0;
         }

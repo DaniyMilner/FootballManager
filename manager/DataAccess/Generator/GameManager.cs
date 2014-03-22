@@ -20,5 +20,7 @@ namespace DataAccess.Generator
         {
             return random.Next(2, 5);
         }
+
+        
     }
 }
