@@ -9,5 +9,7 @@ namespace DomainModel.Repositories
 {
     public interface IPlayerSettingsRepository : IRepository<PlayerSettings>
     {
+        List<PlayerSettings> GetPlayersSettingsByMatchId(Guid id);
+        void SetIsWritableToMatchPlayers(Match match);
     }
 }

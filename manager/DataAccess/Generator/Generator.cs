@@ -13,55 +13,97 @@ namespace DataAccess.Generator
     {
         public void Run(IMatchRepository matchRepository, IEntityFactory entityFactory, ITeamRepository teamRepository,
             ICountryRepository countryRepository, ITeamSettingsRepository teamSettingsRepository,
-            IPlayerRepository playerRepository, IArrangementRepository arrangementRepository)
+            IPlayerRepository playerRepository, IArrangementRepository arrangementRepository,
+            IPlayerSettingsRepository playerSettingsRepository)
         {
-            Match match;
-            Team home, guest;
-            TeamSettings homeSettings, guestSettings;
-            CustomTeamSettings customHomeSettings, customGuestSettings;
-            JavaScriptSerializer json = new JavaScriptSerializer();
-            TeamInformation teamInfo = new TeamInformation();
-            List<Player> homePlayers, guestPlayers;
-            Arrangement homeArrangement, guestArrangement;
-            List<Player>[,] homeLineUp, guestLineUp;
+            var json = new JavaScriptSerializer();
+            var teamInfo = new TeamInformation();
+            var playerInfo = new PlayerInformation();
             //1. выбор матчей для генерации и генерация в цикле
+            Match match = matchRepository.Get(new Guid("FB8A3E3B-7EC1-4EA6-A20F-D31CB65D9E00"));
             //2. закрепить атрибут isWritable для все игроков матча
+            playerSettingsRepository.SetIsWritableToMatchPlayers(match);
 
-            //3. собрать информацию о матче, состав, установки игроков, установки команды, экипировку
-            match = matchRepository.Get(new Guid("FB8A3E3B-7EC1-4EA6-A20F-D31CB65D9E00"));
-            home = teamRepository.Get(match.HomeTeamId);
-            guest = teamRepository.Get(match.GuestTeamId);
+            //3. собрать информацию о матче, состав, установки игроков, установки команды, экипировку 
+            //   и присоеденить игроков к сетке поля
 
-            homePlayers = playerRepository.GetAllPlayersByTeamId(home.Id);
-            guestPlayers = playerRepository.GetAllPlayersByTeamId(guest.Id);
+            Team home = teamRepository.Get(match.HomeTeamId);
+            Team guest = teamRepository.Get(match.GuestTeamId);
 
-            homeSettings = teamSettingsRepository.GetSettingsForCurrentMatchAndTeam(home, match);
-            guestSettings = teamSettingsRepository.GetSettingsForCurrentMatchAndTeam(guest, match);
+            List<Player> homePlayers = playerRepository.GetAllPlayersByTeamId(home.Id);
+            List<Player> guestPlayers = playerRepository.GetAllPlayersByTeamId(guest.Id);
+
+            TeamSettings homeSettings = home.TeamSettingsCollection.FirstOrDefault(z => z.Match.Id == match.Id);
+            TeamSettings guestSettings = guest.TeamSettingsCollection.FirstOrDefault(z => z.Match.Id == match.Id);
 
             //установки команды
-            customHomeSettings = teamInfo.GetTeamSettings(homeSettings, homePlayers);
-            customGuestSettings = teamInfo.GetTeamSettings(guestSettings, guestPlayers);
+            CustomTeamSettings customHomeTeamSettings = teamInfo.GetTeamSettings(homeSettings, homePlayers);
+            CustomTeamSettings customGuestTeamSettings = teamInfo.GetTeamSettings(guestSettings, guestPlayers);
 
             //состав команды
-            homeArrangement = arrangementRepository.Get(new Guid("96BF6834-4C80-4F84-BC5A-DDDECD38B384"));//переделать
-            guestArrangement = arrangementRepository.Get(new Guid("96BF6834-4C80-4F84-BC5A-DDDECD38B384"));//переделать
-            homeLineUp = teamInfo.GetTeamLineUp(homeSettings, homeArrangement, homePlayers);
-            guestLineUp = teamInfo.GetTeamLineUp(guestSettings, guestArrangement, guestPlayers);
-            int i = 0;
+            List<Player>[,] homeLineUp = teamInfo.GetTeamLineUp(homeSettings, homeSettings.Arrangement, homePlayers);
+            List<Player>[,] guestLineUp = teamInfo.GetTeamLineUp(guestSettings, guestSettings.Arrangement, guestPlayers);
+
+            //установки всех игроков
+            List<CustomPlayerSettings> playersSettings = playerInfo.GetPlayersSettingsByMatchId(playerSettingsRepository, match.Id);
 
 
+            //4. высчитать расчетную силу команды
+            double totalHome = 0, totalGuest = 0;
+            totalHome += homePlayers.Sum(homePlayer => homePlayer.SkillPlayerCollection.ToList().Sum(skill => skill.Value));
+            totalGuest += guestPlayers.Sum(guestPlayer => guestPlayer.SkillPlayerCollection.ToList().Sum(skill => skill.Value));
+
+            //домашняя команда *1.2
+            totalHome *= 1.2;
+
+            //влияние капитана
+            totalHome = playerInfo.CaptainImpact(homePlayers, totalHome);
+            totalGuest = playerInfo.CaptainImpact(guestPlayers, totalGuest);
+
+            //влияние лидерства
+            //TODO сделать влияние лидерства на расчетную силу команд
+
+            //шанс на атаку
+            int homeChance = 0, guestChance = 0;
+            double total = Math.Round(totalHome + totalGuest);
+            homeChance = Convert.ToInt32(Math.Round((totalHome / total) * 100, 0));
+            guestChance = Convert.ToInt32(Math.Round((totalGuest / total) * 100, 0));
 
 
-
-
-
-
-
-
-
-            //4. присоеденить игроков к сетке поля и высчитать расчетную силу каждого игрока и команды
             //5. в цикле генерировать события и вставлять их в список
+            var random = new Random();
+            var resultList = new List<string>();
+            var manager = new EventManager();
+            var game = new GameManager();
+            int currentMinute = 0;
+            bool secondHalf = false;
+            resultList.Add(manager.StartMatchEvent());
+
+            do
+            {
+                currentMinute += game.GetMinute();
+                if (game.TeamWithBall(homeChance, guestChance))
+                {
+                    manager.MatchEvent(homeLineUp, guestLineUp);
+                    resultList.Add("Home -> " + manager.Result);
+                }
+                else
+                {
+                    manager.MatchEvent(guestLineUp, homeLineUp);
+                    resultList.Add("Guest - > " + manager.Result);
+                }
+                if (!secondHalf && currentMinute > 45)
+                {
+                    resultList.Add(manager.EndFirstTime());
+                    secondHalf = true;
+                    currentMinute = 45;
+                    resultList.Add(manager.StartSecondHalf());
+                }
+            } while (currentMinute < 90);
+
+            resultList.Add(manager.FinishMatchEvent());
             //6. из списка событий генерировать json и записать в базу
+            int a = 0;
         }
     }
 }

@@ -19,6 +19,7 @@ namespace manager.Controllers.API
         private readonly ITeamSettingsRepository _teamSettingsRepository;
         private readonly IPlayerRepository _playerRepository;
         private readonly IArrangementRepository _arrangementRepository;
+        private readonly IPlayerSettingsRepository _playerSettingsRepository;
 
         public GeneratorController(IMatchRepository matchRepository,
                                     IEntityFactory entityFactory,
@@ -26,7 +27,8 @@ namespace manager.Controllers.API
                                     ICountryRepository countryRepository, 
                                     ITeamSettingsRepository teamSettingsRepository,
                                     IPlayerRepository playerRepository,
-                                    IArrangementRepository arrangementRepository)
+                                    IArrangementRepository arrangementRepository,
+                                    IPlayerSettingsRepository playerSettingsRepository)
         {
             _entityFactory = entityFactory;
             _matchRepository = matchRepository;
@@ -35,6 +37,7 @@ namespace manager.Controllers.API
             _teamSettingsRepository = teamSettingsRepository;
             _playerRepository = playerRepository;
             _arrangementRepository = arrangementRepository;
+            _playerSettingsRepository = playerSettingsRepository;
         }
 
         [HttpPost]
@@ -43,7 +46,7 @@ namespace manager.Controllers.API
         {
             Generator generator = new Generator();
             generator.Run(_matchRepository, _entityFactory, _teamRepository, _countryRepository, _teamSettingsRepository,
-                _playerRepository, _arrangementRepository);
+                _playerRepository, _arrangementRepository, _playerSettingsRepository);
             return JsonSuccess();
         }
     }

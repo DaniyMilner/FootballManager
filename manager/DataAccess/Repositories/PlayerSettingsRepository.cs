@@ -14,5 +14,17 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
+
+        public List<PlayerSettings> GetPlayersSettingsByMatchId(Guid id)
+        {
+            return _dataContext.GetSet<PlayerSettings>().Where(z => z.Match.Id == id).ToList();
+        }
+
+        public void SetIsWritableToMatchPlayers(Match match)
+        {
+            var data = _dataContext.GetSet<PlayerSettings>().Where(z => z.Match.Id == match.Id).ToList();
+            foreach (var item in data)
+                item.SetNotWritable();
+        }
     }
 }

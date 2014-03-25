@@ -25,5 +25,10 @@ namespace DomainModel.Entities
         public string Settings { get; private set; }
         public bool isCaptain { get; private set; }
         public bool isWritable { get; private set; }
+
+        public void SetNotWritable()
+        {
+            this.isWritable = false;
+        }
     }
 }
