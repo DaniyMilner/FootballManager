@@ -70,6 +70,10 @@ namespace DataAccess
               .As<IIllnessRepository>()
               .As<IQuerableRepository<Illness>>();
 
+            builder.RegisterType<NumberingRepository>()
+              .As<INumberingRepository>()
+              .As<IQuerableRepository<Numbering>>();
+
             base.Load(builder);
         }
     }

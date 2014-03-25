@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
+
 namespace DomainModel.Entities
 {
     public class Country : Entity
@@ -21,7 +23,9 @@ namespace DomainModel.Entities
 
         public string PublicId { get; private set; }
         public string Name { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<Team> TeamCollection { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<Player> PlayerCollection { get; private set; }
     }
 }

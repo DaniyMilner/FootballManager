@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Migrations;
-using DataAccess.Migrations.easygenerator.DataAccess.Migrations;
+using DataAccess.Migrations;
 using DomainModel.Entities;
 
 namespace DataAccess
@@ -36,7 +36,7 @@ namespace DataAccess
         public DataContext(string connectionString)
             : base(connectionString)
         {
-            ((IObjectContextAdapter)this).ObjectContext.ObjectMaterialized += (sender, args) => DateTimeObjectMaterializer.Materialize(args.Entity);
+            //((IObjectContextAdapter)this).ObjectContext.ObjectMaterialized += (sender, args) => DateTimeObjectMaterializer.Materialize(args.Entity);
         }
 
         public DbSet<User> Users { get; set; }
@@ -53,6 +53,7 @@ namespace DataAccess
         public DbSet<Match> Matches { get; set; }
         public DbSet<PlayerSettings> PlayerSettings { get; set; }
         public DbSet<TeamSettings> TeamSettings { get; set; }
+        public DbSet<Numbering> Numberings { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -163,6 +164,10 @@ namespace DataAccess
             modelBuilder.Entity<TeamSettings>().Property(e => e.Settings).IsOptional();
             modelBuilder.Entity<TeamSettings>().Property(e => e.LineUp).IsOptional();
             modelBuilder.Entity<TeamSettings>().Property(e => e.PlayerSend).IsOptional();
+
+            modelBuilder.Entity<Numbering>().Property(e => e.Number).IsRequired();
+            modelBuilder.Entity<Numbering>().Property(e => e.Type).IsRequired();
+
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccess.Migrations
+﻿namespace DataAccess.Migrations
 {
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    namespace easygenerator.DataAccess.Migrations
+    internal sealed class Configuration : DbMigrationsConfiguration<DataAccess.DataContext>
     {
-        public class Configuration : DbMigrationsConfiguration<DataContext>
+        public Configuration()
         {
-            public Configuration()
-            {
-                AutomaticMigrationsEnabled = false;
-            }
+            AutomaticMigrationsEnabled = false;
+        }
 
-            protected override void Seed(DataContext context)
-            {
-            }
+        protected override void Seed(DataAccess.DataContext context)
+        {
         }
     }
-
 }

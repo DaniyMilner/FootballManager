@@ -9,5 +9,6 @@ namespace Infrastructure
     public class Constants
     {
         public const string DefaultLanguage = "ru";
+        public const int MaxLengthOfPublicId = 6;
     }
 }

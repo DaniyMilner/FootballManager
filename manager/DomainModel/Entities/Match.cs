@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DomainModel.Entities
 {
@@ -32,7 +33,9 @@ namespace DomainModel.Entities
         public int TicketPrice { get; private set; }
         public DateTime DateStart { get; private set; }
         public string Result { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
     }
 }
