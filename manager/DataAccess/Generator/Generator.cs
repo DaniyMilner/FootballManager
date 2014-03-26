@@ -76,7 +76,7 @@ namespace DataAccess.Generator
 
             //5. в цикле генерировать события и вставлять их в список
             var resultList = new List<string>();
-            var manager = new EventManager();
+            var manager = new EventManager(eventLineRepository, match.EventLineId);
             var game = new GameManager();
             int currentMinute = 0;
             bool secondHalf = false;
@@ -89,14 +89,14 @@ namespace DataAccess.Generator
                 currentMinute += game.GetMinute();
                 if (game.TeamWithBall(homeChance, guestChance))
                 {
-                    homeGoal += manager.MatchEvent(homeLineUp, guestLineUp, guestGoalkeeper, match.EventLineId, 
-                        eventLineRepository, currentMinute, customHomeTeamSettings,lineEvents);
+                    homeGoal += manager.MatchEvent(homeLineUp, guestLineUp, guestGoalkeeper, 
+                        currentMinute, customHomeTeamSettings,lineEvents);
                     resultList.Add("Home -> " + manager.Result);
                 }
                 else
                 {
-                    guestGoal += manager.MatchEvent(guestLineUp, homeLineUp, homeGoalkeeper, match.EventLineId,
-                        eventLineRepository, currentMinute, customGuestTeamSettings, lineEvents);
+                    guestGoal += manager.MatchEvent(guestLineUp, homeLineUp, homeGoalkeeper,
+                        currentMinute, customGuestTeamSettings, lineEvents);
                     resultList.Add("Guest - > " + manager.Result);
                 }
                 if (!secondHalf && currentMinute > 45)
@@ -107,6 +107,7 @@ namespace DataAccess.Generator
                     resultList.Add(manager.StartSecondHalf());
                 }
             } while (currentMinute < 90);
+
 
             resultList.Add(manager.FinishMatchEvent());
             //6. из списка событий генерировать json и записать в базу

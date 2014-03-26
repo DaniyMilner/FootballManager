@@ -10,34 +10,44 @@ namespace DataAccess.Generator
 {
     public class EventManager
     {
-        public EventManager()
+        private readonly IEventLineRepository _eventLineRepository;
+        private readonly Random _random;
+        private readonly TeamInformation _teamInfo;
+        private readonly Guid _eventLineId;
+
+        private const int MaxCountEvents = 5;
+        private const int N = 2;
+
+        private bool _wasGoal;
+        private int _countEvents;
+        public string Result { get; set; }
+
+        public EventManager() { }
+        public EventManager(IEventLineRepository eventLineRepository, Guid eventLineId)
         {
-            _countEvents = 0;
-            _cellIndex = 0;
-            _lineIndex = 0;
-            _wasGoal = false;
+            _eventLineRepository = eventLineRepository;
+            _random = new Random();
+            _teamInfo = new TeamInformation();
+            _eventLineId = eventLineId;
+
+            Reset();
         }
 
-        private readonly Random _random = new Random();
+        private void Reset()
+        {
+            _countEvents = 0;
+            _wasGoal = false;
+            Result = string.Empty;
+        }
+
         private List<Player>[,] _attackTeam;
         private List<Player>[,] _defendTeam;
         private Player _defendGoalkeeper;
         private int _lineIndex;
         private int _cellIndex;
-        private Guid _eventLineId;
         private int _currentMinute;
         private CustomTeamSettings _attackTeamSettings;
         private List<EventLine> _customEventLineList;
-
-        private IEventLineRepository _eventLineRepository;
-
-        private bool _wasGoal;
-
-        public string Result { get; set; }
-
-        private const int N = 2;
-        private int _countEvents;
-        private const int MaxCountEvents = 5;
 
         private Player GetAttackPlayer(int i, int j)
         {
@@ -55,22 +65,18 @@ namespace DataAccess.Generator
         }
 
         public int MatchEvent(List<Player>[,] attack, List<Player>[,] defend, Player defendGoalkeeper,
-            Guid eventLineId, IEventLineRepository eventLineRepository, int currentMinute, CustomTeamSettings attackTeamSettings,
-            List<EventLine> eventLineList)
+            int currentMinute, CustomTeamSettings attackTeamSettings, List<EventLine> eventLineList)
         {
-            var teamInfo = new TeamInformation();
-            var defenderTeam = teamInfo.ConvertToGuestLineUp(defend);
-            Result = string.Empty;
-            _countEvents = 0;
+            var defenderTeam = _teamInfo.ConvertToGuestLineUp(defend);
+
+            Reset();
             _attackTeam = attack;
             _defendTeam = defenderTeam;
             _defendGoalkeeper = defendGoalkeeper;
-            _eventLineId = eventLineId;
-            _eventLineRepository = eventLineRepository;
+
             _currentMinute = currentMinute;
             _attackTeamSettings = attackTeamSettings;
             _customEventLineList = eventLineList;
-            _wasGoal = false;
 
             //опередить линию начала атаки
             _lineIndex = _random.Next(1, 3);
@@ -194,6 +200,32 @@ namespace DataAccess.Generator
             }
         }
 
+        private Player CheckPlayer(Player player)
+        {
+            if (player == null)
+            {
+                if (_cellIndex == N) _cellIndex--;
+                else if (_cellIndex == 0) _cellIndex++;
+                else
+                {
+                    switch (_random.Next(0, 2))
+                    {
+                        case 0:
+                            {
+                                _cellIndex--;
+                                break;
+                            }
+                        case 1:
+                            {
+                                _cellIndex++;
+                                break;
+                            }
+                    }
+                }
+                player = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
+            }
+            return player;
+        }
 
         #region StartStopEvents
         public string StartMatchEvent()
@@ -221,13 +253,7 @@ namespace DataAccess.Generator
 
         private void DefenderPasOneTop()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                       " [Defender Pas One Top] => ";
             _lineIndex--;
@@ -235,7 +261,7 @@ namespace DataAccess.Generator
         }
         private void DefenderPasTwoTop()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                       " [Defender Pas Two Top] => ";
             _lineIndex -= 2;
@@ -243,7 +269,7 @@ namespace DataAccess.Generator
         }
         private void DefenderPasOneRightTop()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                       " [Defender Pas One Right Top] => ";
             _lineIndex--;
@@ -253,7 +279,7 @@ namespace DataAccess.Generator
         }
         private void DefenderPasOneLeftTop()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                       " [Defender Pas One Left Top] => ";
             _lineIndex--;
@@ -267,14 +293,15 @@ namespace DataAccess.Generator
 
         private void MidfilderPasOneTop(AttackDirection attackDirection = AttackDirection.Top)
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             var defendPlayer = GetDefendPlayer(_random.Next(0, 2), _cellIndex);
             double defendSelection = 0;
             const double selectionSetting = 1.5;
 
             var attackSkills = attackPlayer.SkillPlayerCollection.ToList();
             var attackPas = attackSkills.Where(attackSkill => attackSkill.Skill.Name == "Pas").Select(attackSkill => attackSkill.Value).FirstOrDefault();
-            if (defendPlayer!=null){
+            if (defendPlayer != null)
+            {
                 var defendSkills = defendPlayer.SkillPlayerCollection.ToList();
                 defendSelection = defendSkills.Where(defendSkill => defendSkill.Skill.Name == "Selection").Select(defendSkill => defendSkill.Value).FirstOrDefault();
             }
@@ -334,7 +361,7 @@ namespace DataAccess.Generator
         }
         private void MidfilderPasOneBack()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                           " [Midfilder Pas One Back] => ";
             if (_lineIndex != N)
@@ -343,13 +370,7 @@ namespace DataAccess.Generator
         }
         private void MidfilderPasOneRight()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                           " [Midfilder Pas One Right] => ";
             if (_cellIndex != N)
@@ -359,13 +380,7 @@ namespace DataAccess.Generator
         }
         private void MidfilderPasOneLeft()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
                           " [Midfilder Pas One Left] => ";
             if (_cellIndex != 0)
@@ -375,7 +390,7 @@ namespace DataAccess.Generator
         }
         private void MidfilderStrikeTwo()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
 
             var attackSkills = attackPlayer.SkillPlayerCollection.ToList();
             var goalkeeperSkills = _defendGoalkeeper.SkillPlayerCollection.ToList();
@@ -420,13 +435,9 @@ namespace DataAccess.Generator
 
         private void ForwardStrikeOne(Player attackPlayer = null)
         {
-            if (attackPlayer == null) attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
             if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
+                attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
+
             var attackSkills = attackPlayer.SkillPlayerCollection.ToList();
             var goalkeeperSkills = _defendGoalkeeper.SkillPlayerCollection.ToList();
 
@@ -465,20 +476,20 @@ namespace DataAccess.Generator
         }
         private void ForwardPas(AttackDirection attackDirection, Player attackPlayer = null)
         {
-            if (attackPlayer == null) attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
+            if (attackPlayer == null)
+                attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
+            
+            double defendSelection = 0;
             var defendPlayer = GetDefendPlayer(_lineIndex, _cellIndex);
 
-            if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
-
             var attackSkills = attackPlayer.SkillPlayerCollection.ToList();
-            var defendSkills = defendPlayer.SkillPlayerCollection.ToList();
             var attackPas = attackSkills.Where(attackSkill => attackSkill.Skill.Name == "Pas").Select(attackSkill => attackSkill.Value).FirstOrDefault();
-            var defendSelection = defendSkills.Where(defendSkill => defendSkill.Skill.Name == "Selection").Select(defendSkill => defendSkill.Value).FirstOrDefault();
+            
+            if (defendPlayer != null)
+            {
+                var defendSkills = defendPlayer.SkillPlayerCollection.ToList();
+                defendSelection = defendSkills.Where(defendSkill => defendSkill.Skill.Name == "Selection").Select(defendSkill => defendSkill.Value).FirstOrDefault();
+            }
 
             var chance = _random.Next(0, Convert.ToInt32(attackPas * 100 + defendSelection * 100 * 0.75));
             if (chance < Convert.ToInt32(attackPas * 100))
@@ -527,13 +538,8 @@ namespace DataAccess.Generator
         }
         private void Forward1On1()
         {
-            var attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            if (attackPlayer == null)
-            {
-                if (_cellIndex == N) _cellIndex--;
-                else if (_cellIndex == 0) _cellIndex++;
-                attackPlayer = GetAttackPlayer(_lineIndex, _cellIndex);
-            }
+            var attackPlayer = CheckPlayer(GetAttackPlayer(_lineIndex, _cellIndex));
+            
             //переделать используя настройки игрока
             var chance = _random.Next(0, 3);
             Result += " {" + _lineIndex + "," + _cellIndex + "} " + attackPlayer.Name + " " + attackPlayer.Surname +
@@ -573,7 +579,7 @@ namespace DataAccess.Generator
 
             var chance = _random.Next(0, Convert.ToInt32(attackDribbling * 100 +
                       (goalkeeperJump * 0.5 + goalkeeperPositioning) * 100));
-            if (chance < attackDribbling*100)
+            if (chance < attackDribbling * 100)
             {
                 var ran = _random.Next(0, 100);
                 if (ran < 50)
@@ -720,6 +726,8 @@ namespace DataAccess.Generator
                     _customEventLineList.Add(redEvent);
                     Result += "Red card " + player.Name + " " + player.Surname;
                     RemovePlayerFromDefendTeam(player);
+
+                    //TODO не больше 2 красных карточек на команду
                 }
             }
             else
