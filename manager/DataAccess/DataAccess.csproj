@@ -89,9 +89,9 @@
     <Compile Include="Generator\TeamInformation.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201403171840027_Initial.cs" />
-    <Compile Include="Migrations\201403171840027_Initial.Designer.cs">
-      <DependentUpon>201403171840027_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201403192107175_InitialCreate.cs" />
+    <Compile Include="Migrations\201403192107175_InitialCreate.Designer.cs">
+      <DependentUpon>201403192107175_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +100,7 @@
     <Compile Include="Repositories\EventLineRepository.cs" />
     <Compile Include="Repositories\IllnessRepository.cs" />
     <Compile Include="Repositories\MatchRepository.cs" />
+    <Compile Include="Repositories\NumberingRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\PlayerSettingsRepository.cs" />
     <Compile Include="Repositories\PositionRepository.cs" />
@@ -123,8 +124,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403171840027_Initial.resx">
-      <DependentUpon>201403171840027_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201403192107175_InitialCreate.resx">
+      <DependentUpon>201403192107175_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

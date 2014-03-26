@@ -1,55 +1,55 @@
-namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
+namespace DataAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class Initial : DbMigration
+    
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
                 "dbo.Arrangements",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Scheme = c.String(nullable: false),
-                        Type = c.Int(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Scheme = c.String(nullable: false),
+                    Type = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.Countries",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        PublicId = c.String(nullable: false, maxLength: 254),
-                        Name = c.String(nullable: false, maxLength: 254),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    PublicId = c.String(nullable: false, maxLength: 254),
+                    Name = c.String(nullable: false, maxLength: 254),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.Players",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 30),
-                        Surname = c.String(nullable: false, maxLength: 30),
-                        Age = c.Int(nullable: false),
-                        Weight = c.Int(nullable: false),
-                        Growth = c.Int(nullable: false),
-                        Number = c.Int(nullable: false),
-                        Salary = c.Int(nullable: false),
-                        Money = c.Int(nullable: false),
-                        Humor = c.Int(nullable: false),
-                        Condition = c.Int(nullable: false),
-                        PublicId = c.String(nullable: false),
-                        CreateDate = c.DateTime(nullable: false),
-                        Country_Id = c.Guid(nullable: false),
-                        Illness_Id = c.Guid(nullable: false),
-                        Position_Id = c.Guid(nullable: false),
-                        User_Id = c.Guid(nullable: false),
-                        TeamId = c.Guid()
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Name = c.String(nullable: false, maxLength: 30),
+                    Surname = c.String(nullable: false, maxLength: 30),
+                    Age = c.Int(nullable: false),
+                    Weight = c.Int(nullable: false),
+                    Growth = c.Int(nullable: false),
+                    Number = c.Int(nullable: false),
+                    Salary = c.Int(nullable: false),
+                    Money = c.Int(nullable: false),
+                    Humor = c.Int(nullable: false),
+                    Condition = c.Int(nullable: false),
+                    PublicId = c.String(nullable: false),
+                    CreateDate = c.DateTime(nullable: false),
+                    Country_Id = c.Guid(nullable: false),
+                    Illness_Id = c.Guid(nullable: false),
+                    Position_Id = c.Guid(nullable: false),
+                    User_Id = c.Guid(nullable: false),
+                    TeamId = c.Guid()
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Illnesses", t => t.Illness_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Positions", t => t.Position_Id, cascadeDelete: true)
@@ -63,55 +63,55 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.Illnesses",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        IllnessName = c.String(nullable: false, maxLength: 254),
-                        TimeForRecovery = c.Int(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    IllnessName = c.String(nullable: false, maxLength: 254),
+                    TimeForRecovery = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.Positions",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        PublicId = c.String(nullable: false, maxLength: 254),
-                        Name = c.String(nullable: false, maxLength: 254),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    PublicId = c.String(nullable: false, maxLength: 254),
+                    Name = c.String(nullable: false, maxLength: 254),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.Users",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Email = c.String(nullable: false, maxLength: 254),
-                        PasswordHash = c.String(nullable: false),
-                        UserName = c.String(nullable: false),
-                        ParentId = c.String(),
-                        Skype = c.String(),
-                        Birthday = c.DateTime(),
-                        City = c.String(),
-                        AboutMySelf = c.String(),
-                        Sex = c.Boolean(),
-                        Language = c.String(nullable: false, maxLength: 10),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Email = c.String(nullable: false, maxLength: 254),
+                    PasswordHash = c.String(nullable: false),
+                    UserName = c.String(nullable: false),
+                    ParentId = c.String(),
+                    Skype = c.String(),
+                    Birthday = c.DateTime(),
+                    City = c.String(),
+                    AboutMySelf = c.String(),
+                    Sex = c.Boolean(),
+                    Language = c.String(nullable: false, maxLength: 10),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.Teams",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(nullable: false),
-                        ShortName = c.String(nullable: false, maxLength: 20),
-                        Logo = c.String(nullable: false),
-                        CoachId = c.Guid(),
-                        AssistantId = c.Guid(),
-                        Stadium = c.String(nullable: false),
-                        Year = c.Int(nullable: false),
-                        Country_Id = c.Guid(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Name = c.String(nullable: false),
+                    ShortName = c.String(nullable: false, maxLength: 20),
+                    Logo = c.String(nullable: false),
+                    CoachId = c.Guid(),
+                    AssistantId = c.Guid(),
+                    Stadium = c.String(nullable: false),
+                    Year = c.Int(nullable: false),
+                    Country_Id = c.Guid(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Countries", t => t.Country_Id, cascadeDelete: true)
                 .Index(t => t.Country_Id);
@@ -119,13 +119,13 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.EventLines",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        LineId = c.Guid(nullable: false),
-                        Minute = c.Int(nullable: false),
-                        Type = c.Int(nullable: false),
-                        Player_Id = c.Guid(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    LineId = c.Guid(nullable: false),
+                    Minute = c.Int(nullable: false),
+                    Type = c.Int(nullable: false),
+                    Player_Id = c.Guid(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Players", t => t.Player_Id, cascadeDelete: true)
                 .Index(t => t.Player_Id);
@@ -133,17 +133,17 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.Matches",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        HomeTeamId = c.Guid(nullable: false),
-                        GuestTeamId = c.Guid(nullable: false),
-                        EventLineId = c.Guid(nullable: false),
-                        FansCount = c.Int(nullable: false),
-                        TicketPrice = c.Int(nullable: false),
-                        DateStart = c.DateTime(nullable: false),
-                        Result = c.String(),
-                        Weather_Id = c.Guid(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    HomeTeamId = c.Guid(nullable: false),
+                    GuestTeamId = c.Guid(nullable: false),
+                    EventLineId = c.Guid(nullable: false),
+                    FansCount = c.Int(nullable: false),
+                    TicketPrice = c.Int(nullable: false),
+                    DateStart = c.DateTime(nullable: false),
+                    Result = c.String(),
+                    Weather_Id = c.Guid(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Weathers", t => t.Weather_Id, cascadeDelete: true)
                 .Index(t => t.Weather_Id);
@@ -151,26 +151,26 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.Weathers",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(nullable: false, maxLength: 20),
-                        Type = c.Int(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Name = c.String(nullable: false, maxLength: 20),
+                    Type = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.PlayerSettings",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        IndexField = c.Int(nullable: false),
-                        Settings = c.String(),
-                        isCaptain = c.Boolean(nullable: false),
-                        isWritable = c.Boolean(nullable: false),
-                        Match_Id = c.Guid(nullable: false),
-                        Player_Id = c.Guid(nullable: false),
-                        
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    IndexField = c.Int(nullable: false),
+                    Settings = c.String(),
+                    isCaptain = c.Boolean(nullable: false),
+                    isWritable = c.Boolean(nullable: false),
+                    Match_Id = c.Guid(nullable: false),
+                    Player_Id = c.Guid(nullable: false),
+
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Matches", t => t.Match_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Players", t => t.Player_Id, cascadeDelete: true)
@@ -180,22 +180,22 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.Skills",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Name = c.String(nullable: false),
-                        Ordering = c.Int(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Name = c.String(nullable: false),
+                    Ordering = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
                 "dbo.SkillsPlayers",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Value = c.Double(nullable: false),
-                        Player_Id = c.Guid(nullable: false),
-                        Skill_Id = c.Guid(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Value = c.Double(nullable: false),
+                    Player_Id = c.Guid(nullable: false),
+                    Skill_Id = c.Guid(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Players", t => t.Player_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Skills", t => t.Skill_Id, cascadeDelete: true)
@@ -205,15 +205,15 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
             CreateTable(
                 "dbo.TeamSettings",
                 c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Settings = c.String(),
-                        LineUp = c.String(),
-                        Arrangement_Id = c.Guid(nullable: false),
-                        Match_Id = c.Guid(nullable: false),
-                        PlayerSend = c.Guid(),
-                        Team_Id = c.Guid(nullable: false),
-                    })
+                {
+                    Id = c.Guid(nullable: false),
+                    Settings = c.String(),
+                    LineUp = c.String(),
+                    Arrangement_Id = c.Guid(nullable: false),
+                    Match_Id = c.Guid(nullable: false),
+                    PlayerSend = c.Guid(),
+                    Team_Id = c.Guid(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Arrangements", t => t.Arrangement_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Matches", t => t.Match_Id, cascadeDelete: true)
@@ -222,7 +222,15 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
                 .Index(t => t.Match_Id)
                 .Index(t => t.Team_Id);
 
-
+            CreateTable(
+                "dbo.Numberings",
+                c => new
+                {
+                    Id = c.Guid(nullable: false),
+                    Type = c.Int(nullable: false),
+                    Number = c.Int(nullable: false, defaultValue: 0),
+                })
+                .PrimaryKey(t => t.Id);
 
             Sql("Insert into Positions values ('C7C41812-D6BA-42FE-88B5-D93965D40DD8','GK','Голкипер');" +
                 "Insert into Positions values ('51126600-164A-49BD-8C23-BB81A1D9D922','DEF','Защитник');" +
@@ -357,54 +365,55 @@ namespace DataAccess.Migrations.easygenerator.DataAccess.Migrations
                 "update Players Set TeamId = '43A41BD3-158F-4546-9A53-111CB0852FD8' where Players.Id='C965D541-D3EF-49D3-9434-18C00A9C0C95';");
 
 
-
-           
-
+            Sql("Insert into Numberings(Id, Type) values (NEWID(), 0);" +
+                "Insert into Numberings(Id, Type) values (NEWID(), 1);" +
+                "Insert into Numberings(Id, Type) values (NEWID(), 2);");
         }
-
+        
         public override void Down()
         {
-            DropForeignKey("dbo.TeamSettings", "Team_Id", "dbo.Teams");
-            DropForeignKey("dbo.TeamSettings", "Match_Id", "dbo.Matches");
             DropForeignKey("dbo.TeamSettings", "Arrangement_Id", "dbo.Arrangements");
-            DropForeignKey("dbo.SkillsPlayers", "Skill_Id", "dbo.Skills");
-            DropForeignKey("dbo.SkillsPlayers", "Player_Id", "dbo.Players");
-            DropForeignKey("dbo.PlayerSettings", "Player_Id", "dbo.Players");
-            DropForeignKey("dbo.PlayerSettings", "Match_Id", "dbo.Matches");
+            DropForeignKey("dbo.TeamSettings", "Match_Id", "dbo.Matches");
             DropForeignKey("dbo.Matches", "Weather_Id", "dbo.Weathers");
+            DropForeignKey("dbo.PlayerSettings", "Match_Id", "dbo.Matches");
+            DropForeignKey("dbo.Players", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.SkillsPlayers", "Player_Id", "dbo.Players");
+            DropForeignKey("dbo.SkillsPlayers", "Skill_Id", "dbo.Skills");
+            DropForeignKey("dbo.Players", "Position_Id", "dbo.Positions");
+            DropForeignKey("dbo.PlayerSettings", "Player_Id", "dbo.Players");
+            DropForeignKey("dbo.Players", "Illness_Id", "dbo.Illnesses");
             DropForeignKey("dbo.EventLines", "Player_Id", "dbo.Players");
             DropForeignKey("dbo.Teams", "Country_Id", "dbo.Countries");
+            DropForeignKey("dbo.TeamSettings", "Team_Id", "dbo.Teams");
             DropForeignKey("dbo.Players", "Country_Id", "dbo.Countries");
-            DropForeignKey("dbo.Players", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.Players", "Position_Id", "dbo.Positions");
-            DropForeignKey("dbo.Players", "Illness_Id", "dbo.Illnesses");
-            DropIndex("dbo.TeamSettings", new[] { "Team_Id" });
-            DropIndex("dbo.TeamSettings", new[] { "Match_Id" });
             DropIndex("dbo.TeamSettings", new[] { "Arrangement_Id" });
-            DropIndex("dbo.SkillsPlayers", new[] { "Skill_Id" });
-            DropIndex("dbo.SkillsPlayers", new[] { "Player_Id" });
-            DropIndex("dbo.PlayerSettings", new[] { "Player_Id" });
-            DropIndex("dbo.PlayerSettings", new[] { "Match_Id" });
+            DropIndex("dbo.TeamSettings", new[] { "Match_Id" });
             DropIndex("dbo.Matches", new[] { "Weather_Id" });
+            DropIndex("dbo.PlayerSettings", new[] { "Match_Id" });
+            DropIndex("dbo.Players", new[] { "User_Id" });
+            DropIndex("dbo.SkillsPlayers", new[] { "Player_Id" });
+            DropIndex("dbo.SkillsPlayers", new[] { "Skill_Id" });
+            DropIndex("dbo.Players", new[] { "Position_Id" });
+            DropIndex("dbo.PlayerSettings", new[] { "Player_Id" });
+            DropIndex("dbo.Players", new[] { "Illness_Id" });
             DropIndex("dbo.EventLines", new[] { "Player_Id" });
             DropIndex("dbo.Teams", new[] { "Country_Id" });
+            DropIndex("dbo.TeamSettings", new[] { "Team_Id" });
             DropIndex("dbo.Players", new[] { "Country_Id" });
-            DropIndex("dbo.Players", new[] { "User_Id" });
-            DropIndex("dbo.Players", new[] { "Position_Id" });
-            DropIndex("dbo.Players", new[] { "Illness_Id" });
-            DropTable("dbo.TeamSettings");
-            DropTable("dbo.SkillsPlayers");
-            DropTable("dbo.Skills");
-            DropTable("dbo.PlayerSettings");
+            DropTable("dbo.Numberings");
             DropTable("dbo.Weathers");
-            DropTable("dbo.Matches");
-            DropTable("dbo.EventLines");
-            DropTable("dbo.Teams");
             DropTable("dbo.Users");
+            DropTable("dbo.Skills");
+            DropTable("dbo.SkillsPlayers");
             DropTable("dbo.Positions");
             DropTable("dbo.Illnesses");
-            DropTable("dbo.Players");
+            DropTable("dbo.EventLines");
+            DropTable("dbo.Teams");
             DropTable("dbo.Countries");
+            DropTable("dbo.Players");
+            DropTable("dbo.PlayerSettings");
+            DropTable("dbo.Matches");
+            DropTable("dbo.TeamSettings");
             DropTable("dbo.Arrangements");
         }
     }

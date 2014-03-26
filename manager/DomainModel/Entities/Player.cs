@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Web.Script.Serialization;
 
 namespace DomainModel.Entities
 {
@@ -51,8 +52,11 @@ namespace DomainModel.Entities
         public string PublicId { get; private set; }
         public DateTime CreateDate { get; private set; }
         public Guid? TeamId { get;  set; }
+        [ScriptIgnore]
         public virtual ICollection<SkillsPlayer> SkillPlayerCollection { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<EventLine> EventLineCollection { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
     }
 }

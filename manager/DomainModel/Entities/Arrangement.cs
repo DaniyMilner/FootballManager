@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DomainModel.Entities
 {
@@ -19,6 +20,7 @@ namespace DomainModel.Entities
 
         public string Scheme { get; private set; }
         public ArrangementType Type { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
     }
 

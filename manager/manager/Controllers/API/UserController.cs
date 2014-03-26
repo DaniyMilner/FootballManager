@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -83,9 +84,62 @@ namespace manager.Controllers.API
         {
             if (_authenticationProvider.IsUserAuthenticated())
             {
+                var user = _userRepository.GetUserByUserName(GetCurrentUsername());
+                var playersCollections = new List<object>();
+
+                foreach (var player in user.PlayerCollection)
+                {
+                    playersCollections.Add(new
+                    {
+                        Name = player.Name,
+                        Surname = player.Surname,
+                        Age = player.Age,
+                        Weight = player.Weight,
+                        Growth = player.Growth,
+                        Number = player.Number,
+                        Salary = player.Salary,
+                        Money = player.Money,
+                        Humor = player.Humor,
+                        Condition = player.Condition,
+                        Position = new
+                        {
+                            Id = player.Position.Id,
+                            Name = player.Position.Name,
+                            PublicId = player.Position.PublicId
+                        },
+                        Illness = new
+                        {
+                            Id = player.Illness.Id,
+                            IllnessName = player.Illness.IllnessName,
+                            TimeForRecovery = player.Illness.TimeForRecovery
+                        },
+                        Country = new
+                        {
+                            Id = player.Country.Id,
+                            Name = player.Country.Name,
+                            PublicId = player.Country.PublicId
+                        },
+                        PublicId = player.PublicId,
+                        CreateDate = player.CreateDate,
+                        TeamId = player.TeamId,
+                    });
+                }
+
                 return JsonSuccess(new
                 {
-                    User = _userRepository.GetUserByUserName(GetCurrentUsername()),
+                    User = new
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        UserName = user.UserName,
+                        Skype = user.Skype,
+                        ParentId = user.ParentId,
+                        Birthday = user.Birthday,
+                        City = user.City,
+                        AboutMySelf = user.AboutMySelf,
+                        Sex = user.Sex,
+                        PlayerCollection = playersCollections
+                    },
                     Language = _userRepository.GetUserByUserName(GetCurrentUsername()).Language
                 });
             }

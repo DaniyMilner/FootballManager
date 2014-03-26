@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Web.Script.Serialization;
 using Infrastructure;
 
 namespace DomainModel.Entities
@@ -52,9 +53,9 @@ namespace DomainModel.Entities
             Skype = skype;
         }
 
-        public DateTime? Birthday { get; private set; }
+        public virtual DateTime? Birthday { get; private set; }
 
-        public void UpdateBirthday(DateTime birthday)
+        public void UpdateBirthday(DateTime? birthday)
         {
             Birthday = birthday;
         }
@@ -86,6 +87,7 @@ namespace DomainModel.Entities
         {
             Language = language;
         }
+        [ScriptIgnore]
         public virtual ICollection<Player> PlayerCollection { get; set; }
         
     }

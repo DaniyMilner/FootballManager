@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,8 @@
     <Compile Include="Entities\EventLine.cs" />
     <Compile Include="Entities\Illness.cs" />
     <Compile Include="Entities\Match.cs" />
+    <Compile Include="Entities\Numbering.cs" />
+    <Compile Include="Entities\NumberingType.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\PlayerSettings.cs" />
     <Compile Include="Entities\Position.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Repositories\IEventLineRepository.cs" />
     <Compile Include="Repositories\IIllnessRepository.cs" />
     <Compile Include="Repositories\IMatchRepository.cs" />
+    <Compile Include="Repositories\INumberingRepository.cs" />
     <Compile Include="Repositories\IPlayerRepository.cs" />
     <Compile Include="Repositories\IPlayerSettingsRepository.cs" />
     <Compile Include="Repositories\IPositionRepository.cs" />
@@ -81,6 +85,9 @@
       <Project>{c2fc759f-a43e-45c7-981f-02f87eb8f9ca}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

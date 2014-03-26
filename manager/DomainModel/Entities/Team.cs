@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DomainModel.Entities
 {
@@ -30,6 +31,7 @@ namespace DomainModel.Entities
         public virtual Country Country { get; private set; }
         public string Stadium { get; private set; }
         public int Year { get; private set; }
+        [ScriptIgnore]
         public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
     }
 }
