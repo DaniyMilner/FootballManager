@@ -14,11 +14,12 @@ namespace DataAccess.Generator
         public void Run(IMatchRepository matchRepository, IEntityFactory entityFactory, ITeamRepository teamRepository,
             ICountryRepository countryRepository, ITeamSettingsRepository teamSettingsRepository,
             IPlayerRepository playerRepository, IArrangementRepository arrangementRepository,
-            IPlayerSettingsRepository playerSettingsRepository)
+            IPlayerSettingsRepository playerSettingsRepository, IEventLineRepository eventLineRepository)
         {
             var json = new JavaScriptSerializer();
             var teamInfo = new TeamInformation();
             var playerInfo = new PlayerInformation();
+            
             //1. выбор матчей для генерации и генерация в цикле
             Match match = matchRepository.Get(new Guid("FB8A3E3B-7EC1-4EA6-A20F-D31CB65D9E00"));
             //2. закрепить атрибут isWritable для все игроков матча
@@ -44,9 +45,12 @@ namespace DataAccess.Generator
             List<Player>[,] homeLineUp = teamInfo.GetTeamLineUp(homeSettings, homeSettings.Arrangement, homePlayers);
             List<Player>[,] guestLineUp = teamInfo.GetTeamLineUp(guestSettings, guestSettings.Arrangement, guestPlayers);
 
+            //голкиперы команд
+            Player homeGoalkeeper = teamInfo.GetTeamGoalkeeper(homeSettings, homePlayers);
+            Player guestGoalkeeper = teamInfo.GetTeamGoalkeeper(guestSettings, guestPlayers);
+
             //установки всех игроков
             List<CustomPlayerSettings> playersSettings = playerInfo.GetPlayersSettingsByMatchId(playerSettingsRepository, match.Id);
-
 
             //4. высчитать расчетную силу команды
             double totalHome = 0, totalGuest = 0;
@@ -71,25 +75,28 @@ namespace DataAccess.Generator
 
 
             //5. в цикле генерировать события и вставлять их в список
-            var random = new Random();
             var resultList = new List<string>();
             var manager = new EventManager();
             var game = new GameManager();
             int currentMinute = 0;
             bool secondHalf = false;
+            int homeGoal = 0, guestGoal = 0;
+            var lineEvents = new List<EventLine>();
             resultList.Add(manager.StartMatchEvent());
-
+           
             do
             {
                 currentMinute += game.GetMinute();
                 if (game.TeamWithBall(homeChance, guestChance))
                 {
-                    manager.MatchEvent(homeLineUp, guestLineUp);
+                    homeGoal += manager.MatchEvent(homeLineUp, guestLineUp, guestGoalkeeper, match.EventLineId, 
+                        eventLineRepository, currentMinute, customHomeTeamSettings,lineEvents);
                     resultList.Add("Home -> " + manager.Result);
                 }
                 else
                 {
-                    manager.MatchEvent(guestLineUp, homeLineUp);
+                    guestGoal += manager.MatchEvent(guestLineUp, homeLineUp, homeGoalkeeper, match.EventLineId,
+                        eventLineRepository, currentMinute, customGuestTeamSettings, lineEvents);
                     resultList.Add("Guest - > " + manager.Result);
                 }
                 if (!secondHalf && currentMinute > 45)
@@ -103,6 +110,7 @@ namespace DataAccess.Generator
 
             resultList.Add(manager.FinishMatchEvent());
             //6. из списка событий генерировать json и записать в базу
+            var aa = resultList.Where(z => z.Contains("Penalty")).ToList();
             int a = 0;
         }
     }
