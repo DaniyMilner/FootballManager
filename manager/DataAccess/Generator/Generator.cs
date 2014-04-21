@@ -19,7 +19,7 @@ namespace DataAccess.Generator
             var json = new JavaScriptSerializer();
             var teamInfo = new TeamInformation();
             var playerInfo = new PlayerInformation();
-            
+
             //1. выбор матчей для генерации и генерация в цикле
             Match match = matchRepository.Get(new Guid("FB8A3E3B-7EC1-4EA6-A20F-D31CB65D9E00"));
             //2. закрепить атрибут isWritable для все игроков матча
@@ -75,43 +75,49 @@ namespace DataAccess.Generator
 
 
             //5. в цикле генерировать события и вставлять их в список
-            var resultList = new List<string>();
+            //var resultList = new List<string>();
+            var resultList = new List<MatchEvent>();
             var manager = new EventManager(eventLineRepository, match.EventLineId);
             var game = new GameManager();
             int currentMinute = 0;
             bool secondHalf = false;
             int homeGoal = 0, guestGoal = 0;
             var lineEvents = new List<EventLine>();
-            resultList.Add(manager.StartMatchEvent());
-           
+
+            resultList.Add(new MatchEvent(currentMinute, true, new List<MatchEventItem>()));
+            manager.StartMatchEvent(resultList[resultList.Count - 1].EventsLine);
+
             do
             {
                 currentMinute += game.GetMinute();
                 if (game.TeamWithBall(homeChance, guestChance))
                 {
-                    homeGoal += manager.MatchEvent(homeLineUp, guestLineUp, guestGoalkeeper, 
-                        currentMinute, customHomeTeamSettings,lineEvents);
-                    resultList.Add("Home -> " + manager.Result);
+                    resultList.Add(new MatchEvent(currentMinute, true, new List<MatchEventItem>()));
+                    homeGoal += manager.MatchEvent(homeLineUp, guestLineUp, guestGoalkeeper,
+                        currentMinute, customHomeTeamSettings, lineEvents, resultList[resultList.Count-1].EventsLine);
                 }
                 else
                 {
+                    resultList.Add(new MatchEvent(currentMinute, false, new List<MatchEventItem>()));
                     guestGoal += manager.MatchEvent(guestLineUp, homeLineUp, homeGoalkeeper,
-                        currentMinute, customGuestTeamSettings, lineEvents);
-                    resultList.Add("Guest - > " + manager.Result);
+                        currentMinute, customGuestTeamSettings, lineEvents, resultList[resultList.Count - 1].EventsLine);
                 }
                 if (!secondHalf && currentMinute > 45)
                 {
-                    resultList.Add(manager.EndFirstTime());
+                    resultList.Add(new MatchEvent(currentMinute, true, new List<MatchEventItem>()));
+                    manager.EndFirstTime(resultList[resultList.Count - 1].EventsLine);
                     secondHalf = true;
                     currentMinute = 45;
-                    resultList.Add(manager.StartSecondHalf());
+                    resultList.Add(new MatchEvent(currentMinute, true, new List<MatchEventItem>()));
+                    manager.StartSecondHalf(resultList[resultList.Count - 1].EventsLine);
                 }
             } while (currentMinute < 90);
 
+            resultList.Add(new MatchEvent(currentMinute, true, new List<MatchEventItem>()));
+            manager.FinishMatchEvent(resultList[resultList.Count - 1].EventsLine);
 
-            resultList.Add(manager.FinishMatchEvent());
             //6. из списка событий генерировать json и записать в базу
-            var aa = resultList.Where(z => z.Contains("Penalty")).ToList();
+            match.SetResult(json.Serialize(resultList));
             int a = 0;
         }
     }

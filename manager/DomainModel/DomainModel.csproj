@@ -49,6 +49,9 @@
     <Compile Include="Entities\EventLine.cs" />
     <Compile Include="Entities\Illness.cs" />
     <Compile Include="Entities\Match.cs" />
+    <Compile Include="Entities\MatchEvent.cs" />
+    <Compile Include="Entities\MatchEventItem.cs" />
+    <Compile Include="Entities\MatchEventItemType.cs" />
     <Compile Include="Entities\Numbering.cs" />
     <Compile Include="Entities\NumberingType.cs" />
     <Compile Include="Entities\Player.cs" />

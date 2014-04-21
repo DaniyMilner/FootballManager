@@ -47,7 +47,7 @@ namespace manager.Controllers.API
         [Route("api/generator/run")]
         public ActionResult Run()
         {
-            Generator generator = new Generator();
+            var generator = new Generator();
             generator.Run(_matchRepository, _entityFactory, _teamRepository, _countryRepository, _teamSettingsRepository,
                 _playerRepository, _arrangementRepository, _playerSettingsRepository, _eventLineRepository);
             return JsonSuccess();
