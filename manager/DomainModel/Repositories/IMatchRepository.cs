@@ -9,5 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface IMatchRepository : IRepository<Match>
     {
+        List<Match> GetAllNotGeneratedMatches();
     }
 }

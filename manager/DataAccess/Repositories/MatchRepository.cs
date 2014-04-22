@@ -14,5 +14,10 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
+
+        public List<Match> GetAllNotGeneratedMatches()
+        {
+            return _dataContext.GetSet<Match>().Where(z => z.Result == null || z.Result == string.Empty).ToList();
+        } 
     }
 }
