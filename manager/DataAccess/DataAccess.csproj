@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201403192107175_InitialCreate.Designer.cs">
       <DependentUpon>201403192107175_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404221233376_AddTwoTeams.cs" />
+    <Compile Include="Migrations\201404221233376_AddTwoTeams.Designer.cs">
+      <DependentUpon>201404221233376_AddTwoTeams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArrangementRepository.cs" />
@@ -126,6 +130,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403192107175_InitialCreate.resx">
       <DependentUpon>201403192107175_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221233376_AddTwoTeams.resx">
+      <DependentUpon>201404221233376_AddTwoTeams.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
