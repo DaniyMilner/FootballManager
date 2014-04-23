@@ -17,6 +17,10 @@
             route: 'generator',
             moduleId: 'viewmodels/generator/generator',
             title: 'Generator'
+        }, {
+            route: 'match/:id',
+            moduleId: 'viewmodels/match/match',
+            title: 'Match'
         }];
 
     });

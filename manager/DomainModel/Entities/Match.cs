@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -11,7 +12,8 @@ namespace DomainModel.Entities
     public class Match:Entity
     {
         protected internal Match() { }
-        protected internal Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, int ticketPrice, DateTime dateStart) 
+        protected internal Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
+            int ticketPrice, DateTime dateStart, string publicId) 
         {
             HomeTeamId = homeTeamId;
             GuestTeamId = guestTeamId;
@@ -21,6 +23,7 @@ namespace DomainModel.Entities
             TicketPrice = ticketPrice;
             DateStart = dateStart;
             Result = String.Empty;
+            PublicId = publicId;
             PlayerSettingsCollection = new Collection<PlayerSettings>();
             TeamSettingsCollection = new Collection<TeamSettings>();
         }
@@ -33,10 +36,12 @@ namespace DomainModel.Entities
         public int TicketPrice { get; private set; }
         public DateTime DateStart { get; private set; }
         public string Result { get; private set; }
+        public string PublicId { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
+
 
         public void SetResult(string result)
         {

@@ -367,7 +367,8 @@ namespace DataAccess.Migrations
 
             Sql("Insert into Numberings(Id, Type) values (NEWID(), 0);" +
                 "Insert into Numberings(Id, Type) values (NEWID(), 1);" +
-                "Insert into Numberings(Id, Type) values (NEWID(), 2);");
+                "Insert into Numberings(Id, Type) values (NEWID(), 2);" +
+                "Insert into Numberings(Id, Type) values (NEWID(), 3);");
         }
         
         public override void Down()

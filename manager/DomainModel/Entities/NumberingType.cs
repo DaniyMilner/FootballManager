@@ -10,6 +10,7 @@ namespace DomainModel.Entities
     {
         User,
         Player,
-        Team
+        Team,
+        Match
     }
 }

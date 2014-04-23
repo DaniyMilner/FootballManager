@@ -18,6 +18,11 @@ namespace DataAccess.Repositories
         public List<Match> GetAllNotGeneratedMatches()
         {
             return _dataContext.GetSet<Match>().Where(z => z.Result == null || z.Result == string.Empty).ToList();
-        } 
+        }
+
+        public Match GetMatchByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<Match>().FirstOrDefault(z => z.PublicId == publicId);
+        }
     }
 }

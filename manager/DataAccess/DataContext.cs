@@ -149,6 +149,7 @@ namespace DataAccess
             modelBuilder.Entity<Match>().Property(e => e.TicketPrice).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
+            modelBuilder.Entity<Match>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Match>().HasMany(e => e.PlayerSettingsCollection).WithRequired(e => e.Match);
 
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Player);

@@ -14,5 +14,10 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
+
+        public List<EventLine> GetEventsListByLineId(Guid lineId)
+        {
+            return _dataContext.GetSet<EventLine>().Where(z => z.LineId == lineId).ToList();
+        } 
     }
 }
