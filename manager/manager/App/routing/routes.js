@@ -17,6 +17,10 @@
             route: 'generator',
             moduleId: 'viewmodels/generator/generator',
             title: 'Generator'
+        }, {
+            route: 'userprofile',
+            moduleId: 'viewmodels/user/profile',
+            title: 'User profile'
         }];
 
     });

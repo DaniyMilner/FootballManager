@@ -207,3 +207,18 @@ body {
     position: absolute;
 }
 
+.panel {
+	padding: 20px;
+	border-radius: 10px;
+	background: none;
+}
+
+.panel.yellow {
+	border: 1px rgba(131, 143, 0, 0.5) solid;
+	box-shadow: 0 0 10px rgba(255, 224, 0, 0.5);
+}
+
+.panel.green {
+	border: 1px rgba(39, 75, 0, 0.5) solid;
+	box-shadow: 0 0 10px rgba(133, 255, 0, 0.5);
+}
