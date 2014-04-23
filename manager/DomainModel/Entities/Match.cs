@@ -37,5 +37,10 @@ namespace DomainModel.Entities
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<TeamSettings> TeamSettingsCollection { get; private set; }
+
+        public void SetResult(string result)
+        {
+            Result = result;
+        }
     }
 }

@@ -9,6 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface IEventLineRepository : IRepository<EventLine>
     {
-
+        
     }
 }

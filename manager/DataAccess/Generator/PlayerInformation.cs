@@ -42,7 +42,7 @@ namespace DataAccess.Generator
                     }
                 }
                 if (isFind)
-                    break; ;
+                    break;
             }
 
             if (teamCaptain != null)

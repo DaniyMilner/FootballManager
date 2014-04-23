@@ -20,6 +20,13 @@ namespace DataAccess.Generator
             return customTeamSettings;
         }
 
+        public Player GetTeamGoalkeeper(TeamSettings teamSettings, List<Player> teamPlayers)
+        {
+            var json = new JavaScriptSerializer();
+            var customTeamLineUp = json.Deserialize<CustomLineUp>(teamSettings.LineUp);
+            return teamPlayers.FirstOrDefault(z => z.Id == customTeamLineUp.One);
+        }
+
         public List<Player>[,] GetTeamLineUp(TeamSettings teamSettings, Arrangement arrangement, List<Player> teamPlayers)
         {
             const int arrayLength = 3;

@@ -8,8 +8,8 @@ namespace DomainModel.Entities
 {
     public class EventLine : Entity
     {
-        protected internal EventLine() { }
-        protected internal EventLine(Guid lineId, Player player, int minute, EventLineType type)
+        public EventLine() { }
+        public EventLine(Guid lineId, Player player, int minute, EventLineType type)
         {
             LineId = lineId;
             Player = player;
