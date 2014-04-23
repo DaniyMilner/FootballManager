@@ -189,6 +189,7 @@
     <Compile Include="Configuration\BundleConfiguration.cs" />
     <Compile Include="Configuration\ContainerConfiguration.cs" />
     <Compile Include="Controllers\API\GeneratorController.cs" />
+    <Compile Include="Controllers\API\MatchController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -213,6 +214,7 @@
     <Content Include="App\routing\routes.js" />
     <Content Include="App\viewmodels\generator\generator.js" />
     <Content Include="App\viewmodels\home\home.js" />
+    <Content Include="App\viewmodels\match\match.js" />
     <Content Include="App\viewmodels\menu\mainmenu.js" />
     <Content Include="App\viewmodels\menu\profilemenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
@@ -223,6 +225,7 @@
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\generator\generator.html" />
     <Content Include="App\views\home\home.html" />
+    <Content Include="App\views\match\match.html" />
     <Content Include="App\views\menu\mainmenu.html" />
     <Content Include="App\views\menu\profilemenu.html" />
     <Content Include="App\views\menu\usermenu.html" />

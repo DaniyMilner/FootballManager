@@ -28,7 +28,7 @@ namespace DomainModel
         Weather Weather(string name, WeatherType type);
 
         Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
-            int ticketPrice, DateTime dateStart);
+            int ticketPrice, DateTime dateStart, string publicId);
 
         PlayerSettings PlayerSettings(Player player, Match match, int index);
 
@@ -76,9 +76,9 @@ namespace DomainModel
         }
 
         public Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
-            int ticketPrice, DateTime dateStart)
+            int ticketPrice, DateTime dateStart, string publicId)
         {
-            return new Match(homeTeamId, guestTeamId, eventLineId, weather, fansCount, ticketPrice, dateStart);
+            return new Match(homeTeamId, guestTeamId, eventLineId, weather, fansCount, ticketPrice, dateStart, publicId);
         }
 
         public PlayerSettings PlayerSettings(Player player, Match match, int index)

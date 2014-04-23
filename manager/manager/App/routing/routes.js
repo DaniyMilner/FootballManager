@@ -21,6 +21,10 @@
             route: 'userprofile/:id',
             moduleId: 'viewmodels/user/profile',
             title: 'User profile'
+        }, {
+            route: 'match/:id',
+            moduleId: 'viewmodels/match/match',
+            title: 'Match'
         }];
 
     });
