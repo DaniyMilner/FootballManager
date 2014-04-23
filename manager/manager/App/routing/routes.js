@@ -18,7 +18,7 @@
             moduleId: 'viewmodels/generator/generator',
             title: 'Generator'
         }, {
-            route: 'userprofile',
+            route: 'userprofile/:id',
             moduleId: 'viewmodels/user/profile',
             title: 'User profile'
         }];
