@@ -18,6 +18,13 @@ namespace DataAccess.Repositories
         public List<EventLine> GetEventsListByLineId(Guid lineId)
         {
             return _dataContext.GetSet<EventLine>().Where(z => z.LineId == lineId).ToList();
-        } 
+        }
+
+        public void DropEventsListByLineId(Guid lineId)
+        {
+            var list = GetEventsListByLineId(lineId);
+            foreach (var line in list)
+                _dataContext.GetSet<EventLine>().Remove(line);
+        }
     }
 }

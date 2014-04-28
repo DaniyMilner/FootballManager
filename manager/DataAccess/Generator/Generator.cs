@@ -11,11 +11,13 @@ namespace DataAccess.Generator
 {
     public class Generator
     {
-        public void Run(IMatchRepository matchRepository, IEntityFactory entityFactory, ITeamRepository teamRepository,
+        public TimeSpan Run(IMatchRepository matchRepository, IEntityFactory entityFactory, ITeamRepository teamRepository,
             ICountryRepository countryRepository, ITeamSettingsRepository teamSettingsRepository,
             IPlayerRepository playerRepository, IArrangementRepository arrangementRepository,
             IPlayerSettingsRepository playerSettingsRepository, IEventLineRepository eventLineRepository)
         {
+            var timeStart = DateTime.Now;
+
             var json = new JavaScriptSerializer();
             var teamInfo = new TeamInformation();
             var playerInfo = new PlayerInformation();
@@ -78,7 +80,8 @@ namespace DataAccess.Generator
 
 
                 //5. в цикле генерировать события и вставлять их в список
-                //var resultList = new List<string>();
+                eventLineRepository.DropEventsListByLineId(match.EventLineId);
+                
                 var resultList = new List<MatchEvent>();
                 var manager = new EventManager(eventLineRepository, match.EventLineId);
                 var game = new GameManager();
@@ -122,6 +125,8 @@ namespace DataAccess.Generator
                 //6. из списка событий генерировать json и записать в базу
                 match.SetResult(json.Serialize(resultList));
             }
+            var timeStop = DateTime.Now;
+            return timeStop - timeStart;
         }
     }
 }

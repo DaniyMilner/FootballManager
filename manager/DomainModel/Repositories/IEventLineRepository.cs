@@ -10,5 +10,6 @@ namespace DomainModel.Repositories
     public interface IEventLineRepository : IRepository<EventLine>
     {
         List<EventLine> GetEventsListByLineId(Guid lineId);
+        void DropEventsListByLineId(Guid lineId);
     }
 }
