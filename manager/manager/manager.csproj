@@ -210,7 +210,6 @@
     <Content Include="App\localization\localizationManager.js" />
     <Content Include="App\localization\resources.js" />
     <Content Include="App\main.js" />
-    <Content Include="App\models\user.js" />
     <Content Include="App\routing\routes.js" />
     <Content Include="App\viewmodels\generator\generator.js" />
     <Content Include="App\viewmodels\home\home.js" />
@@ -332,7 +331,9 @@
     </Content>
     <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

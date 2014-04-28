@@ -1,5 +1,5 @@
-﻿define(['durandal/app', 'plugins/http', 'constants', 'models/user'],
-    function (app, http, constants, UserModel) {
+﻿define(['durandal/app', 'plugins/http', 'constants'],
+    function (app, http, constants) {
 
         function parseDateString(str) {
             return new Date(parseInt(str.substr(6), 10));
@@ -20,6 +20,18 @@
                         that.isAuthenticated = false;
                     } else {
                         that.isAuthenticated = true;
+                        that.user = {
+                            id: response.data.User.Id,
+                            email: response.data.User.Email,
+                            username: response.data.User.UserName,
+                            skype: response.data.User.Skype,
+                            parentId: response.data.User.ParentId,
+                            birthday: parseDateString(response.data.User.Birthday),
+                            city: response.data.User.City,
+                            aboutmyself: response.data.User.AboutMySelf,
+                            sex: response.data.User.Sex,
+                            publicId: response.data.User.PublicId
+                        }
                     }
                 });
             };

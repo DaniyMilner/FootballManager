@@ -16,7 +16,7 @@
         }
 
         function navigateToUserProfile() {
-            router.navigate('userprofile/');
+            router.navigate('userprofile/' + userContext.user.publicId);
         }
 
         function activate() {

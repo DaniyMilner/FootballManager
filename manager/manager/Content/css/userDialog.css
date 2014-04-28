@@ -2,7 +2,7 @@
 	position: absolute;
 	top: 84px;
 	right: 0;
-	width: 416px;
+	min-width: 130px;
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 10;
 	border-radius: 5px;

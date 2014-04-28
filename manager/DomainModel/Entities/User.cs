@@ -11,7 +11,7 @@ namespace DomainModel.Entities
         protected internal User() { }
 
         protected internal User(string userName, string password, string email, string parrentId, string skype,
-            DateTime? birthday, string city, string aboutMySelf, bool sex)
+            DateTime? birthday, string city, string aboutMySelf, bool sex, string publicId)
         {
             Email = email;
             UserName = userName;
@@ -24,6 +24,7 @@ namespace DomainModel.Entities
             Sex = sex;
             Language = "ru";
             PlayerCollection = new Collection<Player>();
+            PublicId = publicId;
         }
 
         public string Email { get; private set; }
@@ -87,8 +88,10 @@ namespace DomainModel.Entities
         {
             Language = language;
         }
-        [ScriptIgnore]
+
         public virtual ICollection<Player> PlayerCollection { get; set; }
+
+        public string PublicId { get; private set; }
         
     }
 }

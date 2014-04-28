@@ -6,5 +6,6 @@ namespace DomainModel.Repositories
     {
         User GetUserByEmail(string email);
         User GetUserByUserName(string userName);
+        User GetUserByPublicId(string publicId);
     }
 }

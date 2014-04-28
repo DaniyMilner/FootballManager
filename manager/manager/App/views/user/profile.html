@@ -1,5 +1,6 @@
 ﻿<section class="user-profile-wrapper">
     <h3>Профиль пользователя</h3>
+    <!-- ko ifnot: isEditMode -->
     <div class="panel yellow">
         <div class="user-info">
             <table class="table not-bordered">
@@ -26,5 +27,50 @@
             </table>
         </div>
         <img src="Content/img/general/user-icon-128x128.png" alt="" class="img-thumbnail user-img">
+        <!-- ko if: isCurrentUser -->
+        <div data-bind="click: changeEditMode">Изменить</div>
+        <!-- /ko -->
     </div>
+    <!-- /ko -->
+    <!-- ko if: isEditMode -->
+    <div>
+        <label>
+            День рождения
+        </label>
+        <input type="text" />
+    </div>
+    <div>
+        <label>
+            Пол
+        </label>
+        <input type="text" />
+    </div>
+    <div>
+        <label>
+            Город
+        </label>
+        <input type="text" />
+    </div>
+    <div>
+        <label>
+            Скайп
+        </label>
+        <input type="text" />
+    </div>
+    <div>
+        <label>
+            О себе
+        </label>
+        <textarea></textarea>
+    </div>
+    <div>
+        <label>
+            День рождения
+        </label>
+        <input type="text" />
+    </div>
+    <div>
+        <div>Сохранить изменения</div>
+    </div>
+    <!-- /ko -->
 </section>
