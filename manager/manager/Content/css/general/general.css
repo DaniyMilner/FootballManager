@@ -90,7 +90,7 @@ body {
 	display: -webkit-box;
 	display: -moz-box;
 	width: 100%;
-
+	background: #3A881C;
 }
 .left-content .title-block{
 	height: 40px;
@@ -123,7 +123,8 @@ body {
 
 .user-menu > ul li ul li {
 	height: 30px;
-	background: #4e5d22;  
+	background: #4e5d22;
+    background: #3A881C;  
 }
 
 .user-menu > ul li a {
@@ -150,12 +151,14 @@ body {
 
 .user-menu > ul li:hover {
 	background: #4e5d22;
+    background: #3A881C;
 	opacity: 0.95;
 }
 
 .user-menu > ul li ul li:hover {
 	background: -moz-linear-gradient(top, #87a13e 0%, #4e5d22 26%, #4e5d22 81%, #87a13e 100%); /* FF3.6+ */
 	background: -webkit-linear-gradient(top, #87a13e 0%, #4e5d22 26%, #4e5d22 81%, #87a13e 100%); /* Chrome10+,Safari5.1+ */
+    background: #3A881C;
 }
 
 .user-menu > ul li ul li:last-child {

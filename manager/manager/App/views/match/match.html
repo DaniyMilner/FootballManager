@@ -1,3 +1,141 @@
 ﻿<section class="match-wrapper">
+    <div class="scoreboard-wrapper">
+        <div class="home-team-logo"></div>
+        <div class="score-info">
+            <div class="top-info">
+                <p class="team-name home-team-name" data-bind="text: homeTeamName"></p>
+                <div class="score">
+                    <p class="home-score" data-bind="text: homeGoal()"></p>
+                    <p class="separator">:</p>
+                    <p class="guest-score" data-bind="text: guestGoal()"></p>
+                </div>
+                <p class="team-name guest-team-name" data-bind="text: guestTeamName"></p>
+            </div>
+            <div class="bottom-info">
+                <p class="datetime" data-bind="text: matchDateStart"></p>
+                <p class="stadium" data-bind="text: homeStadium"></p>
+            </div>
+        </div>
+        <div class="guest-team-logo"></div>
+    </div>
+    <div class="event-line-wrapper">
+        <p class="top-team" data-bind="text: homeTeamShortName"></p>
+        <div class="line">
+            <div class="events">
+                <i class="clocks"></i>
+                <i class="time0">0</i>
+                <i class="time10">10</i>
+                <i class="time20">20</i>
+                <i class="time30">30</i>
+                <i class="time40">40</i>
+                <i class="time50">50</i>
+                <i class="time60">60</i>
+                <i class="time70">70</i>
+                <i class="time80">80</i>
+                <i class="time90">90</i>
+            </div>
+            <div class="cards-wrapper" data-bind="foreach: customEventsLine">
+                <span class="match-icon" data-bind="css: { goal: type == 0, yellow_card: type == 1, red_card: type == 2, top: isHome, bottom: !isHome }, style: { left: coord + '%' }"></span>
+            </div>
+        </div>
+        <p class="bottom-team" data-bind="text: guestTeamShortName"></p>
+    </div>
+    <table class="table score-table" data-bind="visible: customEventsLine().length != 0">
+        <tr class="main" data-bind="visible: homeGoalEventsLine().length != 0 || guestGoalEventsLine().length != 0">
+            <td colspan="2">Голы</td>
+        </tr>
+        <tr data-bind="visible: homeGoalEventsLine().length != 0 || guestGoalEventsLine().length != 0">
+            <td data-bind="foreach: homeGoalEventsLine">
+                <div>
+                    <div class="goal"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                </div>
+            </td>
+            <td data-bind="foreach: guestGoalEventsLine">
+                <div>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                    <div class="goal"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                </div>
+            </td>
+        </tr>
+        <tr class="main" data-bind="visible: homeYellowEventsLine().length != 0 || guestYellowEventsLine().length != 0">
+            <td colspan="2">Предупреждения</td>
+        </tr>
+        <tr data-bind="visible: homeYellowEventsLine().length != 0 || guestYellowEventsLine().length != 0">
+            <td data-bind="foreach: homeYellowEventsLine">
+                <div>
+                    <div class="yellow_card"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                </div>
+            </td>
+            <td data-bind="foreach: guestYellowEventsLine">
+                <div>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                    <div class="yellow_card"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                </div>
+            </td>
+        </tr>
+        <tr class="main" data-bind="visible: homeRedEventsLine().length != 0 || guestRedEventsLine().length != 0">
+            <td colspan="2">Удаления</td>
+        </tr>
+        <tr data-bind="visible: homeRedEventsLine().length != 0 || guestRedEventsLine().length != 0">
+            <td data-bind="foreach: homeRedEventsLine">
+                <div>
+                    <div class="red_card"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                </div>
+            </td>
+            <td data-bind="foreach: guestRedEventsLine">
+                <div>
+                    <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
+                    <div class="red_card"></div>
+                    <p class="minute" data-bind="text: minute + '’'"></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="navigation">
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 0 }, click: setPageIndex0">Трансляция</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 1 }, click: setPageIndex1">Составы</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 2 }, click: setPageIndex2">Статистика</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 3 }, click: setPageIndex3">Отчет</div>
+    </div>
     
+
+    <div class="info-wrapper translation-wrapper" data-bind="visible: activePageIndex() == 0"></div>
+    
+    
+    <div class="info-wrapper team-wrapper" data-bind="visible: activePageIndex() == 1">
+        <table class="table teams" data-bind="visible: homePlayers().length != 0 && guestPlayers().length != 0">
+            <tr class="main">
+                <td data-bind="text: homeTeamName"></td>
+                <td data-bind="text: guestTeamName"></td>
+            </tr>
+            <tr>
+                <td data-bind="foreach: homePlayers">
+                    <div>
+                        <p class="number" data-bind="text:number"></p>
+                        <p class="position" data-bind="text: positionPublicId"></p>
+                        <span class="surname" data-bind="text: name + ' ' + surname"></span>
+                    </div>
+                </td>
+                <td data-bind="foreach: guestPlayers">
+                    <div>
+                        <span class="surname" data-bind="text: name + ' ' + surname"></span>
+                        <p class="position" data-bind="text: positionPublicId"></p>
+                        <p class="number" data-bind="text: number"></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+    <div class="info-wrapper statistics-wrapper" data-bind="visible: activePageIndex() == 2"></div>
+    <div class="info-wrapper report-wrapper" data-bind="visible: activePageIndex() == 3"></div>
 </section>

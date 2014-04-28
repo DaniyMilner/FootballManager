@@ -25,7 +25,7 @@ namespace manager.Controllers.API
         public GeneratorController(IMatchRepository matchRepository,
                                     IEntityFactory entityFactory,
                                     ITeamRepository teamRepository,
-                                    ICountryRepository countryRepository, 
+                                    ICountryRepository countryRepository,
                                     ITeamSettingsRepository teamSettingsRepository,
                                     IPlayerRepository playerRepository,
                                     IArrangementRepository arrangementRepository,
@@ -48,9 +48,9 @@ namespace manager.Controllers.API
         public ActionResult Run()
         {
             var generator = new Generator();
-            generator.Run(_matchRepository, _entityFactory, _teamRepository, _countryRepository, _teamSettingsRepository,
+            var time = generator.Run(_matchRepository, _entityFactory, _teamRepository, _countryRepository, _teamSettingsRepository,
                 _playerRepository, _arrangementRepository, _playerSettingsRepository, _eventLineRepository);
-            return JsonSuccess();
+            return JsonSuccess(new { date = time });
         }
     }
 }
