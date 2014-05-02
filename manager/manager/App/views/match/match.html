@@ -34,25 +34,25 @@
                 <i class="time80">80</i>
                 <i class="time90">90</i>
             </div>
-            <div class="cards-wrapper" data-bind="foreach: customEventsLine">
+            <div class="cards-wrapper" data-bind="foreach: customEventsLineOnline">
                 <span class="match-icon" data-bind="css: { goal: type == 0, yellow_card: type == 1, red_card: type == 2, top: isHome, bottom: !isHome }, style: { left: coord + '%' }"></span>
             </div>
         </div>
         <p class="bottom-team" data-bind="text: guestTeamShortName"></p>
     </div>
-    <table class="table score-table" data-bind="visible: customEventsLine().length != 0">
-        <tr class="main" data-bind="visible: homeGoalEventsLine().length != 0 || guestGoalEventsLine().length != 0">
+    <table class="table score-table" data-bind="visible: customEventsLineOnline().length != 0">
+        <tr class="main" data-bind="visible: homeGoalEventsLineOnline().length != 0 || guestGoalEventsLineOnline().length != 0">
             <td colspan="2">Голы</td>
         </tr>
-        <tr data-bind="visible: homeGoalEventsLine().length != 0 || guestGoalEventsLine().length != 0">
-            <td data-bind="foreach: homeGoalEventsLine">
+        <tr data-bind="visible: homeGoalEventsLineOnline().length != 0 || guestGoalEventsLineOnline().length != 0">
+            <td data-bind="foreach: homeGoalEventsLineOnline">
                 <div>
                     <div class="goal"></div>
                     <p class="minute" data-bind="text: minute + '’'"></p>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                 </div>
             </td>
-            <td data-bind="foreach: guestGoalEventsLine">
+            <td data-bind="foreach: guestGoalEventsLineOnline">
                 <div>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                     <div class="goal"></div>
@@ -60,18 +60,18 @@
                 </div>
             </td>
         </tr>
-        <tr class="main" data-bind="visible: homeYellowEventsLine().length != 0 || guestYellowEventsLine().length != 0">
+        <tr class="main" data-bind="visible: homeYellowEventsLineOnline().length != 0 || guestYellowEventsLineOnline().length != 0">
             <td colspan="2">Предупреждения</td>
         </tr>
-        <tr data-bind="visible: homeYellowEventsLine().length != 0 || guestYellowEventsLine().length != 0">
-            <td data-bind="foreach: homeYellowEventsLine">
+        <tr data-bind="visible: homeYellowEventsLineOnline().length != 0 || guestYellowEventsLineOnline().length != 0">
+            <td data-bind="foreach: homeYellowEventsLineOnline">
                 <div>
                     <div class="yellow_card"></div>
                     <p class="minute" data-bind="text: minute + '’'"></p>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                 </div>
             </td>
-            <td data-bind="foreach: guestYellowEventsLine">
+            <td data-bind="foreach: guestYellowEventsLineOnline">
                 <div>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                     <div class="yellow_card"></div>
@@ -79,18 +79,18 @@
                 </div>
             </td>
         </tr>
-        <tr class="main" data-bind="visible: homeRedEventsLine().length != 0 || guestRedEventsLine().length != 0">
+        <tr class="main" data-bind="visible: homeRedEventsLineOnline().length != 0 || guestRedEventsLineOnline().length != 0">
             <td colspan="2">Удаления</td>
         </tr>
-        <tr data-bind="visible: homeRedEventsLine().length != 0 || guestRedEventsLine().length != 0">
-            <td data-bind="foreach: homeRedEventsLine">
+        <tr data-bind="visible: homeRedEventsLineOnline().length != 0 || guestRedEventsLineOnline().length != 0">
+            <td data-bind="foreach: homeRedEventsLineOnline">
                 <div>
                     <div class="red_card"></div>
                     <p class="minute" data-bind="text: minute + '’'"></p>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                 </div>
             </td>
-            <td data-bind="foreach: guestRedEventsLine">
+            <td data-bind="foreach: guestRedEventsLineOnline">
                 <div>
                     <span class="surname" data-bind="text: playerName + ' ' + playerSurname"></span>
                     <div class="red_card"></div>
@@ -105,11 +105,31 @@
         <div class="nav-item" data-bind="css: { active: activePageIndex() == 2 }, click: setPageIndex2">Статистика</div>
         <div class="nav-item" data-bind="css: { active: activePageIndex() == 3 }, click: setPageIndex3">Отчет</div>
     </div>
-    
 
-    <div class="info-wrapper translation-wrapper" data-bind="visible: activePageIndex() == 0"></div>
-    
-    
+
+    <div class="info-wrapper translation-wrapper" data-bind="visible: activePageIndex() == 0">
+        <table class="table" data-bind="visible: customMatchResult().length != 0">
+            <tbody data-bind="foreach: customMatchResultOnline">
+                <tr>
+                    <td>
+                        <!-- ko if: isGoal -->
+                        <div class="goal"></div>
+                        <!-- /ko -->
+                        <!-- ko if: isYellow -->
+                        <div class="yellow_card"></div>
+                        <!-- /ko -->
+                        <!-- ko if: isRed -->
+                        <div class="red_card"></div>
+                        <!-- /ko -->
+                    </td>
+                    <td data-bind="text: minute + '’'"></td>
+                    <td data-bind="html: text"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     <div class="info-wrapper team-wrapper" data-bind="visible: activePageIndex() == 1">
         <table class="table teams" data-bind="visible: homePlayers().length != 0 && guestPlayers().length != 0">
             <tr class="main">
@@ -119,7 +139,7 @@
             <tr>
                 <td data-bind="foreach: homePlayers">
                     <div>
-                        <p class="number" data-bind="text:number"></p>
+                        <p class="number" data-bind="text: number"></p>
                         <p class="position" data-bind="text: positionPublicId"></p>
                         <span class="surname" data-bind="text: name + ' ' + surname"></span>
                     </div>
@@ -134,7 +154,7 @@
             </tr>
         </table>
     </div>
-    
+
 
     <div class="info-wrapper statistics-wrapper" data-bind="visible: activePageIndex() == 2"></div>
     <div class="info-wrapper report-wrapper" data-bind="visible: activePageIndex() == 3"></div>

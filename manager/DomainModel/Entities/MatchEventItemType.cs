@@ -8,45 +8,45 @@ namespace DomainModel.Entities
 {
     public enum MatchEventItemType
     {
-        StartFirst,
-        EndFirst,
-        StartSecond,
-        EndSecond,
+        StartFirst,//0
+        EndFirst,//1
+        StartSecond,//2
+        EndSecond,//3
 
-        DefenderPasOneTop,
-        DefenderPasTwoTop,
-        DefenderPasOneRightTop,
-        DefenderPasOneLeftTop,
+        DefenderPasOneTop,//4
+        DefenderPasTwoTop,//5
+        DefenderPasOneRightTop,//6
+        DefenderPasOneLeftTop,//7
 
-        MidfilderPasOneTop,
-        MidfilderPasTopRight,
-        MidfilderPasTopLeft,
-        MidfilderPasOneAnywareFail,
+        MidfilderPasOneTop,//8
+        MidfilderPasTopRight,//9
+        MidfilderPasTopLeft,//10
+        MidfilderPasOneAnywareFail,//11
 
-        MidfilderPasOneBack,
-        MidfilderPasOneRight,
-        MidfilderPasOneLeft,
-        MidfilderStrikeTwo,
+        MidfilderPasOneBack,//12
+        MidfilderPasOneRight,//13
+        MidfilderPasOneLeft,//14
+        MidfilderStrikeTwo,//15
 
-        ForwardStrikeOne,
-        ForwardPasRight,
-        ForwardPasLeft,
-        ForwardPasAnywareFail,
-        ForwardOneOnOne,
-        ForwardBeat,
+        ForwardStrikeOne,//16
+        ForwardPasRight,//17
+        ForwardPasLeft,//18
+        ForwardPasAnywareFail,//19
+        ForwardOneOnOne,//20
+        ForwardBeat,//21
 
-        GoalkeeperFoul,
-        GoalkeeperSave,
-        GoalkeeperCaught,
-        GoalkeeperStrikeToMidfielder,
-        GoalkeeperToCorner,
+        GoalkeeperFoul,//22
+        GoalkeeperSave,//23
+        GoalkeeperCaught,//24
+        GoalkeeperStrikeToMidfielder,//25
+        GoalkeeperToCorner,//26
 
-        DefenderGoodGame,
-        DefenderFoul,
-        Penalty,
-        Goal,
-        Yellow,
-        Red
+        DefenderGoodGame,//27
+        DefenderFoul,//28
+        Penalty,//29
+        Goal,//30
+        Yellow,//31
+        Red//32
         
     }
 }
