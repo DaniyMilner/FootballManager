@@ -108,7 +108,7 @@
 
 
     <div class="info-wrapper translation-wrapper" data-bind="visible: activePageIndex() == 0">
-        <table class="table" data-bind="visible: customMatchResult().length != 0">
+        <table class="table" data-bind="visible: customMatchResultOnline().length != 0">
             <tbody data-bind="foreach: customMatchResultOnline">
                 <tr>
                     <td>
@@ -131,7 +131,7 @@
 
 
     <div class="info-wrapper team-wrapper" data-bind="visible: activePageIndex() == 1">
-        <table class="table teams" data-bind="visible: homePlayers().length != 0 && guestPlayers().length != 0">
+        <table class="table teams" data-bind="visible: matchStart">
             <tr class="main">
                 <td data-bind="text: homeTeamName"></td>
                 <td data-bind="text: guestTeamName"></td>

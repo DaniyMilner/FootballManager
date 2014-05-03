@@ -9,6 +9,8 @@
             homeGoal: ko.observable(0), //+
             guestGoal: ko.observable(0), //+
 
+            matchStart: ko.observable(false),//+
+
             matchId: '', //+
             matchDateStart: ko.observable(''), //+
             matchResult: ko.observableArray([]),//+
@@ -30,7 +32,7 @@
             eventsLine: ko.observable(), //+
             customEventsLine: ko.observableArray([]),//+
             customEventsLineOnline: ko.observableArray([]),//+
-            customEventsLineIndex:ko.observable(0),//+
+            customEventsLineIndex: ko.observable(0),//+
 
             homeGoalEventsLine: ko.observableArray([]),//+
             homeGoalEventsLineOnline: ko.observableArray([]),//+
@@ -44,6 +46,10 @@
             homeRedEventsLineOnline: ko.observableArray([]),//+
             guestRedEventsLine: ko.observableArray([]),//+
             guestRedEventsLineOnline: ko.observableArray([]),//+
+            intervalCheckStart: {},
+            isIntervalCheckStart: false,
+            countShow: 0,
+            reverse: false,
 
             activate: activate,
             clear: function () {
@@ -153,8 +159,7 @@
                     return false;
                 }
                 var customEvent = viewmodel.customMatchResult()[viewmodel.customEventsLineIndex()];
-                viewmodel.customMatchResultOnline.push(customEvent);
-
+                viewmodel.customMatchResultOnline.unshift(customEvent);
                 if (customEvent.isGoal) {
                     var tempGoalLine = getCustomEventByMinute(customEvent.minute);
                     if (tempGoalLine) {
@@ -180,12 +185,63 @@
                 return true;
             },
             online: function () {
-                var interval = setInterval(function () {
-                    var status = viewmodel.addEventsToOnline();
-                    //document.querySelector('.translation-wrapper .table tr:last-child').scrollIntoViewIfNeeded();
-                    if (!status)
-                        clearInterval(interval);
-                }, 500);
+                var status;
+                for (var i = 0; i < viewmodel.countShow; i++) {
+                    status = viewmodel.addEventsToOnline();
+                }
+                if (status) {
+                    var interval = setInterval(function () {
+                        status = viewmodel.addEventsToOnline();
+                        if (!status)
+                            clearInterval(interval);
+                    }, 60000);
+                }
+                if (viewmodel.reverse) {
+                    viewmodel.customMatchResultOnline().reverse();
+                }
+            },
+            getMatchStart: function () {
+                return httpWrapper.post('api/match/getmatchresult', { id: viewmodel.matchId }).then(function (response) {
+                    if (response.success) {
+                        console.log(response);
+
+                        viewmodel.matchDateStart(getDateFromString(response.data.matchInfo.dateStart));
+                        viewmodel.homeTeamName(response.data.homeTeamInfo.name);
+                        viewmodel.homeTeamShortName(response.data.homeTeamInfo.shortName);
+                        viewmodel.homeStadium(response.data.homeTeamInfo.stadium);
+                        viewmodel.guestTeamName(response.data.guestTeamInfo.name);
+                        viewmodel.guestTeamShortName(response.data.guestTeamInfo.shortName);
+                        if (response.data.matchStart) {
+                            clearInterval(viewmodel.intervalCheckStart);
+
+                            viewmodel.countShow = response.data.countShow;
+                            viewmodel.matchStart(true);
+                            viewmodel.reverse = response.data.reverse;
+
+                            viewmodel.homePlayers(response.data.homePlayers);
+                            viewmodel.guestPlayers(response.data.guestPlayers);
+                            viewmodel.eventsLine(response.data.eventsLine);
+                            viewmodel.matchResult(response.data.matchResult);
+
+                            viewmodel.clear();
+
+                            viewmodel.manageEventLine();
+                            viewmodel.manageMatchResult();
+                            viewmodel.online();
+                        } else {
+                            if (!viewmodel.isIntervalCheckStart) {
+                                viewmodel.isIntervalCheckStart = true;
+                                viewmodel.intervalCheckStart = setInterval(function () {
+                                    viewmodel.getMatchStart();
+                                }, 15000);
+                            }
+                        }
+                    } else {
+                        router.navigate('home');
+                    }
+                }).fail(function (response) {
+                    console.log(response);
+                });
             }
         };
 
@@ -193,34 +249,7 @@
 
         function activate(id) {
             viewmodel.matchId = id;
-            return httpWrapper.post('api/match/getmatchresult', { id: viewmodel.matchId }).then(function (response) {
-                if (response.success) {
-                    console.log(response);
-
-                    viewmodel.matchDateStart(getDateFromString(response.data.matchInfo.dateStart));
-                    viewmodel.homeTeamName(response.data.homeTeamInfo.name);
-                    viewmodel.homeTeamShortName(response.data.homeTeamInfo.shortName);
-                    viewmodel.homeStadium(response.data.homeTeamInfo.stadium);
-                    viewmodel.guestTeamName(response.data.guestTeamInfo.name);
-                    viewmodel.guestTeamShortName(response.data.guestTeamInfo.shortName);
-                    if (response.data.wasMatch) {
-                        viewmodel.homePlayers(response.data.homePlayers);
-                        viewmodel.guestPlayers(response.data.guestPlayers);
-                        viewmodel.eventsLine(response.data.eventsLine);
-                        viewmodel.matchResult(response.data.matchResult);
-
-                        viewmodel.clear();
-
-                        viewmodel.manageEventLine();
-                        viewmodel.manageMatchResult();
-                        viewmodel.online();
-                    }
-                } else {
-                    router.navigate('home');
-                }
-            }).fail(function (response) {
-                console.log(response);
-            });
+            return viewmodel.getMatchStart();
         }
 
         function getDateFromString(datestring) {

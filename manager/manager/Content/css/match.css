@@ -383,6 +383,10 @@
                     width: 6%;
                 }
 
+                .match-wrapper .translation-wrapper .table tr td:last-child {
+                    padding-right: 4%;
+                }
+
                 .match-wrapper .translation-wrapper .table tr td span {
                     color: burlywood;
                 }
