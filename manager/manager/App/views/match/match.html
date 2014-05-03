@@ -156,6 +156,83 @@
     </div>
 
 
-    <div class="info-wrapper statistics-wrapper" data-bind="visible: activePageIndex() == 2"></div>
-    <div class="info-wrapper report-wrapper" data-bind="visible: activePageIndex() == 3"></div>
+    <div class="info-wrapper statistics-wrapper" data-bind="visible: activePageIndex() == 2">
+        <table class="table" data-bind="visible: matchStatistics != ''">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th data-bind="text: homeTeamName"></th>
+                    <th data-bind="text: guestTeamName"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Голы</td>
+                    <td data-bind="text: homeGoal"></td>
+                    <td data-bind="text: guestGoal"></td>
+                </tr>
+                <tr>
+                    <td>Удары по воротам</td>
+                    <td data-bind="text: matchStatistics().homeStrike"></td>
+                    <td data-bind="text: matchStatistics().guestStrike"></td>
+                </tr>
+                <tr>
+                    <td>Удары в створ</td>
+                    <td data-bind="text: matchStatistics().homeStrikeOnGoal"></td>
+                    <td data-bind="text: matchStatistics().guestStrikeOnGoal"></td>
+                </tr>
+                <tr>
+                    <td>Жёлтые карточки</td>
+                    <td data-bind="text: homeYellowEventsLineOnline().length"></td>
+                    <td data-bind="text: guestYellowEventsLineOnline().length"></td>
+                </tr>
+                <tr>
+                    <td>Красные карточки</td>
+                    <td data-bind="text: homeRedEventsLineOnline().length"></td>
+                    <td data-bind="text: guestRedEventsLineOnline().length"></td>
+                </tr>
+                <tr>
+                    <td>Владение мячом, %</td>
+                    <td data-bind="text: matchStatistics().homePosession"></td>
+                    <td data-bind="text: matchStatistics().guestPosession"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-wrapper report-wrapper" data-bind="visible: activePageIndex() == 3">
+        <div data-bind="visible: matchStart">
+            <p data-bind="text: homeTeamName() + ' - ' + guestTeamName() + ' ' + homeGoal() + ':' + guestGoal()"></p>
+            <p data-bind="visible: !(homeGoal() == 0 && guestGoal() == 0)">
+                <strong>Голы: </strong>
+                <!-- ko foreach: customEventsLineOnline -->
+                <span data-bind="text: (type == 0 ? playerName + ' ' + playerSurname + ' ' + minute + '’' : '') + (type == 0 ? ',' : '')"></span>
+                <!-- /ko -->
+            </p>
+            <p>
+                <strong data-bind="text: homeTeamName() + ': '"></strong>
+                <!-- ko foreach: homePlayers -->
+                <span data-bind="text: surname + ','"></span>
+                <!-- /ko -->
+            </p>
+            <p>
+                <strong data-bind="text: guestTeamName() + ': '"></strong>
+                <!-- ko foreach: guestPlayers -->
+                <span data-bind="text: surname + ','"></span>
+                <!-- /ko -->
+            </p>
+            <p data-bind="visible: !(homeYellowEventsLineOnline().length == 0 && guestYellowEventsLineOnline().length == 0)">
+                <strong>Предупреждения: </strong>
+                <!-- ko foreach: customEventsLineOnline -->
+                <span data-bind="text: (type == 1 ? playerName + ' ' + playerSurname + ' ' + minute + '’' : '') + (type == 1 ? ',' : '')"></span>
+                <!-- /ko -->
+            </p>
+            <p data-bind="visible: !(homeRedEventsLineOnline().length == 0 && guestRedEventsLineOnline().length == 0)">
+                <strong>Удаления: </strong>
+                <!-- ko foreach: customEventsLineOnline -->
+                <span data-bind="text: (type == 2 ? playerName + ' ' + playerSurname + ' ' + minute + '’' : '') + (type == 2 ? ',' : '')"></span>
+                <!-- /ko -->
+            </p>
+        </div>
+    </div>
 </section>

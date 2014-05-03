@@ -77,10 +77,9 @@ namespace manager.Controllers.API
             return JsonSuccess(new
             {
                 matchStart = true,
-                dateStart = match.DateStart.ToUniversalTime(),
                 countShow = match.DateStart < DateTime.Now ? 
                                 Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes)) : 0,
-                reverse = (DateTime.Now - match.DateStart).Hours > 0,
+                reverse = (DateTime.Now - match.DateStart).Minutes > 45,
                 matchInfo = new
                 {
                     weatherName = match.Weather.Name,

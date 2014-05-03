@@ -6,46 +6,49 @@
 
             activePageIndex: ko.observable(0),
 
-            homeGoal: ko.observable(0), //+
-            guestGoal: ko.observable(0), //+
+            homeGoal: ko.observable(0),
+            guestGoal: ko.observable(0),
 
-            matchStart: ko.observable(false),//+
+            matchStart: ko.observable(false),
 
-            matchId: '', //+
-            matchDateStart: ko.observable(''), //+
-            matchResult: ko.observableArray([]),//+
-            customMatchResult: ko.observableArray([]),//+
-            customMatchResultOnline: ko.observableArray([]),//+
+            matchId: '',
+            matchResult: ko.observableArray([]),
+            matchDateStart: ko.observable(''),
+            customMatchResult: ko.observableArray([]),
+            customMatchResultOnline: ko.observableArray([]),
 
-            homePlayers: ko.observable(), //+
-            guestPlayers: ko.observable(), //+
+            homePlayers: ko.observable(),
+            guestPlayers: ko.observable(),
 
-            homeTeamName: ko.observable(''), //+
-            homeTeamShortName: ko.observable(''), //+
+            homeTeamName: ko.observable(''),
+            homeTeamShortName: ko.observable(''),
             homeTeamLogo: ko.observable(''),
-            homeStadium: ko.observable(''), //+
+            homeStadium: ko.observable(''),
 
-            guestTeamName: ko.observable(''), //+
-            guestTeamShortName: ko.observable(''), //+
+            guestTeamName: ko.observable(''),
+            guestTeamShortName: ko.observable(''),
             guestTeamLogo: ko.observable(''),
 
-            eventsLine: ko.observable(), //+
-            customEventsLine: ko.observableArray([]),//+
-            customEventsLineOnline: ko.observableArray([]),//+
-            customEventsLineIndex: ko.observable(0),//+
+            eventsLine: ko.observable(),
+            customEventsLine: ko.observableArray([]),
+            customEventsLineOnline: ko.observableArray([]),
+            customEventsLineIndex: ko.observable(0),
 
-            homeGoalEventsLine: ko.observableArray([]),//+
-            homeGoalEventsLineOnline: ko.observableArray([]),//+
-            guestGoalEventsLine: ko.observableArray([]),//+
-            guestGoalEventsLineOnline: ko.observableArray([]),//+
-            homeYellowEventsLine: ko.observableArray([]),//+
-            homeYellowEventsLineOnline: ko.observableArray([]),//+
-            guestYellowEventsLine: ko.observableArray([]),//+
-            guestYellowEventsLineOnline: ko.observableArray([]),//+
-            homeRedEventsLine: ko.observableArray([]),//+
-            homeRedEventsLineOnline: ko.observableArray([]),//+
-            guestRedEventsLine: ko.observableArray([]),//+
-            guestRedEventsLineOnline: ko.observableArray([]),//+
+            homeGoalEventsLine: ko.observableArray([]),
+            homeGoalEventsLineOnline: ko.observableArray([]),
+            guestGoalEventsLine: ko.observableArray([]),
+            guestGoalEventsLineOnline: ko.observableArray([]),
+            homeYellowEventsLine: ko.observableArray([]),
+            homeYellowEventsLineOnline: ko.observableArray([]),
+            guestYellowEventsLine: ko.observableArray([]),
+            guestYellowEventsLineOnline: ko.observableArray([]),
+            homeRedEventsLine: ko.observableArray([]),
+            homeRedEventsLineOnline: ko.observableArray([]),
+            guestRedEventsLine: ko.observableArray([]),
+            guestRedEventsLineOnline: ko.observableArray([]),
+
+            matchStatistics: ko.observable(''),
+
             intervalCheckStart: {},
             isIntervalCheckStart: false,
             countShow: 0,
@@ -198,6 +201,7 @@
                 }
                 if (viewmodel.reverse) {
                     viewmodel.customMatchResultOnline().reverse();
+                    viewmodel.manageStatistic();
                 }
             },
             getMatchStart: function () {
@@ -242,6 +246,44 @@
                 }).fail(function (response) {
                     console.log(response);
                 });
+            },
+            manageStatistic: function () {
+                viewmodel.matchStatistics({
+                    homeStrike: 0,
+                    homeStrikeOnGoal: 0,
+                    homePosession: 0,
+                    guestStrike: 0,
+                    guestStrikeOnGoal: 0,
+                    guestPosession: 0
+                });
+                var home = 0, guest = 0;
+                for (var i = 0; i < viewmodel.matchResult().length; i++) {
+                    if (viewmodel.matchResult()[i].EventsLine.length > 1) {
+                        for (var j = 0; j < viewmodel.matchResult()[i].EventsLine.length; j++) {
+                            switch (viewmodel.matchResult()[i].EventsLine[j].EventType) {
+                                case 15:
+                                case 16:
+                                case 21:
+                                    if (viewmodel.matchResult()[i].IsHome) {
+                                        viewmodel.matchStatistics().homeStrikeOnGoal++;
+                                    } else {
+                                        viewmodel.matchStatistics().guestStrikeOnGoal++;
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    if (viewmodel.matchResult()[i].IsHome)
+                        home++;
+                    else {
+                        guest++;
+                    }
+                }
+                viewmodel.matchStatistics().homePosession = Math.round(home * 100 / (home + guest));
+                viewmodel.matchStatistics().guestPosession = 100 - viewmodel.matchStatistics().homePosession;
+
+                viewmodel.matchStatistics().homeStrike = Math.round(viewmodel.matchStatistics().homeStrikeOnGoal * 1.5);
+                viewmodel.matchStatistics().guestStrike = Math.round(viewmodel.matchStatistics().guestStrikeOnGoal * 1.5);
             }
         };
 
