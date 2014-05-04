@@ -225,5 +225,12 @@ namespace manager.Controllers.API
                 }
             });
         }
+
+        [HttpPost]
+        [Route("api/user/updateuserprofile")]
+        public ActionResult UpdateUserProfile(UserProfileModel model)
+        {
+            return JsonError("as");
+        }
     }
 }

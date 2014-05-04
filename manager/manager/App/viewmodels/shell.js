@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'routing/routes', 'userContext', 'localization/localizationManager'],
-    function (router, routes, userContext, localizationManager) {
+﻿define(['plugins/router', 'routing/routes', 'userContext', 'localization/localizationManager', 'plugins/http'],
+    function (router, routes, userContext, localizationManager, http) {
 
         var
             isAuthenticated = ko.observable(false),
@@ -8,6 +8,9 @@
 
             activate = function () {
                 var that = this;
+                http.get('http://football.ua/').then(function(response) {
+                    debugger;
+                });
                 return userContext.initialize().then(function () {
                     return localizationManager.initialize().then(function () {
                         that.isAuthenticated(userContext.isAuthenticated);

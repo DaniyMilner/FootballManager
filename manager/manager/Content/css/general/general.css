@@ -110,6 +110,7 @@ body {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	padding: 0 10px 0 5px;
+    z-index: 20;
 }
 
 .user-menu > ul li ul {
@@ -152,13 +153,12 @@ body {
 .user-menu > ul li:hover {
 	background: #4e5d22;
     background: #3A881C;
-	opacity: 0.95;
 }
 
 .user-menu > ul li ul li:hover {
 	background: -moz-linear-gradient(top, #87a13e 0%, #4e5d22 26%, #4e5d22 81%, #87a13e 100%); /* FF3.6+ */
 	background: -webkit-linear-gradient(top, #87a13e 0%, #4e5d22 26%, #4e5d22 81%, #87a13e 100%); /* Chrome10+,Safari5.1+ */
-    background: #3A881C;
+    background: #4CA828;
 }
 
 .user-menu > ul li ul li:last-child {
@@ -224,4 +224,8 @@ body {
 .panel.green {
 	border: 1px rgba(39, 75, 0, 0.5) solid;
 	box-shadow: 0 0 10px rgba(133, 255, 0, 0.5);
+}
+
+input, textarea {
+    color: #555;
 }

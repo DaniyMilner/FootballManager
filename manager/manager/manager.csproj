@@ -197,6 +197,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PlayerCreateModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserSignInModel.cs" />
     <Compile Include="Models\UserSignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -308,6 +309,7 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
+    <Content Include="Scripts\knockoutBindings\accordionBinding.js" />
     <Content Include="Scripts\knockoutBindings\datepickerBinding.js" />
     <Content Include="Scripts\knockoutBindings\showHideBinding.js" />
     <Content Include="Scripts\q.js" />
