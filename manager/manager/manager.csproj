@@ -206,6 +206,7 @@
     <Compile Include="Configuration\FilterConfig.cs" />
     <Compile Include="Configuration\RouteConfig.cs" />
     <Content Include="App\constants.js" />
+    <Content Include="App\matchEvents.js" />
     <Content Include="App\userContext.js" />
     <Content Include="App\httpWrapper.js" />
     <Content Include="App\localization\localizationManager.js" />

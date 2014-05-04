@@ -1,377 +1,448 @@
-.match-wrapper {
+.match-wrapper .goal {
+    background: #fff url("../img/match/ball.png") no-repeat;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
 }
 
-    .match-wrapper .goal {
-        background: #fff url("../img/match/ball.png") no-repeat;
-        width: 12px;
-        height: 12px;
-        border-radius: 6px;
+.match-wrapper .red_card {
+    background: url("../img/match/red_card.png") no-repeat;
+    width: 14px;
+    height: 14px;
+    z-index: 2;
+}
+
+.match-wrapper .yellow_card {
+    background: url("../img/match/yellow_card.png") no-repeat;
+    width: 14px;
+    height: 14px;
+}
+
+.match-wrapper .scoreboard-wrapper .home-team-logo {
+}
+
+.match-wrapper .scoreboard-wrapper .top-info {
+    display: -webkit-box;
+    -webkit-box-pack: justify;
+    margin: 0 5%;
+}
+
+    .match-wrapper .scoreboard-wrapper .top-info .team-name {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: end;
+        width: 33%;
     }
 
-    .match-wrapper .red_card {
-        background: url("../img/match/red_card.png") no-repeat;
-        width: 14px;
-        height: 14px;
-        z-index: 2;
+    .match-wrapper .scoreboard-wrapper .top-info .home-team-name {
+        font-size: 23px;
     }
 
-    .match-wrapper .yellow_card {
-        background: url("../img/match/yellow_card.png") no-repeat;
-        width: 14px;
-        height: 14px;
+    .match-wrapper .scoreboard-wrapper .top-info .score {
+        display: -webkit-box;
+        -webkit-box-pack: justify;
+        -webkit-box-align: center;
     }
 
-    .match-wrapper .scoreboard-wrapper {
-    }
-
-        .match-wrapper .scoreboard-wrapper .home-team-logo {
-        }
-
-        .match-wrapper .scoreboard-wrapper .score-info {
-        }
-
-        .match-wrapper .scoreboard-wrapper .top-info {
+        .match-wrapper .scoreboard-wrapper .top-info .score .home-score,
+        .match-wrapper .scoreboard-wrapper .top-info .score .guest-score {
+            margin: 0;
+            width: 40px;
+            height: 40px;
             display: -webkit-box;
-            -webkit-box-pack: justify;
-            margin: 0 5%;
-        }
-
-            .match-wrapper .scoreboard-wrapper .top-info .team-name {
-                margin: 0;
-                display: -webkit-box;
-                -webkit-box-align: center;
-                -webkit-box-pack: end;
-                width: 33%;
-            }
-
-            .match-wrapper .scoreboard-wrapper .top-info .home-team-name {
-                font-size: 23px;
-            }
-
-            .match-wrapper .scoreboard-wrapper .top-info .score {
-                display: -webkit-box;
-                -webkit-box-pack: justify;
-                -webkit-box-align: center;
-            }
-
-                .match-wrapper .scoreboard-wrapper .top-info .score .home-score,
-                .match-wrapper .scoreboard-wrapper .top-info .score .guest-score {
-                    margin: 0;
-                    width: 40px;
-                    height: 40px;
-                    display: -webkit-box;
-                    -webkit-box-align: center;
-                    -webkit-box-pack: center;
-                    font-size: 22px;
-                    background-color: orangered;
-                    border-radius: 6px;
-                }
-
-                .match-wrapper .scoreboard-wrapper .top-info .score .separator {
-                    margin: 0 20px;
-                    height: 40px;
-                    display: -webkit-box;
-                    -webkit-box-align: center;
-                    font-size: 23px;
-                }
-
-            .match-wrapper .scoreboard-wrapper .top-info .guest-team-name {
-                font-size: 23px;
-                -webkit-box-pack: start;
-            }
-
-        .match-wrapper .scoreboard-wrapper .bottom-info {
-            margin: 15px 5% 0;
-            display: -webkit-box;
+            -webkit-box-align: center;
             -webkit-box-pack: center;
-            color: lightgrey;
+            font-size: 22px;
+            background-color: orangered;
+            border-radius: 6px;
         }
 
-            .match-wrapper .scoreboard-wrapper .bottom-info .datetime {
-                margin: 0 20px 0 0;
-            }
-
-            .match-wrapper .scoreboard-wrapper .bottom-info .stadium {
-                margin: 0;
-            }
-
-        .match-wrapper .scoreboard-wrapper .guest-team-logo {
+        .match-wrapper .scoreboard-wrapper .top-info .score .separator {
+            margin: 0 20px;
+            height: 40px;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 23px;
         }
 
-    .match-wrapper .event-line-wrapper {
-        margin: 15px 5% 0;
-        width: 90%;
+    .match-wrapper .scoreboard-wrapper .top-info .guest-team-name {
+        font-size: 23px;
+        -webkit-box-pack: start;
     }
 
-        .match-wrapper .event-line-wrapper .top-team,
-        .match-wrapper .event-line-wrapper .bottom-team {
-            font-size: 12px;
-            text-transform: uppercase;
+.match-wrapper .scoreboard-wrapper .bottom-info {
+    margin: 15px 5% 0;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    color: lightgrey;
+}
+
+    .match-wrapper .scoreboard-wrapper .bottom-info .datetime {
+        margin: 0 20px 0 0;
+    }
+
+    .match-wrapper .scoreboard-wrapper .bottom-info .stadium {
+        margin: 0;
+    }
+
+.match-wrapper .scoreboard-wrapper .guest-team-logo {
+}
+
+.match-wrapper .event-line-wrapper {
+    margin: 15px 5% 0;
+    width: 90%;
+}
+
+    .match-wrapper .event-line-wrapper .top-team,
+    .match-wrapper .event-line-wrapper .bottom-team {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .match-wrapper .event-line-wrapper .bottom-team {
+        text-align: right;
+        padding-top: 1px;
+    }
+
+    .match-wrapper .event-line-wrapper .line {
+        background: #188a19;
+        position: relative;
+    }
+
+        .match-wrapper .event-line-wrapper .line .events {
+            height: 17px;
+            position: relative;
+            margin-left: 5%;
+        }
+
+            .match-wrapper .event-line-wrapper .line .events .clocks {
+                display: block;
+                width: 25px;
+                height: 25px;
+                background: url(../img/match/time.png) no-repeat;
+                position: absolute;
+                left: 45%;
+                top: -4px;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events i {
+                font-size: 11px;
+                line-height: 17px;
+                color: #fff;
+                position: absolute;
+                top: 0;
+                width: 14px;
+                text-align: center;
+                font-style: normal;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time0 {
+                left: 0;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time10 {
+                left: 10%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time20 {
+                left: 20%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time30 {
+                left: 30%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time40 {
+                left: 40%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time50 {
+                left: 50%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time60 {
+                left: 60%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time70 {
+                left: 70%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time80 {
+                left: 80%;
+            }
+
+            .match-wrapper .event-line-wrapper .line .events .time90 {
+                left: 90%;
+            }
+
+        .match-wrapper .event-line-wrapper .line .cards-wrapper {
+            position: absolute;
+            top: 0;
+            left: 5%;
+            width: 90%;
+            height: 100%;
+        }
+
+            .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon {
+                position: absolute;
+            }
+
+                .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.top {
+                    top: -18px;
+                }
+
+                .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.bottom {
+                    top: 19px;
+                }
+
+                .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.goal.top {
+                    top: -17px;
+                }
+
+                .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.goal.bottom {
+                    top: 20px;
+                }
+
+.match-wrapper .score-table {
+    margin: 10px 5%;
+    width: 90%;
+}
+
+    .match-wrapper .score-table tr {
+        font-size: 14px;
+    }
+
+        .match-wrapper .score-table tr td {
+            line-height: 1;
+            padding: 4px 20px 0;
+            border: none;
+            width: 50%;
+        }
+
+        .match-wrapper .score-table tr:not(.main) td:first-child .goal,
+        .match-wrapper .score-table tr:not(.main) td:first-child .red_card,
+        .match-wrapper .score-table tr:not(.main) td:first-child .yellow_card {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .match-wrapper .score-table tr:not(.main) td:last-child .goal,
+        .match-wrapper .score-table tr:not(.main) td:last-child .red_card,
+        .match-wrapper .score-table tr:not(.main) td:last-child .yellow_card {
+            float: right;
+            margin-left: 20px;
+        }
+
+        .match-wrapper .score-table tr:not(.main) td:first-child .minute {
+            width: 30px;
+            float: left;
             margin: 0;
         }
 
-        .match-wrapper .event-line-wrapper .bottom-team {
+        .match-wrapper .score-table tr:not(.main) td:last-child .minute {
+            width: 30px;
+            float: right;
+            margin: 0;
+        }
+
+        .match-wrapper .score-table tr td > div {
+            margin-bottom: 7px;
+        }
+
+        .match-wrapper .score-table tr:not(.main) td:last-child {
             text-align: right;
-            padding-top: 1px;
         }
 
-        .match-wrapper .event-line-wrapper .line {
-            background: #188a19;
-            position: relative;
+        .match-wrapper .score-table tr.main td {
+            text-align: center;
+            background-color: #d3d3d3;
+            background-color: rgba(211, 211, 211, 0.1);
+            padding: 4px 20px;
         }
 
-            .match-wrapper .event-line-wrapper .line .events {
-                height: 17px;
-                position: relative;
-                margin-left: 5%;
-            }
+.match-wrapper .navigation {
+    display: -webkit-box;
+    -webkit-box-pack: justify;
+    width: 90%;
+    margin: 0 5%;
+}
 
-                .match-wrapper .event-line-wrapper .line .events .clocks {
-                    display: block;
-                    width: 25px;
-                    height: 25px;
-                    background: url(../img/match/time.png) no-repeat;
-                    position: absolute;
-                    left: 45%;
-                    top: -4px;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events i {
-                    font-size: 11px;
-                    line-height: 17px;
-                    color: #fff;
-                    position: absolute;
-                    top: 0;
-                    width: 14px;
-                    text-align: center;
-                    font-style: normal;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time0 {
-                    left: 0;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time10 {
-                    left: 10%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time20 {
-                    left: 20%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time30 {
-                    left: 30%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time40 {
-                    left: 40%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time50 {
-                    left: 50%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time60 {
-                    left: 60%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time70 {
-                    left: 70%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time80 {
-                    left: 80%;
-                }
-
-                .match-wrapper .event-line-wrapper .line .events .time90 {
-                    left: 90%;
-                }
-
-            .match-wrapper .event-line-wrapper .line .cards-wrapper {
-                position: absolute;
-                top: 0;
-                left: 5%;
-                width: 90%;
-                height: 100%;
-            }
-
-                .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon {
-                    position: absolute;
-                }
-
-                    .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.top {
-                        top: -18px;
-                    }
-
-                    .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.bottom {
-                        top: 19px;
-                    }
-
-                    .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.goal.top {
-                        top: -17px;
-                    }
-
-                    .match-wrapper .event-line-wrapper .line .cards-wrapper .match-icon.goal.bottom {
-                        top: 20px;
-                    }
-
-    .match-wrapper .score-table {
-        margin: 10px 5%;
-        width: 90%;
+    .match-wrapper .navigation .nav-item {
+        width: 25%;
+        text-align: center;
+        background-color: #ff0000;
+        background-color: rgba(255, 0, 0, 0.4);
     }
 
-        .match-wrapper .score-table tr {
-            font-size: 14px;
+        .match-wrapper .navigation .nav-item:hover {
+            background-color: #ff0000;
+            background-color: rgba(255, 0, 0, 0.8);
+            cursor: pointer;
         }
 
-            .match-wrapper .score-table tr td {
-                line-height: 1;
-                padding: 4px 20px 0;
-                border: none;
-                width: 50%;
-            }
+        .match-wrapper .navigation .nav-item.active {
+            background-color: #ff0000;
+            background-color: rgba(255, 0, 0, 0.6);
+        }
 
-            .match-wrapper .score-table tr:not(.main) td:first-child .goal,
-            .match-wrapper .score-table tr:not(.main) td:first-child .red_card,
-            .match-wrapper .score-table tr:not(.main) td:first-child .yellow_card {
-                float: left;
-                margin-right: 20px;
-            }
+.match-wrapper .info-wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
 
-            .match-wrapper .score-table tr:not(.main) td:last-child .goal,
-            .match-wrapper .score-table tr:not(.main) td:last-child .red_card,
-            .match-wrapper .score-table tr:not(.main) td:last-child .yellow_card {
-                float: right;
-                margin-left: 20px;
-            }
+.match-wrapper .team-wrapper .teams {
+    margin-top: 20px;
+}
 
-            .match-wrapper .score-table tr:not(.main) td:first-child .minute {
-                width: 30px;
-                float: left;
-                margin: 0;
-            }
+    .match-wrapper .team-wrapper .teams tr {
+        font-size: 14px;
+    }
 
-            .match-wrapper .score-table tr:not(.main) td:last-child .minute {
-                width: 30px;
-                float: right;
-                margin: 0;
-            }
+        .match-wrapper .team-wrapper .teams tr.main {
+            font-size: 16px;
+        }
 
-            .match-wrapper .score-table tr td .surname {
-            }
+        .match-wrapper .team-wrapper .teams tr td {
+            line-height: 1;
+            padding: 4px 20px 0;
+            border: none;
+            width: 50%;
+        }
 
-            .match-wrapper .score-table tr td > div {
-                margin-bottom: 7px;
-            }
+        .match-wrapper .team-wrapper .teams tr.main td {
+            background-color: #d3d3d3;
+            background-color: rgba(211, 211, 211, 0.1);
+            padding: 7px 20px 7px 60px;
+        }
 
-            .match-wrapper .score-table tr:not(.main) td:last-child {
+            .match-wrapper .team-wrapper .teams tr.main td:last-child {
                 text-align: right;
+                padding-right: 60px;
+                padding-left: 20px;
             }
 
-            .match-wrapper .score-table tr.main {
-            }
+        .match-wrapper .team-wrapper .teams tr td > div {
+            display: -webkit-box;
+        }
 
-                .match-wrapper .score-table tr.main td {
-                    text-align: center;
-                    background-color: #d3d3d3;
-                    background-color: rgba(211, 211, 211, 0.1);
-                    padding: 4px 20px;
-                }
+        .match-wrapper .team-wrapper .teams tr td:last-child > div {
+            -webkit-box-pack: end;
+        }
 
-    .match-wrapper .navigation {
-        display: -webkit-box;
-        -webkit-box-pack: justify;
-        width: 90%;
-        margin: 0 5%;
+        .match-wrapper .team-wrapper .teams tr td .number {
+            width: 30px;
+        }
+
+        .match-wrapper .team-wrapper .teams tr td .position {
+            width: 50px;
+        }
+
+        .match-wrapper .team-wrapper .teams tr td:last-child .number {
+            text-align: right;
+        }
+
+        .match-wrapper .team-wrapper .teams tr td:last-child .position {
+            text-align: right;
+        }
+
+.match-wrapper .translation-wrapper {
+    overflow: overlay;
+    height: 400px;
+}
+
+    .match-wrapper .translation-wrapper .table {
+        margin-top: 10px;
     }
 
-        .match-wrapper .navigation .nav-item {
+        .match-wrapper .translation-wrapper .table tr:nth-child(odd) {
+            background-color: #d3d3d3;
+            background-color: rgba(211, 211, 211, 0.1);
+        }
+
+        .match-wrapper .translation-wrapper .table tr td {
+            border-top: none;
+        }
+
+            .match-wrapper .translation-wrapper .table tr td:first-child {
+                width: 5%;
+            }
+
+            .match-wrapper .translation-wrapper .table tr td:nth-child(2) {
+                width: 6%;
+            }
+
+            .match-wrapper .translation-wrapper .table tr td:last-child {
+                padding-right: 4%;
+            }
+
+            .match-wrapper .translation-wrapper .table tr td span {
+                color: burlywood;
+            }
+
+        .match-wrapper .translation-wrapper .table .yellow_card,
+        .match-wrapper .translation-wrapper .table .red_card,
+        .match-wrapper .translation-wrapper .table .goal {
+            margin-top: 4px;
+            margin-left: 10px;
+        }
+
+.match-wrapper .statistics-wrapper .table {
+    margin-top: 10px;
+}
+
+    .match-wrapper .statistics-wrapper .table tbody tr:nth-child(odd) {
+        background-color: #d3d3d3;
+        background-color: rgba(211, 211, 211, 0.1);
+    }
+
+    .match-wrapper .statistics-wrapper .table tr td {
+        border-top: none;
+    }
+
+        .match-wrapper .statistics-wrapper .table tr td:first-child {
+            width: 50%;
+            padding-left: 5%;
+        }
+
+        .match-wrapper .statistics-wrapper .table tr td:nth-child(2) {
             width: 25%;
             text-align: center;
-            background-color: #ff0000;
-            background-color: rgba(255, 0, 0, 0.4);
         }
 
-            .match-wrapper .navigation .nav-item:hover {
-                background-color: #ff0000;
-                background-color: rgba(255, 0, 0, 0.8);
-                cursor: pointer;
-            }
-
-            .match-wrapper .navigation .nav-item.active {
-                background-color: #ff0000;
-                background-color: rgba(255, 0, 0, 0.6);
-            }
-
-    .match-wrapper .info-wrapper {
-        width: 90%;
-        margin: 0 5%;
-    }
-
-    .match-wrapper .team-wrapper {
-    }
-
-        .match-wrapper .team-wrapper .teams {
-            margin-top: 20px;
+        .match-wrapper .statistics-wrapper .table tr td:last-child {
+            padding-right: 4%;
+            text-align: center;
         }
 
-            .match-wrapper .team-wrapper .teams tr {
-                font-size: 14px;
-            }
-
-                .match-wrapper .team-wrapper .teams tr.main {
-                    font-size: 16px;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td {
-                    line-height: 1;
-                    padding: 4px 20px 0;
-                    border: none;
-                    width: 50%;
-                }
-
-                .match-wrapper .team-wrapper .teams tr.main td {
-                    background-color: #d3d3d3;
-                    background-color: rgba(211, 211, 211, 0.1);
-                    padding: 7px 20px 7px 60px;
-                }
-
-                    .match-wrapper .team-wrapper .teams tr.main td:last-child {
-                        text-align: right;
-                        padding-right: 60px;
-                        padding-left: 20px;
-                    }
-
-                .match-wrapper .team-wrapper .teams tr td > div {
-                    display: -webkit-box;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td:last-child > div {
-                    -webkit-box-pack: end;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td .number {
-                    width: 30px;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td .position {
-                    width: 50px;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td:last-child .number {
-                    text-align: right;
-                }
-
-                .match-wrapper .team-wrapper .teams tr td:last-child .position {
-                    text-align: right;
-                }
-
-
-    .match-wrapper .translation-wrapper {
+    .match-wrapper .statistics-wrapper .table tr th {
+        border: none;
+        text-align: center;
     }
 
-    .match-wrapper .statistics-wrapper {
+        .match-wrapper .statistics-wrapper .table tr th:last-child {
+            padding-right: 4%;
+        }
+
+.match-wrapper .report-wrapper > div {
+    margin-top: 10px;
+}
+
+    .match-wrapper .report-wrapper > div > p {
+        font-size: 15px;
+        padding-left: 20px;
     }
 
-    .match-wrapper .report-wrapper {
-    }
+        .match-wrapper .report-wrapper > div > p:first-child {
+            background-color: #d3d3d3;
+            background-color: rgba(211, 211, 211, 0.1);
+            padding: 7px 20px 7px 20px;
+            color: lightblue;
+            font-weight: bold;
+        }
+
+        .match-wrapper .report-wrapper > div > p > strong {
+            color: sandybrown;
+        }

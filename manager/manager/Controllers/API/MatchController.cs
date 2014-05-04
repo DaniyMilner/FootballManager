@@ -7,7 +7,6 @@ using System.Web.Script.Serialization;
 using DomainModel.Entities;
 using DomainModel.Repositories;
 using manager.Components;
-using manager.Components.ActionResults;
 
 namespace manager.Controllers.API
 {
@@ -35,7 +34,7 @@ namespace manager.Controllers.API
         [Route("api/match/getmatchresult")]
         public ActionResult GetMatchResultById(string id)
         {
-            id = id.Replace("=", "").Replace("/", "");
+            id = CheckSymbols(id);
             var json = new JavaScriptSerializer();
             var match = _matchRepository.GetMatchByPublicId(id);
             if (match == null) return JsonError("no_team");
@@ -44,29 +43,30 @@ namespace manager.Controllers.API
             var guestTeam = _teamRepository.Get(match.GuestTeamId);
             var homeTeamInformation = GetCustomTeamInfo(homeTeam);
             var guestTeamInformation = GetCustomTeamInfo(guestTeam);
-            if (String.IsNullOrEmpty(match.Result)) return JsonSuccess(new
-            {
-                wasMatch = false,
-                matchInfo = new
-                {
-                    weatherName = match.Weather.Name,
-                    weatherType = match.Weather.Type,
-                    ticketPrice = match.TicketPrice,
-                    dateStart = match.DateStart.ToUniversalTime(),
-                    fans = match.FansCount
-                },
-                homeTeamInfo = homeTeamInformation,
-                guestTeamInfo = guestTeamInformation
-            });
+            if (String.IsNullOrEmpty(match.Result) || match.DateStart > DateTime.Now) return JsonSuccess(new
+              {
+                  matchStart = false,
+                  dateStart = match.DateStart.ToUniversalTime(),
+                  matchInfo = new
+                  {
+                      weatherName = match.Weather.Name,
+                      weatherType = match.Weather.Type,
+                      ticketPrice = match.TicketPrice,
+                      dateStart = match.DateStart.ToUniversalTime(),
+                      fans = match.FansCount
+                  },
+                  homeTeamInfo = homeTeamInformation,
+                  guestTeamInfo = guestTeamInformation
+              });
 
-            var eventLine = _eventLineRepository.GetEventsListByLineId(match.EventLineId).OrderBy(z=>z.Minute).ToList();
-                
+            var eventLine = _eventLineRepository.GetEventsListByLineId(match.EventLineId).OrderBy(z => z.Minute).ToList();
+
             var homeSettings = _teamSettingsRepository.GetTeamSettingsByMatchAndTeamId(match.Id, homeTeam.Id);
             var guestSettings = _teamSettingsRepository.GetTeamSettingsByMatchAndTeamId(match.Id, guestTeam.Id);
 
             var homePlayers = _playerRepository.GetCollectionByLineUp(json.Deserialize<CustomLineUp>(homeSettings.LineUp));
             var guestPlayers = _playerRepository.GetCollectionByLineUp(json.Deserialize<CustomLineUp>(guestSettings.LineUp));
-                
+
             var result = json.Deserialize<List<MatchEvent>>(match.Result);
 
             /*---------------------------------------------*/
@@ -76,7 +76,10 @@ namespace manager.Controllers.API
 
             return JsonSuccess(new
             {
-                wasMatch = true,
+                matchStart = true,
+                countShow = match.DateStart < DateTime.Now ? 
+                                Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes)) : 0,
+                reverse = (DateTime.Now - match.DateStart).Minutes > 45,
                 matchInfo = new
                 {
                     weatherName = match.Weather.Name,
@@ -157,6 +160,11 @@ namespace manager.Controllers.API
                     publicId = team.Country.PublicId
                 }
             };
-        } 
+        }
+
+        private string CheckSymbols(string id)
+        {
+            return id.Replace("=", "").Replace("/", "");
+        }
     }
 }

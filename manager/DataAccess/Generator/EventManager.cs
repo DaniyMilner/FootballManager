@@ -15,7 +15,7 @@ namespace DataAccess.Generator
         private readonly TeamInformation _teamInfo;
         private readonly Guid _eventLineId;
 
-        private const int MaxCountEvents = 5;
+        private const int MaxCountEvents = 3;
         private const int N = 2;
 
         private bool _wasGoal;
@@ -408,8 +408,9 @@ namespace DataAccess.Generator
             {
                 if (_random.Next(0, 2) == 0)
                 {
-                    _customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
-                    GoalkeeperCorner();
+                    //_customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
+                    //GoalkeeperCorner();
+                    GoalkeeperСaught();
                 }
                 else
                 {
@@ -453,8 +454,9 @@ namespace DataAccess.Generator
             {
                 if (_random.Next(0, 2) == 0)
                 {
-                    _customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
-                    GoalkeeperCorner();
+                    //_customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
+                    //GoalkeeperCorner();
+                    GoalkeeperСaught();
                 }
                 else
                 {
@@ -658,8 +660,9 @@ namespace DataAccess.Generator
             {
                 if (_random.Next(0, 2) == 0)
                 {
-                    _customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
-                    GoalkeeperCorner();
+                    //_customResultList.Add(new MatchEventItem(_lineIndex, _cellIndex, null, _defendGoalkeeper.Id, null, MatchEventItemType.GoalkeeperToCorner));
+                    //GoalkeeperCorner();
+                    GoalkeeperСaught();
                 }
                 else
                 {
