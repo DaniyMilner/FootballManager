@@ -25,6 +25,10 @@
             route: 'match/:id',
             moduleId: 'viewmodels/match/match',
             title: 'Match'
+        }, {
+            route: 'playerprofile(/:id)',
+            moduleId: 'viewmodels/player/profile',
+            title: 'Match'
         }];
 
     });

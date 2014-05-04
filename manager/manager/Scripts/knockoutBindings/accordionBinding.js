@@ -7,7 +7,6 @@
         var $element = $(element),
             cssClasses = ko.bindingHandlers.accordion.cssClasses;
 
-        var containers = $element.find(cssClasses.conteiner);
         var headers = $element.find('h3');
 
         $(headers).on('click', function () {

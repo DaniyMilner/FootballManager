@@ -8,9 +8,6 @@
 
             activate = function () {
                 var that = this;
-                http.get('http://football.ua/').then(function(response) {
-                    debugger;
-                });
                 return userContext.initialize().then(function () {
                     return localizationManager.initialize().then(function () {
                         that.isAuthenticated(userContext.isAuthenticated);
