@@ -17,6 +17,8 @@
 @import url("css/userProfile.css");
 @import url("css/match.css");
 @import url("css/playerProfile.css");
+@import url("css/equipment.css");
+@import url("css/team.css");
 
 /*Custom styles*/
 @import url("css/custom-jquery.css");

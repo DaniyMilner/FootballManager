@@ -20,15 +20,14 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],
         system.debug(true);
 
         app.title = "footballmanager";
-        
+
         app.configurePlugins({
             router: true,
             dialog: true,
             http: true
         });
-        
+
         viewLocator.useConvention();
-        
         app.start().then(function () {
             app.setRoot('viewmodels/shell');
         });

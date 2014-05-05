@@ -10,6 +10,10 @@
 	padding: 5px 20px;
 }
 
+.dialog-wrapper span {
+    cursor: pointer;
+}
+
 .dialog-wrapper .fields-wrapper {
 	display: -webkit-box;
 	-webkit-box-pack: justify;

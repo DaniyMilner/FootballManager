@@ -30,7 +30,46 @@
                             city: response.data.User.City,
                             aboutmyself: response.data.User.AboutMySelf,
                             sex: response.data.User.Sex,
-                            publicId: response.data.User.PublicId
+                            publicId: response.data.User.PublicId,
+                            playersCollection: _.map(response.data.User.PlayerCollection, function(item) {
+                                return {
+                                    id: item.Id,
+                                    name: item.Name,
+                                    surname: item.Surname,
+                                    age: item.age,
+                                    condition: item.Condition,
+                                    createDate: parseDateString(item.CreateDate),
+                                    growth: item.Growth,
+                                    humor: item.Humor,
+                                    money: item.Money,
+                                    number: item.Number,
+                                    publicId: item.PublicId,
+                                    salary: item.Salary,
+                                    weight: item.Weight,
+                                    teamId: item.TeamId,
+                                    country: _.map(item.Country, function(country) {
+                                        return {
+                                            id: country.Id,
+                                            name: country.Name,
+                                            publicId: country.PublicId
+                                        };
+                                    }),
+                                    illness: _.map(item.Illness, function (illness) {
+                                        return {
+                                            id: illness.Id,
+                                            name: illness.IllnessName,
+                                            timeForRecovery: illness.TimeForRecovery
+                                        };
+                                    }),
+                                    position: _.map(item.Position, function (position) {
+                                        return {
+                                            id: position.Id,
+                                            name: position.Name,
+                                            publicId: position.PublicId
+                                        };
+                                    }),
+                                };
+                            })
                         }
                     }
                 });

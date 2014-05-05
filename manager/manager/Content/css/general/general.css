@@ -2,9 +2,16 @@ body {
 	background: url("../../img/general/main-bg.jpg") repeat;
 	color:#f6f6f6;
 }
+
+.icon-spinner-wrapper {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+}
+
 .manager-wrapper{
 	margin: 32px auto 0;
-	position: relative;
+    position: relative;
 }
 .scoreboard {
 	background: url("../../img/general/left-part-scoreboard.png") no-repeat left top, url("../../img/general/right-part-scoreboard.png") no-repeat right top, url("../../img/general/scoreboard.png") repeat-x;
@@ -140,7 +147,7 @@ body {
 }
 
 .user-menu > ul li ul li a {
-	width: 120px;
+	width: 160px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	padding-bottom: 10px;

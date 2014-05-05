@@ -28,7 +28,15 @@
         }, {
             route: 'playerprofile(/:id)',
             moduleId: 'viewmodels/player/profile',
-            title: 'Match'
+            title: 'Player profile'
+        }, {
+            route: 'equipment',
+            moduleId: 'viewmodels/player/equipment',
+            title: 'Equipment'
+        }, {
+            route: 'team(/:id)',
+            moduleId: 'viewmodels/team/composition',
+            title: 'Composition'
         }];
 
     });
