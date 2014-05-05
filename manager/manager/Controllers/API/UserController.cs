@@ -6,10 +6,12 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DomainModel;
+using DomainModel.Entities;
 using DomainModel.Repositories;
-using Infrastructure;
 using manager.Components;
 using manager.Models;
+using NuGet;
+using Constants = Infrastructure.Constants;
 
 namespace manager.Controllers.API
 {
@@ -18,13 +20,15 @@ namespace manager.Controllers.API
         private readonly IUserRepository _userRepository;
         private readonly IAuthenticationProvider _authenticationProvider;
         private readonly IEntityFactory _entityFactory;
+        private readonly INumberingRepository _numberingRepository;
 
         public UserController(IUserRepository userRepository, IAuthenticationProvider authenticationProvider,
-            IEntityFactory entityFactory)
+            IEntityFactory entityFactory, INumberingRepository numberingRepository)
         {
             _userRepository = userRepository;
             _authenticationProvider = authenticationProvider;
             _entityFactory = entityFactory;
+            _numberingRepository = numberingRepository;
         }
 
         [HttpPost]
@@ -36,9 +40,14 @@ namespace manager.Controllers.API
                 return JsonError("Model can't be null");
             }
 
+            var nextValue = _numberingRepository.GetNextNumber(NumberingType.User);
+            var nextNumber = nextValue.Number;
+            nextValue.UpdateNumber(++nextNumber);
+
             var user = _entityFactory.User(userSignUpModel.Username, userSignUpModel.Password, userSignUpModel.Email,
                 userSignUpModel.ParentId, userSignUpModel.Skype, userSignUpModel.Birthday, userSignUpModel.City,
-                userSignUpModel.AboutMySelf, userSignUpModel.Sex);
+                userSignUpModel.AboutMySelf, userSignUpModel.Sex,
+                String.Format("{0:D" + Constants.MaxLengthOfPublicId + "}", nextNumber));
             _userRepository.Add(user);
 
             _authenticationProvider.SignIn(user.UserName, false);
@@ -138,7 +147,8 @@ namespace manager.Controllers.API
                         City = user.City,
                         AboutMySelf = user.AboutMySelf,
                         Sex = user.Sex,
-                        PlayerCollection = playersCollections
+                        PlayerCollection = playersCollections,
+                        PublicId = user.PublicId
                     },
                     Language = _userRepository.GetUserByUserName(GetCurrentUsername()).Language
                 });
@@ -180,6 +190,47 @@ namespace manager.Controllers.API
             {
                 Language = Constants.DefaultLanguage
             });
+        }
+
+        [HttpPost]
+        [Route("api/user/getuserinfobypublicId")]
+        public ActionResult GetUserInfoByPublicId(string publicId)
+        {
+            if (String.IsNullOrEmpty(publicId))
+            {
+                return JsonError("Public id can not be empty");
+            }
+
+            var user = _userRepository.GetUserByPublicId(publicId);
+
+            if (user == null)
+            {
+                return JsonError("User not found");
+            }
+
+            return JsonSuccess(new
+            {
+                User = new
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Skype = user.Skype,
+                    ParentId = user.ParentId,
+                    Birthday = user.Birthday,
+                    City = user.City,
+                    AboutMySelf = user.AboutMySelf,
+                    Sex = user.Sex,
+                    PublicId = user.PublicId
+                }
+            });
+        }
+
+        [HttpPost]
+        [Route("api/user/updateuserprofile")]
+        public ActionResult UpdateUserProfile(UserProfileModel model)
+        {
+            return JsonError("as");
         }
     }
 }

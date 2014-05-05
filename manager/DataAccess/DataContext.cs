@@ -75,6 +75,7 @@ namespace DataAccess
             modelBuilder.Entity<User>().Property(e => e.AboutMySelf).IsOptional();
             modelBuilder.Entity<User>().Property(e => e.Language).IsRequired().HasMaxLength(10);
             modelBuilder.Entity<User>().HasMany(e => e.PlayerCollection).WithRequired(e => e.User);
+            modelBuilder.Entity<User>().Property(e => e.PublicId).IsRequired();
 
             modelBuilder.Entity<Country>().Property(e => e.Name).IsRequired().HasMaxLength(254);
             modelBuilder.Entity<Country>().Property(e => e.PublicId).IsRequired().HasMaxLength(254);

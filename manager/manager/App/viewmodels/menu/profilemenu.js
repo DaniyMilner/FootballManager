@@ -3,6 +3,7 @@
 
         var viewmodel = {
             signOut: signOut,
+            navigateToUserProfile: navigateToUserProfile,
             activate: activate
         };
 
@@ -12,6 +13,10 @@
             httpWrapper.post('api/user/signout').then(function () {
                 router.reloadLocation();
             });
+        }
+
+        function navigateToUserProfile() {
+            router.navigate('userprofile/' + userContext.user.publicId);
         }
 
         function activate() {

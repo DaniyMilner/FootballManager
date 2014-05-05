@@ -18,8 +18,16 @@
             moduleId: 'viewmodels/generator/generator',
             title: 'Generator'
         }, {
+            route: 'userprofile/:id',
+            moduleId: 'viewmodels/user/profile',
+            title: 'User profile'
+        }, {
             route: 'match/:id',
             moduleId: 'viewmodels/match/match',
+            title: 'Match'
+        }, {
+            route: 'playerprofile(/:id)',
+            moduleId: 'viewmodels/player/profile',
             title: 'Match'
         }, {
             route: 'backoffice',

@@ -10,7 +10,7 @@ namespace DomainModel
     public interface IEntityFactory
     {
         User User(string userName, string password, string email, string parrentId, string skype,
-            DateTime? birthday, string city, string aboutMySelf, bool sex);
+            DateTime? birthday, string city, string aboutMySelf, bool sex, string publicId);
 
         Player Player(string name, string surname, int age, int weight, int growth, int number, int salary,
             int money, int humor, int condition, User user, Position position, Illness illness, Country country,
@@ -38,9 +38,9 @@ namespace DomainModel
     public class EntityFactory : IEntityFactory
     {
         public User User(string userName, string password, string email, string parrentId, string skype,
-            DateTime? birthday, string city, string aboutMySelf, bool sex)
+            DateTime? birthday, string city, string aboutMySelf, bool sex, string publicId)
         {
-            return new User(userName, password, email, parrentId, skype, birthday, city, aboutMySelf, sex);
+            return new User(userName, password, email, parrentId, skype, birthday, city, aboutMySelf, sex, publicId);
         }
 
         public Player Player(string name, string surname, int age, int weight, int growth, int number, int salary,

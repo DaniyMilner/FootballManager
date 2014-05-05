@@ -197,6 +197,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PlayerCreateModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserSignInModel.cs" />
     <Compile Include="Models\UserSignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,7 +212,6 @@
     <Content Include="App\localization\localizationManager.js" />
     <Content Include="App\localization\resources.js" />
     <Content Include="App\main.js" />
-    <Content Include="App\models\user.js" />
     <Content Include="App\routing\routes.js" />
     <Content Include="App\viewmodels\backoffice\backoffice.js" />
     <Content Include="App\viewmodels\home\home.js" />
@@ -220,6 +220,8 @@
     <Content Include="App\viewmodels\menu\profilemenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\player\createplayer.js" />
+    <Content Include="App\viewmodels\player\profile.js" />
+    <Content Include="App\viewmodels\user\profile.js" />
     <Content Include="App\viewmodels\user\signin.js" />
     <Content Include="App\viewmodels\user\signup.js" />
     <Content Include="App\viewmodels\shell.js" />
@@ -230,6 +232,8 @@
     <Content Include="App\views\menu\profilemenu.html" />
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\player\createplayer.html" />
+    <Content Include="App\views\player\profile.html" />
+    <Content Include="App\views\user\profile.html" />
     <Content Include="App\views\user\signin.html" />
     <Content Include="App\views\user\signup.html" />
     <Content Include="App\views\shell.html" />
@@ -264,6 +268,8 @@
     <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\css\match.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
+    <Content Include="Content\css\playerProfile.css" />
+    <Content Include="Content\css\userProfile.css" />
     <Content Include="Content\css\userDialog.css" />
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
@@ -275,6 +281,7 @@
     <Content Include="Content\img\general\main-bg.jpg" />
     <Content Include="Content\img\general\right-part-scoreboard.png" />
     <Content Include="Content\img\general\scoreboard.png" />
+    <Content Include="Content\img\general\user-icon-128x128.png" />
     <Content Include="Content\img\general\user-icon-48x48.png" />
     <Content Include="Content\img\match\ball.png" />
     <Content Include="Content\img\match\red_card.png" />
@@ -306,6 +313,7 @@
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
+    <Content Include="Scripts\knockoutBindings\accordionBinding.js" />
     <Content Include="Scripts\knockoutBindings\datepickerBinding.js" />
     <Content Include="Scripts\knockoutBindings\showHideBinding.js" />
     <Content Include="Scripts\q.js" />
@@ -334,7 +342,9 @@
     </Content>
     <Content Include="Scripts\underscore.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

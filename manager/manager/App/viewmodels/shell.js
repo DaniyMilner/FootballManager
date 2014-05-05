@@ -1,5 +1,5 @@
-﻿define(['plugins/router', 'routing/routes', 'userContext', 'localization/localizationManager'],
-    function (router, routes, userContext, localizationManager) {
+﻿define(['plugins/router', 'routing/routes', 'userContext', 'localization/localizationManager', 'plugins/http'],
+    function (router, routes, userContext, localizationManager, http) {
 
         var
             isAuthenticated = ko.observable(false),

@@ -23,5 +23,10 @@ namespace DataAccess.Repositories
         {
             return _dataContext.GetSet<User>().SingleOrDefault(u => u.UserName == userName);
         }
+
+        public User GetUserByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<User>().SingleOrDefault(u => u.PublicId == publicId);
+        }
     }
 }

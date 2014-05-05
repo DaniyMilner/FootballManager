@@ -256,4 +256,19 @@
 
     /* Resource section for model SignUp */
 
+    /* Resource section for model UserProfileMenu */
+
+    exit: {
+        en: 'Exit',
+        ru: 'Выход',
+        uk: "Вихід"
+    },
+    userprofile: {
+        en: 'Profile',
+        ru: 'Профиль',
+        uk: "Профіль"
+    },
+
+    /* Resource section for model UserProfileMenu */
+
 });

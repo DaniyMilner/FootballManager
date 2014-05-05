@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201404231749277_AddPublicIdToMatch.Designer.cs">
       <DependentUpon>201404231749277_AddPublicIdToMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404231900525_AddPublicIdForUser.cs" />
+    <Compile Include="Migrations\201404231900525_AddPublicIdForUser.Designer.cs">
+      <DependentUpon>201404231900525_AddPublicIdForUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201405051818009_AlterMatches.cs" />
     <Compile Include="Migrations\201405051818009_AlterMatches.Designer.cs">
       <DependentUpon>201405051818009_AlterMatches.cs</DependentUpon>
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404231749277_AddPublicIdToMatch.resx">
       <DependentUpon>201404231749277_AddPublicIdToMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404231900525_AddPublicIdForUser.resx">
+      <DependentUpon>201404231900525_AddPublicIdForUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405051818009_AlterMatches.resx">
       <DependentUpon>201405051818009_AlterMatches.cs</DependentUpon>
