@@ -26,6 +26,8 @@ namespace DomainModel.Entities
             PublicId = publicId;
             PlayerSettingsCollection = new Collection<PlayerSettings>();
             TeamSettingsCollection = new Collection<TeamSettings>();
+            HomeGoal = 0;
+            GuestGoal = 0;
         }
 
         public Guid HomeTeamId { get; private set; }
@@ -37,6 +39,8 @@ namespace DomainModel.Entities
         public DateTime DateStart { get; private set; }
         public string Result { get; private set; }
         public string PublicId { get; private set; }
+        public int HomeGoal { get; private set; }
+        public int GuestGoal { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
         [ScriptIgnore]

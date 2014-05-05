@@ -1,0 +1,64 @@
+﻿.admin-wrapper {
+}
+
+    .admin-wrapper .admin-menu {
+        display: -webkit-box;
+        display: -moz-box;
+        margin-bottom: 10px;
+    }
+
+    .admin-wrapper .admin-menu-item {
+        background-color: rgba(165, 42, 42, 0.8);
+        width: 100px;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        height: 25px;
+    }
+
+        .admin-wrapper .admin-menu-item.active {
+            background-color: #a52a2a;
+        }
+
+        .admin-wrapper .admin-menu-item:hover {
+            cursor: pointer;
+        }
+
+    .admin-wrapper .generator-wrapper > input {
+        color: #000000;
+        width: 100px;
+    }
+
+    .admin-wrapper .generator-wrapper > p {
+        display: inline-block;
+    }
+
+.generator-wrapper .table {
+    width: 80%;
+    margin: 0 10%;
+}
+
+    .generator-wrapper .table tbody tr:nth-child(odd) {
+        background-color: #d3d3d3;
+        background-color: rgba(211, 211, 211, 0.1);
+    }
+
+    .generator-wrapper .table tr th {
+        border-bottom: none;
+    }
+
+    .generator-wrapper .table tr td {
+        border-top: none;
+    }
+
+        .generator-wrapper .table tr td:first-child {
+            width: 30%;
+        }
+
+        .generator-wrapper .table tr td:nth-child(2) {
+            width: 30%;
+        }
+
+        .generator-wrapper .table tr td:last-child {
+            width: 20%;
+        }

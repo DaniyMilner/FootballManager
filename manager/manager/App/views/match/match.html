@@ -100,10 +100,10 @@
         </tr>
     </table>
     <div class="navigation">
-        <div class="nav-item" data-bind="css: { active: activePageIndex() == 0 }, click: setPageIndex0">Трансляция</div>
-        <div class="nav-item" data-bind="css: { active: activePageIndex() == 1 }, click: setPageIndex1">Составы</div>
-        <div class="nav-item" data-bind="css: { active: activePageIndex() == 2 }, click: setPageIndex2">Статистика</div>
-        <div class="nav-item" data-bind="css: { active: activePageIndex() == 3 }, click: setPageIndex3">Отчет</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 0 }, click: function () { setPageIndex(0); }">Трансляция</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 1 }, click: function () { setPageIndex(1); }">Составы</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 2 }, click: function () { setPageIndex(2); }">Статистика</div>
+        <div class="nav-item" data-bind="css: { active: activePageIndex() == 3 }, click: function () { setPageIndex(3); }">Отчет</div>
     </div>
 
 

@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201404231900525_AddPublicIdForUser.Designer.cs">
       <DependentUpon>201404231900525_AddPublicIdForUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405051906278_AlterMatches.cs" />
+    <Compile Include="Migrations\201405051906278_AlterMatches.Designer.cs">
+      <DependentUpon>201405051906278_AlterMatches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArrangementRepository.cs" />
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404231900525_AddPublicIdForUser.resx">
       <DependentUpon>201404231900525_AddPublicIdForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405051906278_AlterMatches.resx">
+      <DependentUpon>201405051906278_AlterMatches.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

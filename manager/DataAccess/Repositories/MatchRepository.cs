@@ -18,12 +18,21 @@ namespace DataAccess.Repositories
         public List<Match> GetAllNotGeneratedMatches()
         {
             return GetCollection().ToList();
-            //return _dataContext.GetSet<Match>().Where(z => z.Result == null || z.Result == string.Empty).ToList();
+            return _dataContext.GetSet<Match>().Where(z => z.Result == null || z.Result == string.Empty).ToList();
         }
 
         public Match GetMatchByPublicId(string publicId)
         {
             return _dataContext.GetSet<Match>().FirstOrDefault(z => z.PublicId == publicId);
         }
+
+        public List<Match> GetTodayMatches()
+        {
+            var now = DateTime.Now;
+            return _dataContext.GetSet<Match>().Where(
+                z => z.DateStart.Day == now.Day &&
+                z.DateStart.Month == now.Month &&
+                z.DateStart.Year == now.Year).ToList();
+        } 
     }
 }

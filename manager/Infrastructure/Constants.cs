@@ -11,4 +11,5 @@ namespace Infrastructure
         public const string DefaultLanguage = "ru";
         public const int MaxLengthOfPublicId = 6;
     }
+
 }

@@ -23,7 +23,7 @@ namespace DataAccess.Generator
             var playerInfo = new PlayerInformation();
 
             //1. выбор матчей для генерации и генерация в цикле
-            var matchesList = matchRepository.GetAllNotGeneratedMatches();
+            var matchesList = matchRepository.GetTodayMatches();
             foreach (var match in matchesList)
             {
                 //Match match = matchRepository.Get(new Guid("FB8A3E3B-7EC1-4EA6-A20F-D31CB65D9E00"));

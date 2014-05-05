@@ -79,7 +79,7 @@ namespace manager.Controllers.API
                 matchStart = true,
                 countShow = match.DateStart < DateTime.Now ? 
                                 Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes)) : 0,
-                reverse = (DateTime.Now - match.DateStart).Minutes > 45,
+                reverse = (DateTime.Now - match.DateStart).TotalMinutes > 45,
                 matchInfo = new
                 {
                     weatherName = match.Weather.Name,

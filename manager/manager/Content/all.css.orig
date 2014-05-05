@@ -16,9 +16,12 @@
 @import url("css/userProfile.css");
 @import url("css/match.css");
 @import url("css/playerProfile.css");
+<<<<<<< HEAD
 @import url("css/equipment.css");
 @import url("css/team.css");
+=======
 @import url("css/backoffice.css");
+>>>>>>> 53e82afb4eb884c79ad210853d129c5fb1068562
 
 /*Custom styles*/
 @import url("css/custom-jquery.css");
