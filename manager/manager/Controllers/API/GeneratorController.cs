@@ -71,7 +71,9 @@ namespace manager.Controllers.API
                     homeName = home.Name,
                     guestName = guest.Name,
                     dateStart = match.DateStart,
-                    isGenerated = !String.IsNullOrEmpty(match.Result) 
+                    isGenerated = !String.IsNullOrEmpty(match.Result),
+                    homeGoal = match.HomeGoal,
+                    guestGoal = match.GuestGoal
                 });
             }
             return JsonSuccess(result);

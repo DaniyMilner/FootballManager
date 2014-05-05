@@ -51,5 +51,11 @@ namespace DomainModel.Entities
         {
             Result = result;
         }
+
+        public void SetGoals(int home, int guest)
+        {
+            HomeGoal = home;
+            GuestGoal = guest;
+        }
     }
 }

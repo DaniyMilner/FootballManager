@@ -124,6 +124,7 @@ namespace DataAccess.Generator
 
                 //6. из списка событий генерировать json и записать в базу
                 match.SetResult(json.Serialize(resultList));
+                match.SetGoals(homeGoal,guestGoal);
             }
             var timeStop = DateTime.Now;
             return timeStop - timeStart;

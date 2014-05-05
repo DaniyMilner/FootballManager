@@ -51,6 +51,9 @@
 	top: -10px;
 	right: 50px;
 }
+.dialog-wrapper>span {
+    cursor: pointer;
+}
 @-moz-document !url-prefix(){
 	@media all and (max-width: 768px) {
 		.dialog-wrapper {
