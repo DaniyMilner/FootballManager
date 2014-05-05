@@ -1,0 +1,28 @@
+﻿<section class="admin-wrapper">
+    <div class="admin-menu">
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 0 }, click: function () { menu.setActiveIndex(0); }">Generator</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 1 }, click: function () { menu.setActiveIndex(1); }">Users</div>
+    </div>
+    <div class="generator-wrapper" data-bind="visible: menu.activeItemIndex() == 0">
+        <input data-bind="click: generator.run" type="button" value="Run" />
+        <p data-bind="text: generator.done() + ' - ' + (generator.time() ? generator.time().TotalSeconds : '')"></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Матч</th>
+                    <th>Дата</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: generator.todayMatches -->
+                <tr>
+                    <td data-bind="text: homeName + ' - ' + guestName"></td>
+                    <td data-bind="text: dateStart"></td>
+                    <td data-bind="text: isGenerated ? 'Ok' : '-'"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</section>

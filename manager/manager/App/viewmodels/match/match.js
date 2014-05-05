@@ -130,17 +130,8 @@
                     }
                 }
             },
-            setPageIndex0: function () {
-                viewmodel.activePageIndex(0);
-            },
-            setPageIndex1: function () {
-                viewmodel.activePageIndex(1);
-            },
-            setPageIndex2: function () {
-                viewmodel.activePageIndex(2);
-            },
-            setPageIndex3: function () {
-                viewmodel.activePageIndex(3);
+            setPageIndex: function (i) {
+                viewmodel.activePageIndex(i);
             },
             manageMatchResult: function () {
                 var lineIndexes = getEventsIndexesLine();
@@ -207,7 +198,6 @@
             getMatchStart: function () {
                 return httpWrapper.post('api/match/getmatchresult', { id: viewmodel.matchId }).then(function (response) {
                     if (response.success) {
-                        console.log(response);
 
                         viewmodel.matchDateStart(getDateFromString(response.data.matchInfo.dateStart));
                         viewmodel.homeTeamName(response.data.homeTeamInfo.name);

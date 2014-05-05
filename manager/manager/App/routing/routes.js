@@ -21,6 +21,10 @@
             route: 'match/:id',
             moduleId: 'viewmodels/match/match',
             title: 'Match'
+        }, {
+            route: 'backoffice',
+            moduleId: 'viewmodels/backoffice/backoffice',
+            title: 'Backoffice'
         }];
 
     });

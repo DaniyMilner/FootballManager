@@ -150,6 +150,8 @@ namespace DataAccess
             modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
             modelBuilder.Entity<Match>().Property(e => e.PublicId).IsRequired();
+            modelBuilder.Entity<Match>().Property(e => e.HomeGoal).IsRequired();
+            modelBuilder.Entity<Match>().Property(e => e.GuestGoal).IsRequired();
             modelBuilder.Entity<Match>().HasMany(e => e.PlayerSettingsCollection).WithRequired(e => e.Match);
 
             modelBuilder.Entity<PlayerSettings>().HasRequired(e => e.Player);

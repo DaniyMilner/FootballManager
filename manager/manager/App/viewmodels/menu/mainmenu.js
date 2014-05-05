@@ -10,7 +10,7 @@
         },
 
         goToRules = function() {
-            router.navigate('generator');
+            router.navigate('backoffice');
         },
         
         goToForum = function() {
