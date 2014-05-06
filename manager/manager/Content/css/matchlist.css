@@ -11,9 +11,19 @@
     color: wheat;
     font-size: 15px;
     display: block;
+    margin: 0 10px;
 }
 .match-list-wrapper .small-date {
     margin-bottom: 6px;
     font-size: 11px;
     color: cadetblue;
+}
+.match-list-wrapper .match-info-wrapper {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    margin-bottom: 5px;
+}
+.match-list-wrapper .match-info-wrapper .team-logo {
+    width: 25px;
 }

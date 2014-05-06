@@ -1,8 +1,8 @@
 ﻿<section class="match-wrapper">
     <div class="scoreboard-wrapper">
-        <div class="home-team-logo"></div>
         <div class="score-info">
             <div class="top-info">
+                <img alt="" class="home-team-logo" data-bind="attr: { src: '/Content/img/teams/' + homeTeamShortName() + '.png' }" />
                 <p class="team-name home-team-name" data-bind="text: homeTeamName"></p>
                 <div class="score">
                     <p class="home-score" data-bind="text: homeGoal()"></p>
@@ -10,13 +10,13 @@
                     <p class="guest-score" data-bind="text: guestGoal()"></p>
                 </div>
                 <p class="team-name guest-team-name" data-bind="text: guestTeamName"></p>
+                <img alt="" class="guest-team-logo" data-bind="attr: { src: '/Content/img/teams/' + guestTeamShortName() + '.png' }" />
             </div>
             <div class="bottom-info">
                 <p class="datetime" data-bind="text: matchDateStart"></p>
                 <p class="stadium" data-bind="text: homeStadium"></p>
             </div>
         </div>
-        <div class="guest-team-logo"></div>
     </div>
     <div class="event-line-wrapper">
         <p class="top-team" data-bind="text: homeTeamShortName"></p>

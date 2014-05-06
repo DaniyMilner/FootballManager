@@ -18,7 +18,9 @@
     height: 14px;
 }
 
-.match-wrapper .scoreboard-wrapper .home-team-logo {
+.match-wrapper .scoreboard-wrapper .home-team-logo,
+.match-wrapper .scoreboard-wrapper .guest-team-logo {
+    width: 50px;
 }
 
 .match-wrapper .scoreboard-wrapper .top-info {
@@ -86,8 +88,7 @@
         margin: 0;
     }
 
-.match-wrapper .scoreboard-wrapper .guest-team-logo {
-}
+
 
 .match-wrapper .event-line-wrapper {
     margin: 15px 5% 0;

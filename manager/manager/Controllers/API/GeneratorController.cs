@@ -74,7 +74,9 @@ namespace manager.Controllers.API
                     isGenerated = !String.IsNullOrEmpty(match.Result),
                     homeGoal = match.HomeGoal,
                     guestGoal = match.GuestGoal,
-                    publicId = match.PublicId
+                    publicId = match.PublicId,
+                    homeShortName = home.ShortName,
+                    guestShortName = guest.ShortName
                 });
             }
             return JsonSuccess(result);
@@ -101,7 +103,9 @@ namespace manager.Controllers.API
                     isGenerated = !String.IsNullOrEmpty(match.Result),
                     homeGoal = match.HomeGoal,
                     guestGoal = match.GuestGoal,
-                    publicId = match.PublicId
+                    publicId = match.PublicId,
+                    homeShortName = home.ShortName,
+                    guestShortName = guest.ShortName
                 });
             }
             return JsonSuccess(result);

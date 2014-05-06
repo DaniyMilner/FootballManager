@@ -17,7 +17,6 @@ namespace DataAccess.Repositories
 
         public List<Match> GetAllNotGeneratedMatches()
         {
-            return GetCollection().ToList();
             return _dataContext.GetSet<Match>().Where(z => z.Result == null || z.Result == string.Empty).ToList();
         }
 
@@ -38,7 +37,7 @@ namespace DataAccess.Repositories
         public List<Match> GetNotTodayMatches()
         {
             return _dataContext.GetSet<Match>().Where(z => z.DateStart < DateTime.Now && z.DateStart.Day != DateTime.Now.Day)
-                .OrderByDescending(z=>z.DateStart).ToList();
+                .OrderByDescending(z=>z.DateStart).Take(20).ToList();
         } 
     }
 }

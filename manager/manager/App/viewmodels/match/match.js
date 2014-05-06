@@ -22,12 +22,10 @@
 
             homeTeamName: ko.observable(''),
             homeTeamShortName: ko.observable(''),
-            homeTeamLogo: ko.observable(''),
             homeStadium: ko.observable(''),
 
             guestTeamName: ko.observable(''),
             guestTeamShortName: ko.observable(''),
-            guestTeamLogo: ko.observable(''),
 
             eventsLine: ko.observable(),
             customEventsLine: ko.observableArray([]),

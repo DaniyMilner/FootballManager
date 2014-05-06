@@ -42,7 +42,9 @@
                     isGenerated: data.isGenerated,
                     homeGoal: data.homeGoal,
                     guestGoal: data.guestGoal,
-                    publicId: data.publicId
+                    publicId: data.publicId,
+                    homeShortName: data.homeShortName,
+                    guestShortName: data.guestShortName
                 });
             }
         };
