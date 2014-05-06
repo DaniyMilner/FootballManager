@@ -71,16 +71,19 @@
             <span class="player-surname">Шевченко</span>-->
     </div>
     <h3>Характеристики игрока</h3>
-    <table class="skills-info table" data-bind="foreach: skills">
-        <tr>
-            <td data-bind="text: name"></td>
-            <td>
-                <div class="player-profile-progress">
-                    <div class="player-profile-progress-bar" data-bind="style: { 'width': width + '%' }"></div>
-                </div>
-            </td>
-            <td data-bind="text: value"></td>
-        </tr>
-    </table>
+    <div class="player-content-wrapper">
+        <table class="skills-info table" data-bind="foreach: skills">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td>
+                    <div class="player-profile-progress">
+                        <div class="player-profile-progress-bar" data-bind="style: { 'width': width + '%' }"></div>
+                    </div>
+                </td>
+                <td data-bind="text: value"></td>
+            </tr>
+        </table>
+    </div>
+
     <!-- /ko -->
 </section>
