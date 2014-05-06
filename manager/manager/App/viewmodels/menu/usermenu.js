@@ -1,14 +1,39 @@
-﻿define(['plugins/router', 'userContext'], function (router, userContext) {
+﻿define(['plugins/router', 'userContext'], function(router, userContext) {
 
-    var
-        isAuthenticated = ko.observable(false)
-        activate = function () {
-            this.isAuthenticated(userContext.isAuthenticated)
-        };
-
-    return {
-        isAuthenticated: isAuthenticated,
-        activate: activate
+    var viewmodel = {
+        activate: activate,
+        isAuthenticated: ko.observable(false),
+        goToPlayerProfile: goToPlayerProfile,
+        goToEquipment: goToEquipment,
+        goToTeamComposition: goToTeamComposition
     };
 
-})
+    return viewmodel;
+
+    function goToPlayerProfile() {
+        var publicId = userContext.user.playersCollection[0].publicId;
+        if (_.isNull(publicId) || _.isUndefined(publicId)) {
+            router.navigate('playerprofile');
+        } else {
+            router.navigate('playerprofile/' + publicId);
+        }
+    }
+
+    function goToEquipment() {
+        router.navigate('equipment');
+    }
+
+    function activate() {
+        this.isAuthenticated(userContext.isAuthenticated);
+    }
+
+    function goToTeamComposition() {
+        var teamid = userContext.user.playersCollection[0].teamId;
+        if (_.isNull(teamid) || _.isUndefined(teamid)) {
+            router.navigate('team');
+        } else {
+            router.navigate('team/' + teamid);
+        }
+    }
+
+});

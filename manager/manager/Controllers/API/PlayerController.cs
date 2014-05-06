@@ -22,11 +22,12 @@ namespace manager.Controllers.API
         private readonly IAuthenticationProvider _authenticationProvider;
         private readonly IIllnessRepository _illnessRepository;
         private readonly INumberingRepository _numberingRepository;
+        private readonly ISkillRepository _skillRepository;
 
         public PlayerController(IPlayerRepository playerRepository, IPositionRepository positionRepository,
-            IEntityFactory entityFactory,ICountryRepository countryRepository, IUserRepository userRepository,
+            IEntityFactory entityFactory, ICountryRepository countryRepository, IUserRepository userRepository,
             IAuthenticationProvider authenticationProvider, IIllnessRepository illnessRepository,
-            INumberingRepository numberingRepository)
+            INumberingRepository numberingRepository, ISkillRepository skillRepository)
         {
             _playerRepository = playerRepository;
             _positionRepository = positionRepository;
@@ -36,6 +37,7 @@ namespace manager.Controllers.API
             _authenticationProvider = authenticationProvider;
             _illnessRepository = illnessRepository;
             _numberingRepository = numberingRepository;
+            _skillRepository = skillRepository;
         }
 
         [HttpPost]
@@ -46,7 +48,7 @@ namespace manager.Controllers.API
 
             foreach (var position in _positionRepository.GetCollection())
             {
-                positionsList.Add(new 
+                positionsList.Add(new
                 {
                     Id = position.Id,
                     Name = position.Name,
@@ -92,13 +94,107 @@ namespace manager.Controllers.API
             var nextNumber = nextValue.Number;
             nextValue.UpdateNumber(++nextNumber);
 
+            var position = _positionRepository.Get(model.PositionId);
+
             var player = _entityFactory.Player(model.Name, model.Surname, 18, model.Weight, model.Growth, 0, 0, 100000, 5, 100, user,
-                _positionRepository.Get(model.PositionId), _illnessRepository.GetIllnessByName("healthy"), _countryRepository.Get(model.CountryId),
+                position, _illnessRepository.GetIllnessByName("healthy"), _countryRepository.Get(model.CountryId),
                 String.Format("{0:D" + Constants.MaxLengthOfPublicId + "}", nextNumber),
                 DateTime.Now);
 
             _playerRepository.Add(player);
+            CreateSkillsForPlayer(player, position);
             return JsonSuccess();
+        }
+
+        private void CreateSkillsForPlayer(Player player, Position position)
+        {
+            var FW = new[] { 1, 2, 3, 4, 5, 7, 8, 13, 14 };
+            var DEF = new[] { 1, 2, 3, 4, 5, 6, 8, 13, 14 };
+            var GK = new[] { 8, 9, 10, 11, 12, 13, 14 };
+            var MID = new[] { 1, 2, 3, 4, 5, 6, 8, 13, 14 };
+            switch (position.PublicId)
+            {
+                case "FW":
+                    CreateSkills(FW, player);
+                    break;
+                case "DEF":
+                    CreateSkills(DEF, player);
+                    break;
+                case "GK":
+                    CreateSkills(GK, player);
+                    break;
+                case "MID":
+                    CreateSkills(MID, player);
+                    break;
+            }
+        }
+
+        private void CreateSkills(int[] arr, Player player)
+        {
+            foreach (var i in arr)
+            {
+                var skill = _entityFactory.SkillsPlayer(_skillRepository.GetSkillByOrdering(i), player);
+                player.SkillPlayerCollection.Add(skill);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/player/getplayerinfo")]
+        public ActionResult GetPlayerInfo(string publicId)
+        {
+            var player = _playerRepository.GetPlayerByPublicId(publicId);
+            if (player == null)
+            {
+                return JsonError("Player does not exists");
+            }
+
+            var skills = new List<object>();
+
+            foreach (var skillsPlayer in player.SkillPlayerCollection)
+            {
+                skills.Add(new
+                {
+                    id = skillsPlayer.Skill.Ordering,
+                    value = skillsPlayer.Value
+                });
+            }
+
+            return JsonSuccess(new
+            {
+                Id = player.Id,
+                Name = player.Name,
+                Surname = player.Surname,
+                Age = player.Age,
+                Weight = player.Weight,
+                Growth = player.Growth,
+                Number = player.Number,
+                Salary = player.Salary,
+                Money = player.Money,
+                Humor = player.Humor,
+                Condition = player.Condition,
+                Position = new
+                {
+                    Id = player.Position.Id,
+                    Name = player.Position.Name,
+                    PublicId = player.Position.PublicId
+                },
+                Illness = new
+                {
+                    Id = player.Illness.Id,
+                    IllnessName = player.Illness.IllnessName,
+                    TimeForRecovery = player.Illness.TimeForRecovery
+                },
+                Country = new
+                {
+                    Id = player.Country.Id,
+                    Name = player.Country.Name,
+                    PublicId = player.Country.PublicId
+                },
+                Skills = skills,
+                PublicId = player.PublicId,
+                CreateDate = player.CreateDate,
+                TeamId = player.TeamId,
+            });
         }
     }
 }

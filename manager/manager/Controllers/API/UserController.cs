@@ -100,6 +100,7 @@ namespace manager.Controllers.API
                 {
                     playersCollections.Add(new
                     {
+                        Id = player.Id,
                         Name = player.Name,
                         Surname = player.Surname,
                         Age = player.Age,

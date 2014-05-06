@@ -1,0 +1,11 @@
+﻿.team-wrapper {
+	padding: 5px 10px;
+}
+
+.team-wrapper .table.table-bordered td,
+.team-wrapper .table.table-bordered th {
+    padding: 3px;
+    text-align: center;
+    font-size: 12px;
+    vertical-align: middle;
+}
