@@ -78,7 +78,7 @@ namespace manager.Controllers.API
             {
                 matchStart = true,
                 countShow = match.DateStart < DateTime.Now ? 
-                                Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes)) : 0,
+                                Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes))+1 : 0,
                 reverse = (DateTime.Now - match.DateStart).TotalMinutes > 45,
                 matchInfo = new
                 {

@@ -12,5 +12,6 @@ namespace DomainModel.Repositories
         List<Match> GetAllNotGeneratedMatches();
         Match GetMatchByPublicId(string publicId);
         List<Match> GetTodayMatches();
+        List<Match> GetNotTodayMatches();
     }
 }

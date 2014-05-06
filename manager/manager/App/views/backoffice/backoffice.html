@@ -4,9 +4,10 @@
         <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 1 }, click: function () { menu.setActiveIndex(1); }">Users</div>
     </div>
     <div class="generator-wrapper" data-bind="visible: menu.activeItemIndex() == 0">
-        <input data-bind="click: generator.run" type="button" value="Run" />
-        <p data-bind="text: generator.done() + ' - ' + (generator.time() ? generator.time().TotalSeconds : '')"></p>
-        <table class="table">
+        <input data-bind="click: generator.run, attr: { disabled: generator.noMatches() }" type="button" value="Run" />
+        <p class="time" data-bind="text: generator.done() + (generator.time() ? ' - ' + generator.time().TotalSeconds : '')"></p>
+        <p data-bind="visible: generator.noMatches()">Сегодня нету матчей</p>
+        <table class="table" data-bind="visible: !generator.noMatches()">
             <thead>
                 <tr>
                     <th>Матч</th>
@@ -18,7 +19,9 @@
             <tbody>
                 <!-- ko foreach: generator.todayMatches -->
                 <tr>
-                    <td data-bind="text: homeName + ' - ' + guestName"></td>
+                    <td>
+                        <a target="_blank" href="#" data-bind="attr: { href: '/#match/' + publicId }, text: homeName + ' - ' + guestName"></a>
+                    </td>
                     <td data-bind="text: dateStart"></td>
                     <td data-bind="text: isGenerated ? 'Ok' : '-'"></td>
                     <td data-bind="text: (homeGoal ? homeGoal : '0') + ' : ' + (guestGoal ? guestGoal : '0')"></td>

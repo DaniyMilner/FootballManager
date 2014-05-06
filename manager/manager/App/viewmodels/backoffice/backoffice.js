@@ -12,6 +12,7 @@
                 done: ko.observable(''),
                 time: ko.observable(''),
                 todayMatches: ko.observableArray([]),
+                noMatches: ko.observable(false),
                 getTodayMatches: function () {
                     httpWrapper.post('api/generator/getTodayMatches').then(function (response) {
                         if (response.success) {
@@ -25,9 +26,12 @@
                                         dateStart: new Date(parseInt(response.data[i].dateStart.replace('/Date(', '').replace(')/', ''))).toDateString(),
                                         isGenerated: response.data[i].isGenerated,
                                         homeGoal: response.data[i].homeGoal,
-                                        guestGoal: response.data[i].guestGoal
+                                        guestGoal: response.data[i].guestGoal,
+                                        publicId: response.data[i].publicId
                                     });
                                 }
+                            } else {
+                                viewmodel.generator.noMatches(true);
                             }
                         }
                     }).fail(function (response) {

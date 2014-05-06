@@ -29,7 +29,7 @@
         width: 100px;
     }
 
-    .admin-wrapper .generator-wrapper > p {
+    .admin-wrapper .generator-wrapper .time {
         display: inline-block;
     }
 

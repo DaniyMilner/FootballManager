@@ -73,7 +73,35 @@ namespace manager.Controllers.API
                     dateStart = match.DateStart,
                     isGenerated = !String.IsNullOrEmpty(match.Result),
                     homeGoal = match.HomeGoal,
-                    guestGoal = match.GuestGoal
+                    guestGoal = match.GuestGoal,
+                    publicId = match.PublicId
+                });
+            }
+            return JsonSuccess(result);
+        }
+
+        [HttpPost]
+        [Route("api/generator/getNotTodayMatches")]
+        public ActionResult GetNotTodayMatches()
+        {
+            var matches = _matchRepository.GetNotTodayMatches();
+            if (matches.Count == 0) return JsonSuccess("no_matches");
+
+            var result = new List<object>();
+            foreach (var match in matches)
+            {
+                var home = _teamRepository.Get(match.HomeTeamId);
+                var guest = _teamRepository.Get(match.GuestTeamId);
+                result.Add(new
+                {
+                    id = match.Id,
+                    homeName = home.Name,
+                    guestName = guest.Name,
+                    dateStart = match.DateStart,
+                    isGenerated = !String.IsNullOrEmpty(match.Result),
+                    homeGoal = match.HomeGoal,
+                    guestGoal = match.GuestGoal,
+                    publicId = match.PublicId
                 });
             }
             return JsonSuccess(result);
