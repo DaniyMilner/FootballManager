@@ -1,0 +1,21 @@
+.home-wrapper{
+    display: -webkit-box;
+    padding: 0 2%;
+}
+.home-wrapper .hello-wrapper{
+    width: 55%;
+}
+.home-wrapper .hello-wrapper p {
+    font-size: 17px;
+    text-align: justify;
+    text-indent: 25px;
+}
+.home-wrapper .hello-wrapper .title {
+    font-size: 23px;
+    text-indent: 0;
+    text-align: center;
+}
+.home-wrapper .show-matches-wrapper{
+    width: 45%;
+    padding-left: 1%;
+}

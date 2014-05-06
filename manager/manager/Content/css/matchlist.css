@@ -1,0 +1,19 @@
+.match-list-wrapper{
+    text-align: center;
+}
+.match-list-wrapper .title{
+    font-size: 18px;
+}
+.match-list-wrapper .short-name{
+    font-size: 11px;
+}
+.match-list-wrapper .match-info{
+    color: wheat;
+    font-size: 15px;
+    display: block;
+}
+.match-list-wrapper .small-date {
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: cadetblue;
+}

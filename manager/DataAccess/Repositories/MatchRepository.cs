@@ -33,6 +33,12 @@ namespace DataAccess.Repositories
                 z => z.DateStart.Day == now.Day &&
                 z.DateStart.Month == now.Month &&
                 z.DateStart.Year == now.Year).ToList();
+        }
+
+        public List<Match> GetNotTodayMatches()
+        {
+            return _dataContext.GetSet<Match>().Where(z => z.DateStart < DateTime.Now && z.DateStart.Day != DateTime.Now.Day)
+                .OrderByDescending(z=>z.DateStart).ToList();
         } 
     }
 }

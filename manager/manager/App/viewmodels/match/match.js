@@ -207,7 +207,6 @@
                         viewmodel.guestTeamShortName(response.data.guestTeamInfo.shortName);
                         if (response.data.matchStart) {
                             clearInterval(viewmodel.intervalCheckStart);
-
                             viewmodel.countShow = response.data.countShow;
                             viewmodel.matchStart(true);
                             viewmodel.reverse = response.data.reverse;

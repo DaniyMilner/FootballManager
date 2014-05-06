@@ -216,6 +216,7 @@
     <Content Include="App\viewmodels\backoffice\backoffice.js" />
     <Content Include="App\viewmodels\home\home.js" />
     <Content Include="App\viewmodels\match\match.js" />
+    <Content Include="App\viewmodels\match\matchlist.js" />
     <Content Include="App\viewmodels\menu\mainmenu.js" />
     <Content Include="App\viewmodels\menu\profilemenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
@@ -228,6 +229,7 @@
     <Content Include="App\views\backoffice\backoffice.html" />
     <Content Include="App\views\home\home.html" />
     <Content Include="App\views\match\match.html" />
+    <Content Include="App\views\match\matchlist.html" />
     <Content Include="App\views\menu\mainmenu.html" />
     <Content Include="App\views\menu\profilemenu.html" />
     <Content Include="App\views\menu\usermenu.html" />
@@ -248,6 +250,7 @@
     <Content Include="Content\css\general\screen_1280.css" />
     <Content Include="Content\css\general\screen_640.css" />
     <Content Include="Content\css\general\screen_800.css" />
+    <Content Include="Content\css\home.css" />
     <Content Include="Content\css\lib\bootstrap.css" />
     <Content Include="Content\css\lib\images\animated-overlay.gif" />
     <Content Include="Content\css\lib\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
@@ -267,6 +270,7 @@
     <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.css" />
     <Content Include="Content\css\lib\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\css\match.css" />
+    <Content Include="Content\css\matchlist.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
     <Content Include="Content\css\playerProfile.css" />
     <Content Include="Content\css\userProfile.css" />
@@ -287,6 +291,18 @@
     <Content Include="Content\img\match\red_card.png" />
     <Content Include="Content\img\match\time.png" />
     <Content Include="Content\img\match\yellow_card.png" />
+    <Content Include="Content\img\teams\ARS.png" />
+    <Content Include="Content\img\teams\ATL.png" />
+    <Content Include="Content\img\teams\BAR.png" />
+    <Content Include="Content\img\teams\CHE.png" />
+    <Content Include="Content\img\teams\DD.png" />
+    <Content Include="Content\img\teams\DK.png" />
+    <Content Include="Content\img\teams\LIV.png" />
+    <Content Include="Content\img\teams\MC.png" />
+    <Content Include="Content\img\teams\MEH.png" />
+    <Content Include="Content\img\teams\RM.png" />
+    <Content Include="Content\img\teams\SEV.png" />
+    <Content Include="Content\img\teams\SHD.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />

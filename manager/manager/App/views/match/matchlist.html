@@ -1,0 +1,14 @@
+﻿<section class="match-list-wrapper">
+    <p class="title">Сегодня играют</p>
+    <p class="short-name" data-bind="visible: todayMatches().length == 0">Сегодня матчей нет</p>
+    <!-- ko foreach: todayMatches -->
+    <a class="match-info" data-bind="text: homeName + ' - ' + guestName, attr: { href: '/#match/' + publicId }"></a>
+    <!-- /ko -->
+    <p></p>
+    <p class="title">Последние матчи</p>
+    <p class="short-name" data-bind="visible: notTodayMatches().length == 0">Матчей нет</p>
+    <!-- ko foreach: notTodayMatches -->
+    <a class="match-info" data-bind="text: homeName + ' - ' + guestName, attr: { href: '/#match/' + publicId }"></a>
+    <p class="small-date" data-bind="text: dateStart"></p>
+    <!-- /ko -->
+</section>
