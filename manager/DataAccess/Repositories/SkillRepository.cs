@@ -13,5 +13,10 @@ namespace DataAccess.Repositories
         public SkillRepository(IDataContext dataContext) : base(dataContext)
         {
         }
+
+        public Skill GetSkillByOrdering(int order)
+        {
+            return _dataContext.GetSet<Skill>().SingleOrDefault(s => s.Ordering == order);
+        }
     }
 }

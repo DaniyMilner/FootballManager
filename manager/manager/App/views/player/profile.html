@@ -18,47 +18,47 @@
                     <tbody>
                         <tr>
                             <td>Имя</td>
-                            <td>Андрей Шевченко</td>
+                            <td data-bind="text: player.name + ' ' + player.surname ">Андрей Шевченко</td>
                         </tr>
                         <tr>
                             <td>Позиция</td>
-                            <td>Нападающий</td>
+                            <td data-bind="text: player.position.Name">Нападающий</td>
                         </tr>
                         <tr>
                             <td>Возраст</td>
-                            <td>25</td>
+                            <td data-bind="text: player.age">25</td>
                         </tr>
                         <tr>
                             <td>Рост</td>
-                            <td>180 см.</td>
+                            <td data-bind="text: player.growth">180 см.</td>
                         </tr>
                         <tr>
                             <td>Вес</td>
-                            <td>80 кг.</td>
+                            <td data-bind="text: player.weight">80 кг.</td>
                         </tr>
                         <tr>
                             <td>Настроение</td>
-                            <td>100%</td>
+                            <td data-bind="text: player.humor">100%</td>
                         </tr>
                         <tr>
                             <td>Состояние</td>
-                            <td>100%</td>
+                            <td data-bind="text: player.condition">100%</td>
                         </tr>
                         <tr>
                             <td>Финансы</td>
-                            <td>10000 грн.</td>
+                            <td data-bind="text: player.money">10000 грн.</td>
                         </tr>
                         <tr>
                             <td>Зарплата</td>
-                            <td>20 грн.</td>
+                            <td data-bind="text: player.salary">20 грн.</td>
                         </tr>
                         <tr>
                             <td>Команда</td>
-                            <td>Динамо Киев</td>
+                            <td data-bind="text: player.teamId">Динамо Киев</td>
                         </tr>
                         <tr>
                             <td>Страна</td>
-                            <td>Украина</td>
+                            <td data-bind="text: player.country.Name">Украина</td>
                         </tr>
                     </tbody>
                 </table>
@@ -68,76 +68,19 @@
     <div class="player-photo-wrapper">
         <img class="player-photo" src="/Content/img/general/player-form.png" />
         <!--<span class="player-number">10</span>
-        <span class="player-surname">Шевченко</span>-->
+            <span class="player-surname">Шевченко</span>-->
     </div>
-    <div class="skill-info table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        <abbr title="Скорость">Cк.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Игра головой">ИГ</abbr>
-
-                    </th>
-                    <th>
-                        <abbr title="Сила удара">СУ</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Пас">Пас</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Точность">Точн.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Отбор">Отбор</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Дриблинг">Др.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Владение мячом">Вл.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Реакция">Реакц.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Игра в воздухе">ИвВ</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Прыжок">Пр.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Позиционироване">Поз.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Выносливость">Вын.</abbr>
-                    </th>
-                    <th>
-                        <abbr title="Лиедрство">Cк.</abbr>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h3>Характеристики игрока</h3>
+    <table class="skills-info table" data-bind="foreach: skills">
+        <tr>
+            <td data-bind="text: name"></td>
+            <td>
+                <div class="player-profile-progress">
+                    <div class="player-profile-progress-bar" data-bind="style: { 'width': width + '%' }"></div>
+                </div>
+            </td>
+            <td data-bind="text: value"></td>
+        </tr>
+    </table>
     <!-- /ko -->
 </section>

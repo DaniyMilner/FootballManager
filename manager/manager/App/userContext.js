@@ -36,7 +36,7 @@
                                     id: item.Id,
                                     name: item.Name,
                                     surname: item.Surname,
-                                    age: item.age,
+                                    age: item.Age,
                                     condition: item.Condition,
                                     createDate: parseDateString(item.CreateDate),
                                     growth: item.Growth,
@@ -67,7 +67,7 @@
                                             name: position.Name,
                                             publicId: position.PublicId
                                         };
-                                    }),
+                                    })
                                 };
                             })
                         }

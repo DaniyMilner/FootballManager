@@ -36,6 +36,12 @@ namespace DataAccess.Repositories
                 _dataContext.GetSet<Player>().FirstOrDefault(z => z.Id == lineUp.Ten),
                 _dataContext.GetSet<Player>().FirstOrDefault(z => z.Id == lineUp.Eleven)
             };
-        } 
+        }
+
+
+        public Player GetPlayerByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<Player>().SingleOrDefault(p => p.PublicId == publicId);
+        }
     }
 }

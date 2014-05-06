@@ -9,5 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface ISkillRepository:IRepository<Skill>
     {
+        Skill GetSkillByOrdering(int order);
     }
 }

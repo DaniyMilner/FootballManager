@@ -55,3 +55,21 @@
 .player-surname {
     position: absolute;
 }
+
+
+.player-profile-progress {
+    border-bottom: 1px solid #9c6a0b;
+    border-left: 1px solid #9c6a0b;
+    width: 200px;
+    height: 20px;
+}
+.player-profile-progress-bar {
+    width: 100%;
+    height: 100%;
+    background: #9c6a0b;
+}
+
+.player-profile-wrapper .skills-info.table tbody,
+.player-profile-wrapper .skills-info.table td {
+    border-top: none;
+}
