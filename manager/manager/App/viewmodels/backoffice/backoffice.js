@@ -23,7 +23,9 @@
                                         homeName: response.data[i].homeName,
                                         guestName: response.data[i].guestName,
                                         dateStart: new Date(parseInt(response.data[i].dateStart.replace('/Date(', '').replace(')/', ''))).toDateString(),
-                                        isGenerated: response.data[i].isGenerated
+                                        isGenerated: response.data[i].isGenerated,
+                                        homeGoal: response.data[i].homeGoal,
+                                        guestGoal: response.data[i].guestGoal
                                     });
                                 }
                             }

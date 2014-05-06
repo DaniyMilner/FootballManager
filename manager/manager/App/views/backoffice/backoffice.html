@@ -12,6 +12,7 @@
                     <th>Матч</th>
                     <th>Дата</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                     <td data-bind="text: homeName + ' - ' + guestName"></td>
                     <td data-bind="text: dateStart"></td>
                     <td data-bind="text: isGenerated ? 'Ok' : '-'"></td>
+                    <td data-bind="text: (homeGoal ? homeGoal : '0') + ' : ' + (guestGoal ? guestGoal : '0')"></td>
                 </tr>
                 <!-- /ko -->
             </tbody>
