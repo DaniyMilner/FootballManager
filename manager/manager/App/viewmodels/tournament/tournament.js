@@ -20,6 +20,7 @@
     function gettournamentinfo() {
         return httpWrapper.post('api/tournament/gettournamentinfo', { id: viewmodel.tournamentId() }).then(function (response) {
             viewmodel.tournamentTable([]);
+           
             if (response.success) {
                 if (typeof response.data == 'object') {
                     for (var i = 0; i < response.data.length; i++) {
