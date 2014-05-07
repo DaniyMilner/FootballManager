@@ -18,6 +18,11 @@ namespace DataAccess.Repositories
         public List<Tournament> GeTournamentsBySeasonId(Guid id)
         {
             return _dataContext.GetSet<Tournament>().Where(z => z.Season.Id == id).ToList();
-        } 
+        }
+
+        public Tournament GeTournamentByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<Tournament>().FirstOrDefault(z => z.PublicId == publicId);
+        }
     }
 }

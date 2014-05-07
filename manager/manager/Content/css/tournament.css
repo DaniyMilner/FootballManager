@@ -1,0 +1,41 @@
+﻿.tournament-info-wrapper{}
+.tournament-info-wrapper .table{}
+.tournament-info-wrapper .table tbody tr td img {
+    width: 30px;
+}
+
+.tournament-info-wrapper .matches-wrapper{
+    display: -webkit-box;
+}
+.tournament-info-wrapper .matches-wrapper .today-wrapper{
+    width: 50%;
+}
+.tournament-info-wrapper .matches-wrapper .soon-wrapper{
+    width: 50%;
+}
+.tournament-info-wrapper .today-wrapper .title,
+.tournament-info-wrapper .soon-wrapper .title{
+    text-align: center;
+}
+.tournament-info-wrapper .today-wrapper .tour,
+.tournament-info-wrapper .soon-wrapper .tour{
+    text-align: center;
+    margin: 0;
+}
+.tournament-info-wrapper .today-wrapper .match-info-block,
+.tournament-info-wrapper .soon-wrapper .match-info-block{
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    margin-bottom: 15px;
+}
+.tournament-info-wrapper .today-wrapper .match-info-block img,
+.tournament-info-wrapper .soon-wrapper .match-info-block img{
+    width: 30px;
+}
+.tournament-info-wrapper .today-wrapper .match-info-block .teams-info,
+.tournament-info-wrapper .soon-wrapper .match-info-block .teams-info{
+    margin: 0 10px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    cursor: pointer;
+}

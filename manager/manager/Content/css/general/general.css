@@ -105,6 +105,7 @@ body {
 	color:#ffffff;
 	-webkit-box-align: center;
 	-moz-box-align: center;
+	margin: 0;
 }
 .user-menu > ul {
 	-webkit-box-pack: justify;

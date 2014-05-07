@@ -229,6 +229,7 @@
     <Content Include="App\viewmodels\player\profile.js" />
     <Content Include="App\viewmodels\season\season.js" />
     <Content Include="App\viewmodels\team\composition.js" />
+    <Content Include="App\viewmodels\tournament\tournament.js" />
     <Content Include="App\viewmodels\user\profile.js" />
     <Content Include="App\viewmodels\user\signin.js" />
     <Content Include="App\viewmodels\user\signup.js" />
@@ -246,6 +247,7 @@
     <Content Include="App\views\player\profile.html" />
     <Content Include="App\views\season\season.html" />
     <Content Include="App\views\team\composition.html" />
+    <Content Include="App\views\tournament\tournament.html" />
     <Content Include="App\views\user\profile.html" />
     <Content Include="App\views\user\signin.html" />
     <Content Include="App\views\user\signup.html" />
@@ -285,7 +287,9 @@
     <Content Include="Content\css\matchlist.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
     <Content Include="Content\css\playerProfile.css" />
+    <Content Include="Content\css\seasons.css" />
     <Content Include="Content\css\team.css" />
+    <Content Include="Content\css\tournament.css" />
     <Content Include="Content\css\userProfile.css" />
     <Content Include="Content\css\userDialog.css" />
     <Content Include="Content\css\userRegistration.css" />

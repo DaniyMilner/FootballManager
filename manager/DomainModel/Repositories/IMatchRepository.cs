@@ -13,5 +13,6 @@ namespace DomainModel.Repositories
         Match GetMatchByPublicId(string publicId);
         List<Match> GetTodayMatches();
         List<Match> GetNotTodayMatches();
+        List<Match> GetMatchesByTourItemId(Guid id);
     }
 }

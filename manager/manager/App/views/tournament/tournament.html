@@ -1,0 +1,65 @@
+﻿<section class="tournament-info-wrapper">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>И</th>
+                <th>В</th>
+                <th>Н</th>
+                <th>П</th>
+                <th>ЗАБ</th>
+                <th>ПРО</th>
+                <th>РАЗН</th>
+                <th>О</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: tournamentTable -->
+            <tr>
+                <td data-bind="text:$index()+1"></td>
+                <td>
+                    <img alt="" data-bind="attr: { src: '/content/img/teams/' + TeamShortName + '.png'}" />
+                </td>
+                <td data-bind="text: TeamName"></td>
+                <td data-bind="text: Games"></td>
+                <td data-bind="text: Win"></td>
+                <td data-bind="text: Draw"></td>
+                <td data-bind="text: Lost"></td>
+                <td data-bind="text: Goals"></td>
+                <td data-bind="text: LostGoals"></td>
+                <td data-bind="text: DifferenceGoals"></td>
+                <td data-bind="text: Points"></td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+
+    </table>
+    
+    <div class="matches-wrapper">
+        <div class="today-wrapper">
+            <p class="title">Последние матчи</p>
+            <p class="tour" data-bind="text: lastTour() + ' тур'"></p>
+            <!-- ko foreach:lastMatches-->
+            <div class="match-info-block">
+                <img alt="" data-bind="attr: { src: '/content/img/teams/' + homeTeamShortName + '.png' }" />
+                <a alt="" class="teams-info" data-bind="attr: { href: '/#match/' + matchPublicId }, text: homeTeamName + ' - ' + guestTeamName"></a>
+                <img alt="" data-bind="attr: { src: '/content/img/teams/' + guestTeamShortName + '.png' }" />
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="soon-wrapper">
+            <p class="title">Следующие матчи</p>
+            <p class="tour" data-bind="text: nextTour() + ' тур'"></p>
+            <!-- ko foreach:nextMatches-->
+            <div class="match-info-block">
+                <img alt="" data-bind="attr: { src: '/content/img/teams/' + homeTeamShortName + '.png' }" />
+                <a alt="" class="teams-info" data-bind="attr: { href: '/#match/' + matchPublicId }, text: homeTeamName + ' - ' + guestTeamName"></a>
+                <img alt="" data-bind="attr: { src: '/content/img/teams/' + guestTeamShortName + '.png' }" />
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</section>

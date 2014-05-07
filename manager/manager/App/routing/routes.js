@@ -45,6 +45,10 @@
             route: 'season/:id',
             moduleId: 'viewmodels/season/season',
             title: 'Season'
+        }, {
+            route: 'tournament/:id',
+            moduleId: 'viewmodels/tournament/tournament',
+            title: 'Tournament'
         }];
 
     });

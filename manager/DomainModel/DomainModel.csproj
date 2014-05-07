@@ -64,6 +64,7 @@
     <Compile Include="Entities\TeamSettings.cs" />
     <Compile Include="Entities\Tournament.cs" />
     <Compile Include="Entities\TournamentItem.cs" />
+    <Compile Include="Entities\TournamentTableItem.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Weather.cs" />
     <Compile Include="EntityFactory.cs" />
