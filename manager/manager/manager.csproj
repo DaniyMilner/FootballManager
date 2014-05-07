@@ -227,6 +227,7 @@
     <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\player\equipment.js" />
     <Content Include="App\viewmodels\player\profile.js" />
+    <Content Include="App\viewmodels\rules\rules.js" />
     <Content Include="App\viewmodels\season\season.js" />
     <Content Include="App\viewmodels\team\composition.js" />
     <Content Include="App\viewmodels\tournament\tournament.js" />
@@ -245,6 +246,7 @@
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
     <Content Include="App\views\player\profile.html" />
+    <Content Include="App\views\rules\rules.html" />
     <Content Include="App\views\season\season.html" />
     <Content Include="App\views\team\composition.html" />
     <Content Include="App\views\tournament\tournament.html" />
@@ -287,6 +289,7 @@
     <Content Include="Content\css\matchlist.css" />
     <Content Include="Content\css\moz-fix\general_mozilla.css" />
     <Content Include="Content\css\playerProfile.css" />
+    <Content Include="Content\css\rules.css" />
     <Content Include="Content\css\seasons.css" />
     <Content Include="Content\css\team.css" />
     <Content Include="Content\css\tournament.css" />

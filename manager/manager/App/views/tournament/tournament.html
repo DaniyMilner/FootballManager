@@ -1,6 +1,6 @@
 ﻿<section class="tournament-info-wrapper">
 
-    <table class="table">
+    <table class="table" data-bind="visible: tournamentTable().length != 0">
         <thead>
             <tr>
                 <th></th>
@@ -41,7 +41,8 @@
     <div class="matches-wrapper">
         <div class="today-wrapper">
             <p class="title">Последние матчи</p>
-            <p class="tour" data-bind="text: lastTour() + ' тур'"></p>
+            <p class="tour" data-bind="text: lastTour() + ' тур', visible: lastMatches().length != 0"></p>
+            <p class="small-text" data-bind="visible: lastMatches().length == 0">Матчей нет</p>
             <!-- ko foreach:lastMatches-->
             <div class="match-info-block">
                 <img alt="" data-bind="attr: { src: '/content/img/teams/' + homeTeamShortName + '.png' }" />
@@ -52,7 +53,8 @@
         </div>
         <div class="soon-wrapper">
             <p class="title">Следующие матчи</p>
-            <p class="tour" data-bind="text: nextTour() + ' тур'"></p>
+            <p class="tour" data-bind="text: nextTour() + ' тур', visible: nextMatches().length != 0"></p>
+            <p class="small-text" data-bind="visible: nextMatches().length == 0">Матчей нет</p>
             <!-- ko foreach:nextMatches-->
             <div class="match-info-block">
                 <img alt="" data-bind="attr: { src: '/content/img/teams/' + homeTeamShortName + '.png' }" />

@@ -176,7 +176,7 @@
 
 .form-row-content {
     display: none;
-    background: rgba(119, 119, 119, 0.5);
+    background: rgba(211, 211, 211, 0.1);
     padding: 10px;
     overflow: auto;
 }

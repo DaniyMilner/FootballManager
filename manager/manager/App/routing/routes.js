@@ -49,6 +49,10 @@
             route: 'tournament/:id',
             moduleId: 'viewmodels/tournament/tournament',
             title: 'Tournament'
+        }, {
+            route: 'rules',
+            moduleId: 'viewmodels/rules/rules',
+            title: 'Rules'
         }];
 
     });

@@ -1,0 +1,16 @@
+﻿.rules-wrapper{
+    margin: 0 5%;
+}
+.rules-wrapper p{
+    font-size: 15px;
+    text-indent: 20px;
+    text-align: justify;
+}
+.rules-wrapper p.title{
+    font-weight: bold;
+}
+.rules-wrapper ul{
+    padding-left: 40px;
+    font-size: 15px;
+    text-align: justify;
+}

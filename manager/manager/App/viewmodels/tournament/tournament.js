@@ -30,15 +30,16 @@
                     router.navigate('home');
                 }
             }
-            viewmodel.getLastMatches();
-            viewmodel.getNextMatches();
+            return viewmodel.getLastMatches();
+        }).then(function() {
+            return viewmodel.getNextMatches();
         }).fail(function (response) {
             console.log(response);
         });
     }
 
     function getLastMatches() {
-        httpWrapper.post('api/tournament/getlastmatches', { id: viewmodel.tournamentId() }).then(function (response) {
+        return httpWrapper.post('api/tournament/getlastmatches', { id: viewmodel.tournamentId() }).then(function (response) {
             viewmodel.lastMatches([]);
             if (response.success) {
                 if (typeof response.data == 'object') {
@@ -47,17 +48,15 @@
                     }
                     viewmodel.lastTour(response.data.tour);
                 } else {
-                    router.navigate('home');
+                    console.log(response.data);
                 }
             }
-        }).fail(function (response) {
-            console.log(response);
         });
     }
 
     function getNextMatches() {
-        httpWrapper.post('api/tournament/getnextmatches', { id: viewmodel.tournamentId() }).then(function (response) {
-            viewmodel.lastMatches([]);
+        return httpWrapper.post('api/tournament/getnextmatches', { id: viewmodel.tournamentId() }).then(function (response) {
+            viewmodel.nextMatches([]);
             if (response.success) {
                 if (typeof response.data == 'object') {
                     for (var i = 0; i < response.data.resultList.length; i++) {
@@ -65,11 +64,9 @@
                     }
                     viewmodel.nextTour(response.data.tour);
                 } else {
-                    router.navigate('home');
+                    console.log(response.data);
                 }
             }
-        }).fail(function (response) {
-            console.log(response);
         });
     }
 

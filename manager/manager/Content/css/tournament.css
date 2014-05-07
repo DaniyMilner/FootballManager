@@ -1,5 +1,18 @@
-﻿.tournament-info-wrapper{}
-.tournament-info-wrapper .table{}
+.tournament-info-wrapper .table{
+    width: 90%;
+    margin: 0 5% 10px;
+}
+.tournament-info-wrapper .table thead tr th{
+    border-bottom: none;
+}
+.tournament-info-wrapper .table tbody tr:nth-child(odd) {
+    background-color: #d3d3d3;
+background-color: rgba(211, 211, 211, 0.1);
+}
+.tournament-info-wrapper .table tbody tr td{
+    border-top: none;
+    vertical-align: middle;
+}
 .tournament-info-wrapper .table tbody tr td img {
     width: 30px;
 }
@@ -13,29 +26,32 @@
 .tournament-info-wrapper .matches-wrapper .soon-wrapper{
     width: 50%;
 }
-.tournament-info-wrapper .today-wrapper .title,
-.tournament-info-wrapper .soon-wrapper .title{
+.tournament-info-wrapper .title{
     text-align: center;
+    font-size: 18px;
+    margin: 0 0 5px 0;
 }
-.tournament-info-wrapper .today-wrapper .tour,
-.tournament-info-wrapper .soon-wrapper .tour{
+.tournament-info-wrapper .tour{
     text-align: center;
     margin: 0;
+    font-size: 16px;
 }
-.tournament-info-wrapper .today-wrapper .match-info-block,
-.tournament-info-wrapper .soon-wrapper .match-info-block{
+.tournament-info-wrapper .small-text {
+    font-size: 11px;
+    text-align: center;
+}
+.tournament-info-wrapper .match-info-block{
     display: -webkit-box;
     -webkit-box-pack: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
-.tournament-info-wrapper .today-wrapper .match-info-block img,
-.tournament-info-wrapper .soon-wrapper .match-info-block img{
+.tournament-info-wrapper .match-info-block img{
     width: 30px;
 }
-.tournament-info-wrapper .today-wrapper .match-info-block .teams-info,
-.tournament-info-wrapper .soon-wrapper .match-info-block .teams-info{
+.tournament-info-wrapper .match-info-block .teams-info{
     margin: 0 10px;
     display: -webkit-box;
     -webkit-box-align: center;
     cursor: pointer;
+    color: wheat;  font-size: 15px;
 }
