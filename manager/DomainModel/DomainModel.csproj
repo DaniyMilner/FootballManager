@@ -57,10 +57,13 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\PlayerSettings.cs" />
     <Compile Include="Entities\Position.cs" />
+    <Compile Include="Entities\Seasons.cs" />
     <Compile Include="Entities\Skill.cs" />
     <Compile Include="Entities\SkillsPlayer.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="Entities\TeamSettings.cs" />
+    <Compile Include="Entities\Tournament.cs" />
+    <Compile Include="Entities\TournamentItem.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Weather.cs" />
     <Compile Include="EntityFactory.cs" />
@@ -76,10 +79,13 @@
     <Compile Include="Repositories\IPositionRepository.cs" />
     <Compile Include="Repositories\IQuerableRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ISeasonsRepository.cs" />
     <Compile Include="Repositories\ISkillRepository.cs" />
     <Compile Include="Repositories\ISkillsPlayerRepository.cs" />
     <Compile Include="Repositories\ITeamRepository.cs" />
     <Compile Include="Repositories\ITeamSettingsRepository.cs" />
+    <Compile Include="Repositories\ITournamentItemRepository.cs" />
+    <Compile Include="Repositories\ITournamentRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IWeatherRepository.cs" />
   </ItemGroup>

@@ -54,6 +54,9 @@ namespace DataAccess
         public DbSet<PlayerSettings> PlayerSettings { get; set; }
         public DbSet<TeamSettings> TeamSettings { get; set; }
         public DbSet<Numbering> Numberings { get; set; }
+        public DbSet<Seasons> Seasons { get; set; }
+        public DbSet<Tournament> Tournament { get; set; }
+        public DbSet<TournamentItem> TournamentItem { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -81,6 +84,7 @@ namespace DataAccess
             modelBuilder.Entity<Country>().Property(e => e.PublicId).IsRequired().HasMaxLength(254);
             modelBuilder.Entity<Country>().HasMany(e => e.TeamCollection).WithRequired(e => e.Country);
             modelBuilder.Entity<Country>().HasMany(e => e.PlayerCollection).WithRequired(e => e.Country);
+            modelBuilder.Entity<Country>().HasMany(e => e.TournamentCollection).WithRequired(e => e.Country);
 
             modelBuilder.Entity<Illness>().Property(e => e.IllnessName).IsRequired().HasMaxLength(254);
             modelBuilder.Entity<Illness>().Property(e => e.TimeForRecovery).IsRequired();
@@ -172,6 +176,18 @@ namespace DataAccess
             modelBuilder.Entity<Numbering>().Property(e => e.Number).IsRequired();
             modelBuilder.Entity<Numbering>().Property(e => e.Type).IsRequired();
 
+            modelBuilder.Entity<Seasons>().Property(e => e.Title).IsRequired();
+            modelBuilder.Entity<Seasons>().HasMany(e => e.TournamentCollection).WithRequired(e => e.Season);
+
+            modelBuilder.Entity<Tournament>().Property(e => e.Title).IsRequired();
+            modelBuilder.Entity<Tournament>().HasRequired(e => e.Country);
+            modelBuilder.Entity<Tournament>().Property(e => e.CountItems).IsRequired();
+            modelBuilder.Entity<Tournament>().HasRequired(e => e.Season);
+            modelBuilder.Entity<Tournament>().HasMany(e => e.TournamentItemCollection).WithRequired(e => e.Tournament);
+
+            modelBuilder.Entity<TournamentItem>().Property(e => e.ItemNumber).IsRequired();
+            modelBuilder.Entity<TournamentItem>().HasRequired(e => e.Tournament);
+            modelBuilder.Entity<TournamentItem>().Property(e => e.DateStart).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

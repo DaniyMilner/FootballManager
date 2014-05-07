@@ -19,6 +19,7 @@ namespace DomainModel.Entities
 
             TeamCollection = new Collection<Team>();
             PlayerCollection = new Collection<Player>();
+            TournamentCollection = new Collection<Tournament>();
         }
 
         public string PublicId { get; private set; }
@@ -27,5 +28,7 @@ namespace DomainModel.Entities
         public virtual ICollection<Team> TeamCollection { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<Player> PlayerCollection { get; private set; }
+        [ScriptIgnore]
+        public virtual ICollection<Tournament> TournamentCollection { get; private set; }
     }
 }

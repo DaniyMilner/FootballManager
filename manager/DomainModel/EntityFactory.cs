@@ -27,12 +27,18 @@ namespace DomainModel
 
         Weather Weather(string name, WeatherType type);
 
-        Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
+        Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount,
             int ticketPrice, DateTime dateStart, string publicId);
 
         PlayerSettings PlayerSettings(Player player, Match match, int index);
 
         TeamSettings TeamSettings(Match match, Arrangement arrangement, Team team);
+
+        Seasons Seasons(string title);
+
+        Tournament Tournament(string title, Country country, int countItems, Seasons season);
+
+        TournamentItem TournamentItem(int itemNumber, Tournament tournament, DateTime dateStart);
     }
 
     public class EntityFactory : IEntityFactory
@@ -75,7 +81,7 @@ namespace DomainModel
             return new Weather(name, type);
         }
 
-        public Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
+        public Match Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount,
             int ticketPrice, DateTime dateStart, string publicId)
         {
             return new Match(homeTeamId, guestTeamId, eventLineId, weather, fansCount, ticketPrice, dateStart, publicId);
@@ -86,9 +92,24 @@ namespace DomainModel
             return new PlayerSettings(player, match, index);
         }
 
-        public TeamSettings TeamSettings(Match match, Arrangement arrangement, Team team) 
+        public TeamSettings TeamSettings(Match match, Arrangement arrangement, Team team)
         {
             return new TeamSettings(match, arrangement, team);
+        }
+
+        public Seasons Seasons(string title)
+        {
+            return new Seasons(title);
+        }
+
+        public Tournament Tournament(string title, Country country, int countItems, Seasons season)
+        {
+            return new Tournament(title, country, countItems, season);
+        }
+
+        public TournamentItem TournamentItem(int itemNumber, Tournament tournament, DateTime dateStart)
+        {
+            return new TournamentItem(itemNumber, tournament, dateStart);
         }
     }
 }
