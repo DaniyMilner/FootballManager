@@ -21,6 +21,7 @@ namespace manager.Controllers.API
         private readonly IArrangementRepository _arrangementRepository;
         private readonly IPlayerSettingsRepository _playerSettingsRepository;
         private readonly IEventLineRepository _eventLineRepository;
+        private readonly ITournamentItemRepository _tournamentItemRepository;
 
         public GeneratorController(IMatchRepository matchRepository,
                                     IEntityFactory entityFactory,
@@ -30,7 +31,8 @@ namespace manager.Controllers.API
                                     IPlayerRepository playerRepository,
                                     IArrangementRepository arrangementRepository,
                                     IPlayerSettingsRepository playerSettingsRepository,
-                                    IEventLineRepository eventLineRepository)
+                                    IEventLineRepository eventLineRepository,
+                                    ITournamentItemRepository tournamentItemRepository)
         {
             _entityFactory = entityFactory;
             _matchRepository = matchRepository;
@@ -41,6 +43,7 @@ namespace manager.Controllers.API
             _arrangementRepository = arrangementRepository;
             _playerSettingsRepository = playerSettingsRepository;
             _eventLineRepository = eventLineRepository;
+            _tournamentItemRepository = tournamentItemRepository;
         }
 
         [HttpPost]
@@ -63,6 +66,7 @@ namespace manager.Controllers.API
             var result = new List<object>();
             foreach (var match in matches)
             {
+                var tour = _tournamentItemRepository.Get(match.TournamentItemId);
                 var home = _teamRepository.Get(match.HomeTeamId);
                 var guest = _teamRepository.Get(match.GuestTeamId);
                 result.Add(new
@@ -70,7 +74,7 @@ namespace manager.Controllers.API
                     id = match.Id,
                     homeName = home.Name,
                     guestName = guest.Name,
-                    dateStart = match.DateStart,
+                    dateStart = tour.DateStart,
                     isGenerated = !String.IsNullOrEmpty(match.Result),
                     homeGoal = match.HomeGoal,
                     guestGoal = match.GuestGoal,
@@ -92,6 +96,7 @@ namespace manager.Controllers.API
             var result = new List<object>();
             foreach (var match in matches)
             {
+                var tour = _tournamentItemRepository.Get(match.TournamentItemId);
                 var home = _teamRepository.Get(match.HomeTeamId);
                 var guest = _teamRepository.Get(match.GuestTeamId);
                 result.Add(new
@@ -99,7 +104,7 @@ namespace manager.Controllers.API
                     id = match.Id,
                     homeName = home.Name,
                     guestName = guest.Name,
-                    dateStart = match.DateStart,
+                    dateStart = tour.DateStart,
                     isGenerated = !String.IsNullOrEmpty(match.Result),
                     homeGoal = match.HomeGoal,
                     guestGoal = match.GuestGoal,

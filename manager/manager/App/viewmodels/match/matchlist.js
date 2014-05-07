@@ -5,8 +5,11 @@
             todayMatches: ko.observableArray([]),
             notTodayMatches: ko.observableArray([]),
             activate: activate,
-            getTodayMatches: function() {
-                httpWrapper.post('api/generator/getTodayMatches').then(function (response) {
+            getMatches: function() {
+                return viewmodel.getTodayMatches(viewmodel.getNotTodayMatches);
+            },
+            getTodayMatches: function(callback) {
+                return httpWrapper.post('api/generator/getTodayMatches').then(function (response) {
                     if (response.success) {
                         if (typeof response.data == 'object') {
                             viewmodel.todayMatches([]);
@@ -15,12 +18,15 @@
                             }
                         }
                     }
+                    if (callback) {
+                        callback();
+                    }
                 }).fail(function (response) {
                     console.log(response);
                 });
             },
             getNotTodayMatches: function() {
-                httpWrapper.post('api/generator/getNotTodayMatches').then(function (response) {
+                return httpWrapper.post('api/generator/getNotTodayMatches').then(function (response) {
                     if (response.success) {
                         if (typeof response.data == 'object') {
                             viewmodel.notTodayMatches([]);
@@ -50,10 +56,7 @@
         };
 
         function activate() {
-            return Q.fcall(function () {
-                viewmodel.getTodayMatches();
-                viewmodel.getNotTodayMatches();
-            });
+            return viewmodel.getMatches();
         }
 
         return viewmodel;

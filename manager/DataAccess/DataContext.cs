@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Migrations;
-using DataAccess.Migrations;
 using DomainModel.Entities;
 
 namespace DataAccess
@@ -150,9 +149,10 @@ namespace DataAccess
             modelBuilder.Entity<Match>().Property(e => e.GuestTeamId).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.EventLineId).IsRequired();
             modelBuilder.Entity<Match>().HasRequired(e => e.Weather);
+            modelBuilder.Entity<Match>().Property(e => e.TournamentItemId).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.FansCount).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.TicketPrice).IsRequired();
-            modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
+            //modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
             modelBuilder.Entity<Match>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.HomeGoal).IsRequired();

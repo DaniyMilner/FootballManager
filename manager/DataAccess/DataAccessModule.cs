@@ -75,15 +75,15 @@ namespace DataAccess
               .As<IQuerableRepository<Numbering>>();
 
             builder.RegisterType<SeasonsRepository>()
-              .As<INumberingRepository>()
+              .As<ISeasonsRepository>()
               .As<IQuerableRepository<Seasons>>();
 
             builder.RegisterType<TournamentRepository>()
-              .As<INumberingRepository>()
+              .As<ITournamentRepository>()
               .As<IQuerableRepository<Tournament>>();
 
             builder.RegisterType<TournamentItemRepository>()
-              .As<INumberingRepository>()
+              .As<ITournamentItemRepository>()
               .As<IQuerableRepository<TournamentItem>>();
 
             base.Load(builder);

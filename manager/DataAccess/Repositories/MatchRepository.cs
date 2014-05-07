@@ -28,16 +28,35 @@ namespace DataAccess.Repositories
         public List<Match> GetTodayMatches()
         {
             var now = DateTime.Now;
-            return _dataContext.GetSet<Match>().Where(
-                z => z.DateStart.Day == now.Day &&
-                z.DateStart.Month == now.Month &&
-                z.DateStart.Year == now.Year).ToList();
+            var tours = _dataContext.GetSet<TournamentItem>().Where(z => z.DateStart.Day == now.Day &&
+                                                                         z.DateStart.Month == now.Month &&
+                                                                         z.DateStart.Year == now.Year).ToList();
+            var matches = new List<Match>();
+            foreach (var item in tours)
+            {
+                var tourMatches = _dataContext.GetSet<Match>().Where(z => z.TournamentItemId == item.Id).ToList();
+                matches.AddRange(tourMatches);
+            }
+
+            return matches;
         }
 
         public List<Match> GetNotTodayMatches()
         {
-            return _dataContext.GetSet<Match>().Where(z => z.DateStart < DateTime.Now && z.DateStart.Day != DateTime.Now.Day)
-                .OrderByDescending(z=>z.DateStart).Take(20).ToList();
+            var now = DateTime.Now;
+            var tours = _dataContext.GetSet<TournamentItem>().Where(z => z.DateStart < now &&
+                                                                         z.DateStart.Day != now.Day)
+                .OrderByDescending(z => z.DateStart)
+                .ToList();
+
+            var matches = new List<Match>();
+            foreach (var item in tours)
+            {
+                var tourMatches = _dataContext.GetSet<Match>().Where(z => z.TournamentItemId == item.Id).ToList();
+                matches.AddRange(tourMatches);
+            }
+
+            return matches;
         } 
     }
 }

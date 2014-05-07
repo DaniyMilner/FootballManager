@@ -1,12 +1,15 @@
-﻿define(['plugins/router', 'userContext'], function(router, userContext) {
+﻿define(['plugins/router', 'userContext', 'httpWrapper'], function (router, userContext, httpWrapper) {
 
     var viewmodel = {
         activate: activate,
         isAuthenticated: ko.observable(false),
         goToPlayerProfile: goToPlayerProfile,
         goToEquipment: goToEquipment,
-        goToTeamComposition: goToTeamComposition
-    };
+        goToTeamComposition: goToTeamComposition,
+
+        seasonsList: ko.observableArray([]),
+        getSeasonsList: getSeasonsList
+};
 
     return viewmodel;
 
@@ -25,6 +28,7 @@
 
     function activate() {
         this.isAuthenticated(userContext.isAuthenticated);
+        viewmodel.getSeasonsList();
     }
 
     function goToTeamComposition() {
@@ -36,4 +40,16 @@
         }
     }
 
+    function getSeasonsList() {
+        viewmodel.seasonsList([]);
+        httpWrapper.post('api/menu/getseasonslist').then(function (response) {
+            if (response.success) {
+                for (var i = 0; i < response.data.length; i++) {
+                    viewmodel.seasonsList.push(response.data[i]);
+                }
+            }
+        }).fail(function (response) {
+            console.log(response);
+        });
+    }
 });

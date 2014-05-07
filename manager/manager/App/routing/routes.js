@@ -41,6 +41,10 @@
             route: 'backoffice',
             moduleId: 'viewmodels/backoffice/backoffice',
             title: 'Backoffice'
+        }, {
+            route: 'season/:id',
+            moduleId: 'viewmodels/season/season',
+            title: 'Season'
         }];
 
     });

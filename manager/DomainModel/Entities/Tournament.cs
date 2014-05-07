@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace DomainModel.Entities
             Country = country;
             CountItems = countItems;
             Season = season;
+            TournamentItemCollection = new Collection<TournamentItem>();
         }
 
         public string Title { get; private set; }

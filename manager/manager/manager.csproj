@@ -191,6 +191,7 @@
     <Compile Include="Configuration\ContainerConfiguration.cs" />
     <Compile Include="Controllers\API\GeneratorController.cs" />
     <Compile Include="Controllers\API\MatchController.cs" />
+    <Compile Include="Controllers\API\MenuController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,6 +226,7 @@
     <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\player\equipment.js" />
     <Content Include="App\viewmodels\player\profile.js" />
+    <Content Include="App\viewmodels\season\season.js" />
     <Content Include="App\viewmodels\team\composition.js" />
     <Content Include="App\viewmodels\user\profile.js" />
     <Content Include="App\viewmodels\user\signin.js" />
@@ -241,6 +243,7 @@
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
     <Content Include="App\views\player\profile.html" />
+    <Content Include="App\views\season\season.html" />
     <Content Include="App\views\team\composition.html" />
     <Content Include="App\views\user\profile.html" />
     <Content Include="App\views\user\signin.html" />

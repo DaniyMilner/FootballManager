@@ -18,9 +18,11 @@ namespace manager.Controllers.API
         private readonly ITeamSettingsRepository _teamSettingsRepository;
         private readonly IArrangementRepository _arrangementRepository;
         private readonly IPlayerRepository _playerRepository;
+        private readonly ITournamentItemRepository _tournamentItemRepository;
         public MatchController(IMatchRepository matchRepository, ITeamRepository teamRepository,
                                 IEventLineRepository eventLineRepository, ITeamSettingsRepository teamSettingsRepository,
-                                IArrangementRepository arrangementRepository, IPlayerRepository playerRepository)
+                                IArrangementRepository arrangementRepository, IPlayerRepository playerRepository,
+                                ITournamentItemRepository tournamentItemRepository)
         {
             _matchRepository = matchRepository;
             _teamRepository = teamRepository;
@@ -28,6 +30,7 @@ namespace manager.Controllers.API
             _teamSettingsRepository = teamSettingsRepository;
             _arrangementRepository = arrangementRepository;
             _playerRepository = playerRepository;
+            _tournamentItemRepository = tournamentItemRepository;
         }
 
         [HttpPost]
@@ -39,20 +42,21 @@ namespace manager.Controllers.API
             var match = _matchRepository.GetMatchByPublicId(id);
             if (match == null) return JsonError("no_team");
 
+            var tour = _tournamentItemRepository.Get(match.TournamentItemId);
             var homeTeam = _teamRepository.Get(match.HomeTeamId);
             var guestTeam = _teamRepository.Get(match.GuestTeamId);
             var homeTeamInformation = GetCustomTeamInfo(homeTeam);
             var guestTeamInformation = GetCustomTeamInfo(guestTeam);
-            if (String.IsNullOrEmpty(match.Result) || match.DateStart > DateTime.Now) return JsonSuccess(new
+            if (String.IsNullOrEmpty(match.Result) || tour.DateStart > DateTime.Now) return JsonSuccess(new
               {
                   matchStart = false,
-                  dateStart = match.DateStart.ToUniversalTime(),
+                  dateStart = tour.DateStart.ToUniversalTime(),
                   matchInfo = new
                   {
                       weatherName = match.Weather.Name,
                       weatherType = match.Weather.Type,
                       ticketPrice = match.TicketPrice,
-                      dateStart = match.DateStart.ToUniversalTime(),
+                      dateStart = tour.DateStart.ToUniversalTime(),
                       fans = match.FansCount
                   },
                   homeTeamInfo = homeTeamInformation,
@@ -77,15 +81,15 @@ namespace manager.Controllers.API
             return JsonSuccess(new
             {
                 matchStart = true,
-                countShow = match.DateStart < DateTime.Now ? 
-                                Convert.ToInt32(Math.Round((DateTime.Now - match.DateStart).TotalMinutes))+1 : 0,
-                reverse = (DateTime.Now - match.DateStart).TotalMinutes > 45,
+                countShow = tour.DateStart < DateTime.Now ?
+                                Convert.ToInt32(Math.Round((DateTime.Now - tour.DateStart).TotalMinutes)) + 1 : 0,
+                reverse = (DateTime.Now - tour.DateStart).TotalMinutes > 45,
                 matchInfo = new
                 {
                     weatherName = match.Weather.Name,
                     weatherType = match.Weather.Type,
                     ticketPrice = match.TicketPrice,
-                    dateStart = match.DateStart.ToUniversalTime(),
+                    dateStart = tour.DateStart.ToUniversalTime(),
                     fans = match.FansCount
                 },
                 matchResult = result,

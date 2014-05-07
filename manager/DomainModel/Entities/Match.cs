@@ -12,8 +12,8 @@ namespace DomainModel.Entities
     public class Match:Entity
     {
         protected internal Match() { }
-        protected internal Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount, 
-            int ticketPrice, DateTime dateStart, string publicId) 
+        protected internal Match(Guid homeTeamId, Guid guestTeamId, Guid eventLineId, Weather weather, int fansCount,
+            int ticketPrice, string publicId, Guid tournamentItemId) 
         {
             HomeTeamId = homeTeamId;
             GuestTeamId = guestTeamId;
@@ -21,13 +21,14 @@ namespace DomainModel.Entities
             Weather = weather;
             FansCount = fansCount;
             TicketPrice = ticketPrice;
-            DateStart = dateStart;
+            //DateStart = dateStart;
             Result = String.Empty;
             PublicId = publicId;
             PlayerSettingsCollection = new Collection<PlayerSettings>();
             TeamSettingsCollection = new Collection<TeamSettings>();
             HomeGoal = 0;
             GuestGoal = 0;
+            TournamentItemId = tournamentItemId;
         }
 
         public Guid HomeTeamId { get; private set; }
@@ -36,11 +37,12 @@ namespace DomainModel.Entities
         public virtual Weather Weather { get; private set; }
         public int FansCount { get; private set; }
         public int TicketPrice { get; private set; }
-        public DateTime DateStart { get; private set; }
+        //public DateTime DateStart { get; private set; }
         public string Result { get; private set; }
         public string PublicId { get; private set; }
         public int HomeGoal { get; private set; }
         public int GuestGoal { get; private set; }
+        public Guid TournamentItemId { get; private set; }
         [ScriptIgnore]
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
         [ScriptIgnore]
