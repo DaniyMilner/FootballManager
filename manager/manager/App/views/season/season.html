@@ -1,1 +1,8 @@
-﻿<section class="seasons-wrapper"></section>
+﻿<section class="seasons-wrapper">
+    <!-- ko foreach : tournamentsList -->
+    <div class="tournament-wrapper">
+        <img data-bind="attr: { src: '/content/img/country/' + country+'.png' }" alt="" />
+        <a data-bind="attr: { href: '/#tournament/' + publicId }, text: title"></a>
+    </div>
+    <!-- /ko -->
+</section>

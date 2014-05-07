@@ -152,7 +152,6 @@ namespace DataAccess
             modelBuilder.Entity<Match>().Property(e => e.TournamentItemId).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.FansCount).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.TicketPrice).IsRequired();
-            //modelBuilder.Entity<Match>().Property(e => e.DateStart).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.Result).IsOptional();
             modelBuilder.Entity<Match>().Property(e => e.PublicId).IsRequired();
             modelBuilder.Entity<Match>().Property(e => e.HomeGoal).IsRequired();
@@ -184,6 +183,7 @@ namespace DataAccess
             modelBuilder.Entity<Tournament>().Property(e => e.CountItems).IsRequired();
             modelBuilder.Entity<Tournament>().HasRequired(e => e.Season);
             modelBuilder.Entity<Tournament>().HasMany(e => e.TournamentItemCollection).WithRequired(e => e.Tournament);
+            modelBuilder.Entity<Tournament>().Property(e => e.PublicId).IsRequired();
 
             modelBuilder.Entity<TournamentItem>().Property(e => e.ItemNumber).IsRequired();
             modelBuilder.Entity<TournamentItem>().HasRequired(e => e.Tournament);

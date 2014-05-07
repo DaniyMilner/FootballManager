@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using DomainModel.Entities;
 using DomainModel.Repositories;
+using Infrastructure;
 using manager.Components;
 
 namespace manager.Controllers.API
@@ -37,7 +38,7 @@ namespace manager.Controllers.API
         [Route("api/match/getmatchresult")]
         public ActionResult GetMatchResultById(string id)
         {
-            id = CheckSymbols(id);
+            id = StringHelper.CheckSymbols(id);
             var json = new JavaScriptSerializer();
             var match = _matchRepository.GetMatchByPublicId(id);
             if (match == null) return JsonError("no_team");
@@ -164,11 +165,6 @@ namespace manager.Controllers.API
                     publicId = team.Country.PublicId
                 }
             };
-        }
-
-        private string CheckSymbols(string id)
-        {
-            return id.Replace("=", "").Replace("/", "");
         }
     }
 }

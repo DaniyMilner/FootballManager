@@ -9,5 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface ISeasonsRepository : IRepository<Seasons>
     {
+        Seasons GetSeasonByTitle(string title);
     }
 }

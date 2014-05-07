@@ -36,7 +36,7 @@ namespace DomainModel
 
         Seasons Seasons(string title);
 
-        Tournament Tournament(string title, Country country, int countItems, Seasons season);
+        Tournament Tournament(string title, Country country, int countItems, Seasons season, string publicId);
 
         TournamentItem TournamentItem(int itemNumber, Tournament tournament, DateTime dateStart);
     }
@@ -102,9 +102,9 @@ namespace DomainModel
             return new Seasons(title);
         }
 
-        public Tournament Tournament(string title, Country country, int countItems, Seasons season)
+        public Tournament Tournament(string title, Country country, int countItems, Seasons season, string publicId)
         {
-            return new Tournament(title, country, countItems, season);
+            return new Tournament(title, country, countItems, season, publicId);
         }
 
         public TournamentItem TournamentItem(int itemNumber, Tournament tournament, DateTime dateStart)

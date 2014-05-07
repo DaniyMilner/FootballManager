@@ -125,6 +125,10 @@
     <Compile Include="Migrations\201405070845336_DeleteDateStartFromMatch.Designer.cs">
       <DependentUpon>201405070845336_DeleteDateStartFromMatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405071102566_AddPublicIdToTournament.cs" />
+    <Compile Include="Migrations\201405071102566_AddPublicIdToTournament.Designer.cs">
+      <DependentUpon>201405071102566_AddPublicIdToTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArrangementRepository.cs" />
@@ -185,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405070845336_DeleteDateStartFromMatch.resx">
       <DependentUpon>201405070845336_DeleteDateStartFromMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405071102566_AddPublicIdToTournament.resx">
+      <DependentUpon>201405071102566_AddPublicIdToTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

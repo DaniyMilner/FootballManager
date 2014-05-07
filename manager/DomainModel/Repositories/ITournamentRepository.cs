@@ -9,5 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface ITournamentRepository : IRepository<Tournament>
     {
+        List<Tournament> GeTournamentsBySeasonId(Guid id);
     }
 }

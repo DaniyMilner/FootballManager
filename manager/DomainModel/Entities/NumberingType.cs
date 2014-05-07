@@ -11,6 +11,7 @@ namespace DomainModel.Entities
         User,
         Player,
         Team,
-        Match
+        Match,
+        Tournament
     }
 }

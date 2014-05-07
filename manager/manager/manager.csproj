@@ -193,6 +193,7 @@
     <Compile Include="Controllers\API\MatchController.cs" />
     <Compile Include="Controllers\API\MenuController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
+    <Compile Include="Controllers\API\TournamentController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -375,6 +376,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\models\" />
+    <Folder Include="Content\img\country\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

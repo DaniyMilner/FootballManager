@@ -14,5 +14,10 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
+
+        public Seasons GetSeasonByTitle(string title)
+        {
+            return _dataContext.GetSet<Seasons>().FirstOrDefault(z => z.Title == title);
+        }
     }
 }

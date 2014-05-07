@@ -1,0 +1,13 @@
+﻿.seasons-wrapper{
+    padding: 10px 5% 0;
+}
+.seasons-wrapper .tournament-wrapper{
+    margin-bottom: 15px;
+}
+.seasons-wrapper .tournament-wrapper img{
+    width: 40px;
+    margin-right: 8px;
+}
+.seasons-wrapper .tournament-wrapper a{
+    color: white;
+}
