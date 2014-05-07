@@ -10,11 +10,11 @@
         },
 
         goToRules = function() {
-            router.navigate('backoffice');
+            router.navigate('rules');
         },
         
         goToForum = function() {
-            router.navigate('createplayer');
+            router.navigate('backoffice');
         },
 
         goToSignUp = function() {
