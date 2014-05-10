@@ -55,3 +55,17 @@ background-color: rgba(211, 211, 211, 0.1);
     cursor: pointer;
     color: wheat;  font-size: 15px;
 }
+.tournament-info-wrapper .title-wrapper{
+    display: -webkit-box;
+    margin: 0 5%;
+    -webkit-box-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.tournament-info-wrapper .title-wrapper img{
+    width: 70px;
+}
+.tournament-info-wrapper .title-wrapper .tournament-name{
+    margin: 0 0 0 30px;
+    font-size: 20px;
+}

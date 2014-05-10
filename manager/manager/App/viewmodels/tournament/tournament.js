@@ -2,6 +2,8 @@
 
     var viewmodel = {
         tournamentId: ko.observable(''),
+        tournamentName: ko.observable(''),
+        countryPublicId: ko.observable(''),
         tournamentTable: ko.observableArray([]),
         lastTour: ko.observable(''),
         nextTour: ko.observable(''),
@@ -23,9 +25,11 @@
            
             if (response.success) {
                 if (typeof response.data == 'object') {
-                    for (var i = 0; i < response.data.length; i++) {
-                        viewmodel.tournamentTable.push(response.data[i]);
+                    for (var i = 0; i < response.data.table.length; i++) {
+                        viewmodel.tournamentTable.push(response.data.table[i]);
                     }
+                    viewmodel.tournamentName(response.data.tournamentName);
+                    viewmodel.countryPublicId(response.data.country);
                 } else {
                     router.navigate('home');
                 }

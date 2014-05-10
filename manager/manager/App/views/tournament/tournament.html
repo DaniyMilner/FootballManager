@@ -1,5 +1,8 @@
 ﻿<section class="tournament-info-wrapper">
-
+    <div class="title-wrapper">
+        <img alt="" data-bind="attr: { src: '/content/img/country/' + countryPublicId() +'.png'}" />
+        <p class="tournament-name" data-bind="text: tournamentName"></p>
+    </div>
     <table class="table" data-bind="visible: tournamentTable().length != 0">
         <thead>
             <tr>
@@ -19,9 +22,9 @@
         <tbody>
             <!-- ko foreach: tournamentTable -->
             <tr>
-                <td data-bind="text:$index()+1"></td>
+                <td data-bind="text: $index() + 1"></td>
                 <td>
-                    <img alt="" data-bind="attr: { src: '/content/img/teams/' + TeamShortName + '.png'}" />
+                    <img alt="" data-bind="attr: { src: '/content/img/teams/' + TeamShortName + '.png' }" />
                 </td>
                 <td data-bind="text: TeamName"></td>
                 <td data-bind="text: Games"></td>
@@ -37,7 +40,7 @@
         </tbody>
 
     </table>
-    
+
     <div class="matches-wrapper">
         <div class="today-wrapper">
             <p class="title">Последние матчи</p>

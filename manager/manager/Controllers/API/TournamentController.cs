@@ -113,10 +113,14 @@ namespace manager.Controllers.API
                 }
             }
 
-            return JsonSuccess(
-                table.OrderByDescending(z => z.Points)
+            return JsonSuccess(new
+            {
+                tournamentName = tournament.Title,
+                country = tournament.Country.PublicId,
+                table = table.OrderByDescending(z => z.Points)
                      .ThenByDescending(z => z.DifferenceGoals)
-                     .ThenByDescending(z => z.Goals).ToList());
+                     .ThenByDescending(z => z.Goals).ToList()
+            });
         }
 
         [HttpPost]
@@ -164,7 +168,7 @@ namespace manager.Controllers.API
 
             var tours = allTours.Where(z => z.DateStart > DateTime.Now).ToList();
             if (tours.Count == 0) return JsonSuccess("no_tours_next");
-            
+
             var tour = tours.OrderBy(z => z.DateStart).Take(1).First();
 
             var matches = _matchRepository.GetMatchesByTourItemId(tour.Id);
