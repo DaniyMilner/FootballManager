@@ -1,4 +1,5 @@
-﻿using DomainModel.Entities;
+﻿using System.Linq;
+using DomainModel.Entities;
 using DomainModel.Repositories;
 
 namespace DataAccess.Repositories
@@ -8,6 +9,11 @@ namespace DataAccess.Repositories
         public CountryRepository(IDataContext dataContext)
             : base(dataContext)
         {
+        }
+
+        public Country GetCountryByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<Country>().SingleOrDefault(c => c.PublicId == publicId);
         }
     }
 }

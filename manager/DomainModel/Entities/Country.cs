@@ -24,11 +24,8 @@ namespace DomainModel.Entities
 
         public string PublicId { get; private set; }
         public string Name { get; private set; }
-        [ScriptIgnore]
         public virtual ICollection<Team> TeamCollection { get; private set; }
-        [ScriptIgnore]
         public virtual ICollection<Player> PlayerCollection { get; private set; }
-        [ScriptIgnore]
         public virtual ICollection<Tournament> TournamentCollection { get; private set; }
     }
 }

@@ -193,6 +193,7 @@
     <Compile Include="Controllers\API\MatchController.cs" />
     <Compile Include="Controllers\API\MenuController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
+    <Compile Include="Controllers\API\TeamsController.cs" />
     <Compile Include="Controllers\API\TournamentController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +230,7 @@
     <Content Include="App\viewmodels\player\profile.js" />
     <Content Include="App\viewmodels\rules\rules.js" />
     <Content Include="App\viewmodels\season\season.js" />
+    <Content Include="App\viewmodels\teams\teams.js" />
     <Content Include="App\viewmodels\team\composition.js" />
     <Content Include="App\viewmodels\tournament\tournament.js" />
     <Content Include="App\viewmodels\user\profile.js" />
@@ -248,6 +250,7 @@
     <Content Include="App\views\player\profile.html" />
     <Content Include="App\views\rules\rules.html" />
     <Content Include="App\views\season\season.html" />
+    <Content Include="App\views\teams\teams.html" />
     <Content Include="App\views\team\composition.html" />
     <Content Include="App\views\tournament\tournament.html" />
     <Content Include="App\views\user\profile.html" />

@@ -148,16 +148,16 @@ namespace manager.Controllers.API
                 return JsonError("Player does not exists");
             }
 
-            var skills = new List<object>();
+            //var skills = new List<object>();
 
-            foreach (var skillsPlayer in player.SkillPlayerCollection)
-            {
-                skills.Add(new
-                {
-                    id = skillsPlayer.Skill.Ordering,
-                    value = skillsPlayer.Value
-                });
-            }
+            //foreach (var skillsPlayer in player.SkillPlayerCollection)
+            //{
+            //    skills.Add(new
+            //    {
+            //        id = skillsPlayer.Skill.Ordering,
+            //        value = skillsPlayer.Value
+            //    });
+            //}
 
             return JsonSuccess(new
             {
@@ -190,11 +190,22 @@ namespace manager.Controllers.API
                     Name = player.Country.Name,
                     PublicId = player.Country.PublicId
                 },
-                Skills = skills,
+                Skills = player.SkillPlayerCollection.Select(skill => new
+                {
+                    id = skill.Skill.Ordering,
+                    value = skill.Value
+                }),
                 PublicId = player.PublicId,
                 CreateDate = player.CreateDate,
                 TeamId = player.TeamId,
             });
         }
+
+        //[HttpPost]
+        //[Route("api/player/getplayersbyteamid")]
+        //public ActionResult GetPlayersByTeamId(Guid teamId)
+        //{
+            
+        //}
     }
 }

@@ -53,6 +53,10 @@
             route: 'rules',
             moduleId: 'viewmodels/rules/rules',
             title: 'Rules'
+        }, {
+            route: 'teams(/:id)',
+            moduleId: 'viewmodels/teams/teams',
+            title: 'Teams'
         }];
 
     });
