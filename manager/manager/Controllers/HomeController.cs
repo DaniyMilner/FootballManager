@@ -6,7 +6,6 @@ namespace manager.Controllers
 {
     public class HomeController : DefaultController
     {
-
         public ActionResult Index()
         {
             return View();

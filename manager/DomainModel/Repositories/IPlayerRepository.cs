@@ -12,5 +12,6 @@ namespace DomainModel.Repositories
         List<Player> GetAllPlayersByTeamId(Guid id);
         List<Player> GetCollectionByLineUp(CustomLineUp lineUp);
         Player GetPlayerByPublicId(string publicId);
+        ICollection<Player> GetPlayersByTeamId(Guid teamId);
     }
 }

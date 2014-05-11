@@ -200,12 +200,5 @@ namespace manager.Controllers.API
                 TeamId = player.TeamId,
             });
         }
-
-        //[HttpPost]
-        //[Route("api/player/getplayersbyteamid")]
-        //public ActionResult GetPlayersByTeamId(Guid teamId)
-        //{
-            
-        //}
     }
 }

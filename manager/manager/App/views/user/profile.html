@@ -4,7 +4,7 @@
     <div class="user-profile-content-wrapper">
         <img src="Content/img/general/user-icon-128x128.png" alt="" class="img-thumbnail user-profile-image">
         <div class="user-profile-content">
-            <h3 class="user-profile-name">Adminchik</h3>
+            <h3 class="user-profile-name" data-bind="text: user().username">Adminchik</h3>
             <table class="user-profile-table">
                 <tbody>
                     <tr>
@@ -33,27 +33,27 @@
                     <table>
                         <tr class="user-profile-tab-tr">
                             <td class="min">Имя:</td>
-                            <td class="max">Adminchik</td>
+                            <td class="max" data-bind="text: user().username">Adminchik</td>
                         </tr>
                         <tr class="user-profile-tab-tr">
                             <td class="min">Пол:</td>
-                            <td class="max">Мужской</td>
+                            <td class="max" data-bind="text: user().sex ? 'Мужской' : 'Женский'">Мужской</td>
                         </tr>
                         <tr class="user-profile-tab-tr">
                             <td class="min">Город:</td>
-                            <td class="max">Бердичев</td>
+                            <td class="max" data-bind="text: user().city">Бердичев</td>
                         </tr>
                         <tr class="user-profile-tab-tr">
                             <td class="min">День рождения:</td>
-                            <td class="max">16.06.1991</td>
+                            <td class="max" data-bind="text: user().birthday.getDate() + '/' + (user().birthday.getMonth() + 1) + '/' + user().birthday.getFullYear()">16.06.1991</td>
                         </tr>
                         <tr class="user-profile-tab-tr">
                             <td class="min">Skype:</td>
-                            <td class="max">monterio</td>
+                            <td class="max" data-bind="text: user().skype">monterio</td>
                         </tr>
                         <tr>
                             <td class="min">О себе:</td>
-                            <td class="max">О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе
+                            <td class="max" data-bind="text: user().aboutmyself">О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе О себе
                             </td>
                         </tr>
                     </table>
@@ -73,33 +73,31 @@
                     <div class="form">
                         <label class="label">
                             <div class="label-text">Город:</div>
-                            <input class="form-input" />
+                            <input data-bind="value: city, valueUpdate: 'afterkeydown'" class="form-input" />
                         </label>
                         <label class="label">
                             <div class="label-text">Пол:</div>
-                            <select class="form-input select">
-                                <option>Мужской</option>
-                                <option>Женский</option>
+                            <select class="form-input select" data-bind="options: sexs, optionsText:'text', value: sex">
                             </select>
                         </label>
                         <label class="label">
                             <div class="label-text">День рождения:</div>
-                            <input class="form-input" data-bind="datepicker: 0, datepickerOptions: { changeMonth: true, changeYear: true, yearRange: '1970:2013' }" />
+                            <input data-bind="datepicker: birthday, datepickerOptions: { changeMonth: true, changeYear: true, yearRange: '1970:2013' }" class="form-input" data-bind="datepicker: 0, datepickerOptions: { changeMonth: true, changeYear: true, yearRange: '1970:2013' }" />
                         </label>
                         <label class="label">
                             <div class="label-text">Скайп:</div>
-                            <input class="form-input" />
+                            <input data-bind="value: skype, valueUpdate: 'afterkeydown'" class="form-input" />
                         </label>
                         <label class="label all">
                             <div class="label-text">О себе:</div>
-                            <textarea class="form-textarea"></textarea>
+                            <textarea data-bind="value: aboutmyself, valueUpdate: 'afterkeydown'" class="form-textarea"></textarea>
                         </label>
                     </div>
                     <div class="form-image">
                         <img src="Content/img/general/user-icon-128x128.png" alt="" class="img-thumbnail user-profile-image">
                     </div>
                     <div class="clearfix"></div>
-                    <button class="user-profile-btn static" data-bind="click: changeEditMode">Сохранить изменения</button>
+                    <button class="user-profile-btn static" data-bind="click: saveChanges">Сохранить изменения</button>
                 </div>
             </div>
             <div class="form-row accordion-container">
@@ -108,20 +106,20 @@
                     <div class="form">
                         <label class="label">
                             <div class="label-text">Текущий пароль:</div>
-                            <input class="form-input" />
+                            <input class="form-input" type="password" data-bind="value: currentPassword, valueUpdate: 'afterkeydown', css: { error: incorrectCurrentPassword }, event: { focus: function(){ incorrectCurrentPassword(false) } }" />
                         </label>
                         <div class="clearfix"></div>
                         <label class="label">
                             <div class="label-text">Новый пароль:</div>
-                            <input class="form-input" />
+                            <input class="form-input" type="password" data-bind="value: password, valueUpdate: 'afterkeydown', css: { error: incorrectPassword }, event: { focus: function(){ incorrectPassword(false) } }" />
                         </label>
                         <label class="label">
                             <div class="label-text">Подвердить пароль:</div>
-                            <input class="form-input" />
+                            <input class="form-input" type="password" data-bind="value: confirmPassword, valueUpdate: 'afterkeydown', css: { error: incorrectPassword }, event: { focus: function(){ incorrectPassword(false) } }" />
                         </label>
                     </div>
                     <div class="clearfix"></div>
-                    <button class="user-profile-btn static" data-bind="click: changeEditMode">Сменит пароль</button>
+                    <button class="user-profile-btn static" data-bind="click: changePassword">Сменить пароль</button>
                 </div>
             </div>
         </div>

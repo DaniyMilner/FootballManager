@@ -7,7 +7,6 @@ namespace manager.Models
 {
     public class UserProfileModel
     {
-        public string Password { get; set; }
         public string Skype { get; set; }
         public DateTime? Birthday { get; set; }
         public string City { get; set; }

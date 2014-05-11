@@ -6,8 +6,10 @@
         goToPlayerProfile: goToPlayerProfile,
         goToEquipment: goToEquipment,
         goToTeamComposition: goToTeamComposition,
-        goToTeamsByCuntryId: goToTeamsByCuntryId,
-
+        goToTeams: goToTeams,
+        goToUATeams: goToUATeams,
+        goToENTeams: goToENTeams,
+        goToESTeams: goToESTeams,
         seasonsList: ko.observableArray([]),
         getSeasonsList: getSeasonsList
     };
@@ -54,12 +56,21 @@
         });
     }
 
-    function goToTeamsByCuntryId(id) {
-        if (_.isNull(id)) {
-            router.navigate('teams');
-        } else {
-            router.navigate('teams/' + id);
-        }
+    function goToTeams() {
+        router.navigate('teams');
+    }
 
+    function goToTeamsById(id) {
+        router.navigate('teams/' + id);
+    }
+
+    function goToUATeams() {
+        goToTeamsById('UA');
+    }
+    function goToENTeams() {
+        goToTeamsById('EN');
+    }
+    function goToESTeams() {
+        goToTeamsById('ES');
     }
 });

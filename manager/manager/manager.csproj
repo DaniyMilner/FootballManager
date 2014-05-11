@@ -187,6 +187,7 @@
     <Compile Include="Components\ModelBinding\EntityCollectionModelBinderProvider.cs" />
     <Compile Include="Components\ModelBinding\EntityModelBinder.cs" />
     <Compile Include="Components\ModelBinding\EntityModelBinderProvider.cs" />
+    <Compile Include="Components\NewsReader.cs" />
     <Compile Include="Configuration\BundleConfiguration.cs" />
     <Compile Include="Configuration\ContainerConfiguration.cs" />
     <Compile Include="Controllers\API\GeneratorController.cs" />
@@ -248,6 +249,7 @@
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
     <Content Include="App\views\player\profile.html" />
+    <Content Include="App\views\player\training.html" />
     <Content Include="App\views\rules\rules.html" />
     <Content Include="App\views\season\season.html" />
     <Content Include="App\views\teams\teams.html" />
@@ -296,11 +298,15 @@
     <Content Include="Content\css\seasons.css" />
     <Content Include="Content\css\team.css" />
     <Content Include="Content\css\tournament.css" />
+    <Content Include="Content\css\training.css" />
     <Content Include="Content\css\userProfile.css" />
     <Content Include="Content\css\userDialog.css" />
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\country\EN.png" />
+    <Content Include="Content\img\country\ES.png" />
+    <Content Include="Content\img\country\UA.png" />
     <Content Include="Content\img\general\ajax-loader-64x64.gif" />
     <Content Include="Content\img\general\ball-loader.gif" />
     <Content Include="Content\img\general\binding.png" />
@@ -318,17 +324,29 @@
     <Content Include="Content\img\match\time.png" />
     <Content Include="Content\img\match\yellow_card.png" />
     <Content Include="Content\img\teams\ARS.png" />
+    <Content Include="Content\img\teams\ARS_stadium.jpg" />
     <Content Include="Content\img\teams\ATL.png" />
+    <Content Include="Content\img\teams\ATL_stadium.jpg" />
     <Content Include="Content\img\teams\BAR.png" />
+    <Content Include="Content\img\teams\BAR_stadium.jpg" />
     <Content Include="Content\img\teams\CHE.png" />
+    <Content Include="Content\img\teams\CHE_stadium.jpg" />
     <Content Include="Content\img\teams\DD.png" />
+    <Content Include="Content\img\teams\DD_stadium.jpg" />
     <Content Include="Content\img\teams\DK.png" />
+    <Content Include="Content\img\teams\DK_stadium.jpg" />
     <Content Include="Content\img\teams\LIV.png" />
+    <Content Include="Content\img\teams\LIV_stadium.jpg" />
     <Content Include="Content\img\teams\MC.png" />
+    <Content Include="Content\img\teams\MC_stadium.jpg" />
     <Content Include="Content\img\teams\MEH.png" />
+    <Content Include="Content\img\teams\MEH_stadium.jpg" />
     <Content Include="Content\img\teams\RM.png" />
+    <Content Include="Content\img\teams\RM_stadium.jpg" />
     <Content Include="Content\img\teams\SEV.png" />
+    <Content Include="Content\img\teams\SEV_stadium.jpg" />
     <Content Include="Content\img\teams\SHD.png" />
+    <Content Include="Content\img\teams\SHD_stadium.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -386,7 +404,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\models\" />
-    <Folder Include="Content\img\country\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -52,5 +52,54 @@ namespace manager.Controllers.API
                     Year = team.Year
                 }));
         }
+
+        [HttpPost]
+        [Route("api/team/getteaminfobypublicid")]
+        public ActionResult GetTeamInfo(string id)
+        {
+            var team = _teamRepository.GeTeamByPublicId(id);
+            if (team == null)
+            {
+                return JsonError("Team not found");
+            }
+            var players = _playerRepository.GetPlayersByTeamId(team.Id);
+            return JsonSuccess(players.Select(player => new
+            {
+                Id = player.Id,
+                Name = player.Name,
+                Surname = player.Surname,
+                Position = new
+                {
+                    Id = player.Position.Id,
+                    Name = player.Position.Name,
+                    PublicId = player.Position.PublicId
+                },
+                Illness = new
+                {
+                    Id = player.Illness.Id,
+                    IllnessName = player.Illness.IllnessName,
+                    TimeForRecovery = player.Illness.TimeForRecovery
+                },
+                Country = new
+                {
+                    Id = player.Country.Id,
+                    Name = player.Country.Name,
+                    PublicId = player.Country.PublicId
+                },
+                Skills = player.SkillPlayerCollection.Select(skill => new
+                {
+                    id = skill.Skill.Ordering,
+                    value = skill.Value
+                }),
+                PublicId = player.PublicId,
+            }));
+        }
+
+        [HttpPost]
+        [Route("api/team/applytojoin")]
+        public ActionResult ApplyToJoin(Guid playerId)
+        {
+            return JsonSuccess();
+        }
     }
 }
