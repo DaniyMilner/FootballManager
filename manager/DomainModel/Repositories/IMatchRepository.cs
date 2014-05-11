@@ -14,5 +14,6 @@ namespace DomainModel.Repositories
         List<Match> GetTodayMatches();
         List<Match> GetNotTodayMatches();
         List<Match> GetMatchesByTourItemId(Guid id);
+        List<Match> GetAllTeamMatches(Guid teamId);
     }
 }

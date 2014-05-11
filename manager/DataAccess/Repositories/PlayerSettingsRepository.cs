@@ -26,5 +26,10 @@ namespace DataAccess.Repositories
             foreach (var item in data)
                 item.SetNotWritable();
         }
+
+        public PlayerSettings GetPlayerSettingsByPlayerId(Guid id)
+        {
+            return _dataContext.GetSet<PlayerSettings>().FirstOrDefault(z => z.Player.Id == id);
+        }
     }
 }

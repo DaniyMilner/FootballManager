@@ -11,5 +11,6 @@ namespace DomainModel.Repositories
     {
         List<PlayerSettings> GetPlayersSettingsByMatchId(Guid id);
         void SetIsWritableToMatchPlayers(Match match);
+        PlayerSettings GetPlayerSettingsByPlayerId(Guid id);
     }
 }

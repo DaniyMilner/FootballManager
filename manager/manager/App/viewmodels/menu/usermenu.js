@@ -6,6 +6,7 @@
         goToPlayerProfile: goToPlayerProfile,
         goToEquipment: goToEquipment,
         goToTeamComposition: goToTeamComposition,
+        goToTeamSettings:goToTeamSettings,
 
         seasonsList: ko.observableArray([]),
         getSeasonsList: getSeasonsList
@@ -24,6 +25,10 @@
 
     function goToEquipment() {
         router.navigate('equipment');
+    }
+
+    function goToTeamSettings() {
+        router.navigate('teamsettings');
     }
 
     function activate() {

@@ -30,5 +30,10 @@ namespace DomainModel.Entities
         {
             this.isWritable = false;
         }
+
+        public void SetCaptain()
+        {
+            isCaptain = true;
+        }
     }
 }

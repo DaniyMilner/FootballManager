@@ -1,0 +1,67 @@
+﻿<section class="teamsettings-wrapper">
+    <p class="title" data-bind="visible: noMatch">Нету матчей</p>
+    <p class="title" data-bind="visible: !noMatch(), text: 'Установки на матч ' + teamName() + ' против ' + rivalName() + ' ' + matchDate()"></p>
+    <div class="scheme-wrapper" data-bind="visible: !stepOkVisible() && !noMatch()">
+        <p>Расстановка</p>
+        <select data-bind="change: manageSelectedArragement, options: allArragements, optionsText: function (item) { var text = item.scheme.replace('Scheme', ''); return text[0] + '-' + text[1] + '-' + text[2]; }, value: selectedArragement"></select>
+    </div>
+    <div class="teamsettings-info-wrapper" data-bind="visible: !stepOkVisible() && !noMatch()">
+        <div class="lineup-wrapper">
+            <div class="start-wrapper">
+                <div class="gk-wrapper">
+                    <select data-bind="visible: GKList().length != 0, options: GKList, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedGK"></select>
+                    <p data-bind="click: addGK, visible: canAddGK">>>></p>
+                </div>
+                <div class="def-wrapper">
+                    <select data-bind="visible: DEFList().length != 0, options: DEFList, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedDEF"></select>
+                    <p data-bind="click: addDEF, visible: canAddDEF">>>></p>
+                </div>
+                <div class="mid-wrapper">
+                    <select data-bind="visible: MIDList().length != 0, options: MIDList, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedMID"></select>
+                    <p data-bind="click: addMID, visible: canAddMID">>>></p>
+                </div>
+                <div class="fw-wrapper">
+                    <select data-bind="visible: FWList().length != 0, options: FWList, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedFW"></select>
+                    <p data-bind="click: addFW, visible: canAddFW">>>></p>
+                </div>
+            </div>
+            <div class="result-wrapper" data-bind="style: { pointerEvents: stepTwoVisible() ? 'none' : '' }">
+                <!-- ko foreach: selectedGKList -->
+                <p class="team-item gk-item" data-bind="text: name + ' ' + surname, click: function (item) { $parent.removeGK(item); }"></p>
+                <!-- /ko -->
+                <!-- ko foreach: selectedDEFList -->
+                <p class="team-item def-item" data-bind="text: name + ' ' + surname, click: function (item) { $parent.removeDEF(item); }"></p>
+                <!-- /ko -->
+                <!-- ko foreach: selectedMIDList -->
+                <p class="team-item mid-item" data-bind="text: name + ' ' + surname, click: function (item) { $parent.removeMID(item); }"></p>
+                <!-- /ko -->
+                <!-- ko foreach: selectedFWList -->
+                <p class="team-item fw-item" data-bind="text: name + ' ' + surname, click: function (item) { $parent.removeFW(item); }"></p>
+                <!-- /ko -->
+            </div>
+        </div>
+        <input type="button" value="Далее" class="btn btn-success" data-bind="visible: !canAddFW() && !canAddMID() && !canAddDEF() && !canAddGK(), click: showStepTwo" />
+    </div>
+    <div class="settings-wrapper" data-bind="visible: stepTwoVisible() && !stepOkVisible() && !noMatch()">
+        <div class="setting-block">
+            <p>Капитан</p>
+            <select data-bind="options: playersForSettings, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedCapitan"></select>
+        </div>
+        <div class="setting-block">
+            <p>Штрафные удары</p>
+            <select data-bind="options: playersForSettings, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedFreeKick"></select>
+        </div>
+        <div class="setting-block">
+            <p>Угловые</p>
+            <select data-bind="options: playersForSettings, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedCorner"></select>
+        </div>
+        <div class="setting-block">
+            <p>Пенальти</p>
+            <select data-bind="options: playersForSettings, optionsText: function (item) { return item.name + ' ' + item.surname }, value: selectedPenalty"></select>
+        </div>
+        <input type="button" value="Отправить" class="btn btn-success" data-bind="click: send" />
+    </div>
+    <div class="ok-wrapper" data-bind="visible: stepOkVisible">
+        Установки отправлены
+    </div>
+</section>
