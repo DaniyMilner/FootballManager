@@ -56,6 +56,7 @@ namespace DataAccess
         public DbSet<Seasons> Seasons { get; set; }
         public DbSet<Tournament> Tournament { get; set; }
         public DbSet<TournamentItem> TournamentItem { get; set; }
+        public DbSet<Equipment>  Equipments { get; set; }
 
         public IDbSet<T> GetSet<T>() where T : Entity
         {
@@ -113,6 +114,20 @@ namespace DataAccess
             modelBuilder.Entity<Player>().HasMany(e => e.SkillPlayerCollection).WithRequired(e => e.Player);
             modelBuilder.Entity<Player>().HasMany(e => e.EventLineCollection).WithRequired(e => e.Player);
             modelBuilder.Entity<Player>().HasMany(e => e.PlayerSettingsCollection).WithRequired(e => e.Player);
+            modelBuilder.Entity<Player>().HasMany(e => e.EquipmentCollection)
+                .WithMany(e => e.PlayersCollection)
+                .Map(m => m.ToTable("PlayerEquipment"));
+
+            modelBuilder.Entity<Equipment>().Property(e => e.Name).IsRequired();
+            modelBuilder.Entity<Equipment>().Property(e => e.Price).IsRequired();
+            modelBuilder.Entity<Equipment>().Property(e => e.AmountOfSkills).IsRequired();
+            modelBuilder.Entity<Equipment>().Property(e => e.CountOfMatch).IsRequired();
+            modelBuilder.Entity<Equipment>().HasMany(e => e.PlayersCollection)
+                .WithMany(e => e.EquipmentCollection)
+                .Map(m => m.ToTable("PlayerEquipment"));
+            modelBuilder.Entity<Equipment>().Property(e => e.Type).IsRequired();
+            modelBuilder.Entity<Equipment>().Property(e => e.WeatherType).IsRequired();
+            modelBuilder.Entity<Equipment>().Property(e => e.Index).IsRequired();
 
             modelBuilder.Entity<Team>().Property(e => e.Name).IsRequired();
             modelBuilder.Entity<Team>().Property(e => e.ShortName).IsRequired().HasMaxLength(20);

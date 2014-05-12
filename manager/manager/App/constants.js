@@ -15,6 +15,17 @@
             MID: 'MID'
         },
 
+        shop: {
+            gloves: 0,
+            boots: 1,
+            shield: 2
+        },
+        
+        weatherType: {
+            sun: 0,
+            rain: 1
+        },
+
         skills: {
             1: {
                 abbr: 'Cк.',

@@ -57,6 +57,22 @@
             route: 'teams(/:id)',
             moduleId: 'viewmodels/teams/teams',
             title: 'Teams'
+        }, {
+            route: 'raiting(/:id)',
+            moduleId: 'viewmodels/raitings/raiting',
+            title: 'Raiting'
+        }, {
+            route: 'training',
+            moduleId: 'viewmodels/player/training',
+            title: 'Training'
+        }, {
+            route: 'shop/:id',
+            moduleId: 'viewmodels/player/shop',
+            title: 'Shop'
+        }, {
+            route: 'basket',
+            moduleId: 'viewmodels/player/basket',
+            title: 'Basket'
         }];
 
     });

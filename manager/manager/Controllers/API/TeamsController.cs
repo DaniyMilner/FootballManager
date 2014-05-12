@@ -101,5 +101,21 @@ namespace manager.Controllers.API
         {
             return JsonSuccess();
         }
+
+        [HttpPost]
+        [Route("api/team/getteamname")]
+        public ActionResult GetTeamName(Guid id)
+        {
+            var team = _teamRepository.Get(id);
+            if (team == null)
+            {
+                return JsonError("Team not found");
+            }
+            return JsonSuccess(new
+            {
+                name = team.Name,
+                shortName = team.ShortName
+            });
+        }
     }
 }

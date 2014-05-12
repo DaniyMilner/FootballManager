@@ -10,5 +10,6 @@ namespace DomainModel.Repositories
     public interface ITeamRepository : IRepository<Team>
     {
         Team GeTeamByPublicId(string publicId);
+        Team Get(Guid? teamId);
     }
 }

@@ -1,3 +1,34 @@
 ﻿<section class="equipment-wrapper">
-    
+    <h4 class="text-center">Добро пожаловать в наш магазин, <span data-bind="text: userName"></span></h4>
+    <p>В этом магазине Вы можете приобрести экипировку для Вашего игрока.</p>
+    <p>
+        Каждая экипровка увеличивает скилы Вашему игроку. Также будьте внимательны некоторые вещи предназначены для определённой погоды. 
+        Если вы оденете на матч экипировку для другой погоды, показатели, которые добавляет данная экипировка уменьшаться в 2 раза.
+    </p>
+    <div class="equipment-shops-wrapper">
+        <div class="equipment-shop-wrapper" data-bind="click: goToGlovesShop">
+            <div class="shop-image-wrapper">
+            <img class="img-thumbnail" src="Content/img/equipment/shop_gloves.png" />
+            </div>
+            <div class="shop-name-wrapper">
+                <span class="shop-name">Магазин перчаток</span>
+            </div>
+        </div>
+        <div class="equipment-shop-wrapper" data-bind="click: goToBootsShop">
+            <div class="shop-image-wrapper">
+            <img class="img-thumbnail" src="Content/img/equipment/shop_boots.png" />
+            </div>
+            <div class="shop-name-wrapper">
+                <span class="shop-name">Магазин бутс</span>
+            </div>
+        </div>
+        <div class="equipment-shop-wrapper" data-bind="click: goToShieldsShop">
+            <div class="shop-image-wrapper">
+            <img class="img-thumbnail" src="Content/img/equipment/shop_shield.png" />
+            </div>
+            <div class="shop-name-wrapper">
+                <span class="shop-name">Магазин щитков</span>
+            </div>
+        </div>
+    </div>
 </section>

@@ -1,0 +1,29 @@
+﻿<section class="team-wrapper">
+    <h3 class="team-position-name">Голкиперы</h3>
+    <table class="table table-bordered raiting-table">
+        <thead>
+            <tr>
+                <th>Номер</th>
+                <th>Имя</th>
+                <th>Страна</th>
+                <th>Скилл</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: players -->
+            <tr>
+                <td class="table-td-10" data-bind="text: index"></td>
+                <td class="table-td-40">
+                    <a href="javascript: void(0);" data-bind="text: fullName, click: $parent.goToPlayerProfile"></a>
+                </td>
+                <td class="table-td-20">
+                    <div class="country-image-wrapper">
+                        <img class="img-responsive" data-bind="attr: { src: 'Content/img/country/' + countryId + '.png', title: countryName }" />
+                    </div>
+                </td>
+                <td data-bind="text: skillValue"></td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</section>

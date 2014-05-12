@@ -5,21 +5,16 @@
             <a href="javascript: void(0)">Игрок</a>
             <ul>
                 <li><a data-bind="click: goToPlayerProfile" href="javascript: void(0)">Обзор</a></li>
-                <li><a href="javascript: void(0)">Тренировка</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToTraining">Тренировка</a></li>
                 <li><a data-bind="click: goToEquipment" href="javascript: void(0)">Экипировка</a></li>
                 <li><a href="javascript: void(0)">Развлечения</a></li>
             </ul>
         </li>
+        <!-- ko if: hasTeam -->
         <li>
-            <a href="javascript: void(0)">Команда</a>
-            <ul>
-                <li><a data-bind="click: goToTeamComposition" href="javascript: void(0)">Состав</a></li>
-                <li><a href="javascript: void(0)">Подпункт №2</a></li>
-                <li><a href="javascript: void(0)">Подпункт №3</a></li>
-                <li><a href="javascript: void(0)">Подпункт №4</a></li>
-                <li><a href="javascript: void(0)">Подпункт №5</a></li>
-            </ul>
+            <a href="javascript: void(0)" data-bind="text: team().name, click: goToOwnTeam"></a>
         </li>
+        <!-- /ko -->
         <!-- /ko -->
         <li>
             <a href="javascript: void(0)">Команды</a>
@@ -40,11 +35,11 @@
             <a href="javascript: void(0)">Рейтинги</a>
             <ul>
                 <li><a href="javascript: void(0)">Топ команд</a></li>
-                <li><a href="javascript: void(0)">Общий топ</a></li>
-                <li><a href="javascript: void(0)">Топ голкиперов</a></li>
-                <li><a href="javascript: void(0)">Топ защитников</a></li>
-                <li><a href="javascript: void(0)">Топ полузащитнков</a></li>
-                <li><a href="javascript: void(0)">Топ нападающих</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToRaiting">Общий топ</a></li>
+                <li><a href="javascript: void(0)"data-bind="click: goToGKRaiting">Топ голкиперов</a></li>
+                <li><a href="javascript: void(0)"data-bind="click: goToDEFRaiting">Топ защитников</a></li>
+                <li><a href="javascript: void(0)"data-bind="click: goToMIDRaiting">Топ полузащитнков</a></li>
+                <li><a href="javascript: void(0)"data-bind="click: goToFWRaiting">Топ нападающих</a></li>
             </ul>
         </li>
         <li>

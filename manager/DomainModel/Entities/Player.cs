@@ -33,6 +33,7 @@ namespace DomainModel.Entities
             SkillPlayerCollection = new Collection<SkillsPlayer>();
             EventLineCollection = new Collection<EventLine>();
             PlayerSettingsCollection = new Collection<PlayerSettings>();
+            EquipmentCollection = new Collection<Equipment>();
         }
 
         public string Name { get; private set; }
@@ -55,5 +56,6 @@ namespace DomainModel.Entities
         public virtual ICollection<SkillsPlayer> SkillPlayerCollection { get; private set; }
         public virtual ICollection<EventLine> EventLineCollection { get; private set; }
         public virtual ICollection<PlayerSettings> PlayerSettingsCollection { get; private set; }
+        public virtual ICollection<Equipment>  EquipmentCollection { get; set; }
     }
 }

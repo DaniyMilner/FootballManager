@@ -86,6 +86,10 @@ namespace DataAccess
               .As<ITournamentItemRepository>()
               .As<IQuerableRepository<TournamentItem>>();
 
+            builder.RegisterType<EquipmentRepository>()
+              .As<IEquipmentRepository>()
+              .As<IQuerableRepository<Equipment>>();
+
             base.Load(builder);
         }
     }
