@@ -175,6 +175,8 @@
                     if (response.data.teamSettings) {
                         viewmodel.selectedArragement(getSelectedArragement(response.data.teamSettings.arragement));
                         manageSelectedArragement();
+                        manageLineUp(response);
+                        
                     }
                 } else {
                     console.log(response.data);
@@ -252,8 +254,55 @@
         viewmodel.canAddMID(true);
         viewmodel.canAddFW(true);
         viewmodel.stepTwoVisible(false);
-        
+
         viewmodel.playersForSettings([]);
     }
 
+    function getPlayerById(id) {
+        for (var i = 0; i < viewmodel.allPlayers().length; i++) {
+            if (viewmodel.allPlayers()[i].id == id) {
+                return viewmodel.allPlayers()[i];
+            }
+        }
+        return null;
+    }
+
+    function manageLineUp(response) {
+        var players = [];
+        players.push(getPlayerById(response.data.teamSettings.lineUp.one));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.two));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.three));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.four));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.five));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.six));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.seven));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.eight));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.nine));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.ten));
+        players.push(getPlayerById(response.data.teamSettings.lineUp.eleven));
+        for (var i = 0; i < players.length; i++) {
+            switch (players[i].position) {
+                case 'FW':
+                    viewmodel.selectedFWList.push(players[i]);
+                    viewmodel.FWList.remove(players[i]);
+                    viewmodel.checkFW();
+                    break;
+                case 'MID':
+                    viewmodel.selectedMIDList.push(players[i]);
+                    viewmodel.MIDList.remove(players[i]);
+                    viewmodel.checkMID();
+                    break;
+                case 'DEF':
+                    viewmodel.selectedDEFList.push(players[i]);
+                    viewmodel.DEFList.remove(players[i]);
+                    viewmodel.checkDEF();
+                    break;
+                case 'GK':
+                    viewmodel.selectedGKList.push(players[i]);
+                    viewmodel.GKList.remove(players[i]);
+                    viewmodel.checkGK();
+                    break;
+            }
+        }
+    }
 });

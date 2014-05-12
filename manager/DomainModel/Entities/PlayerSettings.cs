@@ -35,5 +35,15 @@ namespace DomainModel.Entities
         {
             isCaptain = true;
         }
+
+        public void SetIndexField(int index)
+        {
+            IndexField = index;
+        }
+
+        public void SetSettings(string settings)
+        {
+            Settings = settings;
+        }
     }
 }
