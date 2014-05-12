@@ -11,8 +11,11 @@
         background-color: rgba(165, 42, 42, 0.8);
         width: 100px;
         display: -webkit-box;
+        display: -moz-box;
         -webkit-box-pack: center;
+        -moz-box-pack: center;
         -webkit-box-align: center;
+        -moz-box-align: center;
         height: 25px;
     }
 

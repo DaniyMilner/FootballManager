@@ -63,6 +63,7 @@
 		.dialog-wrapper {
 			width: 590px;
 			display: -webkit-box;
+			display: -moz-box;
 		}
 
 		.dialog-wrapper .fields-wrapper {
