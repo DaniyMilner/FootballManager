@@ -8,8 +8,15 @@
         goToPlayerProfile: goToPlayerProfile,
         goToEquipment: goToEquipment,
         goToTeamComposition: goToTeamComposition,
+<<<<<<< HEAD
+        goToTeams: goToTeams,
+        goToUATeams: goToUATeams,
+        goToENTeams: goToENTeams,
+        goToESTeams: goToESTeams,
+=======
         goToTeamSettings:goToTeamSettings,
 
+>>>>>>> c82f355f0e14e32239d3fe3e3c722fb7eeb44520
         seasonsList: ko.observableArray([]),
         getSeasonsList: getSeasonsList,
         goToRaiting: goToRaiting,
@@ -18,11 +25,7 @@
         goToMIDRaiting: goToMIDRaiting,
         goToFWRaiting: goToFWRaiting,
         goToOwnTeam: goToOwnTeam,
-        goToTraining: goToTraining,
-        goToTeams: goToTeams,
-        goToUATeams: goToUATeams,
-        goToENTeams: goToENTeams,
-        goToESTeams: goToESTeams
+        goToTraining: goToTraining
     };
 
     return viewmodel;
@@ -40,12 +43,13 @@
         router.navigate('equipment');
     }
 
-    function goToTeamSettings() {
-        router.navigate('teamsettings');
-    }
-
+<<<<<<< HEAD
     function goToTraining() {
         router.navigate('training');
+=======
+    function goToTeamSettings() {
+        router.navigate('teamsettings');
+>>>>>>> c82f355f0e14e32239d3fe3e3c722fb7eeb44520
     }
 
     function activate() {
