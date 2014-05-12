@@ -1,0 +1,91 @@
+.teamsettings-wrapper{
+    margin: 0 5%;
+}
+.teamsettings-wrapper .title{}
+.teamsettings-wrapper select{
+    color: black;
+}
+.teamsettings-wrapper .scheme-wrapper{
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+.teamsettings-wrapper .scheme-wrapper p{
+    margin: 0;
+    margin-right: 20px;
+}
+.teamsettings-wrapper .scheme-wrapper select{
+    height: 30px;  border-radius: 6px;  padding-left: 4px;
+}
+
+.teamsettings-wrapper .teamsettings-info-wrapper{
+    margin-top: 30px;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper{
+    display: -webkit-box;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .start-wrapper{
+    width: 60%;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .result-wrapper{
+    width: 40%;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .gk-wrapper ,
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .fw-wrapper ,
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .def-wrapper,
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .mid-wrapper {
+    display: -webkit-box;
+    height: 50px;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper select {
+    min-width: 200px;
+    margin-right: 60px;
+    height: 30px;
+    border-radius: 6px;
+    padding-left: 4px;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper p {
+    margin: 0;
+    cursor: pointer;
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .settings-wrapper{
+}
+
+.teamsettings-wrapper .teamsettings-info-wrapper .gk-item{
+    background: rgba(211, 211, 211, 0.1);
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .def-item{}
+.teamsettings-wrapper .teamsettings-info-wrapper .mid-item{
+    background: rgba(211, 211, 211, 0.1);
+}
+.teamsettings-wrapper .teamsettings-info-wrapper .fw-item{}
+.teamsettings-wrapper .teamsettings-info-wrapper .team-item {
+    height: 25px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    padding-left: 15px;
+}
+
+.teamsettings-wrapper .teamsettings-info-wrapper .btn-success {
+    margin: 20px 0 0 60%;
+}
+.teamsettings-wrapper .settings-wrapper {
+    
+}
+.teamsettings-wrapper .settings-wrapper .setting-block{
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+.teamsettings-wrapper .settings-wrapper .setting-block p{
+    margin: 10px;
+    width: 190px;
+}
+.teamsettings-wrapper .settings-wrapper .setting-block select{
+    min-width: 200px;  
+    margin-right: 60px;  
+    height: 30px;  
+    border-radius: 6px;  
+    padding-left: 4px;
+}
+.teamsettings-wrapper .settings-wrapper input{
+    margin-left: 40%;
+}

@@ -113,10 +113,14 @@ namespace manager.Controllers.API
                 }
             }
 
-            return JsonSuccess(
-                table.OrderByDescending(z => z.Points)
+            return JsonSuccess(new
+            {
+                tournamentName = tournament.Title,
+                country = tournament.Country.PublicId,
+                table = table.OrderByDescending(z => z.Points)
                      .ThenByDescending(z => z.DifferenceGoals)
-                     .ThenByDescending(z => z.Goals).ToList());
+                     .ThenByDescending(z => z.Goals).ToList()
+            });
         }
 
         [HttpPost]
@@ -130,9 +134,12 @@ namespace manager.Controllers.API
             var allTours = tournament.TournamentItemCollection.OrderBy(z => z.ItemNumber).ToList();
             if (allTours.Count == 0) return JsonSuccess("no_tours");
 
-            var tour = allTours.Where(z => z.DateStart < DateTime.Now).OrderByDescending(z => z.DateStart).Take(1).First();
+            var tour = allTours.Where(z => z.DateStart < DateTime.Now).ToList();
+            if (tour.Count==0) return JsonSuccess("no_last_matches");
+            
+            var tourItem = tour.OrderByDescending(z => z.DateStart).Take(1).First();
 
-            var matches = _matchRepository.GetMatchesByTourItemId(tour.Id);
+            var matches = _matchRepository.GetMatchesByTourItemId(tourItem.Id);
             var result = new List<object>();
             foreach (var item in matches)
             {
@@ -148,7 +155,7 @@ namespace manager.Controllers.API
                 });
             }
 
-            return JsonSuccess(new { resultList = result, tour = tour.ItemNumber });
+            return JsonSuccess(new { resultList = result, tour = tourItem.ItemNumber });
         }
 
         [HttpPost]
@@ -164,7 +171,7 @@ namespace manager.Controllers.API
 
             var tours = allTours.Where(z => z.DateStart > DateTime.Now).ToList();
             if (tours.Count == 0) return JsonSuccess("no_tours_next");
-            
+
             var tour = tours.OrderBy(z => z.DateStart).Take(1).First();
 
             var matches = _matchRepository.GetMatchesByTourItemId(tour.Id);

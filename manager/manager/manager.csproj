@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\PlayerCreateModel.cs" />
+    <Compile Include="Models\TeamSettingsModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserSignInModel.cs" />
     <Compile Include="Models\UserSignUpModel.cs" />
@@ -239,6 +240,7 @@
     <Content Include="App\viewmodels\season\season.js" />
     <Content Include="App\viewmodels\teams\teams.js" />
     <Content Include="App\viewmodels\team\composition.js" />
+    <Content Include="App\viewmodels\team\teamsettings.js" />
     <Content Include="App\viewmodels\tournament\tournament.js" />
     <Content Include="App\viewmodels\user\profile.js" />
     <Content Include="App\viewmodels\user\signin.js" />
@@ -263,6 +265,7 @@
     <Content Include="App\views\season\season.html" />
     <Content Include="App\views\teams\teams.html" />
     <Content Include="App\views\team\composition.html" />
+    <Content Include="App\views\team\teamsettings.html" />
     <Content Include="App\views\tournament\tournament.html" />
     <Content Include="App\views\user\profile.html" />
     <Content Include="App\views\user\signin.html" />
@@ -306,6 +309,7 @@
     <Content Include="Content\css\rules.css" />
     <Content Include="Content\css\seasons.css" />
     <Content Include="Content\css\team.css" />
+    <Content Include="Content\css\teamsettings.css" />
     <Content Include="Content\css\tournament.css" />
     <Content Include="Content\css\training.css" />
     <Content Include="Content\css\userProfile.css" />

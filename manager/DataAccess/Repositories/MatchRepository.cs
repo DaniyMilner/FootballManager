@@ -62,6 +62,11 @@ namespace DataAccess.Repositories
         public List<Match> GetMatchesByTourItemId(Guid id)
         {
             return _dataContext.GetSet<Match>().Where(z => z.TournamentItemId == id).ToList();
-        } 
+        }
+
+        public List<Match> GetAllTeamMatches(Guid teamId)
+        {
+            return _dataContext.GetSet<Match>().Where(z => z.HomeTeamId == teamId || z.GuestTeamId == teamId).ToList();
+        }
     }
 }

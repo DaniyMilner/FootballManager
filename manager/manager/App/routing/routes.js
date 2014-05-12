@@ -54,6 +54,10 @@
             moduleId: 'viewmodels/rules/rules',
             title: 'Rules'
         }, {
+            route: 'teamsettings',
+            moduleId: 'viewmodels/team/teamsettings',
+            title: 'Team Settings'
+        }, {
             route: 'teams(/:id)',
             moduleId: 'viewmodels/teams/teams',
             title: 'Teams'

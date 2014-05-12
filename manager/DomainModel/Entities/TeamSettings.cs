@@ -24,5 +24,25 @@ namespace DomainModel.Entities
         public string Settings { get; private set; }
         public string LineUp { get; private set; }
         public Guid? PlayerSend { get; private set; }
+
+        public void SetSettings(string settings)
+        {
+            Settings = settings;
+        }
+
+        public void SetLineUp(string lineUp)
+        {
+            LineUp = lineUp;
+        }
+
+        public void SetPlayerSend(Guid? playerId)
+        {
+            PlayerSend = playerId;
+        }
+
+        public void SetAttagement(Arrangement arrangement)
+        {
+            Arrangement = arrangement;
+        }
     }
 }
