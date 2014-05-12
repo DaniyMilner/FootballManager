@@ -77,6 +77,10 @@
             route: 'basket',
             moduleId: 'viewmodels/player/basket',
             title: 'Basket'
+        }, {
+            route: 'coach',
+            moduleId: 'viewmodels/player/coachRoom',
+            title: 'Coach room'
         }];
 
     });

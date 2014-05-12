@@ -9,7 +9,7 @@
         goToEquipment: goToEquipment,
         goToTeamComposition: goToTeamComposition,
         goToTeamSettings:goToTeamSettings,
-
+        isCoatch: ko.observable(false),
         seasonsList: ko.observableArray([]),
         getSeasonsList: getSeasonsList,
         goToRaiting: goToRaiting,
@@ -22,7 +22,8 @@
         goToTeams: goToTeams,
         goToUATeams: goToUATeams,
         goToENTeams: goToENTeams,
-        goToESTeams: goToESTeams
+        goToESTeams: goToESTeams,
+        goToCoathRoom: goToCoathRoom
     };
 
     return viewmodel;
@@ -40,6 +41,10 @@
         router.navigate('equipment');
     }
 
+    function goToCoathRoom() {
+        router.navigate('coach');
+    }
+
     function goToTeamSettings() {
         router.navigate('teamsettings');
     }
@@ -50,14 +55,22 @@
 
     function activate() {
         this.isAuthenticated(userContext.isAuthenticated);
-        if (userContext.hasPlayer) {
-            getTeamName(userContext.user.playersCollection[0].teamId);
+        if (userContext.isCoatch) {
+            viewmodel.isCoatch(true);
+        } else {
+            viewmodel.isCoatch(false);
         }
-        return viewmodel.getSeasonsList();
+        if (userContext.hasPlayer) {
+            return getTeamName(userContext.user.playersCollection[0].teamId).then(function() {
+                return viewmodel.getSeasonsList();
+            });
+        } else {
+            return viewmodel.getSeasonsList();
+        }
     }
 
     function getTeamName(teamId) {
-        httpWrapper.post('api/team/getteamname', { id: teamId }).then(function (response) {
+        return httpWrapper.post('api/team/getteamname', { id: teamId }).then(function (response) {
             if (response.success) {
                 viewmodel.hasTeam(true);
                 viewmodel.team(response.data);

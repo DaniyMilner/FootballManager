@@ -230,6 +230,7 @@
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\news.js" />
     <Content Include="App\viewmodels\player\basket.js" />
+    <Content Include="App\viewmodels\player\coachRoom.js" />
     <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\player\equipment.js" />
     <Content Include="App\viewmodels\player\profile.js" />
@@ -255,6 +256,7 @@
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\news.html" />
     <Content Include="App\views\player\basket.html" />
+    <Content Include="App\views\player\coachRoom.html" />
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
     <Content Include="App\views\player\profile.html" />

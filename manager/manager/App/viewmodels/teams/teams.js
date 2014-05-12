@@ -3,7 +3,7 @@
     var viewmodel = {
         goToTeam: goToTeam,
         teams: ko.observableArray([]),
-        isAuthenticated: userContext.isAuthenticated && userContext.hasPlayer,
+        isAuthenticated: (userContext.isAuthenticated && userContext.hasPlayer) || _.isUndefined(userContext.user.playersCollection[0].teamId) || _.isNull(userContext.user.playersCollection[0].teamId),
         applyToJoin: applyToJoin,
         activate: activate
     };

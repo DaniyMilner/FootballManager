@@ -56,6 +56,13 @@
                     };
                 });
             }
+        }).then(function() {
+            return httpWrapper.post('api/team/getteamname', { id: viewmodel.player.teamId }).then(function (response) {
+                debugger;   
+                if (response.success) {
+                    viewmodel.player.teamId = response.data.name;
+                }
+            });
         });
     }
 

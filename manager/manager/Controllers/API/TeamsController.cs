@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Drawing.Printing;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DomainModel.Entities;
 using DomainModel.Repositories;
 using manager.Components;
-using Newtonsoft.Json;
 
 namespace manager.Controllers.API
 {
@@ -35,7 +31,7 @@ namespace manager.Controllers.API
             if (publicId == null)
             {
                 teamCollection = _teamRepository.GetCollection();
-                
+
             }
             else
             {
@@ -63,7 +59,63 @@ namespace manager.Controllers.API
                 return JsonError("Team not found");
             }
             var players = _playerRepository.GetPlayersByTeamId(team.Id);
-            return JsonSuccess(players.Select(player => new
+            return JsonSuccess(GetPlayersForResponse(players));
+        }
+
+        [HttpPost]
+        [Route("api/team/applytojoin")]
+        public ActionResult ApplyToJoin(Guid playerId)
+        {
+            return JsonSuccess();
+        }
+
+        [HttpPost]
+        [Route("api/team/getteamname")]
+        public ActionResult GetTeamName(Guid id)
+        {
+            var team = _teamRepository.Get(id);
+            if (team == null)
+            {
+                return JsonError("Team not found");
+            }
+            return JsonSuccess(new
+            {
+                name = team.Name,
+                shortName = team.ShortName
+            });
+        }
+
+        [HttpPost]
+        [Route("api/team/getteambyid")]
+        public ActionResult GetTeamById(Guid id)
+        {
+            var team = _teamRepository.Get(id);
+            if (team == null)
+            {
+                return JsonError("Team not found");
+            }
+            var players = _playerRepository.GetAllPlayersByTeamId(team.Id);
+            return JsonSuccess(GetPlayersForResponse(players));
+        }
+
+        [HttpPost]
+        [Route("api/team/removeplayer")]
+        public ActionResult RemovePlayer(Guid teamId, Guid playerId)
+        {
+            var player = _playerRepository.GetPlayersByTeamId(teamId).FirstOrDefault(p => p.Id == playerId);
+            if (player != null)
+            {
+                player.TeamId = null;
+                player.Salary = 0;
+                player.Number = 0;
+                return JsonSuccess(true);
+            }
+            return JsonError("Player not found");
+        }
+
+        private static object GetPlayersForResponse(IEnumerable<Player> players)
+        {
+            return players.Select(player => new
             {
                 Id = player.Id,
                 Name = player.Name,
@@ -92,29 +144,6 @@ namespace manager.Controllers.API
                     value = skill.Value
                 }),
                 PublicId = player.PublicId,
-            }));
-        }
-
-        [HttpPost]
-        [Route("api/team/applytojoin")]
-        public ActionResult ApplyToJoin(Guid playerId)
-        {
-            return JsonSuccess();
-        }
-
-        [HttpPost]
-        [Route("api/team/getteamname")]
-        public ActionResult GetTeamName(Guid id)
-        {
-            var team = _teamRepository.Get(id);
-            if (team == null)
-            {
-                return JsonError("Team not found");
-            }
-            return JsonSuccess(new
-            {
-                name = team.Name,
-                shortName = team.ShortName
             });
         }
     }

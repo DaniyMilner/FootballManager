@@ -1,0 +1,56 @@
+﻿<section class="player-profile-wrapper">
+    <h2 class="text-center">Команата тренера</h2>
+    <p>
+        Добро пожаловать в комнату тренера! Здесь вы можете управлять командой, а именно:
+        <ul>
+            <li>назначать зарплату игрокам</li>
+            <li>отправлять установки команды на матч</li>
+            <li>добавлять игроков в команду</li>
+            <li>удалять игроков из команды</li>
+            <li>назначать номер игрока в команде</li>
+        </ul>
+    </p>
+    <h3 class="text-center">Комманда(
+        <a href="javascript: void(0)" data-bind="click: goToTeamSettings">отправить установку</a>
+        )
+    </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Позиция</th>
+                <th>Страна</th>
+                <th>Назначить номер</th>
+                <th>Назначить зарплату</th>
+                <th>Удалиние из команды</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: team -->
+            <tr>
+                <td data-bind="text: name + ' ' + surname"></td>
+                <td data-bind="text: position.name"></td>
+                <td>
+                    <div class="country-image-wrapper">
+                        <img class="img-responsive" data-bind="attr: { src: 'Content/img/country/' + country.publicId + '.png' }" />
+                    </div>
+                </td>
+                <td>
+                    <select class="coach-select-number">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" class="coach-select-number" />
+                </td>
+                <td>
+                    <a href="javscrip: void(0)" data-bind="click: $parent.removePlayerFromTeam">Удалить игрока из команды</a>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</section>

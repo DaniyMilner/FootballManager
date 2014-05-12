@@ -41,8 +41,8 @@ namespace DomainModel.Entities
         public int Age { get; private set; }
         public int Weight { get; private set; }
         public int Growth { get; private set; }
-        public int Number { get; private set; }
-        public int Salary { get; private set; }
+        public int Number { get; set; }
+        public int Salary { get; set; }
         public int Money { get; private set; }
         public int Humor { get; private set; }
         public int Condition { get; private set; }

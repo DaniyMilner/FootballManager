@@ -257,5 +257,44 @@ namespace manager.Controllers.API
         {
             return JsonError("error");
         }
+
+        [HttpPost]
+        [Route("api/player/iscoatch")]
+        public ActionResult IsCoatch()
+        {
+            var user = _userRepository.GetUserByUserName(GetCurrentUsername());
+            Team coach = null;
+            if (user != null)
+            {
+                coach = _teamRepository.GetCollection().FirstOrDefault(t => t.CoachId == user.Id);
+            }
+            return coach == null ? JsonError("Coach not found") : JsonSuccess(true);
+        }
+
+        [HttpPost]
+        [Route("api/player/updateplayernumber")]
+        public ActionResult UpdatePlayerNumber(Guid id, int number)
+        {
+            var player = _playerRepository.Get(id);
+            if (player == null)
+            {
+                return JsonError("Player not found");
+            }
+            player.Number = number;
+            return JsonSuccess(true);
+        }
+
+        [HttpPost]
+        [Route("api/player/updateplayersalary")]
+        public ActionResult UpdatePlayerSalary(Guid id, int salary)
+        {
+            var player = _playerRepository.Get(id);
+            if (player == null)
+            {
+                return JsonError("Player not found");
+            }
+            player.Salary = salary;
+            return JsonSuccess(true);
+        }
     }
 }

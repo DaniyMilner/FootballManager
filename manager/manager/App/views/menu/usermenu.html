@@ -8,6 +8,9 @@
                 <li><a href="javascript: void(0)" data-bind="click: goToTraining">Тренировка</a></li>
                 <li><a data-bind="click: goToEquipment" href="javascript: void(0)">Экипировка</a></li>
                 <li><a href="javascript: void(0)">Развлечения</a></li>
+                <!-- ko if: isCoatch -->
+                <li><a href="javascript: void(0)" data-bind="click: goToCoathRoom">Тренерская</a></li>
+                <!-- /ko -->
             </ul>
         </li>
         <!-- ko if: hasTeam -->
@@ -36,10 +39,10 @@
             <ul>
                 <li><a href="javascript: void(0)">Топ команд</a></li>
                 <li><a href="javascript: void(0)" data-bind="click: goToRaiting">Общий топ</a></li>
-                <li><a href="javascript: void(0)"data-bind="click: goToGKRaiting">Топ голкиперов</a></li>
-                <li><a href="javascript: void(0)"data-bind="click: goToDEFRaiting">Топ защитников</a></li>
-                <li><a href="javascript: void(0)"data-bind="click: goToMIDRaiting">Топ полузащитнков</a></li>
-                <li><a href="javascript: void(0)"data-bind="click: goToFWRaiting">Топ нападающих</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToGKRaiting">Топ голкиперов</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToDEFRaiting">Топ защитников</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToMIDRaiting">Топ полузащитнков</a></li>
+                <li><a href="javascript: void(0)" data-bind="click: goToFWRaiting">Топ нападающих</a></li>
             </ul>
         </li>
         <li>

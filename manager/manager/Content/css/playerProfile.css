@@ -73,3 +73,10 @@
 .player-profile-wrapper .skills-info.table td {
     border-top: none;
 }
+
+.coach-select-number {
+    width: 100%;
+    color: #333;
+    height: 20px;
+    font-size: 11px;
+}

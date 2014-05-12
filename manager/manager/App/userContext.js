@@ -9,6 +9,7 @@
             isAuthenticated = false,
             hasPlayer = false,
             user = {},
+            isCoatch = false,
             initialize = function () {
                 var that = this;
                 return $.ajax({
@@ -76,6 +77,19 @@
                             })
                         }
                     }
+                }).then(function() {
+                    return $.ajax({
+                        url: 'api/player/iscoatch',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        dataType: 'json'
+                    }).then(function (response) {
+                        if (response.success) {
+                            that.isCoatch = true;
+                        } else {
+                            that.isCoatch = false;
+                        }
+                    });
                 });
             };
 
@@ -83,6 +97,7 @@
             initialize: initialize,
             isAuthenticated: isAuthenticated,
             user: user,
-            hasPlayer: hasPlayer
+            hasPlayer: hasPlayer,
+            isCoatch: isCoatch
         };
     });
