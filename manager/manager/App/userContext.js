@@ -7,6 +7,7 @@
 
         var
             isAuthenticated = false,
+            hasPlayer = false,
             user = {},
             initialize = function () {
                 var that = this;
@@ -20,6 +21,9 @@
                         that.isAuthenticated = false;
                     } else {
                         that.isAuthenticated = true;
+                        if (!!response.data.User.PlayerCollection) {
+                            that.hasPlayer = true;
+                        }
                         that.user = {
                             id: response.data.User.Id,
                             email: response.data.User.Email,
@@ -78,6 +82,7 @@
         return {
             initialize: initialize,
             isAuthenticated: isAuthenticated,
-            user: user
+            user: user,
+            hasPlayer: hasPlayer
         };
     });

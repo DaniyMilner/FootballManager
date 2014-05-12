@@ -3,14 +3,27 @@
     var viewmodel = {
         activate: activate,
         isAuthenticated: ko.observable(false),
+        hasTeam: ko.observable(false),
+        team: ko.observable(null),
         goToPlayerProfile: goToPlayerProfile,
         goToEquipment: goToEquipment,
         goToTeamComposition: goToTeamComposition,
         goToTeamSettings:goToTeamSettings,
 
         seasonsList: ko.observableArray([]),
-        getSeasonsList: getSeasonsList
-};
+        getSeasonsList: getSeasonsList,
+        goToRaiting: goToRaiting,
+        goToGKRaiting: goToGKRaiting,
+        goToDEFRaiting: goToDEFRaiting,
+        goToMIDRaiting: goToMIDRaiting,
+        goToFWRaiting: goToFWRaiting,
+        goToOwnTeam: goToOwnTeam,
+        goToTraining: goToTraining,
+        goToTeams: goToTeams,
+        goToUATeams: goToUATeams,
+        goToENTeams: goToENTeams,
+        goToESTeams: goToESTeams
+    };
 
     return viewmodel;
 
@@ -31,9 +44,31 @@
         router.navigate('teamsettings');
     }
 
+    function goToTraining() {
+        router.navigate('training');
+    }
+
     function activate() {
         this.isAuthenticated(userContext.isAuthenticated);
-        viewmodel.getSeasonsList();
+        if (userContext.hasPlayer) {
+            getTeamName(userContext.user.playersCollection[0].teamId);
+        }
+        return viewmodel.getSeasonsList();
+    }
+
+    function getTeamName(teamId) {
+        httpWrapper.post('api/team/getteamname', { id: teamId }).then(function (response) {
+            if (response.success) {
+                viewmodel.hasTeam(true);
+                viewmodel.team(response.data);
+            } else {
+                viewmodel.hasTeam(false);
+            }
+        });
+    }
+
+    function goToOwnTeam() {
+        router.navigate('team/' + viewmodel.team().shortName);
     }
 
     function goToTeamComposition() {
@@ -47,7 +82,7 @@
 
     function getSeasonsList() {
         viewmodel.seasonsList([]);
-        httpWrapper.post('api/menu/getseasonslist').then(function (response) {
+        return httpWrapper.post('api/menu/getseasonslist').then(function (response) {
             if (response.success) {
                 for (var i = 0; i < response.data.length; i++) {
                     viewmodel.seasonsList.push(response.data[i]);
@@ -57,4 +92,44 @@
             console.log(response);
         });
     }
+
+    function goToTeams() {
+        router.navigate('teams');
+    }
+
+    function goToTeamsById(id) {
+        router.navigate('teams/' + id);
+    }
+
+    function goToUATeams() {
+        goToTeamsById('UA');
+    }
+    function goToENTeams() {
+        goToTeamsById('EN');
+    }
+    function goToESTeams() {
+        goToTeamsById('ES');
+    }
+
+    function goToRaiting() {
+        router.navigate('raiting');
+    }
+
+    function goToRaitingByPosition(position) {
+        router.navigate('raiting/' + position);
+    }
+
+    function goToGKRaiting() {
+        goToRaitingByPosition('GK');
+    }
+    function goToDEFRaiting() {
+        goToRaitingByPosition('DEF');
+    }
+    function goToMIDRaiting() {
+        goToRaitingByPosition('MID');
+    }
+    function goToFWRaiting() {
+        goToRaitingByPosition('FW');
+    }
+
 });

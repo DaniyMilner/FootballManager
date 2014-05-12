@@ -38,7 +38,7 @@
             registerSuccess: ko.observable(false),
             registerError: ko.observable(false),
             goToChooseClub : function (){
-                router.navigate('');
+                router.navigate('teams');
             }
         };
 

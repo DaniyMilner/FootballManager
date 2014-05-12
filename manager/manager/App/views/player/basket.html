@@ -1,0 +1,33 @@
+﻿<section class="equipment-wrapper">
+    <!-- ko if: hasItemsInBasket -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Бонус к скилам</th>
+                <th>Погода</th>
+                <th>Удалить из корзины</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: basket -->
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: price + ' ден. ед.'"></td>
+                <td data-bind="text: '+ ' + amountOfSkills"></td>
+                <td data-bind="text: weatherType == 0 ? 'Сухая' : 'Мокрая'"></td>
+                <td>
+                    <a href="javascript: void(0)" data-bind="click: $parent.removeFromBasket">Удалить</a>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+    <p>Общая сумма заказа составляет: <span data-bind="text: sum() + ' ден. ед.'"></span></p>
+    <button class="user-profile-btn" data-bind="click: order">Заказать</button>
+    <!-- /ko -->
+    <!-- ko ifnot: hasItemsInBasket -->
+    <p>Вы не заказали ни одного товара перейдите в раздел <a href="javascript: void(0)" data-bind="click: goToEquipment">"Экипировка"</a> для заказа.</p>
+    <!-- /ko -->
+</section>

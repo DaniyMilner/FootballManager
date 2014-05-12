@@ -9,6 +9,6 @@ namespace DomainModel.Repositories
 {
     public interface ICountryRepository : IRepository<Country>
     {
-        
+        Country GetCountryByPublicId(string publicId);
     }
 }

@@ -1,0 +1,36 @@
+﻿<section class="team-wrapper">
+    <!-- ko foreach: teams -->
+    <div class="table-responsive">
+        <table class="table table-bordered team-table">
+            <tr>
+                <td class="team-logo-wrapper">
+                    <img class="img-thumbnail" data-bind="attr: { src: 'Content/img/teams/' + shortName + '.png' }" />
+                </td>
+                <td>
+                    <h3 class="team-item-name" data-bind="text: name">
+                    </h3>
+                    <table class="table">
+                        <tr>
+                            <td class="table-td-40">Страна:</td>
+                            <td data-bind="text: country"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-td-40">Год основания:</td>
+                            <td data-bind="text: year + 'г.'"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-td-40">Стадион:</td>
+                            <td data-bind="text: stadium"></td>
+                        </tr>
+                    </table>
+                    <button class="user-profile-btn non-static" data-bind="click: $parent.goToTeam">Простмотреть команду</button>
+                    <button class="user-profile-btn non-static red" data-bind="click: $parent.applyToJoin, visible: $parent.isAuthenticated ">Подать заявку</button>
+                </td>
+                <td class="tr-hiddden team-stadium-wrapper">
+                    <img class="img-thumbnail" data-bind="attr: { src: 'Content/img/teams/' + shortName + '_stadium.jpg' }" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- /ko -->
+</section>

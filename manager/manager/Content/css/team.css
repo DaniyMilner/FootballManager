@@ -1,5 +1,6 @@
 ﻿.team-wrapper {
 	padding: 5px 10px;
+    cursor: default;
 }
 
 .team-wrapper .table.table-bordered td,
@@ -9,3 +10,90 @@
     font-size: 12px;
     vertical-align: middle;
 }
+
+.team-logo-wrapper {
+    width: 100px;
+}
+
+.team-wrapper table.team-table {
+    margin-bottom: 0;
+}
+
+.team-wrapper table.team-table td {
+    padding-top: 25px;
+    border-top: none;
+}
+
+.team-item-name {
+    margin: 0;
+    border-bottom: 1px solid #ffffff;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.team-wrapper .table .table {
+    background: none;
+}
+.team-wrapper .team-item-name + table td {
+    padding: 4px;
+}
+
+.team-wrapper .img-thumbnail {
+    padding: 10px;
+}
+
+.team-stadium-wrapper {
+    width: 300px;
+}
+
+ .team-wrapper .table .table-td-40 {
+     width: 42%;
+ }
+
+ .team-wrapper .user-profile-btn {
+     float: none;
+ }
+
+  .user-profile-btn {
+      margin-bottom: 10px; 
+  }
+
+ .user-profile-btn.red {
+     background-color: #b70002;
+     color: #ffffff;
+ }
+
+ .user-profile-btn.red:hover {
+     background-color: #FF060A;
+ }
+
+ .team-position-name {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: underline;
+ }
+
+ .country-image-wrapper {
+    width: 30px;
+    margin: 0 auto;
+ }
+
+ .table.table-bordered td.table-td-20 {
+     width: 20%;
+     text-align: left;
+ }
+
+ .table.table-bordered td.table-td-10 {
+     width: 10%;
+ }
+
+ .table.table-bordered.raiting-table th {
+     cursor: default;
+ }
+
+ @media (max-width: 768px) {
+     .team-wrapper .table .tr-hiddden {
+         display: none;
+     }
+ }

@@ -231,7 +231,30 @@ namespace manager.Controllers.API
         [Route("api/user/updateuserprofile")]
         public ActionResult UpdateUserProfile(UserProfileModel model)
         {
-            return JsonError("as");
+            var user = _userRepository.GetUserByUserName(GetCurrentUsername());
+            if (user != null)
+            {
+                user.UpdateCity(model.City);
+                user.UpdateBirthday(model.Birthday);
+                user.UpdateAboutMySelf(model.AboutMySelf);
+                user.UpdateSex(model.Sex);
+                user.UpdateSkype(model.Skype);
+                return JsonSuccess(model);
+            }
+            return JsonError("This cannot found");
+        }
+
+        [HttpPost]
+        [Route("api/user/changePassword")]
+        public ActionResult ChangePassword(string currentPassword, string newPassword)
+        {
+            var user = _userRepository.GetUserByUserName(GetCurrentUsername());
+            if (user != null && user.VerifyPassword(currentPassword))
+            {
+                user.UpdatePassword(currentPassword, newPassword);
+                return JsonSuccess();
+            }
+            return JsonError("Current password is incorrect");
         }
     }
 }

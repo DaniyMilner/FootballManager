@@ -14,5 +14,15 @@ namespace DataAccess.Repositories
             : base(dataContext)
         {
         }
+
+        public Team GeTeamByPublicId(string publicId)
+        {
+            return _dataContext.GetSet<Team>().SingleOrDefault(t => t.ShortName == publicId);
+        }
+
+        public Team Get(Guid? teamId)
+        {
+            return teamId.HasValue ? _dataContext.GetSet<Team>().FirstOrDefault(t => t.Id == teamId) : null;
+        }
     }
 }

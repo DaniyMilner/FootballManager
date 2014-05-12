@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace DomainModel.Entities
@@ -21,7 +17,6 @@ namespace DomainModel.Entities
 
         public string Name { get; private set; }
         public WeatherType Type { get; private set; }
-        [ScriptIgnore]
         public virtual ICollection<Match> MatchCollection { get; private set; }
     }
 

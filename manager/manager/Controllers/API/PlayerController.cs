@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
+using Antlr.Runtime;
 using DomainModel;
 using DomainModel.Entities;
 using DomainModel.Repositories;
 using Infrastructure;
 using manager.Components;
 using manager.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace manager.Controllers.API
 {
@@ -23,11 +27,14 @@ namespace manager.Controllers.API
         private readonly IIllnessRepository _illnessRepository;
         private readonly INumberingRepository _numberingRepository;
         private readonly ISkillRepository _skillRepository;
+        private readonly ITeamRepository _teamRepository;
+        private readonly IEquipmentRepository _equipmentRepository;
 
         public PlayerController(IPlayerRepository playerRepository, IPositionRepository positionRepository,
             IEntityFactory entityFactory, ICountryRepository countryRepository, IUserRepository userRepository,
             IAuthenticationProvider authenticationProvider, IIllnessRepository illnessRepository,
-            INumberingRepository numberingRepository, ISkillRepository skillRepository)
+            INumberingRepository numberingRepository, ISkillRepository skillRepository, ITeamRepository teamRepository,
+            IEquipmentRepository equipmentRepository)
         {
             _playerRepository = playerRepository;
             _positionRepository = positionRepository;
@@ -38,6 +45,8 @@ namespace manager.Controllers.API
             _illnessRepository = illnessRepository;
             _numberingRepository = numberingRepository;
             _skillRepository = skillRepository;
+            _teamRepository = teamRepository;
+            _equipmentRepository = equipmentRepository;
         }
 
         [HttpPost]
@@ -148,17 +157,6 @@ namespace manager.Controllers.API
                 return JsonError("Player does not exists");
             }
 
-            var skills = new List<object>();
-
-            foreach (var skillsPlayer in player.SkillPlayerCollection)
-            {
-                skills.Add(new
-                {
-                    id = skillsPlayer.Skill.Ordering,
-                    value = skillsPlayer.Value
-                });
-            }
-
             return JsonSuccess(new
             {
                 Id = player.Id,
@@ -190,11 +188,74 @@ namespace manager.Controllers.API
                     Name = player.Country.Name,
                     PublicId = player.Country.PublicId
                 },
-                Skills = skills,
+                Skills = player.SkillPlayerCollection.Select(skill => new
+                {
+                    id = skill.Skill.Ordering,
+                    value = skill.Value
+                }),
                 PublicId = player.PublicId,
                 CreateDate = player.CreateDate,
                 TeamId = player.TeamId,
             });
+        }
+
+        [HttpPost]
+        [Route("api/player/getplayersbyposition")]
+        public ActionResult GetPlayersByPositions(string position)
+        {
+            ICollection<Player> players = new Collection<Player>();
+            if (position == null)
+            {
+                players = _playerRepository.GetCollection();
+            }
+            else
+            {
+                players = _playerRepository.GetCollection(p => p.Position.PublicId == position);
+            }
+            if (players.Count == 0)
+            {
+                return JsonError("Players not found");
+            }
+            return JsonSuccess(players.Select(player => new
+            {
+                fullName = player.Name + " " + player.Surname,
+                countryId = player.Country.PublicId,
+                countryName = player.Country.Name,
+                skillValue = player.SkillPlayerCollection.Sum(s => s.Value),
+                publicId = player.PublicId
+            }));
+        }
+
+        [HttpPost]
+        [Route("api/equipment/getbytype")]
+        public ActionResult GetEquipmentsByType(EquipmentType type)
+        {
+            var equipments = _equipmentRepository.GetEquipmentsByType(type);
+            if (equipments.Count == 0)
+            {
+                return JsonError("Equipments not found");
+            }
+            else
+            {
+                return JsonSuccess(equipments.Select(e => new
+                {
+                    id = e.Id,
+                    name = e.Name,
+                    price = e.Price,
+                    countOfMatch = e.CountOfMatch,
+                    amountOfSkills = e.AmountOfSkills,
+                    type = e.Type,
+                    weatherType = e.WeatherType,
+                    index = e.Index
+                }));
+            }
+        }
+
+        [HttpPost]
+        [Route("api/order")]
+        public ActionResult Order(ICollection<OrderModel> orders)
+        {
+            return JsonError("error");
         }
     }
 }

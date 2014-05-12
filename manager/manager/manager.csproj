@@ -187,18 +187,21 @@
     <Compile Include="Components\ModelBinding\EntityCollectionModelBinderProvider.cs" />
     <Compile Include="Components\ModelBinding\EntityModelBinder.cs" />
     <Compile Include="Components\ModelBinding\EntityModelBinderProvider.cs" />
+    <Compile Include="Components\NewsReader.cs" />
     <Compile Include="Configuration\BundleConfiguration.cs" />
     <Compile Include="Configuration\ContainerConfiguration.cs" />
     <Compile Include="Controllers\API\GeneratorController.cs" />
     <Compile Include="Controllers\API\MatchController.cs" />
     <Compile Include="Controllers\API\MenuController.cs" />
     <Compile Include="Controllers\API\PlayerController.cs" />
+    <Compile Include="Controllers\API\TeamsController.cs" />
     <Compile Include="Controllers\API\TournamentController.cs" />
     <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\PlayerCreateModel.cs" />
     <Compile Include="Models\TeamSettingsModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
@@ -209,6 +212,7 @@
   <ItemGroup>
     <Compile Include="Configuration\FilterConfig.cs" />
     <Compile Include="Configuration\RouteConfig.cs" />
+    <Content Include="App\basketContext.js" />
     <Content Include="App\constants.js" />
     <Content Include="App\matchEvents.js" />
     <Content Include="App\userContext.js" />
@@ -225,11 +229,16 @@
     <Content Include="App\viewmodels\menu\profilemenu.js" />
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\news.js" />
+    <Content Include="App\viewmodels\player\basket.js" />
     <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\player\equipment.js" />
     <Content Include="App\viewmodels\player\profile.js" />
+    <Content Include="App\viewmodels\player\shop.js" />
+    <Content Include="App\viewmodels\player\training.js" />
+    <Content Include="App\viewmodels\raitings\raiting.js" />
     <Content Include="App\viewmodels\rules\rules.js" />
     <Content Include="App\viewmodels\season\season.js" />
+    <Content Include="App\viewmodels\teams\teams.js" />
     <Content Include="App\viewmodels\team\composition.js" />
     <Content Include="App\viewmodels\team\teamsettings.js" />
     <Content Include="App\viewmodels\tournament\tournament.js" />
@@ -245,11 +254,16 @@
     <Content Include="App\views\menu\profilemenu.html" />
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\news.html" />
+    <Content Include="App\views\player\basket.html" />
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
     <Content Include="App\views\player\profile.html" />
+    <Content Include="App\views\player\shop.html" />
+    <Content Include="App\views\player\training.html" />
+    <Content Include="App\views\raitings\raiting.html" />
     <Content Include="App\views\rules\rules.html" />
     <Content Include="App\views\season\season.html" />
+    <Content Include="App\views\teams\teams.html" />
     <Content Include="App\views\team\composition.html" />
     <Content Include="App\views\team\teamsettings.html" />
     <Content Include="App\views\tournament\tournament.html" />
@@ -297,11 +311,34 @@
     <Content Include="Content\css\team.css" />
     <Content Include="Content\css\teamsettings.css" />
     <Content Include="Content\css\tournament.css" />
+    <Content Include="Content\css\training.css" />
     <Content Include="Content\css\userProfile.css" />
     <Content Include="Content\css\userDialog.css" />
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\country\EN.png" />
+    <Content Include="Content\img\country\ES.png" />
+    <Content Include="Content\img\country\UA.png" />
+    <Content Include="Content\img\equipment\basket.png" />
+    <Content Include="Content\img\equipment\boots_1.png" />
+    <Content Include="Content\img\equipment\boots_2.png" />
+    <Content Include="Content\img\equipment\boots_3.png" />
+    <Content Include="Content\img\equipment\boots_4.png" />
+    <Content Include="Content\img\equipment\boots_5.png" />
+    <Content Include="Content\img\equipment\boots_6.png" />
+    <Content Include="Content\img\equipment\gloves_1.png" />
+    <Content Include="Content\img\equipment\gloves_2.png" />
+    <Content Include="Content\img\equipment\gloves_3.png" />
+    <Content Include="Content\img\equipment\gloves_4.png" />
+    <Content Include="Content\img\equipment\gloves_5.png" />
+    <Content Include="Content\img\equipment\gloves_6.png" />
+    <Content Include="Content\img\equipment\shield_1.png" />
+    <Content Include="Content\img\equipment\shield_2.png" />
+    <Content Include="Content\img\equipment\shield_3.png" />
+    <Content Include="Content\img\equipment\shield_4.png" />
+    <Content Include="Content\img\equipment\shield_5.png" />
+    <Content Include="Content\img\equipment\shield_6.png" />
     <Content Include="Content\img\general\ajax-loader-64x64.gif" />
     <Content Include="Content\img\general\ball-loader.gif" />
     <Content Include="Content\img\general\binding.png" />
@@ -318,18 +355,33 @@
     <Content Include="Content\img\match\red_card.png" />
     <Content Include="Content\img\match\time.png" />
     <Content Include="Content\img\match\yellow_card.png" />
+    <Content Include="Content\img\equipment\shop_boots.png" />
+    <Content Include="Content\img\equipment\shop_gloves.png" />
+    <Content Include="Content\img\equipment\shop_shield.png" />
     <Content Include="Content\img\teams\ARS.png" />
+    <Content Include="Content\img\teams\ARS_stadium.jpg" />
     <Content Include="Content\img\teams\ATL.png" />
+    <Content Include="Content\img\teams\ATL_stadium.jpg" />
     <Content Include="Content\img\teams\BAR.png" />
+    <Content Include="Content\img\teams\BAR_stadium.jpg" />
     <Content Include="Content\img\teams\CHE.png" />
+    <Content Include="Content\img\teams\CHE_stadium.jpg" />
     <Content Include="Content\img\teams\DD.png" />
+    <Content Include="Content\img\teams\DD_stadium.jpg" />
     <Content Include="Content\img\teams\DK.png" />
+    <Content Include="Content\img\teams\DK_stadium.jpg" />
     <Content Include="Content\img\teams\LIV.png" />
+    <Content Include="Content\img\teams\LIV_stadium.jpg" />
     <Content Include="Content\img\teams\MC.png" />
+    <Content Include="Content\img\teams\MC_stadium.jpg" />
     <Content Include="Content\img\teams\MEH.png" />
+    <Content Include="Content\img\teams\MEH_stadium.jpg" />
     <Content Include="Content\img\teams\RM.png" />
+    <Content Include="Content\img\teams\RM_stadium.jpg" />
     <Content Include="Content\img\teams\SEV.png" />
+    <Content Include="Content\img\teams\SEV_stadium.jpg" />
     <Content Include="Content\img\teams\SHD.png" />
+    <Content Include="Content\img\teams\SHD_stadium.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -387,7 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\models\" />
-    <Folder Include="Content\img\country\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

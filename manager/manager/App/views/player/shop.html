@@ -1,0 +1,46 @@
+﻿<section class="equipment-wrapper">
+    <h3 class="text-center" data-bind="text: typeName"></h3>
+    <p>Для добавления экипировки в корзину кликните по её области.</p>
+    <div class="basket" data-bind="click: goToBasket">
+        <img class="img-responsive" src="Content/img/equipment/basket.png"/>
+    </div>
+    <table class="table table-hover table-shop">
+        <tbody>
+            <!-- ko foreach: shopItems -->
+            <tr data-bind="click: $parent.addToBasket">
+                <td class="table-td-40">
+                    <div class="shop-image-wrapper shop">
+                        <img class="img-responsive" data-bind="attr: { src: image }" />
+                    </div>
+                </td>
+                <td>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="table-td-40">Наименование:</td>
+                                <td data-bind="text: name"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-td-40">Цена:</td>
+                                <td data-bind="text: price + ' ден. ед.'"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-td-40">Количество матчей:</td>
+                                <td data-bind="text: countOfMatch"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-td-40">Бонус к скилам:</td>
+                                <td data-bind="text: '+ ' + amountOfSkills">:</td>
+                            </tr>
+                            <tr>
+                                <td class="table-td-40">Погода:</td>
+                                <td data-bind="text: weatherType == 0 ? 'Сухая' : 'Мокрая'"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</section>
