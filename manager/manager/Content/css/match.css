@@ -327,7 +327,9 @@
 
         .match-wrapper .team-wrapper .teams tr td > div {
             display: -webkit-box;
-        }
+        
+            margin-bottom: 10px;
+}
 
         .match-wrapper .team-wrapper .teams tr td:last-child > div {
             -webkit-box-pack: end;
@@ -335,11 +337,15 @@
 
         .match-wrapper .team-wrapper .teams tr td .number {
             width: 30px;
-        }
+        
+            margin: 0;
+}
 
         .match-wrapper .team-wrapper .teams tr td .position {
             width: 50px;
-        }
+        
+            margin: 0;
+}
 
         .match-wrapper .team-wrapper .teams tr td:last-child .number {
             text-align: right;
