@@ -241,12 +241,81 @@ namespace manager.Controllers.API
             settings.SetPlayerSend(model.PlayerId);
 
             var playerSettings = _playerSettingsRepository.GetPlayerSettingsByPlayerId(model.Capitan);
+            if (playerSettings!=null)
             playerSettings.SetCaptain();
 
             if (isNew)
                 _teamSettingsRepository.Add(settings);
 
+            CreatePlayerSettings(model);
+
             return JsonSuccess();
+        }
+
+        private void CreatePlayerSettings(TeamSettingsModel model)
+        {
+            var json = new JavaScriptSerializer();
+            var list = _playerSettingsRepository.GetPlayersSettingsByMatchId(model.MatchId);
+            var playersIds = new List<Guid>
+            {
+                model.One,
+                model.Two,
+                model.Three,
+                model.Four,
+                model.Five,
+                model.Six,
+                model.Seven,
+                model.Eight,
+                model.Nine,
+                model.Ten,
+                model.Eleven
+            };
+            for (int i = 0; i < playersIds.Count; i++)
+            {
+                var id = playersIds[i];
+                var item = list.FirstOrDefault(z => z.Player.Id == id);
+                if (item != null)
+                {
+                    item.SetIndexField(i + 1);
+                    if (id == model.Capitan)
+                    {
+                        item.SetCaptain();
+                    }
+                }
+                else
+                {
+                    var player = _playerRepository.Get(id);
+                    var match = _matchRepository.Get(model.MatchId);
+                    var itemToCreate = _entityFactory.PlayerSettings(player, match, i + 1);
+                    
+                    var customSettings = new CustomPlayerSettings();
+                    if (player.Position.PublicId != "GK")
+                    {
+                        customSettings.Orient = PlayerSettingsConstants.Orient;
+                        customSettings.Pas = PlayerSettingsConstants.Pas;
+                        customSettings.Strike = PlayerSettingsConstants.Strike;
+                        customSettings.Oneone = PlayerSettingsConstants.OneoneField;
+                        customSettings.Canopy = PlayerSettingsConstants.Canopy;
+                        customSettings.Selection = PlayerSettingsConstants.Selection;
+                        customSettings.Dedication = PlayerSettingsConstants.Dedication;
+                        customSettings.Penalty = PlayerSettingsConstants.Penalty;
+                    }
+                    else
+                    {
+                        customSettings.Oneone = PlayerSettingsConstants.OneoneGk;
+                        customSettings.Penalty = PlayerSettingsConstants.Penalty;
+                        customSettings.Dedication = PlayerSettingsConstants.Dedication;
+                        customSettings.Canopy = PlayerSettingsConstants.Canopy;
+                    }
+                    if (player.Id == model.Capitan)
+                    {
+                        itemToCreate.SetCaptain();
+                    }
+                    itemToCreate.SetSettings(json.Serialize(customSettings));
+
+                    _playerSettingsRepository.Add(itemToCreate);
+                }
+            }
         }
 
         private List<object> GetCustomTeamPlayers(IEnumerable<Player> teamPlayers)

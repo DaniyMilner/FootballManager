@@ -31,5 +31,7 @@ namespace DataAccess.Repositories
         {
             return _dataContext.GetSet<PlayerSettings>().FirstOrDefault(z => z.Player.Id == id);
         }
+
+       
     }
 }
