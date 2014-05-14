@@ -1,15 +1,18 @@
-﻿.admin-wrapper {
+.admin-wrapper {
 }
 
     .admin-wrapper .admin-menu {
         display: -webkit-box;
         display: -moz-box;
         margin-bottom: 10px;
-    }
+    
+        width: 100%;
+        -webkit-box-pack: justify;
+}
 
     .admin-wrapper .admin-menu-item {
         background-color: rgba(165, 42, 42, 0.8);
-        width: 100px;
+        width: 103px;
         display: -webkit-box;
         display: -moz-box;
         -webkit-box-pack: center;
