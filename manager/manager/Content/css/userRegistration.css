@@ -125,3 +125,22 @@
 		margin-left: 47%;
 	}
 }
+
+
+.news-img-wrapper {
+    padding: 5px;
+}
+
+.news-date {
+    font-size: 12px;
+    color: #83FC7E;
+}
+
+.news-title {
+    
+}
+
+.news-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
