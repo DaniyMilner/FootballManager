@@ -4,9 +4,9 @@
         <li>
             <a href="javascript: void(0)">Игрок</a>
             <ul>
-                <li><a data-bind="click: goToPlayerProfile" href="javascript: void(0)">Обзор</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToTraining">Тренировка</a></li>
-                <li><a data-bind="click: goToEquipment" href="javascript: void(0)">Экипировка</a></li>
+                <li><a data-bind="click: goToPlayerProfile">Обзор</a></li>
+                <li><a data-bind="click: goToTraining">Тренировка</a></li>
+                <li><a data-bind="click: goToEquipment">Экипировка</a></li>
                 <li><a href="javascript: void(0)">Развлечения</a></li>
                 <!-- ko if: isCoatch -->
                 <li><a href="javascript: void(0)" data-bind="click: goToCoathRoom">Тренерская</a></li>
@@ -15,7 +15,7 @@
         </li>
         <!-- ko if: hasTeam -->
         <li>
-            <a href="javascript: void(0)" data-bind="text: team().name, click: goToOwnTeam"></a>
+            <a data-bind="text: team().name, click: goToOwnTeam"></a>
         </li>
         <!-- /ko -->
         <!-- /ko -->
@@ -37,16 +37,12 @@
         <li>
             <a href="javascript: void(0)">Рейтинги</a>
             <ul>
-                <li><a href="javascript: void(0)">Топ команд</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToRaiting">Общий топ</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToGKRaiting">Топ голкиперов</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToDEFRaiting">Топ защитников</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToMIDRaiting">Топ полузащитнков</a></li>
-                <li><a href="javascript: void(0)" data-bind="click: goToFWRaiting">Топ нападающих</a></li>
+                <li><a data-bind="click: goToRaiting">Общий топ</a></li>
+                <li><a data-bind="click: goToGKRaiting">Топ голкиперов</a></li>
+                <li><a data-bind="click: goToDEFRaiting">Топ защитников</a></li>
+                <li><a data-bind="click: goToMIDRaiting">Топ полузащитнков</a></li>
+                <li><a data-bind="click: goToFWRaiting">Топ нападающих</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="javascript: void(0)">Статистика</a>
         </li>
         <!-- ko ifnot: isAuthenticated -->
         <li>

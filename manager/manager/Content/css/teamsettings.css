@@ -7,14 +7,18 @@
 }
 .teamsettings-wrapper .scheme-wrapper{
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: center;
+    -moz-box-align: center;
 }
 .teamsettings-wrapper .scheme-wrapper p{
     margin: 0;
     margin-right: 20px;
 }
 .teamsettings-wrapper .scheme-wrapper select{
-    height: 30px;  border-radius: 6px;  padding-left: 4px;
+    height: 30px;  
+    border-radius: 6px;  
+    padding-left: 4px;
 }
 
 .teamsettings-wrapper .teamsettings-info-wrapper{
@@ -22,6 +26,7 @@
 }
 .teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper{
     display: -webkit-box;
+    display: -moz-box;
 }
 .teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .start-wrapper{
     width: 60%;
@@ -34,6 +39,7 @@
 .teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .def-wrapper,
 .teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper .mid-wrapper {
     display: -webkit-box;
+    display: -moz-box;
     height: 50px;
 }
 .teamsettings-wrapper .teamsettings-info-wrapper .lineup-wrapper select {
@@ -61,7 +67,9 @@
 .teamsettings-wrapper .teamsettings-info-wrapper .team-item {
     height: 25px;
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: center;
+    -moz-box-align: center;
     padding-left: 15px;
 }
 
@@ -73,7 +81,9 @@
 }
 .teamsettings-wrapper .settings-wrapper .setting-block{
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: center;
+    -moz-box-align: center;
 }
 .teamsettings-wrapper .settings-wrapper .setting-block p{
     margin: 10px;

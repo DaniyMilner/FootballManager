@@ -19,6 +19,7 @@ background-color: rgba(211, 211, 211, 0.1);
 
 .tournament-info-wrapper .matches-wrapper{
     display: -webkit-box;
+    display: -moz-box;
 }
 .tournament-info-wrapper .matches-wrapper .today-wrapper{
     width: 50%;
@@ -42,7 +43,9 @@ background-color: rgba(211, 211, 211, 0.1);
 }
 .tournament-info-wrapper .match-info-block{
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-pack: center;
+    -moz-box-pack: center;
     margin-bottom: 10px;
 }
 .tournament-info-wrapper .match-info-block img{
@@ -51,14 +54,19 @@ background-color: rgba(211, 211, 211, 0.1);
 .tournament-info-wrapper .match-info-block .teams-info{
     margin: 0 10px;
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-align: center;
+    -moz-box-align: center;
     cursor: pointer;
-    color: wheat;  font-size: 15px;
+    color: wheat;  
+    font-size: 15px;
 }
 .tournament-info-wrapper .title-wrapper{
     display: -webkit-box;
+    display: -moz-box;
     margin: 0 5%;
     -webkit-box-align: center;
+    -moz-box-align: center;
     margin-bottom: 10px;
     margin-top: 20px;
 }
