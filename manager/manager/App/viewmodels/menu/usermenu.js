@@ -23,10 +23,15 @@
         goToUATeams: goToUATeams,
         goToENTeams: goToENTeams,
         goToESTeams: goToESTeams,
-        goToCoathRoom: goToCoathRoom
+        goToCoathRoom: goToCoathRoom,
+        goToCity: goToCity
     };
 
     return viewmodel;
+
+    function goToCity() {
+        router.navigate('city');
+    }
 
     function goToPlayerProfile() {
         var publicId = userContext.user.playersCollection[0].publicId;
@@ -85,7 +90,11 @@
     }
 
     function goToTeamComposition() {
-        var teamid = userContext.user.playersCollection[0].teamId;
+        var teamid;
+        if (userContext.user.playersCollection != undefined) {
+            teamid = userContext.user.playersCollection[0].teamId;
+        }
+         
         if (_.isNull(teamid) || _.isUndefined(teamid)) {
             router.navigate('team');
         } else {

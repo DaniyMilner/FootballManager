@@ -230,6 +230,7 @@
     <Content Include="App\viewmodels\menu\usermenu.js" />
     <Content Include="App\viewmodels\news.js" />
     <Content Include="App\viewmodels\player\basket.js" />
+    <Content Include="App\viewmodels\player\city.js" />
     <Content Include="App\viewmodels\player\coachRoom.js" />
     <Content Include="App\viewmodels\player\createplayer.js" />
     <Content Include="App\viewmodels\player\equipment.js" />
@@ -256,6 +257,7 @@
     <Content Include="App\views\menu\usermenu.html" />
     <Content Include="App\views\news.html" />
     <Content Include="App\views\player\basket.html" />
+    <Content Include="App\views\player\city.html" />
     <Content Include="App\views\player\coachRoom.html" />
     <Content Include="App\views\player\createplayer.html" />
     <Content Include="App\views\player\equipment.html" />
@@ -319,9 +321,12 @@
     <Content Include="Content\css\userRegistration.css" />
     <Content Include="Content\fonts\dited-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\bar.jpg" />
+    <Content Include="Content\img\bassein.jpeg" />
     <Content Include="Content\img\country\EN.png" />
     <Content Include="Content\img\country\ES.png" />
     <Content Include="Content\img\country\UA.png" />
+    <Content Include="Content\img\cross-300.gif" />
     <Content Include="Content\img\equipment\basket.png" />
     <Content Include="Content\img\equipment\boots_1.png" />
     <Content Include="Content\img\equipment\boots_2.png" />
@@ -353,6 +358,8 @@
     <Content Include="Content\img\general\scoreboard.png" />
     <Content Include="Content\img\general\user-icon-128x128.png" />
     <Content Include="Content\img\general\user-icon-48x48.png" />
+    <Content Include="Content\img\kinoteatr.jpg" />
+    <Content Include="Content\img\kv1.jpg" />
     <Content Include="Content\img\match\ball.png" />
     <Content Include="Content\img\match\red_card.png" />
     <Content Include="Content\img\match\time.png" />
@@ -360,6 +367,7 @@
     <Content Include="Content\img\equipment\shop_boots.png" />
     <Content Include="Content\img\equipment\shop_gloves.png" />
     <Content Include="Content\img\equipment\shop_shield.png" />
+    <Content Include="Content\img\psiholog.jpg" />
     <Content Include="Content\img\teams\ARS.png" />
     <Content Include="Content\img\teams\ARS_stadium.jpg" />
     <Content Include="Content\img\teams\ATL.png" />

@@ -81,6 +81,10 @@
             route: 'coach',
             moduleId: 'viewmodels/player/coachRoom',
             title: 'Coach room'
+        }, {
+            route: 'city',
+            moduleId: 'viewmodels/player/city',
+            title: 'City'
         }];
 
     });

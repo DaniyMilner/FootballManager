@@ -69,6 +69,16 @@
     background: #3E9B20;
 }
 
+.city-img-wrapepr {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.city-img-wrapepr .img-thumbnail {
+    height: 100%;
+}
+
 .player-profile-wrapper .skills-info.table tbody,
 .player-profile-wrapper .skills-info.table td {
     border-top: none;
