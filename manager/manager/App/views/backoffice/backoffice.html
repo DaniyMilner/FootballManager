@@ -1,7 +1,12 @@
 ﻿<section class="admin-wrapper">
     <div class="admin-menu">
-        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 0 }, click: function () { menu.setActiveIndex(0); }">Generator</div>
-        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 1 }, click: function () { menu.setActiveIndex(1); }">Users</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 0 }, click: function () { menu.setActiveIndex(0); }">Генератор</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 1 }, click: function () { menu.setActiveIndex(1); }">Пользователи</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 2 }, click: function () { menu.setActiveIndex(2); }">Игроки</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 3 }, click: function () { menu.setActiveIndex(3); }">Команды</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 4 }, click: function () { menu.setActiveIndex(4); }">Страны</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 5 }, click: function () { menu.setActiveIndex(5); }">Турниры</div>
+        <div class="admin-menu-item" data-bind="css: { active: menu.activeItemIndex() == 6 }, click: function () { menu.setActiveIndex(6); }">Матчи</div>
     </div>
     <div class="generator-wrapper" data-bind="visible: menu.activeItemIndex() == 0">
         <input data-bind="click: generator.run, attr: { disabled: generator.noMatches() }" type="button" value="Run" />

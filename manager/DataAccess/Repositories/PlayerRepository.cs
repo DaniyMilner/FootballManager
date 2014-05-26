@@ -41,7 +41,7 @@ namespace DataAccess.Repositories
 
         public Player GetPlayerByPublicId(string publicId)
         {
-            return _dataContext.GetSet<Player>().SingleOrDefault(p => p.PublicId == publicId);
+            return _dataContext.GetSet<Player>().FirstOrDefault(p => p.PublicId == publicId);
         }
 
         public ICollection<Player> GetPlayersByTeamId(Guid teamId)

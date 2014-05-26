@@ -392,6 +392,7 @@
     <Content Include="Content\img\teams\SEV_stadium.jpg" />
     <Content Include="Content\img\teams\SHD.png" />
     <Content Include="Content\img\teams\SHD_stadium.jpg" />
+    <Content Include="Content\img\training\player.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />

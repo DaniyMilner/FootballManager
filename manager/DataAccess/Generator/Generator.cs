@@ -69,9 +69,6 @@ namespace DataAccess.Generator
                 totalHome = playerInfo.CaptainImpact(homePlayers, totalHome);
                 totalGuest = playerInfo.CaptainImpact(guestPlayers, totalGuest);
 
-                //влияние лидерства
-                //TODO сделать влияние лидерства на расчетную силу команд
-
                 //шанс на атаку
                 int homeChance = 0, guestChance = 0;
                 double total = Math.Round(totalHome + totalGuest);

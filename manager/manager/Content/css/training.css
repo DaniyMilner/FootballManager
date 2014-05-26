@@ -1,3 +1,38 @@
 ﻿.training-wrapper {
     padding: 5px 10px;
+    position: relative;
 }
+
+    .training-wrapper p {
+        margin: 0 0 10px 0px;
+    }
+
+    .training-wrapper .title {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    .training-wrapper .info {
+        width: 470px;
+        margin-top: 19px;
+    }
+
+    .training-wrapper select {
+        color: black;
+    }
+
+    .training-wrapper .player-img {
+        background: url("../img/training/player.jpg") no-repeat;
+        width: 208px;
+        height: 200px;
+        position: absolute;
+        top: 57px;
+        right: 10px;
+        background-size: contain;
+    }
+
+    .training-wrapper input {
+        margin-top: 20px;
+        margin-left: 140px;
+    }
