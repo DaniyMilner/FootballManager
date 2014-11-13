@@ -1,4 +1,4 @@
-namespace DataAccess.Migrations
+ï»¿namespace DataAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -11,24 +11,24 @@ namespace DataAccess.Migrations
             AddColumn("dbo.Equipments", "WeatherType", c => c.Int(nullable: false));
             AddColumn("dbo.Equipments", "Index", c => c.Int(nullable: false));
 
-            Sql("insert into dbo.Equipments values ('3dd5f475-d223-4feb-9612-860b2a82cbac', 'Ïåğ÷àòêè UhlSports #1', 350, 10, 6, 0, 1, 1);" +
-                "insert into dbo.Equipments values ('3c22555f-7db0-470f-b583-6719cd816fa8', 'Ïåğ÷àòêè UhlSports #2', 650, 15, 9, 0, 1, 2);" +
-                "insert into dbo.Equipments values ('e3a04a18-8c0e-42d9-9ce2-0b4a8a30e820', 'Ïåğ÷àòêè UhlSports #3', 1000, 20, 12, 0, 1, 3);" +
-                "insert into dbo.Equipments values ('4202db2f-36a0-479c-968f-28bdaa1b9572', 'Ïåğ÷àòêè Patrick', 280, 10, 6, 0, 2, 4);" +
-                "insert into dbo.Equipments values ('c7084e80-67f2-4bfd-99af-2541ee0435d3', 'Ïåğ÷àòêè CCM', 500, 15, 9, 0, 2, 5);" +
-                "insert into dbo.Equipments values ('d14239be-db38-43a7-9e6f-66c44950c3bb', 'Ïåğ÷àòêè UhlSports #4', 700, 20, 12, 0, 2, 6);" +
-                "insert into dbo.Equipments values ('8623ea8f-cc5b-42d0-b3ac-b29eb4fcb0f5', 'Áóòñû BirdSports', 200, 10, 6, 1, 1, 1);" +
-                "insert into dbo.Equipments values ('28a5c681-7d3c-47c7-b375-5d3226d7113a', 'Áóòñû Sports', 500, 15, 9, 1, 1, 2);" +
-                "insert into dbo.Equipments values ('bafb8648-b60b-44bd-8e6c-c164503b4002', 'Áóòñû Joledo #1', 750, 20, 12, 1, 1, 3);" +
-                "insert into dbo.Equipments values ('50186442-cdc5-4818-86f2-2c62c058071d', 'Áóòñû Joledo #2', 350, 10, 6, 1, 2, 4);" +
-                "insert into dbo.Equipments values ('b64b73ea-6aec-43a0-a11b-08400c5d0ad8', 'Áóòñû PrinstonsSports', 650, 15, 9, 1, 2, 5);" +
-                "insert into dbo.Equipments values ('a302a335-b0ea-4f9b-b295-cb42f0feb277', 'Áóòñû F-SD', 900, 20, 12, 1, 2, 6);" +
-                "insert into dbo.Equipments values ('5e6061be-7356-4671-9a06-4329f0cb85ee', 'Ùèòêè UhlSports #1', 100, 10, 6, 2, 1, 1);" +
-                "insert into dbo.Equipments values ('cb9266fa-dc2e-4a4d-af53-4e9191ec11bb', 'Ùèòêè Ukraine', 350, 15, 9, 2, 1, 2);" +
-                "insert into dbo.Equipments values ('e466f2ed-ac83-490f-b6f6-6f6dae2ca2bc', 'Ùèòêè Select', 500, 20, 12, 2, 1, 3);" +
-                "insert into dbo.Equipments values ('be538919-72a6-4d4e-804d-5ea14421a213', 'Ùèòêè Nike', 150, 10, 6, 2, 2, 4);" +
-                "insert into dbo.Equipments values ('1189dda5-40f7-4e04-9943-a32f248d2e2d', 'Ùèòêè 2KFUTURO', 330, 15, 9, 2, 2, 5);" +
-                "insert into dbo.Equipments values ('f2d02854-ea1d-4583-93de-e11d95ef1721', 'Ùèòêè ESPADA', 600, 20, 12, 2, 2, 6);");
+            Sql("insert into dbo.Equipments values ('3dd5f475-d223-4feb-9612-860b2a82cbac', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ UhlSports #1', 350, 10, 6, 0, 1, 1);" +
+                "insert into dbo.Equipments values ('3c22555f-7db0-470f-b583-6719cd816fa8', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ UhlSports #2', 650, 15, 9, 0, 1, 2);" +
+                "insert into dbo.Equipments values ('e3a04a18-8c0e-42d9-9ce2-0b4a8a30e820', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ UhlSports #3', 1000, 20, 12, 0, 1, 3);" +
+                "insert into dbo.Equipments values ('4202db2f-36a0-479c-968f-28bdaa1b9572', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ Patrick', 280, 10, 6, 0, 2, 4);" +
+                "insert into dbo.Equipments values ('c7084e80-67f2-4bfd-99af-2541ee0435d3', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ CCM', 500, 15, 9, 0, 2, 5);" +
+                "insert into dbo.Equipments values ('d14239be-db38-43a7-9e6f-66c44950c3bb', 'ĞŸĞµÑ€Ñ‡Ğ°Ñ‚ĞºĞ¸ UhlSports #4', 700, 20, 12, 0, 2, 6);" +
+                "insert into dbo.Equipments values ('8623ea8f-cc5b-42d0-b3ac-b29eb4fcb0f5', 'Ğ‘ÑƒÑ‚ÑÑ‹ BirdSports', 200, 10, 6, 1, 1, 1);" +
+                "insert into dbo.Equipments values ('28a5c681-7d3c-47c7-b375-5d3226d7113a', 'Ğ‘ÑƒÑ‚ÑÑ‹ Sports', 500, 15, 9, 1, 1, 2);" +
+                "insert into dbo.Equipments values ('bafb8648-b60b-44bd-8e6c-c164503b4002', 'Ğ‘ÑƒÑ‚ÑÑ‹ Joledo #1', 750, 20, 12, 1, 1, 3);" +
+                "insert into dbo.Equipments values ('50186442-cdc5-4818-86f2-2c62c058071d', 'Ğ‘ÑƒÑ‚ÑÑ‹ Joledo #2', 350, 10, 6, 1, 2, 4);" +
+                "insert into dbo.Equipments values ('b64b73ea-6aec-43a0-a11b-08400c5d0ad8', 'Ğ‘ÑƒÑ‚ÑÑ‹ PrinstonsSports', 650, 15, 9, 1, 2, 5);" +
+                "insert into dbo.Equipments values ('a302a335-b0ea-4f9b-b295-cb42f0feb277', 'Ğ‘ÑƒÑ‚ÑÑ‹ F-SD', 900, 20, 12, 1, 2, 6);" +
+                "insert into dbo.Equipments values ('5e6061be-7356-4671-9a06-4329f0cb85ee', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ UhlSports #1', 100, 10, 6, 2, 1, 1);" +
+                "insert into dbo.Equipments values ('cb9266fa-dc2e-4a4d-af53-4e9191ec11bb', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ Ukraine', 350, 15, 9, 2, 1, 2);" +
+                "insert into dbo.Equipments values ('e466f2ed-ac83-490f-b6f6-6f6dae2ca2bc', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ Select', 500, 20, 12, 2, 1, 3);" +
+                "insert into dbo.Equipments values ('be538919-72a6-4d4e-804d-5ea14421a213', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ Nike', 150, 10, 6, 2, 2, 4);" +
+                "insert into dbo.Equipments values ('1189dda5-40f7-4e04-9943-a32f248d2e2d', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ 2KFUTURO', 330, 15, 9, 2, 2, 5);" +
+                "insert into dbo.Equipments values ('f2d02854-ea1d-4583-93de-e11d95ef1721', 'Ğ©Ğ¸Ñ‚ĞºĞ¸ ESPADA', 600, 20, 12, 2, 2, 6);");
         }
         
         public override void Down()
