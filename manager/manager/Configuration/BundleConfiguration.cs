@@ -18,9 +18,9 @@ namespace manager.Configuration
                     .IncludeDirectory("~/Scripts/knockoutBindings", "*Binding.js")
                 );
 
-            bundles.Add(new StyleBundle("~/Content/css")
-                    .Include("~/Content/all.css")
-                );
+            //bundles.Add(new StyleBundle("~/Content/css")
+            //        .Include("~/Content/all.css")
+            //    );
         }
     }
 }
