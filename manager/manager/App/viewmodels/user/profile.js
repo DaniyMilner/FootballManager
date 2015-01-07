@@ -34,7 +34,6 @@
     return viewmodel;
 
     function changePassword() {
-        debugger;
         if (viewmodel.password().length != 0 && viewmodel.confirmPassword().length != 0) {
             viewmodel.incorrectPassword(!constants.regex.passwordRegex.test(viewmodel.password()));
             viewmodel.incorrectConfirmPassword(viewmodel.password() != viewmodel.confirmPassword());

@@ -20,9 +20,9 @@
                 "insert into Teams values ('f9f896fd-496b-4acd-a503-b2da5a97fc00', 'Manchester City','MC','','803bf3b9-d5bb-474c-9217-fd59cabc5f2d',NULL,'City of Manchester Stadium','1887','BF2061D0-4230-49F0-830A-92F2C016BE38');" +
                 "insert into Teams values ('bebef5e4-d80c-4520-9694-b5d0db1b49f0', 'Sevilla','SEV','','fe9d7875-5075-47f8-a7f1-e890336d73e9',NULL,'Estadio Ramon Sanchez Pizjuan','1905','FA00FF8D-89F8-4E1B-AB55-A1A83F1F8F8B');" +
                 "insert into Teams values ('1069c4e2-dc68-4406-9b10-9592f2ee6b08', 'Atletiko Madrid','ATL','','fb3d8733-f1cd-46ca-975c-4d88a2af801c',NULL,'Estadio Vicente Calderon','1903','FA00FF8D-89F8-4E1B-AB55-A1A83F1F8F8B');" +
-                "insert into Teams values ('9bcf947b-77cd-456b-b89d-6724de0b1f2c', 'Dnipro','DD','','11a72098-44ec-4d69-996f-4837a9dff9d4',NULL,'Днепр Арена','1918','47A4EC4D-D649-4374-B43F-3056BED72DD3');" +
-                "insert into Teams values ('e77d9ead-1412-4713-9e98-e764cd522456', 'Shahtar','SHD','','b4cd733a-4dc1-4d0d-8208-22f7392f7782',NULL,'Донбасс Арена','1936','47A4EC4D-D649-4374-B43F-3056BED72DD3');" +
-                "insert into Teams values ('fddfb73a-c099-4bf3-bbd1-ca6283a7d1ff', 'Metalist','MEH','','588f30df-a290-4ac3-a97f-03209c1c1675',NULL,'Металлист','1925','47A4EC4D-D649-4374-B43F-3056BED72DD3')");
+                "insert into Teams values ('9bcf947b-77cd-456b-b89d-6724de0b1f2c', 'Dnipro','DD','','11a72098-44ec-4d69-996f-4837a9dff9d4',NULL,'Dnipro Arena','1918','47A4EC4D-D649-4374-B43F-3056BED72DD3');" +
+                "insert into Teams values ('e77d9ead-1412-4713-9e98-e764cd522456', 'Shahtar','SHD','','b4cd733a-4dc1-4d0d-8208-22f7392f7782',NULL,'Donbass Arena','1936','47A4EC4D-D649-4374-B43F-3056BED72DD3');" +
+                "insert into Teams values ('fddfb73a-c099-4bf3-bbd1-ca6283a7d1ff', 'Metalist','MEH','','588f30df-a290-4ac3-a97f-03209c1c1675',NULL,'Metalist','1925','47A4EC4D-D649-4374-B43F-3056BED72DD3')");
         }
         
         public override void Down()

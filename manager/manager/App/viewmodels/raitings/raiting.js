@@ -39,7 +39,6 @@
     }
 
     function setTitle(position) {
-        debugger;
         switch (position) {
             case 'GK':
                 return 'Топ голкиперов';
