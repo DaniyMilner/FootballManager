@@ -2,7 +2,7 @@
     function (app, http, constants) {
 
         function parseDateString(str) {
-            return new Date(parseInt(str.substr(6), 10));
+            return str != null ? new Date(parseInt(str.substr(6), 10)) : null;
         }
 
         var
@@ -22,9 +22,7 @@
                         that.isAuthenticated = false;
                     } else {
                         that.isAuthenticated = true;
-                        if (!!response.data.User.PlayerCollection) {
-                            that.hasPlayer = true;
-                        }
+                        that.hasPlayer = response.data.User.PlayerCollection.length != 0;
                         that.user = {
                             id: response.data.User.Id,
                             email: response.data.User.Email,

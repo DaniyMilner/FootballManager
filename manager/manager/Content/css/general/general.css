@@ -3,6 +3,10 @@ body {
 	color:#f6f6f6;
 }
 
+center {
+    display: none;
+}
+
 .icon-spinner-wrapper {
     position: absolute;
     left: 50%;
