@@ -19,6 +19,7 @@
                 httpWrapper.post('api/player/createplayer', data).then(function (response) {
                     console.log(response);
                     that.registerSuccess(true);
+                    userContext.initialize();
                 }).fail(function (response) {
                     that.registerError(true);
                     console.log(response);
