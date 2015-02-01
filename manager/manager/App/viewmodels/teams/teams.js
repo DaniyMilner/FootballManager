@@ -11,7 +11,7 @@
     return viewmodel;
 
     function applyToJoin(team) {
-        httpWrapper.post('api/team/applytojoin', { playerId: userContext.user.playersCollection[0].id }).then(function (response) {
+        httpWrapper.post('api/team/applytojoin', { playerId: userContext.user.playersCollection[0].id, teamId: team.id }).then(function (response) {
             if (response.success) {
                 router.navigate('team/' + team.shortName);
             }

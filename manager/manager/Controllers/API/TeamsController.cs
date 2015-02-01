@@ -64,8 +64,17 @@ namespace manager.Controllers.API
 
         [HttpPost]
         [Route("api/team/applytojoin")]
-        public ActionResult ApplyToJoin(Guid playerId)
+        public ActionResult ApplyToJoin(Guid playerId, Guid teamId)
         {
+            var player = _playerRepository.Get(playerId);
+            if (player == null)
+                return JsonError("Player not found");
+            var team = _teamRepository.Get(teamId);
+            if (team == null)
+                return JsonError("Team not found");
+
+            player.TeamId = teamId;
+
             return JsonSuccess();
         }
 
