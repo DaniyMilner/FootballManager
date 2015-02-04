@@ -31,7 +31,6 @@ namespace manager.Controllers.API
             if (publicId == null)
             {
                 teamCollection = _teamRepository.GetCollection();
-
             }
             else
             {
@@ -83,6 +82,22 @@ namespace manager.Controllers.API
         public ActionResult GetTeamName(Guid id)
         {
             var team = _teamRepository.Get(id);
+            if (team == null)
+            {
+                return JsonError("Team not found");
+            }
+            return JsonSuccess(new
+            {
+                name = team.Name,
+                shortName = team.ShortName
+            });
+        }
+
+        [HttpPost]
+        [Route("api/team/getteamnamebypublicid")]
+        public ActionResult GetTeamNameByPublicId(string id)
+        {
+            var team = _teamRepository.GeTeamByPublicId(id);
             if (team == null)
             {
                 return JsonError("Team not found");
