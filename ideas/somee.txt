@@ -1,0 +1,20 @@
+DanielMilner
+27June1991///
+
+http://i065.radikal.ru/1309/0e/3f48c75a2ce6.jpg
+
+MS SQL Server address:	ManagerDB.mssql.somee.com
+Login name:	DanielMilner_SQLLogin_1
+Login password:	2epvu6dzsj
+
+Connection string:	workstation id=ManagerDB.mssql.somee.com;packet size=4096;user id=DanielMilner_SQLLogin_1;pwd=2epvu6dzsj;data source=ManagerDB.mssql.somee.com;persist security info=False;initial catalog=ManagerDB
+
+
+AlexMilner
+Ololo123!
+
+
+------------------------
+https://www.assembla.com
+DanielMilner
+OloloPassword2013
