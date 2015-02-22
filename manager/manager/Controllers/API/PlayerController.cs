@@ -252,6 +252,24 @@ namespace manager.Controllers.API
         }
 
         [HttpPost]
+        [Route("api/equipment/getall")]
+        public ActionResult GetEquipmentAll()
+        {
+            var equipment = _equipmentRepository.GetCollection();
+            return JsonSuccess(equipment.Select(e => new
+            {
+                id = e.Id,
+                name = e.Name,
+                price = e.Price,
+                countOfMatch = e.CountOfMatch,
+                amountOfSkills = e.AmountOfSkills,
+                type = e.Type,
+                weatherType = e.WeatherType,
+                index = e.Index
+            }));
+        }
+
+        [HttpPost]
         [Route("api/order")]
         public ActionResult Order(ICollection<OrderModel> orders)
         {

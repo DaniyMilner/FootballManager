@@ -43,6 +43,7 @@ namespace manager.Controllers.API
                     Name = team.Name,
                     ShortName = team.ShortName,
                     Country = team.Country.Name,
+                    CountryShortName = team.Country.PublicId,
                     Stadium = team.Stadium,
                     Year = team.Year
                 }));
